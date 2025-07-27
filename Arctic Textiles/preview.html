@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Footer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* ===== FOOTER BASE STYLING ===== */
+    footer {
+      background-color: #0d1b12; /* Dark green background */
+      background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
+      background-size: 20px 20px;
+      color: #ccc;
+      padding: 60px 20px 30px;
+      font-family: Arial, sans-serif;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+    }
+
+    /* Footer column titles */
+    .footer-column h4 {
+      color: #fff;
+      margin-bottom: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    /* Logo + text */
+    .footer-logo {
+      display: block;
+      margin: 0 auto 15px;
+      height: 80px;
+    }
+
+    .footer-column p {
+      line-height: 1.6;
+      color: #ccc;
+    }
+
+    /* Links */
+    .footer-links li {
+      list-style: none;
+      margin: 8px 0;
+    }
+
+    .footer-links a {
+      text-decoration: none;
+      color: #bbb;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: #fff;
+    }
+
+    /* Contact details */
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 12px;
+      color: #ccc;
+      font-size: 15px;
+    }
+
+    .contact-item i {
+      margin-right: 10px;
+      color: #999;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    .contact-item a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .contact-item a:hover {
+      color: #fff;
+    }
+
+    /* Bottom bar */
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      margin-top: 40px;
+      padding-top: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 10px;
+      font-size: 14px;
+      color: #999;
+    }
+
+    /* Designer link hover */
+    .designer-link {
+      color: #e6e6e6;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .designer-link:hover {
+      color: #ff4444;
+    }
+
+    /* Social icons */
+    .social-icons {
+      display: flex;
+      gap: 15px;
+      margin-top: 10px;
+    }
+
+    .social-icons a {
+      color: #bbb;
+      font-size: 18px;
+      transition: color 0.3s ease;
+      text-decoration: none;
+    }
+
+    .social-icons a:hover {
+      color: #fff;
+    }
+
+    /* Responsive alignment */
+    @media (max-width: 768px) {
+      .footer-column {
+        text-align: center;
+      }
+      .contact-item {
+        justify-content: center;
+      }
+    }
+  </style>
+  <!-- FontAwesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<footer>
+  <div class="footer-container">
+    <!-- Logo + Intro -->
+    <div class="footer-column">
+      <img src="images/logggg.png" alt="Arctic Textiles" class="footer-logo">
+      <p>Crafting premium home textiles with timeless quality and sustainable innovation.</p>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-column">
+      <h4>Quick Links</h4>
+      <ul class="footer-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Products -->
+    <div class="footer-column">
+      <h4>Our Products</h4>
+      <ul class="footer-links">
+        <li><a href="#">Home Textiles</a></li>
+        <li><a href="#">Baby Care Products</a></li>
+        <li><a href="#">Moms Care Products</a></li>
+        <li><a href="#">Leather Products</a></li>
+        <li><a href="#">Yoga Products</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact Details -->
+    <div class="footer-column">
+      <h4>Contact Details</h4>
+      <div class="contact-item">
+        <i class="fas fa-map-marker-alt"></i>
+        <span>NO.164/3F-1 Ganga Nagar, Thanthoni,<br>Karur - 639 005<br>Tamil Nadu, India.</span>
+      </div>
+      <div class="contact-item">
+        <i class="fas fa-phone-alt"></i>
+        <a href="tel:+918111071617">+91-8111071617</a>
+      </div>
+      <div class="contact-item">
+        <i class="fas fa-envelope"></i>
+        <a href="mailto:info@arctictextiles.com">info@arctictextiles.com</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Bar -->
+  <div class="footer-bottom">
+    <p>Designed by <a href="https://vgotyou.com" target="_blank" class="designer-link">VGot You</a></p>
+    <p>&copy; 2025 Arctic Textiles. All rights reserved.</p>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <!-- Main Pages -->
+  <url>
+    <loc>https://arctictextiles.com/</loc>
+    <lastmod>2025-07-16</lastmod>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://arctictextiles.com/images/logo1.webp</image:loc>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://arctictextiles.com/about-us.html</loc>
+    <lastmod>2025-07-16</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://arctictextiles.com/service.html</loc>
+    <lastmod>2025-07-16</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://arctictextiles.com/contact.html</loc>
+    <lastmod>2025-07-16</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Product Pages -->
+  <url>
+    <loc>https://arctictextiles.com/baby%20products.html</loc>
+    <lastmod>2025-07-16</lastmod>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://arctictextiles.com/home-textiles.html</loc>
+    <lastmod>2025-07-16</lastmod>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://arctictextiles.com/moms%20care.html</loc>
+    <lastmod>2025-07-16</lastmod>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://arctictextiles.com/yoga.html</loc>
+    <lastmod>2025-07-16</lastmod>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://arctictextiles.com/leather%20products.html</loc>
+    <lastmod>2025-07-16</lastmod>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Images -->
+  <url>
+    <loc>https://arctictextiles.com/</loc>
+    <image:image>
+      <image:loc>https://arctictextiles.com/assets/team/venkat.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://arctictextiles.com/assets/team/santhosh.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://arctictextiles.com/images/plane.png</image:loc>
+    </image:image>
+  </url>
+
+</urlset>
