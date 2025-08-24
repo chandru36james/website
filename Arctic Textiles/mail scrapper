@@ -1,0 +1,112 @@
+function extractEmailsFromWebsites() {
+  const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  const lastRow = sheet.getLastRow();
+  const startRow = getLastProcessedRow() || 2; // Resume from here
+  const urlCol = 4; // Column D
+  const emailCol = 5; // Column E
+  const logCol = 6; // Column F
+  const subpages = ["", "/contact", "/about", "/contact-us", "/about-us", "/kontakt", "/contacts"];
+  const maxRuntime = 5.5 * 60 * 1000; // 5.5 min safety limit
+  const startTime = Date.now();
+
+  // Cache for already-processed domains
+  let domainCache = {};
+
+  for (let row = startRow; row <= lastRow; row++) {
+    try {
+      const urlCell = sheet.getRange(row, urlCol).getValue().trim();
+      if (!urlCell) continue;
+
+      let baseUrl = urlCell.startsWith("http") ? urlCell : "https://" + urlCell.replace(/^\/+/, "");
+      let domainKey = baseUrl.replace(/^https?:\/\//, "").replace(/\/.*$/, ""); // normalize domain
+
+      let foundEmails = [];
+      let logMsg = "";
+
+      if (domainCache[domainKey]) {
+        // Use cached result
+        foundEmails = domainCache[domainKey];
+        logMsg = "Cached";
+      } else {
+        // Build URLs
+        let urls = subpages.map(path => baseUrl.replace(/\/$/, "") + path);
+
+        try {
+          // Fetch all URLs in parallel
+          let responses = UrlFetchApp.fetchAll(urls.map(u => ({ url: u, muteHttpExceptions: true })));
+
+          responses.forEach(r => {
+            if (r.getResponseCode() >= 200 && r.getResponseCode() < 400) {
+              foundEmails = foundEmails.concat(extractEmails(r.getContentText()));
+            }
+          });
+
+          if (foundEmails.length > 0) {
+            logMsg = "Checked";
+          } else {
+            logMsg = "No email found";
+          }
+
+        } catch (err) {
+          Logger.log("Domain failed: " + baseUrl);
+          logMsg = "Skipped (no response)";
+        }
+
+        // Deduplicate & save in cache
+        foundEmails = [...new Set(foundEmails)];
+        domainCache[domainKey] = foundEmails;
+      }
+
+      // Write result + log to sheet
+      sheet.getRange(row, emailCol).setValue(
+        foundEmails.length > 0 ? foundEmails.join(", ") : "No email found"
+      );
+      sheet.getRange(row, logCol).setValue(logMsg);
+
+    } catch (e) {
+      Logger.log("Error at row " + row + ": " + e);
+      sheet.getRange(row, logCol).setValue("Error");
+    }
+
+    // Save progress
+    setLastProcessedRow(row);
+
+    // 1 sec delay between domains
+    Utilities.sleep(1000);
+
+    // Stop if close to timeout
+    if (Date.now() - startTime > maxRuntime) {
+      Logger.log("Stopping early to avoid timeout. Resume later.");
+      return;
+    }
+  }
+
+  // Reset progress when finished
+  resetLastProcessedRow();
+}
+
+/**
+ * Extract emails from HTML (decodes encoded too)
+ */
+function extractEmails(html) {
+  // Decode HTML entities like &#64;
+  html = html.replace(/&#(\d+);/g, (match, dec) => String.fromCharCode(dec));
+  // Regex for emails
+  let emailRegex = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/gi;
+  let matches = html.match(emailRegex);
+  return matches || [];
+}
+
+/**
+ * Save last processed row in Script Properties
+ */
+function setLastProcessedRow(row) {
+  PropertiesService.getScriptProperties().setProperty("LAST_ROW", row.toString());
+}
+function getLastProcessedRow() {
+  let val = PropertiesService.getScriptProperties().getProperty("LAST_ROW");
+  return val ? parseInt(val, 10) : null;
+}
+function resetLastProcessedRow() {
+  PropertiesService.getScriptProperties().deleteProperty("LAST_ROW");
+}
