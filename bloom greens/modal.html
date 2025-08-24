@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reusable Modal</title>
+  <style>
+    /* Modal Styles */
+    .modal-bg {
+      display: none;
+      position: fixed; left: 0; top: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(10,20,22,0.38);
+      z-index: 1111;
+      align-items: center;
+      justify-content: center;
+      animation: fadeIn .4s;
+    }
+
+    .modal-bg.active { display: flex; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; } to { opacity: 1; }
+    }
+
+    .modal-content {
+      background: #fff;
+      border-radius: 15px;
+      padding: 2rem 1.5rem 1.3rem 1.5rem;
+      max-width: 380px;
+      width: 92vw;
+      box-shadow: 0 14px 36px rgba(21,85,59,0.13);
+      position: relative;
+      animation: modalPop .3s;
+    }
+
+    @keyframes modalPop {
+      from { transform: translateY(40px) scale(0.93); opacity: 0; }
+      to { transform: translateY(0) scale(1); opacity: 1; }
+    }
+
+    .modal-close {
+      position: absolute; right: 18px; top: 16px;
+      font-size: 1.6rem; color: #15553b;
+      font-weight: bold; cursor: pointer; transition: color .22s;
+    }
+
+    .modal-close:hover { color: #22b574; }
+
+    .modal-content h2 {
+      font-size: 1.4rem; margin-bottom: 1.1rem;
+      font-family: 'Playfair Display', serif; color: #15553b; text-align: center;
+    }
+
+    #quoteForm {
+      display: flex; flex-direction: column; gap: 1rem;
+    }
+
+    #quoteForm input, #quoteForm textarea {
+      padding: 0.8rem 1rem;
+      border: 1px solid #d6e2de;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-family: inherit;
+      outline: none;
+      background: #f8fdfa;
+      resize: none;
+      transition: border-color 0.22s;
+    }
+
+    #quoteForm input:focus, #quoteForm textarea:focus {
+      border-color: #22b574;
+    }
+
+    #quoteForm button[type="submit"] {
+      background: linear-gradient(90deg, #22b574 50%, #15553b 100%);
+      color: #fff;
+      font-weight: 600;
+      font-size: 1rem;
+      border: none;
+      padding: 0.8rem 0;
+      border-radius: 100px;
+      cursor: pointer;
+      transition: background .3s, transform .18s;
+    }
+
+    #quoteForm button[type="submit"]:hover {
+      background: linear-gradient(90deg, #15553b 70%, #22b574 100%);
+      transform: scale(1.04);
+    }
+
+    @media (max-width: 500px) {
+      .modal-content { padding: 1.1rem 0.3rem; }
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: #22b574;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1rem;
+      margin: 40px;
+      font-family: sans-serif;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Trigger Button -->
+  <a href="#" id="openModal" class="btn-primary">Start Your Project Today</a>
+
+ <!-- Modal -->
+<div class="modal-bg" id="quoteModal">
+  <div class="modal-content">
+    <span class="modal-close" id="closeModal">&times;</span>
+    <h2>Request a Free Quote</h2>
+    <form id="quoteForm">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <input type="text" placeholder="Phone Number" required>
+      <textarea placeholder="Project Details" rows="3" required></textarea>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</div>
+
+
+  <!-- Script -->
+  <script>
+    const modal = document.getElementById('quoteModal');
+    const openBtn = document.getElementById('openModal');
+    const closeBtn = document.getElementById('closeModal');
+    const form = document.getElementById('quoteForm');
+
+    openBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      modal.classList.add('active');
+    });
+
+    closeBtn.addEventListener('click', function() {
+      modal.classList.remove('active');
+    });
+
+    window.addEventListener('click', function(e) {
+      if (e.target === modal) {
+        modal.classList.remove('active');
+      }
+    });
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Thank you! Your quote request has been submitted.');
+      modal.classList.remove('active');
+      form.reset();
+      const getQuoteBtn = document.getElementById('getQuoteBtn');
+const quoteModal = document.getElementById('quoteModal');
+const closeModal = document.getElementById('closeModal');
+
+getQuoteBtn.addEventListener('click', () => {
+  quoteModal.classList.add('show');
+});
+
+closeModal.addEventListener('click', () => {
+  quoteModal.classList.remove('show');
+});
+
+// Optional: Close when clicking outside the modal content
+quoteModal.addEventListener('click', (e) => {
+  if (e.target === quoteModal) {
+    quoteModal.classList.remove('show');
+  }
+});
+
+    });
+  </script>
+
+</body>
+</html>
