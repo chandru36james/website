@@ -177,27 +177,77 @@
 }
 
 
-        /* WhatsApp Icon Styling */
-        .whatsapp-button {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
-            background-color: #25d366;
-            border-radius: 50%;
-            padding: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-            transition: transform 0.3s ease;
-            }
+        /* Floating Email Button */
+.mail-btn {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 1000;
+    width: 56px;
+    height: 56px;
+    background: #1c3824c6; /* Your custom green */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 26px;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+    transition: all 0.3s ease;
+    overflow: visible;
+}
 
-            .whatsapp-button img {
-            width: 40px;
-            height: 40px;
-            }
+/* Tooltip (hidden by default) */
+.mail-btn .tooltip {
+    position: absolute;
+    right: 70px;
+    background: #333;
+    color: #fff;
+    padding: 6px 12px;
+    font-size: 14px;
+    border-radius: 6px;
+    opacity: 0;
+    white-space: nowrap;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: translateY(5px);
+}
 
-            .whatsapp-button:hover {
-            transform: scale(1.1);
-            }
+/* Tooltip Arrow */
+.mail-btn .tooltip::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent transparent #333;
+}
+
+/* Hover State */
+.mail-btn:hover {
+    transform: scale(1.08);
+}
+
+/* Pulse Effect (after delay) */
+.mail-btn.pulse {
+    animation: pulse 1.5s infinite;
+}
+
+/* Tooltip visible */
+.mail-btn.show-tooltip .tooltip {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(28,56,36,0.6); }
+    70% { box-shadow: 0 0 0 12px rgba(28,56,36,0); }
+    100% { box-shadow: 0 0 0 0 rgba(28,56,36,0); }
+}
+
 
 
 
@@ -660,7 +710,7 @@ a:has(.explore-btn) {
   .home__info-button {
     order: 3;
   }
-
+}
   /* Responsive styles for social and buttons */
 @media (max-width: 768px) {
   .home__social {
@@ -1244,7 +1294,7 @@ a:has(.explore-btn) {
 footer {
   font-family: "Segoe UI", sans-serif;
   color: #e5e7eb;
-  background: #1a1a1a;
+  background: #0e1810;
 }
 
 /* Grid Layout */

@@ -264,6 +264,35 @@
             position: relative;
             z-index: 2;
         }
+        /* Responsive Adjustments */
+/* ============================= */
+
+/* Tablet screens (768px and below) */
+@media (max-width: 768px) {
+    .banner {
+        height: 60vh; /* reduce height */
+        font-size: 28px; /* smaller text */
+        padding: 0 20px; /* prevent text cutoff */
+    }
+}
+
+/* Mobile screens (480px and below) */
+@media (max-width: 480px) {
+    .banner {
+        height: 50vh; /* even smaller */
+        font-size: 22px; /* readable size */
+        padding: 0 15px;
+    }
+}
+
+/* Small phones (360px and below) */
+@media (max-width: 360px) {
+    .banner {
+        height: 45vh;
+        font-size: 18px;
+        padding: 0 10px;
+    }
+}
         
 
         
@@ -358,17 +387,6 @@
   z-index: -1;
 }
 
-.main-wrapper::after {
-  content: "";
-  position: absolute;
-  bottom: -60px;
-  right: -100px;
-  width: 250px;
-  height: 250px;
-  background: rgba(34, 197, 94, 0.05);
-  border-radius: 50%;
-  z-index: -1;
-}
 
 /* Responsive */
 @media (max-width: 992px) {

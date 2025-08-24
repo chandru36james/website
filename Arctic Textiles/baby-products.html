@@ -237,39 +237,59 @@
     }
 }
 
-        /* Banner */
-        .banner {
-            position: relative;
-            width: 100%;
-            height: 80vh;
-            background: url('/assets/banner/baby.webp') center/cover no-repeat;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            font-size: 40px;
-            font-weight: bold;
-            overflow: hidden;
-            margin-top: 0px;
-        }
-        .banner::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            transition: background 0.3s;
-        }
-        .banner:hover::before {
-            background: rgba(0, 0, 0, 0);
-        }
-        .banner span {
-            position: relative;
-            z-index: 2;
-        }
+               
+/* Banner */
+.banner {
+    position: relative;
+    width: 100%;
+    height: 80vh;
+    background: url('assets/banner/baby.webp') center/cover no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;   /* ✅ ensures span text centers */
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    overflow: hidden;
+    margin-top: 0px;
+    padding: 0 15px;      /* ✅ prevents text from touching edges on mobile */
+}
 
+.banner::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    transition: background 0.3s;
+}
+
+.banner:hover::before {
+    background: rgba(0, 0, 0, 0);
+}
+
+.banner span {
+    position: relative;
+    z-index: 2;
+    display: block;       /* ✅ makes it full width so text-align works */
+}
+
+/* Responsive fixes */
+@media (max-width: 768px) {
+  .banner {
+    height: 60vh;
+    font-size: 28px;
+  }
+}
+@media (max-width: 480px) {
+  .banner {
+    height: 50vh;
+    font-size: 22px;
+  }
+}
         
     .swiper {
       width: 100%;
@@ -876,7 +896,7 @@ footer {
 <body>
     <header class="header">
     <div class="logo">
-      <img src="assets/logo/android-chrome-192x192.png" alt="Company Logo">
+      <img src="assets/logo/footer logo.png" alt="Company Logo">
       <a href="https://arctictextiles.com" class="logo-text" style="text-decoration: none;">Arctic Textiles</a>
     </div>
     <div class="menu-icon" onclick="toggleMenu()">

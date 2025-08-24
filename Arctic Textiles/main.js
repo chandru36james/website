@@ -133,3 +133,39 @@ fetch("preloader.html")
     });
   });
 
+    //mail tooltip
+document.addEventListener('DOMContentLoaded', function () {
+  const waitForBtn = () => new Promise(resolve => {
+    const tryFind = () => {
+      const el = document.querySelector('.mail-btn');
+      if (el) return resolve(el);
+      requestAnimationFrame(tryFind);
+    };
+    tryFind();
+  });
+
+  waitForBtn().then(btn => {
+    // Show a one-time hint after 4s (don’t spam users)
+    const KEY = 'mailHintShown';
+    if (!sessionStorage.getItem(KEY)) {
+      setTimeout(() => {
+        // if user isn’t already hovering/focusing, show the nudge
+        const hovered = btn.matches(':hover');
+        if (!hovered) {
+          btn.classList.add('pulse', 'show-tooltip');
+          // hide tooltip after 3.5s, keep pulse a bit longer, then stop
+          setTimeout(() => btn.classList.remove('show-tooltip'), 3500);
+          setTimeout(() => btn.classList.remove('pulse'), 8000);
+          sessionStorage.setItem(KEY, '1');
+        }
+      }, 4000);
+    }
+
+    // Desktop hover: show tooltip while hovering
+    btn.addEventListener('mouseenter', () => btn.classList.add('show-tooltip'));
+    btn.addEventListener('mouseleave', () => btn.classList.remove('show-tooltip'));
+    // Keyboard focus
+    btn.addEventListener('focus', () => btn.classList.add('show-tooltip'));
+    btn.addEventListener('blur',  () => btn.classList.remove('show-tooltip'));
+  });
+});
