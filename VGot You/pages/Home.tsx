@@ -3,10 +3,17 @@ import { Link } from 'react-router-dom';
 import { useFadeIn } from '../hooks/useFadeIn';
 import Preloader from '../components/Preloader';
 import { Helmet } from "react-helmet";
+
 import bgVideo from '@/assets/2.mp4';
+import abt1 from '@/assets/abt1.png';
+import abt2 from '@/assets/abt2.png';
+import logo_design from '@/assets/logo-designer.png';
+import web_design from '@/assets/web-designer.png';
 import avatar1 from '@/assets/venkat.png';
 import avatar2 from '@/assets/santhosh.png';
 import avatar3 from '@/assets/chandru.png';
+import bg from '@/assets/bg.png';
+
 
 
 const FadeInSection: React.FC<{children: React.ReactNode, className?: string, id?: string}> = ({ children, className, id }) => {
@@ -160,6 +167,9 @@ const Home: React.FC = () => {
                         </Link>
                     </div>
                 </section>
+                
+
+
 
                 {/* About Section */}
                 <FadeInSection className="container mx-auto">
@@ -191,11 +201,28 @@ const Home: React.FC = () => {
                             </Link>
                         </div>
                         <div className="lg:col-span-2 hidden lg:grid grid-cols-2 gap-6 items-center h-[450px]">
-                            <img src="https://picsum.photos/400/500?grayscale&random=40" alt="Creative process 1" className="rounded-lg shadow-xl w-full h-full object-cover transition-transform hover:scale-105 duration-500" />
-                            <img src="https://picsum.photos/400/500?grayscale&random=41" alt="Creative process 2" className="rounded-lg shadow-xl w-full h-full object-cover transition-transform hover:scale-105 duration-500 mt-20" />
+                            <img src={abt1} alt="Creative process 1" className="rounded-lg shadow-xl w-full h-full object-cover transition-transform hover:scale-105 duration-500" />
+                            <img src={abt2} alt="Creative process 2" className="rounded-lg shadow-xl w-full h-full object-cover transition-transform hover:scale-105 duration-500 mt-20" />
                         </div>
                     </div>
                 </FadeInSection>
+                {/* Modern Angled Wave Divider Flipped */}
+<div className="w-full overflow-hidden leading-none -rotate-180">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 1440 320"
+    preserveAspectRatio="none"
+    className="w-full h-32"
+  >
+    <path
+      d="M0,320 L80,300 C160,280 320,240 480,250 C640,260 800,300 960,290 C1120,280 1280,220 1360,190 L1440,160 L1440,0 L0,0Z"
+      fill="#f4f4f5"  // 👈 match this to next section bg
+    />
+  </svg>
+</div>
+
+               
+
 
                 {/* Services Section */}
                 <FadeInSection id="services" className="bg-brand-light-gray">
@@ -225,6 +252,66 @@ const Home: React.FC = () => {
                         </div>
                     </div>
                 </FadeInSection>
+                {/* Call to Action / Hero-like Section */}
+<FadeInSection
+  className="relative h-[80vh] w-full flex items-center justify-center text-center text-white overflow-hidden"
+>
+  {/* ✅ Background Image */}
+  <div
+    className="absolute inset-0 bg-cover bg-center"
+    style={{ backgroundImage: `url(${bg})` }}
+  ></div>
+
+  {/* Overlay */}
+  <div className="absolute inset-0 bg-black/60"></div>
+
+  {/* Content */}
+  <div className="relative z-10 max-w-3xl px-6 animate-fade-in-up">
+    <h2 className="text-4xl md:text-6xl font-bold mb-6 drop-shadow-lg">
+      Let’s Build Something Amazing
+    </h2>
+    <p className="text-lg md:text-xl mb-8 text-gray-200 leading-relaxed">
+      From stunning websites to unique brand identities, we transform your ideas into reality.
+      Collaborate with us to craft digital experiences that truly inspire.
+    </p>
+
+    {/* Buttons */}
+    <div className="flex flex-col sm:flex-row gap-4 justify-center">
+      <Link
+        to="/contact"
+        className="bg-white text-brand-black font-semibold py-3 px-8 rounded-full text-lg shadow-md hover:bg-gray-200 transition transform hover:scale-105"
+      >
+        Get Started
+      </Link>
+      <Link
+        to="/About-Me"
+        className="bg-brand-black text-white font-semibold py-3 px-8 rounded-full text-lg shadow-md hover:bg-zinc-800 transition transform hover:scale-105"
+      >
+        View Profile
+      </Link>
+    </div>
+  </div>
+
+  {/* Sparkles */}
+  <Sparkle className="top-[20%] left-[15%]" style={{ animationDelay: '0.3s' }} />
+  <Sparkle className="bottom-[25%] right-[20%]" style={{ animationDelay: '0.8s' }} />
+
+  {/* 👇 Curved Divider flows into next section */}
+  <div className="absolute bottom-0 left-0 right-0 overflow-hidden leading-[0]">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 1440 320"
+      preserveAspectRatio="none"
+      className="block w-full h-40"
+    >
+      <path
+        d="M0,224 C480,320 960,128 1440,224 L1440,320 L0,320Z"
+        fill="#ffffff" // 👈 match your next section background
+      />
+    </svg>
+  </div>
+</FadeInSection>
+
                 
                 {/* Process Timeline */}
                 <FadeInSection>
@@ -247,6 +334,20 @@ const Home: React.FC = () => {
                         </div>
                     </div>
                 </FadeInSection>
+                 {/* Modern Angled Wave Divider Flipped */}
+<div className="w-full overflow-hidden leading-none -rotate-180">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 1440 320"
+    preserveAspectRatio="none"
+    className="w-full h-32"
+  >
+    <path
+      d="M0,320 L80,300 C160,280 320,240 480,250 C640,260 800,300 960,290 C1120,280 1280,220 1360,190 L1440,160 L1440,0 L0,0Z"
+      fill="#f4f4f5"  // 👈 match this to next section bg
+    />
+  </svg>
+</div>
 
                 {/* Portfolio Preview */}
                 <FadeInSection id="portfolio" className="bg-brand-light-gray">
@@ -254,13 +355,13 @@ const Home: React.FC = () => {
                         <h2 className="text-4xl font-bold mb-12">Featured Work</h2>
                         <div className="grid md:grid-cols-2 gap-8">
                             <Link to="/web-design" className="group relative block overflow-hidden rounded-lg shadow-md hover:shadow-2xl transition-shadow">
-                                <img src="https://picsum.photos/600/400?grayscale&random=5" alt="Web Design Project" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                                <img src={web_design} alt="Web Design Project" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
                                 <div className="absolute inset-0 bg-black/60 group-hover:bg-black/80 transition-all flex items-center justify-center">
                                     <h3 className="text-2xl font-bold text-white">Web Design</h3>
                                 </div>
                             </Link>
                             <Link to="/logo-showcase" className="group relative block overflow-hidden rounded-lg shadow-md hover:shadow-2xl transition-shadow">
-                                <img src="https://picsum.photos/600/400?grayscale&random=2" alt="Logo Design Showcase" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                                <img src={logo_design} alt="Logo Design Showcase" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
                                 <div className="absolute inset-0 bg-black/60 group-hover:bg-black/80 transition-all flex items-center justify-center">
                                     <h3 className="text-2xl font-bold text-white">Logo Showcase</h3>
                                 </div>
@@ -268,6 +369,21 @@ const Home: React.FC = () => {
                         </div>
                     </div>
                 </FadeInSection>
+                {/* Modern Angled Wave Divider */}
+<div className="w-full overflow-hidden leading-none">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 1440 320"
+    preserveAspectRatio="none"
+    className="w-full h-32"
+  >
+    <path
+      d="M0,320 L80,300 C160,280 320,240 480,250 C640,260 800,300 960,290 C1120,280 1280,220 1360,190 L1440,160 L1440,0 L0,0Z"
+      fill="#f4f4f5"  // 👈 Match the background of your next section
+    />
+  </svg>
+</div>
+
 
                 {/* Testimonials */}
                 <FadeInSection>

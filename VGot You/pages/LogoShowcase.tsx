@@ -15,6 +15,7 @@ import img9 from '@/assets/mockup logo/9.jpeg';
 import img10 from '@/assets/mockup logo/10.png';
 import img11 from '@/assets/mockup logo/11.png';
 import img12 from '@/assets/mockup logo/12.jpeg';
+import banner from '@/assets/logo-banner.png';
 
 // Organize into rows
 const logoGrid = [
@@ -102,7 +103,7 @@ const LogoShowcase: React.FC = () => {
       <section
         className="h-[60vh] w-full relative flex items-center justify-center text-center text-white bg-cover bg-center"
         style={{
-          backgroundImage: `url('https://picsum.photos/1920/1080?grayscale&blur=3&random=19')`,
+          backgroundImage: `url(${banner})`,
         }}
       >
         <div className="absolute inset-0 bg-black/70"></div>

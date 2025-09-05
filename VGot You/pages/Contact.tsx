@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useFadeIn } from '../hooks/useFadeIn';
 import { Helmet } from "react-helmet";   // ✅ SEO
 import Swal from 'sweetalert2' //success page
+import banner from '@/assets/contact-banner.png'
 
 const FadeInSection: React.FC<{children: React.ReactNode, className?: string}> = ({ children, className }) => {
     const ref = useFadeIn();
@@ -89,7 +90,7 @@ const Contact: React.FC = () => {
             </Helmet>
 
             {/* Hero Section */}
-            <section className="h-[60vh] w-full relative flex items-center justify-center text-center text-white bg-cover bg-center" style={{ backgroundImage: `url('https://picsum.photos/1920/1080?grayscale&random=50')` }}>
+            <section className="h-[60vh] w-full relative flex items-center justify-center text-center text-white bg-cover bg-center" style={{ backgroundImage: `url(${banner})` }}>
                 <div className="absolute inset-0 bg-black/70"></div>
                 <div className="relative z-10 px-4">
                     <h1 className="text-5xl md:text-7xl font-bold mb-4">Let's Talk</h1>

@@ -2,6 +2,12 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useFadeIn } from '../hooks/useFadeIn';
 import { Helmet } from "react-helmet";   // ✅ for seo
+import banner from '@/assets/web-banner.png'
+import Data_trust from '@/assets/data.png'
+import Arctic from '@/assets/arctic_home.png'
+import BloomGreen from '@/assets/bloomgreen_home.png'
+
+
 
 const FadeInSection: React.FC<{children: React.ReactNode, className?: string}> = ({ children, className }) => {
     const ref = useFadeIn();
@@ -101,7 +107,7 @@ const AnimatedBarChart: React.FC<{data: {label: string, value: number, color: st
 };
 
 const WebDesign: React.FC = () => {
-    const techStack = ["React", "TypeScript", "Next.js", "Node.js", "Figma", "Headless CMS", "Stripe", "Shopify"];
+    const techStack = ["React", "TypeScript", "Next.js", "Figma" , "HTML", "CSS", "Shopify"];
     const chartData = [
         { label: "Old Site Conversion", value: 1.5, color: '#d4d4d8' }, // zinc-300
         { label: "New Site Conversion", value: 2.4, color: '#18181b' }, // brand-black
@@ -112,7 +118,7 @@ const WebDesign: React.FC = () => {
     return (
         <div className="bg-brand-white text-brand-black">
             {/* Hero Section */}
-            <section className="h-[60vh] w-full relative flex items-center justify-center text-center text-white bg-cover bg-center" style={{ backgroundImage: `url('https://picsum.photos/1920/1080?grayscale&random=60')` }}>
+            <section className="h-[60vh] w-full relative flex items-center justify-center text-center text-white bg-cover bg-center" style={{ backgroundImage: `url(${banner})`  }}>
                 <div className="absolute inset-0 bg-black/70"></div>
                 <div className="relative z-10 px-4">
                     <h1 className="text-5xl md:text-7xl font-bold mb-4">Data-Driven Web Design</h1>
@@ -166,7 +172,7 @@ const WebDesign: React.FC = () => {
                     </div>
                     <div className="grid lg:grid-cols-2 gap-12 items-center">
                         <div className="group rounded-lg overflow-hidden border border-zinc-200 shadow-md hover:shadow-xl transition-shadow">
-                            <img src="https://picsum.photos/800/600?grayscale&random=31" alt="B2B Website UI" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                            <img src={Data_trust} alt="B2B Website UI" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
                         </div>
                         <div>
                             <h3 className="text-2xl font-bold mb-4">Engineered for Trust and Growth</h3>
@@ -205,12 +211,12 @@ const WebDesign: React.FC = () => {
                         <div className="bg-white p-8 rounded-lg border border-zinc-200 text-left hover:shadow-2xl transition-shadow">
                             <h3 className="text-2xl font-bold mb-2">High-Converting Landing Pages</h3>
                             <p className="text-zinc-600 mb-4">We design laser-focused landing pages with a single objective: to convert visitors into leads or customers. Ideal for marketing campaigns and product launches, our pages have achieved up to a <span className="font-bold text-brand-black">300% increase in lead capture</span> for our clients.</p>
-                            <img src="https://picsum.photos/600/400?grayscale&random=61" alt="Landing Page" className="rounded-md shadow-md" />
+                            <img src={BloomGreen} alt="Landing Page" className="rounded-md shadow-md" />
                         </div>
                          <div className="bg-white p-8 rounded-lg border border-zinc-200 text-left hover:shadow-2xl transition-shadow">
                             <h3 className="text-2xl font-bold mb-2">Stunning Portfolio Sites</h3>
                             <p className="text-zinc-600 mb-4">Your work deserves a beautiful stage. We build visually-driven, elegant portfolio sites that tell your story and let your talent shine. Our clients report a <span className="font-bold text-brand-black">significant increase in freelance inquiries</span> after launching their new portfolio.</p>
-                             <img src="https://picsum.photos/600/400?grayscale&random=62" alt="Portfolio Site" className="rounded-md shadow-md" />
+                             <img src={Arctic} alt="Portfolio Site" className="rounded-md shadow-md" />
                         </div>
                      </div>
                 </FadeInSection>
