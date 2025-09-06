@@ -11,7 +11,7 @@ import logo_design from '@/assets/logo-designer.png';
 import web_design from '@/assets/web-designer.png';
 import avatar1 from '@/assets/venkat.png';
 import avatar2 from '@/assets/santhosh.png';
-import avatar3 from '@/assets/chandru.png';
+import avatar3 from '@/assets/aravind.png';
 import bg from '@/assets/bg.png';
 
 
@@ -277,26 +277,25 @@ const Home: React.FC = () => {
 
     {/* Buttons */}
     <div className="flex flex-col sm:flex-row gap-4 justify-center">
-      <Link
-        to="/contact"
-        className="bg-white text-brand-black font-semibold py-3 px-8 rounded-full text-lg shadow-md hover:bg-gray-200 transition transform hover:scale-105"
-      >
-        Get Started
-      </Link>
-      <Link
-        to="/About-Me"
-        className="bg-brand-black text-white font-semibold py-3 px-8 rounded-full text-lg shadow-md hover:bg-zinc-800 transition transform hover:scale-105"
-      >
-        View Profile
-      </Link>
-    </div>
+  <Link
+    to="/About-Me"
+    className="bg-white text-brand-black font-semibold 
+               py-2 px-5 text-sm
+               sm:py-3 sm:px-6 sm:text-base
+               w-fit mx-auto
+               rounded-full shadow-md 
+               hover:bg-gray-200 transition transform hover:scale-105"
+  >
+    View Profile
+  </Link>    
+</div>
+
   </div>
 
   {/* Sparkles */}
   <Sparkle className="top-[20%] left-[15%]" style={{ animationDelay: '0.3s' }} />
   <Sparkle className="bottom-[25%] right-[20%]" style={{ animationDelay: '0.8s' }} />
-
-  {/* 👇 Curved Divider flows into next section */}
+{/* 👇 Curved Divider flows into next section */}
   <div className="absolute bottom-0 left-0 right-0 overflow-hidden leading-[0]">
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -310,6 +309,7 @@ const Home: React.FC = () => {
       />
     </svg>
   </div>
+  
 </FadeInSection>
 
                 

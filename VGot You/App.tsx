@@ -7,7 +7,7 @@ import FloatingWidgets from './components/FloatingWidgets';
 import Home from './pages/Home';
 import WebDesign from './pages/WebDesign';
 import LogoShowcase from './pages/LogoShowcase';
-import AboutMe from './pages/AboutMe';
+import AboutMe from './pages/chandru';
 import Contact from './pages/Contact';
 import NotFound from "./pages/NotFound";
 
@@ -31,7 +31,7 @@ const App: React.FC = () => {
                     <Route path="/" element={<Home />} />
                     <Route path="/web-design" element={<WebDesign />} />
                     <Route path="/logo-showcase" element={<LogoShowcase />} />
-                    <Route path="/about-me" element={<AboutMe />} />
+                    <Route path="/chandru" element={<AboutMe />} />
                     <Route path="/contact" element={<Contact />} />
                         {/* Catch-all 404 */}
                     <Route path="*" element={<NotFound />} />

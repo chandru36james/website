@@ -19,7 +19,7 @@ const NavLinks: React.FC<{className?: string; onClick?: () => void;}> = ({ class
                     </>
                 )}
             </NavLink>
-            <NavLink to="/about-me" className={linkBaseClass} onClick={onClick}>
+            <NavLink to="/chandru" className={linkBaseClass} onClick={onClick}>
                  {({isActive}) => (
                     <>
                         About Me
