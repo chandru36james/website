@@ -75,7 +75,10 @@ const Header: React.FC = () => {
 
     return (
         <>
-            <header className={`fixed top-4 left-1/2 -translate-x-1/2 w-11/12 max-w-6xl z-50 transition-all duration-300 ${headerBg} rounded-full p-2`}>
+            <header 
+  className={`fixed top-4 left-1/2 -translate-x-1/2 w-11/12 md:w-11/12 lg:w-7/12 max-w-6xl z-50 transition-all duration-300 ${headerBg} rounded-full p-2`}
+>
+
                 <div className="flex justify-between items-center px-4">
                     <NavLink to="/" className={`text-2xl font-bold flex items-center gap-2 ${textColor}`}>
                          <img src={logo} alt="VGot You Logo" className={`h-8 w-8 object-contain transition-all duration-300`} />

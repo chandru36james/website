@@ -191,11 +191,16 @@ const Contact: React.FC = () => {
                                     <label htmlFor="message" className="block text-sm font-medium mb-2">Message</label>
                                     <textarea id="message" rows={5} value={formState.message} onChange={handleFormChange} required className="w-full bg-white border border-zinc-300 rounded-md p-3"></textarea>
                                 </div>
-                                <div>
-                                    <button type="submit" disabled={submissionStatus === 'sending'} className="bg-black text-white py-3 px-12 rounded-full">
+                                <div className="flex justify-center md:justify-start">
+                                    <button
+                                        type="submit"
+                                        disabled={submissionStatus === 'sending'}
+                                        className="bg-black text-white py-3 px-12 rounded-full"
+                                    >
                                         {submissionStatus === 'sending' ? 'Sending...' : 'Send Message'}
                                     </button>
                                 </div>
+
                                 {submissionStatus === 'success' && <p className="text-green-600 mt-4">✅ Thank you! Your message has been sent.</p>}
                                 {submissionStatus === 'error' && <p className="text-red-600 mt-4">❌ Something went wrong. Please try again.</p>}
                             </form>

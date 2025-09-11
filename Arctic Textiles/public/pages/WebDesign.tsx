@@ -7,6 +7,8 @@ import Data_trust from '@/assets/data.png'
 import Arctic from '@/assets/arctic_home.png'
 import BloomGreen from '@/assets/bloomgreen_home.png'
 
+import Gallery from '@/components/slider';
+import ProjectCarousel from '@/components/Carousel';
 
 
 const FadeInSection: React.FC<{children: React.ReactNode, className?: string}> = ({ children, className }) => {
@@ -111,8 +113,8 @@ const WebDesign: React.FC = () => {
     const chartData = [
         { label: "Old Site Conversion", value: 1.5, color: '#d4d4d8' }, // zinc-300
         { label: "New Site Conversion", value: 2.4, color: '#18181b' }, // brand-black
-        { label: "Old Site Page Speed", value: 4.2, color: '#d4d4d8' },
-        { label: "New Site Page Speed", value: 1.1, color: '#18181b' }
+        { label: "Old Site Page Speed", value: 1.2, color: '#d4d4d8' },
+        { label: "New Site Page Speed", value: 4.1, color: '#18181b' }
     ];
 
     return (
@@ -220,6 +222,11 @@ const WebDesign: React.FC = () => {
                         </div>
                      </div>
                 </FadeInSection>
+    
+
+ {/* Project Showcase Carousel */}
+        <ProjectCarousel />
+
 
                 <FadeInSection className="mb-16">
                     <h2 className="text-3xl font-bold mb-8 text-center">Our Technology Stack</h2>

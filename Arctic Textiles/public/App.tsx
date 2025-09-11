@@ -10,6 +10,8 @@ import LogoShowcase from './pages/LogoShowcase';
 import AboutMe from './pages/chandru';
 import Contact from './pages/Contact';
 import NotFound from "./pages/NotFound";
+import Portfolio from './pages/Portfolio';
+import Dhamo from './pages/portfolio/Dhamo';
 
 const ScrollToTop: React.FC = () => {
     const { pathname } = useLocation();

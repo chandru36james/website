@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { Link as ScrollLink } from "react-scroll";
+
 import { useFadeIn } from '../hooks/useFadeIn';
 import Preloader from '../components/Preloader';
 import { Helmet } from "react-helmet";
@@ -13,6 +15,7 @@ import avatar1 from '@/assets/venkat.png';
 import avatar2 from '@/assets/santhosh.png';
 import avatar3 from '@/assets/aravind.png';
 import bg from '@/assets/bg.png';
+
 
 
 
@@ -31,8 +34,10 @@ const TestimonialCard: React.FC<{testimonial: { name: string; text: string; avat
         >
             <Helmet>{/* Basic SEO */}
   <title>VGot You | Web & Logo Design Studio</title>
-  <meta name="description" content="VGot You is a creative design studio specializing in website design, logo design, and branding solutions for businesses worldwide." />
-  <meta name="keywords" content="VGot You, web design, website development, logo design, branding, UI UX, portfolio, digital presence, Tamil Nadu, India" />
+  <meta name="description" content="VGot You is a global creative studio specializing in web design, website development, logo design, branding, and UI/UX solutions. We craft modern, responsive, and SEO-friendly digital experiences that help businesses worldwide grow and stand out online." />
+
+ <meta name="keywords" content="VGot You, professional web design, creative website development, responsive websites, custom web solutions, e-commerce website design, logo design services, brand identity design, UI UX design agency, user experience design, digital branding solutions, portfolio showcase, creative studio, modern website design, startup branding, business website development, SEO-friendly websites, mobile-first web design, creative graphic design, Chandru designer, VSB College Karur alumni, Karur web designer, Tamil Nadu branding expert, India web development company, best web design in Karur, affordable website design Tamil Nadu" />
+
   <meta name="author" content="VGot You" />
   <meta name="robots" content="index, follow" />
 
@@ -111,7 +116,7 @@ const Home: React.FC = () => {
         {
             title: 'Planning',
             description: 'A comprehensive strategy and project roadmap are crafted, defining milestones and technical specifications.',
-            icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l5.447 2.724A1 1 0 0021 16.382V5.618a1 1 0 00-1.447-.894L15 7m-6 13v- உண்மையில்" /></svg>
+            icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l5.447 2.724A1 1 0 0021 16.382V5.618a1 1 0 00-1.447-.894L15 7m-6 13v-" /></svg>
         },
         {
             title: 'Design',
@@ -141,7 +146,33 @@ const Home: React.FC = () => {
             <Preloader isVisible={showPreloader} />
             <div className="bg-brand-white text-brand-black">
                 {/* Hero Section */}
-                <section className="h-[75dvh] md:h-screen w-full relative flex items-center justify-center text-center text-white">
+                <section className="h-[100dvh] md:h-screen w-full relative flex items-center justify-center text-center text-white overflow-hidden">
+  <style>
+    {`
+      @keyframes fade-in-down {
+        0% { opacity: 0; transform: translateY(-40px); }
+        100% { opacity: 1; transform: translateY(0); }
+      }
+      @keyframes fade-in-up {
+        0% { opacity: 0; transform: translateY(40px); }
+        100% { opacity: 1; transform: translateY(0); }
+      }
+
+      .animate-fade-in-down {
+        animation: fade-in-down 1.2s ease-out forwards;
+      }
+      .animate-fade-in-up {
+        animation: fade-in-up 1.2s ease-out forwards;
+      }
+
+      /* Custom staggered delays */
+      .delay-1000 { animation-delay: 1s; }
+      .delay-2000 { animation-delay: 2s; }
+      .delay-3000 { animation-delay: 3s; }
+      .delay-4000 { animation-delay: 4s; }
+    `}
+  </style>
+
   {/* ✅ Background video */}
   <video
     autoPlay
@@ -152,21 +183,49 @@ const Home: React.FC = () => {
   >
     <source src={bgVideo} type="video/mp4" />
   </video>
-                    <div className="absolute inset-0 bg-black/20"></div>
-                    <div className="relative z-10 px-4">
-                        <Sparkle className="top-[15%] left-[10%]" style={{animationDelay: '0s'}} />
-                        <Sparkle className="top-[20%] right-[15%]" style={{animationDelay: '0.5s'}} />
-                        <Sparkle className="bottom-[25%] left-[20%]" style={{animationDelay: '1s'}} />
-                        <Sparkle className="bottom-[15%] right-[10%]" style={{animationDelay: '1.5s'}} />
 
-                        <h1 className="text-5xl md:text-7xl font-bold mb-4 animate-fade-in-down font-cambria">VGot You</h1>
-                        <h2 className="text-3xl md:text-5xl font-light mb-2">Crafting Code & Creative Identities</h2>
-                        <p className="text-xl md:text-2xl text-gray-300 mb-8">Web Development • Logo Design</p>
-                        <Link to="/contact" className="bg-white text-brand-black font-semibold py-3 px-8 rounded-full text-lg hover:bg-gray-200 transition-all transform hover:scale-105">
-                            Let's Work Together
-                        </Link>
-                    </div>
-                </section>
+  {/* Overlay */}
+  <div className="absolute inset-0 bg-black/40"></div>
+
+  {/* Content */}
+  <div className="relative z-10 px-4">
+    <h1 className="text-5xl md:text-7xl font-bold mb-4 font-cambria opacity-0 animate-fade-in-down delay-1000">
+      VGot You
+    </h1>
+    <h2 className="text-3xl md:text-5xl font-light mb-2 opacity-0 animate-fade-in-up delay-2000">
+      Crafting Code & Creative Identities
+    </h2>
+    <p className="text-xl md:text-2xl text-gray-300 mb-8 opacity-0 animate-fade-in-up delay-3000">
+      Web Development • Logo Design
+    </p>
+    <ScrollLink
+  to="profile"
+  className="relative inline-block overflow-hidden rounded-full border border-brand-black 
+             text-white font-semibold py-3 px-8 text-lg transition-all duration-300 
+             opacity-0 animate-fade-in-up delay-4000 group"
+>
+  <span className="relative z-10">
+    Let&apos;s Work Together
+  </span>
+
+  {/* Gradient sliding background */}
+  <span
+    className="absolute inset-0 bg-gradient-to-r from-brand-black via-gray-800 to-brand-black 
+               translate-x-[-100%] group-hover:translate-x-0 
+               transition-transform duration-500 ease-out"
+  />
+
+  {/* Glow effect on hover */}
+  <span
+    className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 
+               transition-opacity duration-500 shadow-[0_0_20px_rgba(0,0,0,0.6)]"
+  />
+</ScrollLink>
+
+  </div>
+</section>
+
+
                 
 
 
@@ -196,9 +255,15 @@ const Home: React.FC = () => {
                                     </div>
                                 </div>
                             </div>
-                            <Link to="/about-me" className="bg-brand-black text-white font-semibold py-3 px-8 rounded-full hover:bg-zinc-700 transition-colors inline-block">
-                                Learn More About Me
-                            </Link>
+                            <div className="flex justify-center md:justify-start">
+  <Link
+    to="/chandru"
+    className="bg-brand-black text-white font-semibold py-3 px-8 rounded-full hover:bg-zinc-700 transition-colors inline-block md:ml-80"
+  >
+    Learn More About Me
+  </Link>
+</div>
+
                         </div>
                         <div className="lg:col-span-2 hidden lg:grid grid-cols-2 gap-6 items-center h-[450px]">
                             <img src={abt1} alt="Creative process 1" className="rounded-lg shadow-xl w-full h-full object-cover transition-transform hover:scale-105 duration-500" />
@@ -254,6 +319,7 @@ const Home: React.FC = () => {
                 </FadeInSection>
                 {/* Call to Action / Hero-like Section */}
 <FadeInSection
+id= "profile"
   className="relative h-[80vh] w-full flex items-center justify-center text-center text-white overflow-hidden"
 >
   {/* ✅ Background Image */}
@@ -278,7 +344,7 @@ const Home: React.FC = () => {
     {/* Buttons */}
     <div className="flex flex-col sm:flex-row gap-4 justify-center">
   <Link
-    to="/About-Me"
+    to="/contact"
     className="bg-white text-brand-black font-semibold 
                py-2 px-5 text-sm
                sm:py-3 sm:px-6 sm:text-base
@@ -286,7 +352,7 @@ const Home: React.FC = () => {
                rounded-full shadow-md 
                hover:bg-gray-200 transition transform hover:scale-105"
   >
-    View Profile
+    contact Us
   </Link>    
 </div>
 
