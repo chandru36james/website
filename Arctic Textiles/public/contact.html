@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+            <script async src="https://www.googletagmanager.com/gtag/js?id=G-VM26YB29HQ"></script>
+            <script>
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+            
+              gtag('config', 'G-VM26YB29HQ');
+            </script>
+  <!-- Preconnects for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="preconnect" href="https://kit.fontawesome.com">
+
+  <!-- DNS Prefetch fallback (optional) -->
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+  <link rel="dns-prefetch" href="https://kit.fontawesome.com">
+
+  <!-- Preload fonts (optional speed boost) -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+  <link rel="preload" as="style" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css">
+
+  <!-- Meta tags -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | Arctic Textiles</title>
+  <meta name="description" content="Get in touch with Arctic Textiles for product inquiries, custom orders, or partnerships. We’re here to support your textile needs with quick and reliable communication.">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://www.arctictextiles.com/contact.html">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.arctictextiles.com/contact.html">
+  <meta property="og:title" content="Contact Us | Arctic Textiles">
+  <meta property="og:description" content="Reach out to Arctic Textiles for product inquiries, custom orders, or collaborations. We're here to help.">
+  <meta property="og:image" content="https://www.arctictextiles.com/images/logo.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://www.arctictextiles.com/contact.html">
+  <meta name="twitter:title" content="Contact Us | Arctic Textiles">
+  <meta name="twitter:description" content="Contact Arctic Textiles for inquiries, orders, or partnerships. Reliable, quick customer support.">
+  <meta name="twitter:image" content="https://www.arctictextiles.com/images/logo.png">
+
+  <!-- Fonts & Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=menu">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/b567211af3.js" crossorigin="anonymous"></script>
+
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/logo/logo.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/logo/logo-32x32.png">   
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/logo/logo-16x16.png">
+  <link rel="manifest" href="assets/logo/site.webmanifest">
+
+
+    <style>
+          @font-face {
+  font-family: 'CambriaCustom';
+  src: url('/assets/font/cambria.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+/* General Reset */
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+        /* ===== Solid Black Header Style ===== */
+.header {
+    position: fixed;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 75%;
+    max-width: 1000px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 24px;
+    background: #2e4d335c;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.316); /* <<< the soft line */
+    color: #fff;
+    z-index: 1000;
+    border-radius: 16px;
+    box-shadow: 0 6px 25px rgba(0,0,0,0.3);
+    line-height: 1;
+}
+
+
+/* Logo */
+.header .logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.header .logo img {
+    height: 35px; /* smaller logo */
+    width: auto;
+}
+
+.header .logo-text {
+    font-family: "CambriaCustom";
+   
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #1c3824;
+    line-height: 1;
+}
+
+/* Navigation */
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    padding: 8px 0;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+}
+
+/* Hover & Active link */
+.nav a:hover,
+.nav a.active {
+    color: #23492e;
+    border-bottom: 2px solid #23492e;
+}
+
+/* Dropdown */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 110%;
+    left: 0;
+    background: #54545484;
+    min-width: 180px;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+    overflow: hidden;
+    z-index: 1000;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 10px 15px;
+    color: #fff;
+    font-weight: 500;
+    border: none;
+}
+
+.dropdown-content a:hover {
+    background: #6c6c6c34;
+    color: #23492e;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* CTA Button */
+.cta-btn {
+    background: #23492e;
+    color: #23492e9a important;
+    padding: 10px 22px;
+    border-radius: 30px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.cta-btn:hover {
+    background: #23492e;
+}
+
+/* Mobile Menu */
+.menu-icon {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    .menu-icon {
+        display: block;
+    }
+    .nav {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        background: #000;
+        position: absolute;
+        top: 70px;
+        right: 0;
+        border-radius: 0 0 12px 12px;
+        padding: 20px 0;
+    }
+    .nav.show {
+        display: flex;
+    }
+    .nav a {
+        width: 100%;
+        text-align: center;
+        padding: 12px 0;
+        border: none;
+    }
+    .dropdown-content {
+        position: static;
+        width: 100%;
+        background: #111;
+        box-shadow: none;
+    }
+}
+
+        /* Banner */
+        .banner {
+            position: relative;
+            width: 100%;
+            height: 80vh;
+            background: url('/images/contact.webp') center/cover no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            overflow: hidden;
+            margin-top: 0px;
+        }
+        .banner::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            transition: background 0.3s;
+        }
+        .banner:hover::before {
+            background: rgba(0, 0, 0, 0);
+        }
+        .banner span {
+            position: relative;
+            z-index: 2;
+        }
+    /*contact page*/
+/* Layout */
+.contact__container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 3rem;
+  align-items: center;
+  padding: 2rem 1rem;
+}
+
+.contact__info {
+  text-align: center;
+}
+
+.contact__title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #39503a;
+  margin-bottom: 1rem;
+}
+
+.contact__info a {
+  color: #3f51b5;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.contact__info a:hover {
+  text-decoration: underline;
+}
+
+/* Plane animation */
+.plane__wrapper {
+  margin-top: 2rem;
+  animation: float 4s ease-in-out infinite;
+}
+
+.plane__image {
+  width: 100%;
+  max-width: 350px;
+}
+
+/* Form */
+.contact__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact__form label {
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.contact__form input,
+.contact__form textarea {
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  background-color: var(--input-color);
+  color: var(--text-color);
+}
+
+.contact__form small {
+  font-size: 0.9rem;
+  color: #39503a;
+  margin-top: -0.5rem;
+  margin-bottom: 1rem;
+}
+
+.send__btn {
+  padding: 1rem 2rem;
+  background-color: #4caf50; /* changed color */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.send__btn:hover {
+  background-color: #39503a;
+}
+
+/* Animation */
+@keyframes float {
+  0%   { transform: translateY(0px) rotate(0deg); }
+  50%  { transform: translateY(-15px) rotate(2deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .contact__title {
+    font-size: 1.75rem;
+  }
+  .plane__image {
+    max-width: 250px;
+  }
+}
+
+
+        .map-container {
+    width: 100%;
+    max-width: 800px; /* Limit width on larger screens */
+    height: 400px;
+    margin: 30px auto;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.map-container:hover {
+    transform: scale(1.02);
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Mobile-friendly adjustments */
+@media (max-width: 768px) {
+    .map-container {
+        height: 300px; /* Slightly smaller map for smaller screens */
+        margin: 20px auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .map-container {
+        height: 250px; /* Further reduce height for mobile */
+        border-radius: 5px; /* Smaller radius for compact design */
+    }
+}
+
+/*=============== MAP ===============*/
+.map__container {  
+  overflow: hidden;
+  margin-bottom: 2rem; /* space below the map */
+ 
+}
+
+
+/* =========================
+   Redesigned Modern Footer
+   ========================= */
+footer {
+  font-family: "Segoe UI", sans-serif;
+  color: #e5e7eb;
+  background: #0e1810;
+}
+
+/* Grid Layout */
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 50px;
+  padding: 70px 10%;
+}
+
+/* Logo + About */
+.footer-logo {
+  text-align: center; /* Center align everything under logo */
+}
+.footer-logo img {
+  width: 180px;
+  margin-bottom: 15px;
+}
+.footer-slogan {
+  font-size: 15px;
+  font-weight: 500;
+  color: #4caf50;
+  margin-bottom: 12px;
+}
+.footer-logo p {
+  font-size: 14px;
+  color: #bbb;
+  line-height: 1.7;
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+/* Section Titles */
+.footer-section h3 {
+  font-size: 16px;
+  margin-bottom: 20px;
+  color: #fff;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+}
+.footer-section h3::after {
+  content: "";
+  width: 40px;
+  height: 2px;
+  background: #4caf50;
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+}
+
+/* Links */
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+.footer-links ul li {
+  margin-bottom: 12px;
+}
+.footer-links ul li a {
+  text-decoration: none;
+  color: #bbb;
+  font-size: 14px;
+  position: relative;
+  transition: color 0.3s ease;
+}
+.footer-links ul li a::after {
+  content: "";
+  width: 0;
+  height: 2px;
+  background: #4caf50;
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  transition: width 0.3s ease;
+}
+
+.footer-links ul li a:hover {
+  color: #fff;
+}
+.footer-links ul li a:hover::after {
+  width: 100%;
+}
+/* Active Link Style */
+.footer-links ul li a.active {
+  color: #4caf50;        /* Highlight color */
+  font-weight: 600;      /* Make it bolder */
+  position: relative;
+}
+
+.footer-links ul li a.active::after {
+  content: "";
+  width: 100%;
+  height: 2px;
+  background: #4caf50;
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+}
+
+
+/* Address */
+.footer-address p,
+.footer-address a {
+  display: flex;             /* Align icon + text in one row */
+  align-items: center;       /* Vertical alignment */
+  gap: 8px;                  /* Space between icon and text */
+  font-size: 14px;
+  line-height: 1.8;
+  margin-bottom: 8px;        /* Add spacing between lines */
+  color: #bbb;
+}
+
+.footer-address a {
+  color: #4caf50;
+  text-decoration: none;
+}
+
+.footer-address a:hover {
+  text-decoration: underline;
+}
+
+.footer-address i {
+  font-size: 16px;           /* Icon size */
+  color: #4caf50;            /* Icon highlight color */
+}
+
+/* Social Icons */
+.social-icons {
+  display: flex;
+  justify-content: center;   /* Center align under logo */
+  gap: 15px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.social-icons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(6px);
+  color: #eee;
+  font-size: 18px;
+  transition: all 0.3s ease;
+  text-decoration: none;     /* Remove underline */
+}
+
+.social-icons a:hover {
+  background: #4caf50;
+  color: #111;
+  transform: translateY(-4px);
+  box-shadow: 0 6px 15px rgba(0, 200, 150, 0.4);
+}
+
+
+/* Footer Bottom */
+.footer-bottom {
+  background: #111;
+  padding: 18px;
+  text-align: center;
+  font-size: 13px;
+  color: #888;
+  border-top: 1px solid #2a2a2a;
+}
+.footer-bottom a {
+  color: #4caf50;
+  text-decoration: none;
+  font-weight: 500;
+}
+.footer-bottom a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .footer-container {
+    gap: 30px;
+    padding: 50px 5%;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-container {
+    text-align: center;
+    padding: 40px 20px;
+  }
+  .footer-section h3::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .social-icons {
+    justify-content: center;
+  }
+}
+
+        @media (max-width: 768px) {
+            .menu-icon {
+                display: block;
+            }
+            .nav {
+                display: none;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                background-color: white;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                padding: 10px;
+                box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+            }
+            .nav a {
+                display: block;
+                width: 100%;
+                text-align: center;
+                padding: 10px 0;
+                color: black;
+            }
+            .nav.show {
+                display: flex;
+            }
+            .dropdown-content {
+                position: static;
+                box-shadow: none;
+                background: none;
+                width: 100%;
+            }
+            .dropdown-content a {
+                text-align: center;
+                background-color: white;
+                width: 100%;
+            }
+            .banner {
+                height: 50vh;
+            }
+            .info-section {
+                flex-direction: column; /* Stack on smaller screens */
+                text-align: center; /* Center text */
+                padding: 20px; /* Reduce padding */
+            }
+            .info-section img {
+                margin-bottom: 20px; /* Add space below the image */
+            }
+            .info-section .description {
+                padding-left: 0; /* Remove left padding on mobile */
+                padding-right: 0; /* Remove right padding on mobile */
+            }
+            .footer-container {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding: 30px;
+            }
+            .footer-section {
+                margin-bottom: 20px;
+            }
+            /* Ensure "Quick Links" and "Our Category" have the same spacing */
+            .footer-section.footer-links {
+                margin-top: 20px;
+            }
+            .social-icons {
+                justify-content: center;
+            }
+            .footer-bottom {
+                font-size: 13px;
+            }
+          .footer-address {
+    display: flex;
+    flex-direction: column;   /* Stack lines vertically */
+    align-items: center;      /* Center horizontally */
+    text-align: center;       /* Center text inside */
+    gap: 8px;                 /* Space between lines */
+  }
+
+  .footer-address p,
+  .footer-address a {
+    justify-content: center;  /* Center icon + text */
+    text-align: center;
+  }
+  @media (max-width: 768px) {
+  body {
+    padding-top: 100px; /* slightly more space for mobile navbar */
+  }
+}
+
+}
+
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="assets/logo/footer logo.png" alt="Company Logo">
+            <a href="https://arctictextiles.com" class="logo-text" style="text-decoration: none;">Arctic Textiles</a>
+        </div>
+        <div class="menu-icon" onclick="toggleMenu()">
+            <span class="material-symbols-sharp">menu</span>
+        </div>
+        <nav class="nav">
+            <a href="https://arctictextiles.com/" title="Go to Rudhraa Exports and Imports homepage">Home</a>
+            <a href="https://arctictextiles.com/about-us.html" title="Learn more about Rudhraa Exports and Imports">About Us</a>
+            <div class="dropdown">
+                <a href="#" class="dropdown-toggle ">Category</a>
+                <div class="dropdown-content">
+                    <a href="https://arctictextiles.com/home-textiles.html" title="Explore our wide range of home textile products">Home Textiles</a>
+                    <a href="https://arctictextiles.com/baby-products.html" title="Explore our soft and safe baby essentials">Baby Products</a>
+                    <a href="https://arctictextiles.com/moms-care.html" title="Discover thoughtful care items for mothers">Moms Care</a>
+                    <a href="https://arctictextiles.com/yoga.html" title="Shop supportive and calming yoga products">Yoga</a>
+                    <a href="https://arctictextiles.com/leather-products.html" title="Buy premium handmade leather accessories">Leather Products</a>
+                </div>
+            </div>
+            <a href="https://arctictextiles.com/service.html" title="Read the latest updates and insights on Indian exports">Service</a>
+            <a href="https://arctictextiles.com/contact.html" class="active" title="Get in touch with Rudhraa Exports & Imports">Contact Us</a>
+        </nav>
+    </header>
+    <!-- Banner -->
+<section class="contact-page section" id="contact">
+  <div class="contact__container">
+    <!-- Left Side: Title + Image -->
+    <div class="contact__info">
+      <h2 class="contact__title">CONTACT US</h2>
+      <p>Or reach out manually to <a href="mailto:info@arctictextiles.com">info@arctictextiles.com</a></p>
+      <div class="plane__wrapper">
+        <img src="images/plane.png" alt="Paper plane" class="plane__image" />
+      </div>
+    </div>
+
+    <!-- Right Side: Form -->
+<form class="contact__form" id="contact-form" action="contact/contact.php" method="POST">
+  
+  <label>Email address</label>
+  <input type="email" name="email" placeholder="your@email.com" required />
+  <small>We'll never share your email with anyone else.</small>
+
+  <label>Your name</label>
+  <input type="text" name="name" placeholder="John Doe" required />
+
+  <label>Your phone</label>
+  <input type="text" name="phone" placeholder="Optional" />
+
+  <label>Your message</label>
+  <textarea name="message" placeholder="Enter your message" rows="5" required></textarea>
+
+  <button type="submit" class="send__btn">Send Message</button>
+</form>
+
+  </div>
+</section>
+
+
+<!--==================== MAP ====================-->
+  <section class="map section" id="location">
+                   <h2 class="section__title" style="text-align: center;">Find Us</h2>
+
+
+                    <div class="map__container container">
+                        <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9051.374670224188!2d78.08523665833036!3d10.95220408909911!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85a79a69c28e085%3A0xa0b1430ec811448f!2sARCTIC%20TEXTILES!5e0!3m2!1sen!2sin!4v1751149699719!5m2!1sen!2sin"               width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                    </section>
+
+
+
+    
+      <!-- Footer Section -->
+         <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="/assets/logo/footer logo.png" alt="Company Logo">
+                  <p class="footer-slogan">Crafting Quality, Weaving Trust</p>
+                  <div class="social-icons">
+                    <a href="https://www.facebook.com/profile.php?id=61571690861387"><i class="fa-brands fa-square-facebook"></i></a>
+                    <a href="https://www.linkedin.com/company/arctic-textiles/"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-section footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="https://arctictextiles.com/" class="footer-link" data-page="home">Home</a></li>
+                    <li><a href="https://arctictextiles.com/about-us.html" class="footer-link" data-page="about">About Us</a></li>
+                    <li><a href="https://arctictextiles.com/service.html" class="footer-link" data-page="service">Service</a></li>
+                    <li><a href="https://arctictextiles.com/contact.html" class="footer-link active" data-page="contact">Contact Us</a></li>
+
+                </ul>
+            </div>
+
+            <div class="footer-section footer-links">
+                <h3>Our Category</h3>
+                <ul>
+                    <li><a href="https://arctictextiles.com/home-textiles.html" class="footer-link " data-page="home textiles">Home Textiles</a></li>
+                    <li><a href="https://arctictextiles.com/baby-products.html" class="footer-link" data-page="baby products ">Baby Products</a></li>
+                    <li><a href="https://arctictextiles.com/moms-care.html" class="footer-link" data-page="moms care">Moms Care</a></li>
+                    <li><a href="https://arctictextiles.com/yoga.html" class="footer-link" data-page="yoga products">Yoga</a></li>
+                    <li><a href="https://arctictextiles.com/leather-products.html" class="footer-link" data-page="leather products">Leather Products</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section footer-address">
+                <h3>Address</h3>
+                <p>NO.164/3F-1 Ganga Nagar, Thanthoni<br> Karur - 639 005 <br>Tamilnadu, India.</p>
+                <p><i class="fas fa-phone"></i> <a href="tel:+918111071617" style="color:inherit;">+91-8111071617</a></p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:info@arctictextiles.com" >info@arctictextiles.com</a></p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Arctic Textiles. All rights reserved.<br>
+  Designed by 
+  <a href="https://vgotyou.com" target="_blank" rel="noopener" class="vgot-link">VGot You</a>
+</p>
+
+<style>
+  .vgot-link {
+    color: #2f2f2f;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  .vgot-link:hover {
+    color: #ff0000;
+  }
+</style>
+
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.querySelector('.nav').classList.toggle('show');
+        }
+
+        // Toggle dropdown on click
+        document.querySelector(".dropdown-toggle").addEventListener("click", function (event) {
+            event.preventDefault();
+            this.parentElement.classList.toggle("active");
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener("click", function (event) {
+            let dropdown = document.querySelector(".dropdown");
+            if (!dropdown.contains(event.target) && !event.target.classList.contains("dropdown-toggle")) {
+                dropdown.classList.remove("active");
+            }
+        });
+
+        // Manage active links
+        document.querySelectorAll('.nav a:not(.dropdown-toggle)').forEach(link => {
+            link.addEventListener('click', function() {
+                document.querySelectorAll('.nav a').forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+                document.querySelector('.nav').classList.remove('show');
+            });
+        });
+
+        // Highlight active footer link
+        document.querySelectorAll('.footer-link').forEach(link => {
+            link.addEventListener('click', function() {
+                document.querySelectorAll('.footer-link').forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Trigger heading animation on page load
+        window.onload = function() {
+            document.querySelector('.animated-heading').classList.add('show-heading');
+            // Trigger info section animation on scroll
+            const infoSections = document.querySelectorAll('.info-section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('show');
+                    }
+                });
+            });
+            infoSections.forEach(section => {
+                observer.observe(section);
+            });
+        };
+
+                //preloader
+                window.addEventListener("load", () => {
+                    const preloader = document.getElementById("preloader");
+                    preloader.classList.add("fade-out");
+                    setTimeout(() => preloader.remove(), 500);
+                });
+
+    </script>
+
+    <!-- Add jQuery and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

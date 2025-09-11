@@ -1,0 +1,16 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://arctictextiles.com/sitemap.xml
+
+# Disallow private/system folders
+Disallow: /admin/
+Disallow: /cgi-bin/
+Disallow: /tmp/
+Disallow: /backup/
+Disallow: /node_modules/
+
+# Optional: Block specific file types (if needed)
+Disallow: /*.php$
+Disallow: /*.bak$
+Disallow: /*.zip$
