@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SEO Audit Admin Panel - Live Preview</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+body {
+  font-family: 'Inter', sans-serif;
+  background: #f4f6f8;
+  margin: 0;
+  padding: 20px;
+  color: #333;
+}
+h2,h3 { margin-top: 0; color: #222; }
+h2 { font-size: 28px; text-align:center; margin-bottom:20px; }
+.hero, .client-info-card, .section-preview {
+  background:#fff; border-radius:12px; padding:20px 25px; margin-bottom:20px; box-shadow:0 4px 12px rgba(0,0,0,0.05);
+}
+.hero img, .client-logo img { max-height:100px; margin-bottom:15px; }
+.hero h1, .client-details h2 { font-size:32px; font-weight:700; margin-bottom:5px; }
+.hero p, .client-details p { font-size:16px; color:#555; margin:4px 0; }
+.container { max-width:900px; margin:0 auto; padding:0; }
+table { width:100%; border-collapse: collapse; margin-top:15px; }
+th, td { border:1px solid #ccc; padding:10px; text-align:left; }
+th { background:#000; color:#fff; }
+tr:nth-child(even){background:#f9f9f9;}
+.radio-group { display:flex; gap:10px; }
+.radio-group label { display:flex; align-items:center; gap:3px; }
+input, textarea { padding:8px 10px; border:1px solid #ccc; border-radius:6px; font-size:14px; width:100%; }
+textarea { resize: vertical; }
+button { background:#000; color:#fff; border:none; padding:12px 20px; font-size:16px; border-radius:8px; cursor:pointer; transition:0.3s; margin-top:10px;}
+button:hover { background:#022144; transform:translateY(-2px); }
+.summary, .recommendations { background:#f4f4f4; padding:15px; border-left:5px solid #000; margin-bottom:15px; font-weight:500; }
+.client-info-card { display:flex; gap:20px; align-items:flex-start; }
+.client-logo img { border-radius:8px; }
+.client-details { flex:1; }
+.status-good{color:#27ae60;font-weight:bold;}
+.status-average{color:#f39c12;font-weight:bold;}
+.status-poor{color:#e74c3c;font-weight:bold;}
+ul { margin-left:20px; }
+</style>
+</head>
+<body>
+
+<h2>SEO Audit Admin Panel - Live Preview</h2>
+
+<div class="container">
+
+<!-- Hero Section -->
+<div class="hero section-preview">
+  <input id="my-logo" placeholder="Your Logo URL" value="https://www.vgotyou.com/assets/vgotyou.png" oninput="updateHero()">
+  <input id="my-name" placeholder="Your Company Name" value="VGot You" oninput="updateHero()">
+  <input id="my-tagline" placeholder="Company tagline" value="We provide professional SEO audit and digital marketing services." oninput="updateHero()">
+  <textarea id="my-services" rows="2" placeholder="Services" oninput="updateHero()">SEO Audit, On-Page SEO, Technical SEO, Local SEO, SEO Reports</textarea>
+  <div id="hero-preview"></div>
+</div>
+
+<!-- Client Info Section -->
+<div class="client-info-card section-preview">
+  <div class="client-logo">
+    <input id="client-logo" placeholder="Client Logo URL" value="client-logo.png" oninput="updateClient()">
+  </div>
+  <div class="client-details">
+    <input id="client-name" placeholder="Client Name" value="Arctic Textiles" oninput="updateClient()">
+    <input id="client-tagline" placeholder="Client tagline" value="Sustainable textile manufacturing" oninput="updateClient()">
+    <textarea id="client-description" rows="3" placeholder="Brief description" oninput="updateClient()">Arctic Textiles specializes in eco-friendly fabrics for fashion, upholstery, and industrial applications, serving global clients.</textarea>
+    <p><strong>Date:</strong> <span id="report-date"></span></p>
+  </div>
+</div>
+
+<!-- Executive Summary -->
+<div class="section-preview">
+  <h3>Executive Summary</h3>
+  <textarea id="summary-text" rows="4" oninput="updateSummary()">Overall SEO Score: 78/100. The website has a strong HTTPS implementation and good metadata, but improvements are needed in mobile responsiveness and structured data.</textarea>
+  <div class="summary" id="summary-preview"></div>
+</div>
+
+<!-- Audit Table -->
+<div class="section-preview">
+  <h3>Audit Factors</h3>
+  <table>
+    <thead>
+      <tr><th>Factor</th><th>Status</th><th>Notes</th></tr>
+    </thead>
+    <tbody id="audit-table-body"></tbody>
+  </table>
+</div>
+
+<!-- Recommendations -->
+<div class="section-preview">
+  <h3>Recommendations</h3>
+  <textarea id="recommendations" rows="4" oninput="updateRecommendations()">
+Add missing and unique meta descriptions for all pages.
+Fix mobile responsiveness (viewport and layout issues).
+Implement structured data (schema.org markup).
+Improve Core Web Vitals, especially Largest Contentful Paint.
+  </textarea>
+  <div class="recommendations" id="rec-preview"></div>
+</div>
+
+<button onclick="generateReport()">Export HTML Report</button>
+
+</div>
+
+<script>
+// SEO factors
+const factors = [
+"Title Tags","Meta Descriptions","Headings (H1,H2,H3)","Content Quality",
+"Image Alt Text","URL Structure","Site Speed","Mobile Responsiveness",
+"SSL (HTTPS)","Sitemap.xml & Robots.txt","Broken Links","Indexing (Google Search)",
+"Backlink Quality","Domain Authority","Google Business Profile","Local/Industry Listings",
+"Social Media Presence","Navigation","Call-to-Action (CTA)","Contact Visibility","Design & Readability"
+];
+
+const tbody = document.getElementById("audit-table-body");
+
+// Populate table with horizontal radio buttons
+factors.forEach((factor,index)=>{
+  const row = document.createElement("tr");
+  row.innerHTML = `<td>${factor}</td>
+  <td class="radio-group">
+    <label><input type="radio" name="status-${index}" value="good"> Good</label>
+    <label><input type="radio" name="status-${index}" value="average" checked> Average</label>
+    <label><input type="radio" name="status-${index}" value="poor"> Poor</label>
+  </td>
+  <td><input placeholder="Notes"></td>`;
+  tbody.appendChild(row);
+});
+
+// Live preview updates
+function updateHero(){
+  const logo = document.getElementById("my-logo").value || "https://www.vgotyou.com/assets/vgotyou.png";
+  const name = document.getElementById("my-name").value || "VGot You";
+  const tagline = document.getElementById("my-tagline").value;
+  const services = document.getElementById("my-services").value;
+  const container = document.getElementById("hero-preview");
+  container.innerHTML = `
+    <img src="${logo}" alt="${name} Logo">
+    <h1 style="font-family:'Cambria', serif;">${name}</h1>
+    <p>${tagline}</p>
+    <p><strong>Services:</strong> ${services}</p>
+  `;
+}
+
+function updateClient(){
+  const logo = document.getElementById("client-logo").value;
+  const name = document.getElementById("client-name").value;
+  const tagline = document.getElementById("client-tagline").value;
+  const desc = document.getElementById("client-description").value;
+  const date = document.getElementById("report-date");
+  date.innerText = new Date().toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});
+}
+
+function updateSummary(){
+  const summary = document.getElementById("summary-text").value;
+  document.getElementById("summary-preview").innerText = summary;
+}
+
+function updateRecommendations(){
+  const recs = document.getElementById("recommendations").value.split("\n").filter(r=>r.trim());
+  const container = document.getElementById("rec-preview");
+  container.innerHTML = "<ul>" + recs.map(r=>`<li>${r}</li>`).join("") + "</ul>";
+}
+
+// Initialize previews
+updateHero(); updateClient(); updateSummary(); updateRecommendations();
+
+// Report generation
+function generateReport(){
+  const myLogo=document.getElementById("my-logo").value || "";
+  const myName=document.getElementById("my-name").value || "VGot You";
+  const myTagline=document.getElementById("my-tagline").value || "";
+  const myServices=document.getElementById("my-services").value || "";
+  const clientLogo=document.getElementById("client-logo").value || "";
+  const clientName=document.getElementById("client-name").value || "Client Company";
+  const clientTagline=document.getElementById("client-tagline").value || "";
+  const clientDesc=document.getElementById("client-description").value || "";
+  const date=new Date().toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});
+  const summary=document.getElementById("summary-text").value || "";
+  const authorName="Chandru M | VGot You";
+
+  let auditRows="";
+  tbody.querySelectorAll("tr").forEach((row,index)=>{
+      const factor=row.cells[0].innerText;
+      const status=row.cells[1].querySelector(`input[name="status-${index}"]:checked`)?.value || "average";
+      const notes=row.cells[2].querySelector("input").value || "";
+      auditRows+=`<tr><td>${factor}</td><td class="status-${status}">${status.charAt(0).toUpperCase()+status.slice(1)}</td><td>${notes}</td></tr>`;
+  });
+
+  const recLines=document.getElementById("recommendations").value.split("\n");
+  let recHtml="<ul>";
+  recLines.forEach(r=>{ if(r.trim()) recHtml+=`<li>${r.trim()}</li>`; });
+  recHtml+="</ul>";
+
+  const reportHtml=`<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>${clientName} SEO Audit Report</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter',sans-serif;background:#fff;color:#000;line-height:1.6;}
+.hero{background:#f4f4f4;padding:40px 20px;text-align:center;margin-bottom:20px;}
+.hero img{max-height:100px;margin-bottom:15px;}
+.hero h1{font-size:32px;font-weight:700;margin-bottom:5px;}
+.hero p{font-size:16px;color:#555;margin:5px 0;}
+.container{max-width:900px;margin:0 auto;padding:40px 20px;}
+h3{font-size:20px;margin-top:40px;margin-bottom:15px;border-bottom:2px solid #000;padding-bottom:5px;}
+.summary{background:#f4f4f4;padding:20px;border-left:5px solid #000;margin-bottom:30px;font-weight:500;}
+table{width:100%;border-collapse: collapse;margin:30px 0;font-size:15px;}
+th,td{padding:14px 16px;text-align:left;border:1px solid #ccc;}
+th{background:#000;color:white;}
+tr:nth-child(even){background:#f9f9f9;}
+.status-good{color:#27ae60;font-weight:bold;}
+.status-average{color:#f39c12;font-weight:bold;}
+.status-poor{color:#e74c3c;font-weight:bold;}
+ul{margin-left:20px;margin-bottom:30px;}
+ul li{margin-bottom:10px;}
+.signature{margin-top:50px;text-align:right;}
+.footer{text-align:center;font-size:14px;color:#777;padding:20px 10px;background:#f2f2f2;margin-top:40px;}
+.client-info-card{display:flex;align-items:center;background:#f9f9f9;border:1px solid #ddd;border-radius:10px;padding:20px;margin-bottom:30px;box-shadow:0 4px 8px rgba(0,0,0,0.05);}
+.client-logo img{max-height:100px;margin-right:20px;border-radius:8px;}
+.client-details h2{margin-bottom:5px;}
+.client-details p{margin:4px 0;color:#555;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+${myLogo?`<img src="${myLogo}" alt="${myName} Logo">`:""}
+<h1>${myName}</h1>
+<p>${myTagline}</p>
+<p><strong>Services:</strong> ${myServices}</p>
+</div>
+
+<div class="client-info-card">
+<div class="client-logo">${clientLogo?`<img src="${clientLogo}" alt="${clientName} Logo">`:""}</div>
+<div class="client-details">
+<h2>${clientName}</h2>
+<p><em>${clientTagline}</em></p>
+<p>${clientDesc}</p>
+<p><strong>Date:</strong> ${date}</p>
+</div>
+</div>
+
+<div class="container">
+<h3>Executive Summary</h3>
+<div class="summary">${summary}</div>
+
+<h3>Audit Results</h3>
+<table>
+<thead><tr><th>Factor</th><th>Status</th><th>Notes</th></tr></thead>
+<tbody>${auditRows}</tbody>
+</table>
+
+<h3>Recommendations</h3>
+${recHtml}
+
+<div class="signature">
+<p>${authorName}</p>
+</div>
+</div>
+
+<div class="footer">
+  © 2025 <a href="https://www.vgotyou.com" target="_blank" class="footer-link">VGot You</a>. All Rights Reserved.
+</div>
+
+<style>
+.footer {
+  text-align: center;
+  font-size: 14px;
+  color: #777;
+  padding: 20px 10px;
+  background: #f2f2f2;
+  margin-top: 40px;
+}
+
+.footer-link {
+  color: #777; /* default link color */
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+  color: #ff4c4c; /* hover color */
+}
+</style>
+
+
+</body>
+</html>`;
+
+  const blob=new Blob([reportHtml],{type:"text/html"});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement("a");
+  a.href=url;
+  a.download=`${clientName}-SEO-Report.html`;
+  a.click();
+}
+</script>
+
+</body>
+</html>

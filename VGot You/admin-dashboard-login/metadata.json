@@ -1,0 +1,5 @@
+{
+  "name": "Admin Dashboard Login",
+  "description": "A secure login page for team members to access their specified dashboards, built with React, TypeScript, and Supabase.",
+  "requestFramePermissions": []
+}
