@@ -68,14 +68,14 @@ const AnimatedBarChart: React.FC<{data: {label: string, value: number, color: st
 
   {/* Open Graph */}
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Web Design Services | VGot You" />
+  <meta property="og:title" content="Web Design Services | Custom Websites by VGot You" />
   <meta property="og:description" content="Modern and responsive web design services to grow your brand." />
   <meta property="og:image" content="https://www.vgotyou.com/assets/web-designer.jpg" />
   <meta property="og:url" content="https://www.vgotyou.com/web-design" />
 
   {/* Twitter */}
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Web Design Services | VGot You" />
+  <meta name="twitter:title" content="Web Design Services | Custom Websites by VGot You" />
   <meta name="twitter:description" content="Custom websites designed for performance, SEO, and user experience." />
   <meta name="twitter:image" content="https://www.vgotyou.com/assets/web-designer.jpg" />
 
@@ -86,12 +86,28 @@ const AnimatedBarChart: React.FC<{data: {label: string, value: number, color: st
       "@context": "https://schema.org",
       "@type": "Service",
       "serviceType": "Web Design",
-      "provider": {
-        "@type": "Person",
-        "name": "VGot You"
-      },
       "url": "https://www.vgotyou.com/web-design",
-      "description": "Custom and responsive web design services by VGot You."
+      "description": "Custom and responsive web design services by VGot You.",
+      "provider": {
+        "@type": "Organization",
+        "name": "VGot You",
+        "url": "https://www.vgotyou.com",
+        "logo": "https://www.vgotyou.com/assets/VGotYou.png"
+      },
+      "areaServed": {
+        "@type": "Place",
+        "name": "Worldwide"
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://www.vgotyou.com/web-design",
+        "priceCurrency": "USD",
+        "price": "0",
+        "eligibleRegion": {
+          "@type": "Place",
+          "name": "Worldwide"
+        }
+      }
     }
     `}
   </script>

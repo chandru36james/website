@@ -11,21 +11,25 @@ const projects = [
     title: 'Modern E-Commerce Experience',
     description: 'A lightning-fast e-commerce site that drastically reduced cart abandonment.',
     image: vesa,
+    url: 'https://www.vesahomes.com/',
   },
   {
     title: 'Secure B2B Platform',
     description: 'A laser-focused landing page that achieved a 300% increase in lead capture for our client.',
     image: Arctic,
+    url: 'https://arctictextiles.com/',
   },
   {
     title: 'High-Converting Landing Page',
     description: 'An elegant, visually-driven portfolio to showcase creative work and attract freelance inquiries.',
     image: BloomGreen,
+    url: 'https://bloomgreen.netlify.app/',
   },
   {
     title: 'Stunning Logo Design',
     description: 'Creative and memorable logo designs crafted to elevate brand identity and leave a lasting impression.',
     image: img6,
+    
   },
   {
     title: 'Logo Design Showcase',
@@ -88,46 +92,35 @@ const ProjectCarousel: React.FC = () => {
 
         {/* Main image */}
         <div className="mt-8">
-          <div className="relative w-full max-w-3xl mx-auto aspect-[16/9] overflow-hidden rounded-lg shadow-xl bg-gray-200">
-            <div
-              className={`absolute inset-0 transform transition-all duration-500 ease-in-out ${mainImageTransitionClass}`}
-            >
-              <img
-                src={activeProject.image}
-                alt={activeProject.title}
-                className="w-full h-full object-cover"
-              />
-              {/* Stronger gradient overlay for mobile readability */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/70 to-transparent"></div>
+  <div className="relative w-full max-w-3xl mx-auto aspect-[16/9] overflow-hidden rounded-lg shadow-xl bg-gray-200">
+    <div
+      className={`absolute inset-0 transform transition-all duration-500 ease-in-out ${mainImageTransitionClass}`}
+    >
+      <a
+        href={activeProject.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="absolute inset-0 block"
+      >
+        <img
+          src={activeProject.image}
+          alt={activeProject.title}
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/70 to-transparent"></div>
+      </a>
 
-              {/* Responsive title + description */}
-              <div className="absolute bottom-0 left-0 right-0 p-3 md:p-6 text-white text-left">
-                <h3
-                  className="
-                    text-sm
-                    sm:text-base
-                    md:text-lg
-                    lg:text-xl
-                    font-bold
-                  "
-                >
-                  {activeProject.title}
-                </h3>
-                <p
-                  className="
-                    mt-1
-                    text-xs
-                    sm:text-sm
-                    md:text-base
-                    text-gray-300
-                  "
-                >
-                  {activeProject.description}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div className="absolute bottom-0 left-0 right-0 p-3 md:p-6 text-white text-left">
+        <h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-bold">
+          {activeProject.title}
+        </h3>
+        <p className="mt-1 text-xs sm:text-sm md:text-base text-gray-300">
+          {activeProject.description}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
 
         {/* Thumbnails */}
         <div className="mt-6 flex justify-center items-center gap-2 sm:gap-3">
