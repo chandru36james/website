@@ -27,14 +27,6 @@ const NavLinks: React.FC<{className?: string; onClick?: () => void;}> = ({ class
                     </>
                 )}
             </NavLink>
-            <NavLink to="/logo-showcase" className={linkBaseClass} onClick={onClick}>
-                 {({isActive}) => (
-                    <>
-                        Logo Design
-                        <span className={underlineClassName(isActive)}></span>
-                    </>
-                )}
-            </NavLink>
             <NavLink to="/web-design" className={linkBaseClass} onClick={onClick}>
                  {({isActive}) => (
                     <>
@@ -43,6 +35,15 @@ const NavLinks: React.FC<{className?: string; onClick?: () => void;}> = ({ class
                     </>
                 )}
             </NavLink>
+            <NavLink to="/logo-showcase" className={linkBaseClass} onClick={onClick}>
+                 {({isActive}) => (
+                    <>
+                        Logo Design
+                        <span className={underlineClassName(isActive)}></span>
+                    </>
+                )}
+            </NavLink>
+            
         </>
     );
 };

@@ -72,62 +72,62 @@ const NewsletterPopup: React.FC = () => {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4 animate-fade-in-up" style={{ animationDuration: '0.4s' }}>
-      <div className="relative bg-white text-black rounded-lg shadow-2xl w-full max-w-md p-8 md:p-10 text-center transform transition-all">
-        <button
-          onClick={handleClose}
-          className="absolute top-4 right-4 text-gray-600 hover:text-black transition-colors"
-          aria-label="Close newsletter popup"
-        >
-          <XIcon className="w-6 h-6" />
-        </button>
+      <div className="relative bg-white text-black rounded-lg shadow-2xl w-full max-w-sm p-6 md:p-8 text-center transform transition-all">
+  <button
+    onClick={handleClose}
+    className="absolute top-3 right-3 text-gray-600 hover:text-black transition-colors"
+    aria-label="Close newsletter popup"
+  >
+    <XIcon className="w-5 h-5" />
+  </button>
 
-        {isSubmitted ? (
-          <div>
-            <h2 className="text-2xl font-display font-bold">Request Received!</h2>
-            <p className="mt-4 text-gray-800">
-              Thank you, <span className="font-semibold">{formData.name}</span>! We'll be in touch at <span className="font-semibold">{formData.email}</span> soon regarding your free audit.
-            </p>
-          </div>
-        ) : (
-          <>
-            <h2 className="text-2xl md:text-3xl font-display font-bold">Get a Free Audit</h2>
-            <p className="mt-4 text-gray-800">
-             Curious how your brand or website stacks up? Enter your details for a complimentary audit from our experts.
-            </p>
-            <form onSubmit={handleSubmit} className="mt-8 flex flex-col gap-4">
-              <input
-                type="text"
-                name="name"
-                placeholder="Enter your name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-                className="w-full px-5 py-3 rounded-md text-black bg-gray-100 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent transition"
-                aria-label="Name for free audit"
-              />
-              <input
-                type="email"
-                name="email"
-                placeholder="Enter your email address"
-                value={formData.email}
-                onChange={handleChange}
-                required
-                className="w-full px-5 py-3 rounded-md text-black bg-gray-100 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent transition"
-                aria-label="Email for free audit"
-              />
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className={`w-full px-8 py-3 rounded-md font-display font-semibold text-center transition-all duration-300 ${isSubmitting ? 'bg-gray-600 cursor-not-allowed' : 'bg-black hover:bg-gray-900'} text-white`}
-              >
-                {isSubmitting ? 'Submitting...' : 'Get Free Audit'}
-              </button>
-            </form>
-            {error && <p className="mt-2 text-red-500 text-sm">{error}</p>}
-            <p className="mt-4 text-xs text-gray-500">We respect your privacy. No spam.</p>
-          </>
-        )}
-      </div>
+  {isSubmitted ? (
+    <div>
+      <h2 className="text-xl font-display font-bold">Request Received!</h2>
+      <p className="mt-3 text-gray-800 text-sm">
+        Thank you, <span className="font-semibold">{formData.name}</span>!  
+        We'll be in touch at <span className="font-semibold">{formData.email}</span> soon.
+      </p>
+    </div>
+  ) : (
+    <>
+      <h2 className="text-xl md:text-2xl font-display font-bold">Get a Free Audit</h2>
+      <p className="mt-3 text-gray-800 text-sm">
+        Curious how your brand or website stacks up? Enter your details for a complimentary audit.
+      </p>
+      <form onSubmit={handleSubmit} className="mt-6 flex flex-col gap-3">
+        <input
+          type="text"
+          name="name"
+          placeholder="Your name"
+          value={formData.name}
+          onChange={handleChange}
+          required
+          className="w-full px-4 py-2 rounded-md text-black bg-gray-100 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500 text-sm"
+        />
+        <input
+          type="email"
+          name="email"
+          placeholder="Your email"
+          value={formData.email}
+          onChange={handleChange}
+          required
+          className="w-full px-4 py-2 rounded-md text-black bg-gray-100 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500 text-sm"
+        />
+        <button
+          type="submit"
+          disabled={isSubmitting}
+          className={`w-full px-6 py-2 rounded-md font-display font-medium text-sm transition-all duration-300 ${isSubmitting ? 'bg-gray-600 cursor-not-allowed' : 'bg-black hover:bg-gray-900'} text-white`}
+        >
+          {isSubmitting ? 'Submitting...' : 'Get Free Audit'}
+        </button>
+      </form>
+      {error && <p className="mt-2 text-red-500 text-xs">{error}</p>}
+      <p className="mt-3 text-xs text-gray-500">We respect your privacy. No spam.</p>
+    </>
+  )}
+</div>
+
     </div>
   );
 };

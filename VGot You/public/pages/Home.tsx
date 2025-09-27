@@ -213,12 +213,12 @@ const Home: React.FC = () => {
 
   {/* Content */}
   <div className="relative z-10 px-4">
-    <h1 className="text-5xl md:text-7xl font-bold mb-4 font-cambria opacity-0 animate-fade-in-down delay-1000">
+    <h2 className="text-5xl md:text-7xl font-bold mb-4 font-cambria opacity-0 animate-fade-in-down delay-1000">
       VGot You
-    </h1>
-    <h2 className="text-3xl md:text-5xl font-light mb-2 opacity-0 animate-fade-in-up delay-2000">
-      Crafting Code & Creative Identities
     </h2>
+    <h1 className="text-3xl md:text-5xl font-light mb-2 opacity-0 animate-fade-in-up delay-2000">
+      Crafting Code & Creative Identities
+    </h1>
     <p className="text-xl md:text-2xl text-gray-300 mb-8 opacity-0 animate-fade-in-up delay-3000">
       Web Development • Logo Design
     </p>
@@ -290,7 +290,7 @@ const Home: React.FC = () => {
 
                         </div>
                         <div className="lg:col-span-2 hidden lg:grid grid-cols-2 gap-6 items-center h-[450px]">
-                            <img src={abt1} alt="Creative process 1" className="rounded-lg shadow-xl w-full h-full object-cover transition-transform hover:scale-105 duration-500" />
+                            <img src={abt1} alt="Web design brainstorming session" className="rounded-lg shadow-xl w-full h-full object-cover transition-transform hover:scale-105 duration-500" />
                             <img src={abt2} alt="Creative process 2" className="rounded-lg shadow-xl w-full h-full object-cover transition-transform hover:scale-105 duration-500 mt-20" />
                         </div>
                     </div>
