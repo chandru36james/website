@@ -7,7 +7,6 @@ import Data_trust from '@/assets/data.png'
 import Arctic from '@/assets/arctic_home.png'
 import BloomGreen from '@/assets/bloomgreen_home.png'
 
-import Gallery from '@/components/slider';
 import ProjectCarousel from '@/components/Carousel';
 
 

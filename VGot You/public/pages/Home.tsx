@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion } from "framer-motion";
 import { Link } from 'react-router-dom';
 import { Link as ScrollLink } from "react-scroll";
 
@@ -16,7 +17,30 @@ import avatar2 from '@/assets/santhosh.png';
 import avatar3 from '@/assets/aravind.png';
 import bg from '@/assets/bg.png';
 
+import Button from '../components/ui/Button';
+import CarouselManual from '../components/CarouselManual';
 
+const serviceVariants = {
+  left: { hidden: { opacity: 0, x: -50 }, visible: { opacity: 1, x: 0 } },
+  right: { hidden: { opacity: 0, x: 50 }, visible: { opacity: 1, x: 0 } },
+  up: { hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0 } },
+  down: { hidden: { opacity: 0, y: -50 }, visible: { opacity: 1, y: 0 } },
+  scale: { hidden: { opacity: 0, scale: 0.8 }, visible: { opacity: 1, scale: 1 } },
+};
+
+const timelineVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.3, // delay between each child
+    },
+  },
+};
+
+const stepVariants = {
+  hidden: { opacity: 0, y: 30, scale: 0.9 },
+  visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.6, ease: "easeOut" } },
+};
 
 
 const FadeInSection: React.FC<{children: React.ReactNode, className?: string, id?: string}> = ({ children, className, id }) => {
@@ -199,13 +223,13 @@ const Home: React.FC = () => {
       Web Development • Logo Design
     </p>
     <ScrollLink
-  to="profile"
+  to="manuall"  
   className="relative inline-block overflow-hidden rounded-full border border-brand-black 
              text-white font-semibold py-3 px-8 text-lg transition-all duration-300 
              opacity-0 animate-fade-in-up delay-4000 group"
 >
   <span className="relative z-10">
-    Let&apos;s Work Together
+    View our Work
   </span>
 
   {/* Gradient sliding background */}
@@ -234,10 +258,10 @@ const Home: React.FC = () => {
                 <FadeInSection className="container mx-auto">
                     <div className="grid lg:grid-cols-5 gap-16 items-center">
                         <div className="lg:col-span-3 text-left">
-                            <span className="text-zinc-500 font-semibold tracking-widest uppercase">Who We Are</span>
+                            <span className="text-zinc-500 font-semibold tracking-widest uppercase">Who Am I</span>
                             <h2 className="text-4xl font-bold my-4">Designing the Future, Today.</h2>
                             <p className="text-zinc-700 mb-6 text-lg">
-                                We are a passionate team of developers and designers dedicated to building exceptional digital experiences. We believe in the power of combining clean code with aesthetic design to create products that not only look good but also perform flawlessly. Your vision is our blueprint.
+                                I'm a passionate team of developers and designers dedicated to building exceptional digital experiences. I believe in the power of combining clean code with aesthetic design to create products that not only look good but also perform flawlessly. Your vision is our blueprint.
                             </p>
                             <div className="grid sm:grid-cols-2 gap-6 mb-8">
                                 <div className="flex items-start gap-4">
@@ -277,7 +301,7 @@ const Home: React.FC = () => {
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 1440 320"
     preserveAspectRatio="none"
-    className="w-full h-32"
+    className="w-full h-16"
   >
     <path
       d="M0,320 L80,300 C160,280 320,240 480,250 C640,260 800,300 960,290 C1120,280 1280,220 1360,190 L1440,160 L1440,0 L0,0Z"
@@ -290,33 +314,69 @@ const Home: React.FC = () => {
 
 
                 {/* Services Section */}
-                <FadeInSection id="services" className="bg-brand-light-gray">
-                    <div className="container mx-auto text-center">
-                        <h2 className="text-4xl font-bold mb-12">Our Services</h2>
-                        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-                            <div className="bg-brand-white p-8 rounded-lg border border-zinc-200 hover:border-brand-black hover:shadow-xl transition-all">
-                                <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 mx-auto mb-4 text-brand-black" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
-                                <h3 className="text-2xl font-bold mb-2">Web Development</h3>
-                                <p className="text-zinc-600">Complex e-commerce platforms and B2B sites, built to perform and scale.</p>
-                            </div>
-                            <div className="bg-brand-white p-8 rounded-lg border border-zinc-200 hover:border-brand-black hover:shadow-xl transition-all">
-                                <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 mx-auto mb-4 text-brand-black" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.5L15.232 5.232z" /></svg>
-                                <h3 className="text-2xl font-bold mb-2">Logo Design</h3>
-                                <p className="text-zinc-600">Unique and memorable logos that form the cornerstone of your brand identity.</p>
-                            </div>
-                            <div className="bg-brand-white p-8 rounded-lg border border-zinc-200 hover:border-brand-black hover:shadow-xl transition-all">
-                                <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 mx-auto mb-4 text-brand-black" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1"><path strokeLinecap="round" strokeLinejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
-                                <h3 className="text-2xl font-bold mb-2">Landing Pages</h3>
-                                <p className="text-zinc-600">High-converting landing pages designed to capture leads and drive sales.</p>
-                            </div>
-                            <div className="bg-brand-white p-8 rounded-lg border border-zinc-200 hover:border-brand-black hover:shadow-xl transition-all">
-                                <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 mx-auto mb-4 text-brand-black" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1"><path strokeLinecap="round" strokeLinejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
-                                <h3 className="text-2xl font-bold mb-2">Portfolio Sites</h3>
-                                <p className="text-zinc-600">Stunning, professional portfolios to showcase your creative work and skills.</p>
-                            </div>
-                        </div>
-                    </div>
-                </FadeInSection>
+{/* Services Section */}
+<FadeInSection id="services" className="bg-brand-light-gray py-8 md:py-12">
+  <div className="container mx-auto text-center px-4">
+    <h2 className="text-3xl md:text-4xl font-bold mb-6 md:mb-8">Our Services</h2>
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8 max-w-6xl mx-auto">
+
+      <motion.div
+        className="bg-brand-white p-6 sm:p-8 rounded-lg border border-zinc-200 hover:border-brand-black hover:shadow-xl transition-all"
+        variants={serviceVariants.left}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.6 }}
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 sm:h-12 sm:w-12 mx-auto mb-3 sm:mb-4 text-brand-black" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
+        <h3 className="text-xl sm:text-2xl font-bold mb-1 sm:mb-2">Web Development</h3>
+        <p className="text-zinc-600 text-sm sm:text-base">Complex e-commerce platforms and B2B sites, built to perform and scale.</p>
+      </motion.div>
+
+      <motion.div
+        className="bg-brand-white p-6 sm:p-8 rounded-lg border border-zinc-200 hover:border-brand-black hover:shadow-xl transition-all"
+        variants={serviceVariants.right}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.6 }}
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 sm:h-12 sm:w-12 mx-auto mb-3 sm:mb-4 text-brand-black" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.5L15.232 5.232z" /></svg>
+        <h3 className="text-xl sm:text-2xl font-bold mb-1 sm:mb-2">Logo Design</h3>
+        <p className="text-zinc-600 text-sm sm:text-base">Unique and memorable logos that form the cornerstone of your brand identity.</p>
+      </motion.div>
+
+      <motion.div
+        className="bg-brand-white p-6 sm:p-8 rounded-lg border border-zinc-200 hover:border-brand-black hover:shadow-xl transition-all"
+        variants={serviceVariants.up}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.6 }}
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 sm:h-12 sm:w-12 mx-auto mb-3 sm:mb-4 text-brand-black" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+        <h3 className="text-xl sm:text-2xl font-bold mb-1 sm:mb-2">Landing Pages</h3>
+        <p className="text-zinc-600 text-sm sm:text-base">High-converting landing pages designed to capture leads and drive sales.</p>
+      </motion.div>
+
+      <motion.div
+        className="bg-brand-white p-6 sm:p-8 rounded-lg border border-zinc-200 hover:border-brand-black hover:shadow-xl transition-all"
+        variants={serviceVariants.scale}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.6 }}
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 sm:h-12 sm:w-12 mx-auto mb-3 sm:mb-4 text-brand-black" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
+        <h3 className="text-xl sm:text-2xl font-bold mb-1 sm:mb-2">Portfolio Sites</h3>
+        <p className="text-zinc-600 text-sm sm:text-base">Stunning, professional portfolios to showcase your creative work and skills.</p>
+      </motion.div>
+
+    </div>
+  </div>
+</FadeInSection>
+
+
                 {/* Call to Action / Hero-like Section */}
 <FadeInSection
 id= "profile"
@@ -337,24 +397,12 @@ id= "profile"
       Let’s Build Something Amazing
     </h2>
     <p className="text-lg md:text-xl mb-8 text-gray-200 leading-relaxed">
-      From stunning websites to unique brand identities, we transform your ideas into reality.
+      From stunning websites to unique brand identities, I transform your ideas into reality.
       Collaborate with us to craft digital experiences that truly inspire.
     </p>
 
-    {/* Buttons */}
-    <div className="flex flex-col sm:flex-row gap-4 justify-center">
-  <Link
-    to="/contact"
-    className="bg-white text-brand-black font-semibold 
-               py-2 px-5 text-sm
-               sm:py-3 sm:px-6 sm:text-base
-               w-fit mx-auto
-               rounded-full shadow-md 
-               hover:bg-gray-200 transition transform hover:scale-105"
-  >
-    contact Us
-  </Link>    
-</div>
+    <Button to="/contact" />
+
 
   </div>
 
@@ -379,34 +427,46 @@ id= "profile"
 </FadeInSection>
 
                 
-                {/* Process Timeline */}
                 <FadeInSection>
-                    <div className="container mx-auto text-center">
-                        <h2 className="text-4xl font-bold mb-16">Our Proven Process</h2>
-                        <div className="relative">
-                            <div className="hidden md:block absolute top-0 left-1/2 w-0.5 h-full bg-zinc-200 -translate-x-1/2"></div>
-                            {processSteps.map((step, index) => (
-                                <div key={index} className="mb-8 flex justify-between items-center w-full" style={{ flexDirection: index % 2 === 0 ? 'row' : 'row-reverse' }}>
-                                    <div className="hidden md:block w-5/12"></div>
-                                    <div className="z-20 flex items-center bg-brand-black text-white w-16 h-16 rounded-full shadow-lg justify-center">
-                                        {step.icon}
-                                    </div>
-                                    <div className="bg-brand-light-gray border border-zinc-200 rounded-lg shadow-lg w-full md:w-5/12 px-6 py-4 text-left">
-                                        <h3 className="font-bold text-xl mb-1">{index + 1}. {step.title}</h3>
-                                        <p className="text-zinc-600 text-sm leading-snug">{step.description}</p>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </FadeInSection>
+  <motion.div
+    className="container mx-auto text-center"
+    variants={timelineVariants}
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true, amount: 0.3 }}
+  >
+    <h2 className="text-4xl font-bold mb-16">Our Proven Process</h2>
+    <div className="relative">
+      <div className="hidden md:block absolute top-0 left-1/2 w-0.5 h-full bg-zinc-200 -translate-x-1/2"></div>
+
+      {processSteps.map((step, index) => (
+        <motion.div
+          key={index}
+          className="mb-8 flex justify-between items-center w-full"
+          style={{ flexDirection: index % 2 === 0 ? 'row' : 'row-reverse' }}
+          variants={stepVariants}
+        >
+          <div className="hidden md:block w-5/12"></div>
+          <div className="z-20 flex items-center bg-brand-black text-white w-16 h-16 rounded-full shadow-lg justify-center">
+            {step.icon}
+          </div>
+          <div className="bg-brand-light-gray border border-zinc-200 rounded-lg shadow-lg w-full md:w-5/12 px-6 py-4 text-left">
+            <h3 className="font-bold text-xl mb-1">{index + 1}. {step.title}</h3>
+            <p className="text-zinc-600 text-sm leading-snug">{step.description}</p>
+          </div>
+        </motion.div>
+      ))}
+    </div>
+  </motion.div>
+</FadeInSection>
+                
                  {/* Modern Angled Wave Divider Flipped */}
 <div className="w-full overflow-hidden leading-none -rotate-180">
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 1440 320"
     preserveAspectRatio="none"
-    className="w-full h-32"
+    className="w-full h-16"
   >
     <path
       d="M0,320 L80,300 C160,280 320,240 480,250 C640,260 800,300 960,290 C1120,280 1280,220 1360,190 L1440,160 L1440,0 L0,0Z"
@@ -415,11 +475,13 @@ id= "profile"
   </svg>
 </div>
 
+          
+
                 {/* Portfolio Preview */}
-                <FadeInSection id="portfolio" className="bg-brand-light-gray">
+                <FadeInSection id="portfolio" className="bg-brand-light-gray py-8 md:py-8">{/* Reduced vertical padding */}
                     <div className="container mx-auto text-center">
-                        <h2 className="text-4xl font-bold mb-12">Featured Work</h2>
-                        <div className="grid md:grid-cols-2 gap-8">
+                        <h2 className="text-4xl font-bold mb-1">Featured Work</h2>
+                        <div className="grid md:grid-cols-2 gap-6">
                             <Link to="/web-design" className="group relative block overflow-hidden rounded-lg shadow-md hover:shadow-2xl transition-shadow">
                                 <img src={web_design} alt="Web Design Project" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
                                 <div className="absolute inset-0 bg-black/60 group-hover:bg-black/80 transition-all flex items-center justify-center">
@@ -441,7 +503,7 @@ id= "profile"
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 1440 320"
     preserveAspectRatio="none"
-    className="w-full h-32"
+    className="w-full h-16"
   >
     <path
       d="M0,320 L80,300 C160,280 320,240 480,250 C640,260 800,300 960,290 C1120,280 1280,220 1360,190 L1440,160 L1440,0 L0,0Z"
@@ -449,6 +511,13 @@ id= "profile"
     />
   </svg>
 </div>
+
+
+          <section id="manuall">
+  <div className="mt-12">
+    <CarouselManual />
+  </div>
+</section>
 
 
                 {/* Testimonials */}

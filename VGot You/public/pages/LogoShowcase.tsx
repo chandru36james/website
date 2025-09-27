@@ -113,6 +113,7 @@ const LogoShowcase: React.FC = () => {
         </div>
       </section>
 
+         
       {/* Logo Grid */}
       <div className="container mx-auto py-20 px-6">
         <div className="grid grid-rows-3 gap-6">
