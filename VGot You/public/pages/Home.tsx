@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from "framer-motion";
 import { Link } from 'react-router-dom';
 import { Link as ScrollLink } from "react-scroll";
+import Clarity from '@microsoft/clarity';
 
 import { useFadeIn } from '../hooks/useFadeIn';
 import Preloader from '../components/Preloader';
@@ -37,6 +38,17 @@ const timelineVariants = {
   },
 };
 
+// Make sure to add your actual project id instead of "yourProjectId".
+const projectId = "tiybrh7g7z"
+
+Clarity.init(projectId);
+Clarity.identify("custom-id", "custom-session-id", "custom-page-id", "friendly-name"); // only custom-id is required
+Clarity.setTag("key", "value");
+Clarity.event("custom-event");
+Clarity.consent(); // default value is set to true
+Clarity.consent(false);
+Clarity.upgrade("reason");
+
 const stepVariants = {
   hidden: { opacity: 0, y: 30, scale: 0.9 },
   visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.6, ease: "easeOut" } },
@@ -60,7 +72,7 @@ const TestimonialCard: React.FC<{testimonial: { name: string; text: string; avat
   <title>VGot You | Web & Logo Design Studio</title>
   <meta name="description" content="VGot You is a global creative studio specializing in web design, website development, logo design, branding, and UI/UX solutions. We craft modern, responsive, and SEO-friendly digital experiences that help businesses worldwide grow and stand out online." />
 
- <meta name="keywords" content="VGot You, professional web design, creative website development, responsive websites, custom web solutions, e-commerce website design, logo design services, brand identity design, UI UX design agency, user experience design, digital branding solutions, portfolio showcase, creative studio, modern website design, startup branding, business website development, SEO-friendly websites, mobile-first web design, creative graphic design, Chandru designer, VSB College Karur alumni, Karur web designer, Tamil Nadu branding expert, India web development company, best web design in Karur, affordable website design Tamil Nadu" />
+ <meta name="keywords" content="VGot You, professional web design, creative website development, responsive websites, custom web solutions, e-commerce website design, logo design services,freelance web designer,web designer near me,web designer skills,seo studio tools,seo services,seo optimizer,logo designer near me,seo free audit, brand identity design, UI UX design agency, user experience design, digital branding solutions, portfolio showcase, creative studio, modern website design, startup branding, business website development, SEO-friendly websites, mobile-first web design, creative graphic design, Chandru designer, VSB College Karur alumni, Karur web designer, Tamil Nadu branding expert, India web development company, best web design in Karur, affordable website design Tamil Nadu" />
 
   <meta name="author" content="VGot You" />
   <meta name="robots" content="index, follow" />
@@ -84,7 +96,9 @@ const TestimonialCard: React.FC<{testimonial: { name: string; text: string; avat
 
   {/* Favicon */}
   <link rel="icon" href="/assets/VGotYou.png" type="image/png" />
+  
   </Helmet>
+  
             <svg className="w-10 h-10 text-zinc-300 mb-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 14">
                 <path d="M6 0H2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3H2a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Zm10 0h-4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3h-1a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Z"/>
             </svg>
