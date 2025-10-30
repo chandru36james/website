@@ -87,6 +87,25 @@
         opacity: 1;
         transform: translateX(0);
       }
+      /* Animated underline for links */
+      .link-underline-effect {
+        position: relative;
+      }
+      .link-underline-effect::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: #D95300; /* accent */
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.3s ease-out;
+      }
+      .group:hover .link-underline-effect::after {
+        transform: scaleX(1);
+      }
       /* Custom Scrollbar */
       ::-webkit-scrollbar {
         width: 12px;

@@ -87,7 +87,7 @@ const Footer: React.FC = () => {
         <div className={`mt-4 pt-4 border-t border-gray-200 text-center scroll-animate ${isVisible ? 'is-visible' : ''}`} style={{ transitionDelay: '600ms' }}>
           <p className="text-sm">&copy; 2025 Rudhraa Exports. All Rights Reserved.</p>
           <p className="text-sm mt-2">
-            Designed by <a href="#" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors" style={{ fontFamily: 'Cambria, serif' }}>VGot You</a>
+            Designed by <a href="https://www.vgotyou.com/" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors" style={{ fontFamily: 'Cambria, serif' }}>VGot You</a>
           </p>
         </div>
       </div>

@@ -1,4 +1,3 @@
-// Fix: Corrected import statement. Removed stray 'a,'.
 import React, { useState } from 'react';
 import { WHATSAPP_LINK, ICONS } from '../constants';
 import PageHeader from '../components/PageHeader';
@@ -6,52 +5,38 @@ import useAnimateOnScroll from '../components/useAnimateOnScroll';
 import MetaTags from '../components/MetaTags';
 
 const ContactPage: React.FC = () => {
-    const [formData, setFormData] = useState({ name: '', email: '', country: '', message: '' });
-    const [errors, setErrors] = useState<{ [key: string]: string }>({});
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [sectionRef, isSectionVisible] = useAnimateOnScroll(0.1);
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-        if (errors[e.target.name]) {
-            setErrors({ ...errors, [e.target.name]: '' });
-        }
-    };
-
-    const validateForm = () => {
-        const newErrors: { [key: string]: string } = {};
-        if (!formData.name.trim()) newErrors.name = 'Name is required.';
-        if (!formData.email.trim()) {
-            newErrors.email = 'Email is required.';
-        } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-            newErrors.email = 'Email is invalid.';
-        }
-        if (!formData.country.trim()) newErrors.country = 'Country is required.';
-        if (!formData.message.trim()) {
-            newErrors.message = 'Message is required.';
-        } else if (formData.message.length < 10) {
-            newErrors.message = 'Message must be at least 10 characters long.';
-        }
-        return newErrors;
-    };
-
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const formErrors = validateForm();
-        if (Object.keys(formErrors).length > 0) {
-            setErrors(formErrors);
-            return;
-        }
-
         setIsSubmitting(true);
-        // Simulate API call
-        setTimeout(() => {
-            console.log('Form submitted:', formData);
+        
+        const formData = new FormData(e.target as HTMLFormElement);
+        formData.append("access_key", "9213f808-4008-4112-9250-1206a457c04d");
+
+        try {
+            const response = await fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                body: formData
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                setIsSubmitted(true);
+                (e.target as HTMLFormElement).reset();
+            } else {
+                console.error("Web3Forms Error:", data);
+                alert(data.message || 'An error occurred while sending your message. Please try again.');
+            }
+        } catch (error) {
+            console.error("Submission Error:", error);
+            alert('A network error occurred. Please check your connection and try again.');
+        } finally {
             setIsSubmitting(false);
-            setIsSubmitted(true);
-            setFormData({ name: '', email: '', country: '', message: '' });
-        }, 1500);
+        }
     };
     
     return (
@@ -89,6 +74,9 @@ const ContactPage: React.FC = () => {
                                 </div>
                             ) : (
                                 <form onSubmit={handleSubmit} className="space-y-6">
+                                    {/* Web3Forms required fields */}
+                                    <input type="hidden" name="from_name" value="Rudhraa Exports Enquiry" />
+                                    <input type="hidden" name="subject" value="New Enquiry from Rudhraa Exports Website" />
                                     <div>
                                         <input
                                             id="name"
@@ -96,14 +84,9 @@ const ContactPage: React.FC = () => {
                                             type="text"
                                             placeholder="Full Name"
                                             aria-label="Full Name"
-                                            value={formData.name}
-                                            onChange={handleChange}
                                             required
-                                            className={`block w-full px-4 py-3 bg-white border rounded-md shadow-sm focus:outline-none focus:ring-1 sm:text-sm ${errors.name ? 'border-red-500 focus:border-red-500 focus:ring-red-500' : 'border-highlight focus:border-accent focus:ring-accent'}`}
-                                            aria-invalid={!!errors.name}
-                                            aria-describedby={errors.name ? 'name-error' : undefined}
+                                            className="block w-full px-4 py-3 bg-white border border-highlight rounded-md shadow-sm focus:outline-none focus:ring-1 sm:text-sm focus:border-accent focus:ring-accent"
                                         />
-                                        {errors.name && <p id="name-error" className="mt-1 text-xs text-red-600">{errors.name}</p>}
                                     </div>
                                      <div>
                                         <input
@@ -112,30 +95,20 @@ const ContactPage: React.FC = () => {
                                             type="email"
                                             placeholder="Email Address"
                                             aria-label="Email Address"
-                                            value={formData.email}
-                                            onChange={handleChange}
                                             required
-                                            className={`block w-full px-4 py-3 bg-white border rounded-md shadow-sm focus:outline-none focus:ring-1 sm:text-sm ${errors.email ? 'border-red-500 focus:border-red-500 focus:ring-red-500' : 'border-highlight focus:border-accent focus:ring-accent'}`}
-                                            aria-invalid={!!errors.email}
-                                            aria-describedby={errors.email ? 'email-error' : undefined}
+                                            className="block w-full px-4 py-3 bg-white border border-highlight rounded-md shadow-sm focus:outline-none focus:ring-1 sm:text-sm focus:border-accent focus:ring-accent"
                                         />
-                                        {errors.email && <p id="email-error" className="mt-1 text-xs text-red-600">{errors.email}</p>}
                                     </div>
                                     <div>
                                         <input
-                                            id="country"
-                                            name="country"
-                                            type="text"
-                                            placeholder="Country"
-                                            aria-label="Country"
-                                            value={formData.country}
-                                            onChange={handleChange}
+                                            id="mobile"
+                                            name="mobile"
+                                            type="tel"
+                                            placeholder="Mobile Number"
+                                            aria-label="Mobile Number"
                                             required
-                                            className={`block w-full px-4 py-3 bg-white border rounded-md shadow-sm focus:outline-none focus:ring-1 sm:text-sm ${errors.country ? 'border-red-500 focus:border-red-500 focus:ring-red-500' : 'border-highlight focus:border-accent focus:ring-accent'}`}
-                                            aria-invalid={!!errors.country}
-                                            aria-describedby={errors.country ? 'country-error' : undefined}
+                                            className="block w-full px-4 py-3 bg-white border border-highlight rounded-md shadow-sm focus:outline-none focus:ring-1 sm:text-sm focus:border-accent focus:ring-accent"
                                         />
-                                        {errors.country && <p id="country-error" className="mt-1 text-xs text-red-600">{errors.country}</p>}
                                     </div>
                                     <div>
                                         <textarea
@@ -144,14 +117,9 @@ const ContactPage: React.FC = () => {
                                             placeholder="Your Message"
                                             aria-label="Your Message"
                                             rows={4}
-                                            value={formData.message}
-                                            onChange={handleChange}
                                             required
-                                            className={`block w-full px-4 py-3 bg-white border rounded-md shadow-sm focus:outline-none focus:ring-1 sm:text-sm ${errors.message ? 'border-red-500 focus:border-red-500 focus:ring-red-500' : 'border-highlight focus:border-accent focus:ring-accent'}`}
-                                            aria-invalid={!!errors.message}
-                                            aria-describedby={errors.message ? 'message-error' : undefined}
+                                            className="block w-full px-4 py-3 bg-white border border-highlight rounded-md shadow-sm focus:outline-none focus:ring-1 sm:text-sm focus:border-accent focus:ring-accent"
                                         />
-                                        {errors.message && <p id="message-error" className="mt-1 text-xs text-red-600">{errors.message}</p>}
                                     </div>
                                     <div>
                                         <button 

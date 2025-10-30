@@ -1,5 +1,6 @@
+
 import React from 'react';
-import { HashRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
@@ -17,7 +18,7 @@ import BlogPage from './pages/BlogPage';
 
 const App: React.FC = () => {
   return (
-    <HashRouter>
+    <BrowserRouter>
       <SearchProvider>
         <ScrollToTop />
         <div className="flex flex-col min-h-screen font-sans bg-bg-main text-text-main">
@@ -39,7 +40,7 @@ const App: React.FC = () => {
           <SearchModal />
         </div>
       </SearchProvider>
-    </HashRouter>
+    </BrowserRouter>
   );
 };
 

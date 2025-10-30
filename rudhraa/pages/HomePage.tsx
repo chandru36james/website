@@ -164,9 +164,9 @@ const AboutPreview: React.FC = () => {
                         </p>
                         <Link 
                             to="/about" 
-                            className="inline-flex items-center gap-2 mt-8 font-semibold text-primary group"
+                            className="inline-flex items-center gap-2 mt-8 font-semibold text-primary hover:text-accent group transition-colors duration-300"
                         >
-                            <span>Learn More About Us</span>
+                            <span className="link-underline-effect">Learn More About Us</span>
                             <span className="transition-transform duration-300 group-hover:translate-x-1">
                                 <span className="w-5 h-5 block">{ICONS.arrowRight}</span>
                             </span>
@@ -493,9 +493,9 @@ const PartnershipSection: React.FC = () => {
                                 </p>
                                 <Link 
                                     to="/contact" 
-                                    className="inline-flex items-center gap-2 mt-8 font-semibold text-primary group"
+                                    className="inline-flex items-center gap-2 mt-8 font-semibold text-primary hover:text-accent group transition-colors duration-300"
                                 >
-                                    <span>CONTACT US NOW</span>
+                                    <span className="link-underline-effect">CONTACT US NOW</span>
                                     <span className="transition-transform duration-300 group-hover:translate-x-1">
                                       <span className="w-5 h-5 block">{ICONS.arrowRight}</span>
                                     </span>
