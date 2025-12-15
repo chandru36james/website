@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VGot You | Crafting Code & Creative Identities</title>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XRBQTY2DLC"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-XRBQTY2DLC');
+    </script>
+
+        <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="https://www.vgotyou.com/assets/VGotYou-32x32.png"/>
+    <link rel="icon" type="image/png" sizes="16x16" href="https://www.vgotyou.com/assets/VGotYou-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="https://www.vgotyou.com/assets/VGotYou.png" />
+    <link rel="manifest" href="https://www.vgotyou.com/assets/site.webmanifest" />
+    <meta name="theme-color" content="#000000" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'poppins': ['Poppins', 'sans-serif'],
+                        'cambria': ['Cambria', 'Cochin', 'Georgia', 'Times', 'Times New Roman', 'serif'],
+                    },
+                    colors: {
+                        'brand-black': '#000000', // zinc-900
+                        'brand-white': '#ffffff',
+                        'brand-light-gray': '#f4f4f5', // zinc-100
+                    }
+                }
+            }
+        }
+    </script>
+    <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "tiybrh7g7z");
+</script>
+    <style>
+        /* Smooth scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+        /* Custom scrollbar for a classier look */
+        body::-webkit-scrollbar {
+            width: 5px;
+        }
+        body::-webkit-scrollbar-track {
+            background: #00000000;
+        }
+        body::-webkit-scrollbar-thumb {
+            background-color: #ce0000; 
+            border-radius: 0px;
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0.5); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+        .sparkle {
+            animation: sparkle 2s infinite ease-in-out;
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.1.1/",
+    "react": "https://aistudiocdn.com/react@^19.1.1",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/",
+    "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.8.2"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="bg-black text-brand-white font-poppins">
+<div id="root"></div>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
