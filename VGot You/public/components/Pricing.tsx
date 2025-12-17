@@ -2,20 +2,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import FadeInSection from './FadeInSection';
-import { RocketIcon, SparklesIcon, CodeBracketIcon, DesktopIcon } from './Icons';
+import { SparklesIcon } from './Icons';
 
 const allServices = [
     "Web Design",
     "Web Hosting",
     "Logo Design",
-    "Branding",
-    "Ad Running (Google & Meta)",
-    "Product Shoot",
+    "Brand Identity Development",
+    "Ad Campaign Management (Google & Meta)",
+    "Product Photography",
     "SEO Optimization",
     "Fast Delivery",
-    "Fully Responsive",
-    "Mobile-Friendly"
+    "Fully Responsive Layouts",
+    "Mobile-Friendly Designs"
 ];
+
 
 const PricingCard = ({ 
     title, 
@@ -150,7 +151,7 @@ const Pricing: React.FC = () => {
                             "Interactive Animations",
                             "High Security & SEO Friendly"
                         ]}
-                        icon={<CodeBracketIcon className="w-8 h-8" />}
+                        icon={<img src="https://vgotyou.com/assets/code.png" alt="Code Development" className="w-8 h-8 object-contain invert" />}
                         gradient="from-blue-500 to-cyan-500"
                         whatsappMessage="Hello VGot You, I am interested in the Code-Based Website plan (Starting from ₹4,999). Please provide more details."
                     />
@@ -166,7 +167,7 @@ const Pricing: React.FC = () => {
                             "Inventory Management System",
                             "Conversion Optimized Checkout"
                         ]}
-                        icon={<RocketIcon className="w-8 h-8" />}
+                        icon={<img src="https://vgotyou.com/assets/shopify.png" alt="Shopify Store" className="w-8 h-8 object-contain invert" />}
                         isPopular={true}
                         gradient="from-green-500 to-emerald-600"
                         whatsappMessage="Hello VGot You, I am interested in the Shopify Store plan. Please provide more details."

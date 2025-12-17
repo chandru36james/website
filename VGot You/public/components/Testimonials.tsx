@@ -2,15 +2,16 @@
 import React from 'react';
 import FadeInSection from './FadeInSection';
 
-const avatar1 = "https://i.pravatar.cc/150?u=a01";
-const avatar2 = "https://i.pravatar.cc/150?u=a02";
-const avatar3 = "https://i.pravatar.cc/150?u=a03";
+const avatar1 = "https://www.vgotyou.com/assets/venkat.png";
+const avatar2 = "https://www.vgotyou.com/assets/santhosh.png";
+const avatar3 = "https://www.vgotyou.com/assets/aravind.png";
+const avatar4 = "https://www.vgotyou.com/assets/default.png";
 
 const testimonials = [
     { name: "Venkat Krishnan, Director Of Rudhraa Exports", text: "VGot You transformed our online presence. Their attention to detail and creative vision is unparalleled.", avatar: avatar1 },
     { name: "Santhosh, Founder Of Arctic Textiles", text: "The logo they designed perfectly captures our brand's essence. We've received so many compliments!", avatar: avatar2 },
     { name: "Aravind Kumar, Manager Of Bloom Green Developers", text: "An incredibly professional and efficient team. They delivered our complex B2B site on time and exceeded expectations.", avatar: avatar3 },
-    { name: "Sathish Kumar, Travel Coordinator at Akshaya Tours and Travels",text: "Our new website by Vgotyou has improved our enquiries and credibility. A highly professional team that understands business needs.",avatar: "https://www.vgotyou.com/assets/default-profile.png"}
+    { name: "Sathish Kumar, Travel Coordinator at Akshaya Tours and Travels",text: "Our new website by Vgotyou has improved our enquiries and credibility. A highly professional team that understands business needs.",avatar: avatar4}
 ];
 
 const TestimonialCard: React.FC<{ testimonial: { name: string; text: string; avatar: string; }, index: number }> = ({ testimonial, index }) => (
