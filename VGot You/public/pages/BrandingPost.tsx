@@ -1,20 +1,10 @@
-
 import React from 'react';
 import { SEO } from '../components/SEO';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
-interface PostProps {
-    onNavigate: (page: string) => void;
-}
-
-const BrandingPost: React.FC<PostProps> = ({ onNavigate }) => {
-    const handleContactClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-        e.preventDefault();
-        onNavigate('contact');
-    };
-
+const BrandingPost: React.FC = () => {
     return (
-        <div className="animate-fade-in p-6 sm:p-12 text-black dark:text-white transition-colors duration-300">
+        <div className="animate-fade-in p-6 sm:p-12 pt-28 sm:pt-36 text-black dark:text-white transition-colors duration-300 max-w-5xl mx-auto">
              <SEO 
                 title="Beyond the Logo: How Strategic Branding Builds Lasting Impressions"
                 description="Discover how we helped brands like Arctic Textiles and Bloomgreen Developers craft powerful identities that resonate. It's more than just a logo."
@@ -67,14 +57,14 @@ const BrandingPost: React.FC<PostProps> = ({ onNavigate }) => {
 
                     <h2 className="text-2xl font-bold">Final Thoughts</h2>
                     <p>A strategic brand is your most valuable business asset. It’s the foundation upon which you build your reputation, connect with your audience, and grow your company. Whether you're a manufacturer, a real estate developer, or an exporter, a powerful brand identity can make all the difference.</p>
-                    <p>Ready to build a brand that leaves a lasting impression? <Link
-  to="/contact"
-  className="font-bold border-b-2 border-red-600 hover:text-red-600 transition-colors no-underline"
->
-  Let’s define your story together.
-</Link></p>
+                    <p>Ready to build a brand that leaves a lasting impression? <Link to="/contact" className="font-bold border-b-2 border-red-600 hover:text-red-600 transition-colors no-underline">Let’s define your story together.</Link></p>
                 </div>
             </article>
+            <div className="mt-16 text-center">
+                <Link to="/blog" className="inline-flex items-center gap-2 text-zinc-400 hover:text-white transition-colors">
+                    &larr; Back to Journal
+                </Link>
+            </div>
         </div>
     );
 };

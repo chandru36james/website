@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import FadeInSection from './FadeInSection';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -25,7 +24,7 @@ const marqueeImages = [
 const Sparkle: React.FC<{ className?: string, style?: React.CSSProperties }> = ({ className, style }) => (
     <div className={`absolute animate-pulse ${className}`} style={style}>
         <svg width="20" height="20" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M50 0L61.226 38.774L100 50L61.226 61.226L50 100L38.774 61.226L0 50L38.774 38.774L50 0Z" className="fill-red-500 dark:fill-white transition-colors" />
+            <path d="M50 0L61.226 38.774L100 50L61.226 61.226L50 100L38.774 61.226L0 50L38.774 38.774L50 0Z" className="fill-red-500" /> {/* Removed dark:fill-white */}
         </svg>
     </div>
 );
@@ -98,9 +97,9 @@ const MarqueeColumn: React.FC<{ images: string[], reverse?: boolean, isHovered: 
             >
                 {/* Quadruple duplicate for infinite scroll loop */}
                 {[...images, ...images, ...images, ...images].map((src, i) => (
-                    <div key={i} className="relative w-full aspect-[3/4] rounded-lg overflow-hidden shadow-lg opacity-60 transition-opacity duration-300 hover:opacity-100 bg-white dark:bg-zinc-800">
+                    <div key={i} className="relative w-full aspect-[3/4] rounded-lg overflow-hidden shadow-lg opacity-60 transition-opacity duration-300 hover:opacity-100 bg-zinc-800"> {/* Removed dark:bg-zinc-800, now just bg-zinc-800 */}
                         <img src={src} alt="Project preview" className="w-full h-full object-cover" />
-                        <div className="absolute inset-0 bg-black/10 dark:bg-black/30"></div>
+                        <div className="absolute inset-0 bg-black/30"></div> {/* Removed dark:bg-black/30, now just bg-black/30 */}
                     </div>
                 ))}
             </div>
@@ -130,8 +129,8 @@ const FlipWords = () => {
                     transition={{ duration: 0.5, ease: "easeInOut" }}
                     className={`absolute top-0 left-0 w-full text-center md:text-left font-bold leading-none ${
                         index % 2 === 0 
-                        ? 'text-black dark:text-white' 
-                        : 'text-red-600 dark:text-red-500 drop-shadow-[0_0_15px_rgba(220,38,38,0.4)] dark:drop-shadow-[0_0_15px_rgba(239,68,68,0.9)]'
+                        ? 'text-white' // Changed from text-black dark:text-white
+                        : 'text-red-500 drop-shadow-[0_0_15px_rgba(239,68,68,0.9)]' // Changed from text-red-600 dark:text-red-500 drop-shadow...
                     }`}
                 >
                     {words[index]}
@@ -157,17 +156,17 @@ const CtaSection: React.FC<CtaSectionProps> = ({ setPage }) => {
     };
 
     return (
-        <FadeInSection id="cta" className="relative mt-20 h-[100dvh] w-full overflow-hidden group bg-white dark:bg-black transition-colors duration-300">
+        <FadeInSection id="cta" className="relative mt-20 h-[100dvh] w-full overflow-hidden group bg-black transition-colors duration-300"> {/* Changed bg-white dark:bg-black to bg-black */}
             {/* Unified Hover detection wrapper */}
             <div 
-                className="w-full h-full flex items-center justify-center text-center text-gray-900 dark:text-white relative"
+                className="w-full h-full flex items-center justify-center text-center text-white relative" // Changed text-gray-900 dark:text-white to text-white
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
             >
                 {/* 3D Marquee Background */}
                 <div className="absolute inset-0 z-0">
-                    <div className="absolute inset-0 overflow-hidden bg-gray-50 dark:bg-black transition-colors duration-300">
-                        <div className="absolute inset-0 w-[160%] h-[150%] -left-[30%] -top-[25%] transform rotate-[-10deg] skew-y-12 scale-110 flex justify-center items-center gap-2 md:gap-4 grayscale hover:grayscale-0 transition-all duration-1000 opacity-20 dark:opacity-100">
+                    <div className="absolute inset-0 overflow-hidden bg-black transition-colors duration-300"> {/* Changed bg-gray-50 dark:bg-black to bg-black */}
+                        <div className="absolute inset-0 w-[160%] h-[150%] -left-[30%] -top-[25%] transform rotate-[-10deg] skew-y-12 scale-110 flex justify-center items-center gap-2 md:gap-4 grayscale hover:grayscale-0 transition-all duration-1000 opacity-100"> {/* Removed dark:opacity-100, now just opacity-100 */}
                             
                             {/* Columns 1-3 (Visible on all screens) */}
                             <MarqueeColumn images={col1} isHovered={isHovered} className="flex-1 max-w-[150px] sm:max-w-[200px] md:max-w-[250px]" />
@@ -186,7 +185,7 @@ const CtaSection: React.FC<CtaSectionProps> = ({ setPage }) => {
                 </div>
 
                 {/* Overlay - Adaptive for Light/Dark */}
-                <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/70 to-white/90 dark:from-black/80 dark:via-black/40 dark:to-black/80 z-0 pointer-events-none transition-colors duration-300"></div>
+                <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-black/80 z-0 pointer-events-none transition-colors duration-300"></div> {/* Changed from-white/90 ... to-white/90 dark:from-black/80 ... to-black/80 */}
 
                 {/* Content */}
                 <div className="relative z-10 w-full max-w-[95vw] md:max-w-6xl px-4 flex flex-col items-center">
@@ -195,7 +194,7 @@ const CtaSection: React.FC<CtaSectionProps> = ({ setPage }) => {
                         whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
-                        className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-6 drop-shadow-sm dark:drop-shadow-2xl flex flex-col md:flex-row items-center md:items-baseline justify-center gap-x-3 gap-y-2 leading-tight"
+                        className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-6 drop-shadow-2xl flex flex-col md:flex-row items-center md:items-baseline justify-center gap-x-3 gap-y-2 leading-tight" // Removed dark:drop-shadow-2xl
                     >
                         <span className="whitespace-nowrap">Let’s Build Something</span>
                         <FlipWords />
@@ -206,7 +205,7 @@ const CtaSection: React.FC<CtaSectionProps> = ({ setPage }) => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-                        className="text-base sm:text-lg md:text-xl lg:text-2xl mb-8 md:mb-12 text-gray-600 dark:text-gray-300 leading-relaxed max-w-lg md:max-w-3xl mx-auto"
+                        className="text-base sm:text-lg md:text-xl lg:text-2xl mb-8 md:mb-12 text-gray-300 leading-relaxed max-w-lg md:max-w-3xl mx-auto" // Changed text-gray-600 dark:text-gray-300 to text-gray-300
                     >
                         From stunning websites to unique brand identities, I transform your ideas into reality.
                         Collaborate with us to craft digital experiences that truly inspire.
@@ -219,7 +218,7 @@ const CtaSection: React.FC<CtaSectionProps> = ({ setPage }) => {
 >
   <Link
     to="/contact"
-    className="inline-block bg-black text-white dark:bg-white/10 dark:backdrop-blur-md dark:border-2 dark:border-white/50 dark:text-white font-semibold py-3 px-8 sm:py-4 sm:px-10 text-sm sm:text-base rounded-full hover:bg-gray-800 dark:hover:bg-white dark:hover:text-black hover:scale-110 transition-all duration-300 shadow-lg dark:shadow-[0_0_20px_rgba(255,255,255,0.2)] cursor-pointer z-30"
+    className="inline-block bg-white/10 backdrop-blur-md border-2 border-white/50 text-white font-semibold py-3 px-8 sm:py-4 sm:px-10 text-sm sm:text-base rounded-full hover:bg-white hover:text-black hover:scale-110 transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.2)] cursor-pointer z-30" // Simplified classes
   >
     Get In Touch
   </Link>
@@ -230,12 +229,7 @@ const CtaSection: React.FC<CtaSectionProps> = ({ setPage }) => {
                 <Sparkle className="top-[20%] left-[15%]" style={{ animationDelay: '0.3s' }} />
                 <Sparkle className="bottom-[25%] right-[20%]" style={{ animationDelay: '0.8s' }} />
                 
-                {/* Curved Divider - Adaptive fill */}
-                <div className="absolute bottom-0 left-0 right-0 overflow-hidden leading-[0] z-20 pointer-events-none">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none" className="block w-full h-16 sm:h-24 md:h-40">
-                        <path d="M0,224 C480,320 960,128 1440,224 L1440,320 L0,320Z" className="fill-black dark:fill-black transition-colors duration-300" />
-                    </svg>
-                </div>
+                
             </div>
         </FadeInSection>
     );

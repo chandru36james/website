@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, Link, useLocation } from 'react-router-dom';
+import { LinkedInIcon, GitHubIcon, InstagramIcon, GoogleIcon } from './Icons';
 
 
 const underlineClassName = (isActive: boolean) => `absolute -bottom-1 left-0 w-full h-0.5 bg-current transform transition-transform duration-300 ease-out ${isActive ? 'scale-x-100' : 'scale-x-0'} group-hover:scale-x-100 origin-center`;
@@ -33,7 +34,7 @@ const NavLinks: React.FC<{className?: string; onClick?: () => void;}> = ({ class
                     </>
                 )}
             </NavLink>
-            <NavLink to="/logo-showcase" className={linkBaseClass} onClick={onClick}>
+            <NavLink to="/Logo-Showcase" className={linkBaseClass} onClick={onClick}>
                  {({isActive}) => (
                     <>
                         Logo Design
@@ -41,7 +42,7 @@ const NavLinks: React.FC<{className?: string; onClick?: () => void;}> = ({ class
                     </>
                 )}
             </NavLink>
-             <NavLink to="/Blog" className={linkBaseClass} onClick={onClick}>
+             <NavLink to="/blog" className={linkBaseClass} onClick={onClick}>
                  {({isActive}) => (
                     <>
                         Blog
@@ -73,19 +74,16 @@ const Header: React.FC = () => {
     // Header changes on scroll or on non-home pages.
     const isHeaderActive = isScrolled || !isHomePage;
     
-    const headerBg = isHeaderActive ? 'bg-brand-black/90 backdrop-blur-sm shadow-lg' : 'bg-transparent';
+    const headerBg = isHeaderActive ? 'bg-zinc-950/90 backdrop-blur-md shadow-lg border border-white/5' : 'bg-transparent';
     const textColor = 'text-white';
     const textHover = 'hover:text-zinc-300';
-    const buttonClasses = isHeaderActive 
-        ? 'bg-white text-brand-black hover:bg-zinc-200'
-        : 'bg-brand-black text-white hover:bg-zinc-700';
+    const buttonClasses = 'bg-white text-black hover:bg-zinc-200';
 
     return (
         <>
             <header 
-  className={`fixed top-4 left-1/2 -translate-x-1/2 w-11/12 md:w-11/12 lg:w-7/12 max-w-6xl z-50 transition-all duration-300 ${headerBg} rounded-full p-2`}
->
-
+                className={`fixed top-4 left-1/2 -translate-x-1/2 w-11/12 md:w-11/12 lg:w-7/12 max-w-6xl z-50 transition-all duration-300 ${headerBg} rounded-full p-2`}
+            >
                 <div className="flex justify-between items-center px-4">
                     <NavLink to="/" className={`text-2xl font-bold flex items-center gap-2 ${textColor}`}>
                          <img src="https://www.vgotyou.com/assets/logo.png" alt="VGot You Logo" className={`h-8 w-8 object-contain transition-all duration-300`} />
@@ -110,14 +108,35 @@ const Header: React.FC = () => {
                     </button>
                 </div>
             </header>
+            
             {/* Mobile Menu */}
-            <div className={`fixed top-0 left-0 w-full h-full bg-white/95 backdrop-blur-lg z-40 transition-transform duration-300 ease-in-out ${isMenuOpen ? 'translate-y-0' : '-translate-y-full'} md:hidden`}>
-                <nav className="flex flex-col items-center justify-center h-full space-y-8 text-xl">
-                   <NavLinks className="text-brand-black hover:text-zinc-600 transition-colors" onClick={() => setIsMenuOpen(false)} />
-                    <Link to="/contact" onClick={() => setIsMenuOpen(false)} className="bg-brand-black text-white font-semibold py-3 px-8 rounded-full hover:bg-zinc-700 transition-colors mt-4">
+            <div className={`fixed top-0 left-0 w-full h-full bg-black/95 backdrop-blur-xl z-40 transition-transform duration-300 ease-in-out ${isMenuOpen ? 'translate-y-0' : '-translate-y-full'} md:hidden flex flex-col`}>
+                {/* Centered Navigation Links */}
+                <nav className="flex-grow flex flex-col items-center justify-center space-y-8 text-xl text-white">
+                   <NavLinks className="hover:text-zinc-400 transition-colors" onClick={() => setIsMenuOpen(false)} />
+                    <Link to="/contact" onClick={() => setIsMenuOpen(false)} className="bg-white text-black font-semibold py-3 px-8 rounded-full hover:bg-zinc-200 transition-colors mt-4">
                         Contact
                     </Link>
                 </nav>
+                
+                {/* Social Icons at the Bottom */}
+                <div className="pb-12 flex flex-col items-center gap-6">
+                    <div className="w-12 h-[1px] bg-white/10"></div>
+                    <div className="flex gap-8 justify-center">
+                        <a href="https://www.linkedin.com/in/vgotyou/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-gray-400 hover:text-white transition-all hover:scale-125 duration-300">
+                            <LinkedInIcon className="w-6 h-6" />
+                        </a>
+                        <a href="https://github.com/chandru36james/" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="text-gray-400 hover:text-white transition-all hover:scale-125 duration-300">
+                            <GitHubIcon className="w-6 h-6" />
+                        </a>
+                        <a href="https://www.instagram.com/vgot_you/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-gray-400 hover:text-white transition-all hover:scale-125 duration-300">
+                            <InstagramIcon className="w-6 h-6" />
+                        </a>
+                        <a href="https://share.google/dFoHWjrgvSH8htAoH" target="_blank" rel="noopener noreferrer" aria-label="Google" className="text-gray-400 hover:text-white transition-all hover:scale-125 duration-300">
+                            <GoogleIcon className="w-6 h-6" />
+                        </a>
+                    </div>
+                </div>
             </div>
         </>
     );

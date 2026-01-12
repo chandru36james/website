@@ -1,261 +1,234 @@
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
+import { blogs } from '../lib/data';
+import { Helmet } from "react-helmet";   // ✅ SEO
+// FIX: Cast motion to any to resolve IntrinsicAttributes prop errors for motion components
+const m = motion as any;
 
-import React, { useState, useEffect } from 'react';
-import ArcticTextilesPost from './ArcticTextilesPost';
-import VesaHomesPost from './VesaHomesPost';
-import BrandingPost from './BrandingPost';
+const categories = ['All', 'Case Study', 'E-commerce', 'Branding', 'Strategy'];
 
+const Blog: React.FC = () => {
+    const [activeCategory, setActiveCategory] = useState('All');
 
-interface BlogProps {
-    setPage: (page: string) => void;
-}
+    const filteredPosts = activeCategory === 'All' 
+        ? blogs 
+        : blogs.filter(post => post.category === activeCategory);
 
-const posts = [
-    {
-        slug: 'blog-post/arctic-textiles',
-        category: 'Case Study',
-        title: 'How Our Web Design Helped Arctic Textiles Reach Global Markets',
-        excerpt: 'See how a modern, SEO-optimized website design helped Arctic Textiles expand globally.',
-        imageUrl: 'https://vgotyou.com/assets/arctic.png',
-        publishedDate: '2023-10-26',
-        author: 'VGot You'
-    },
-    {
-        slug: 'blog-post/vesa-homes',
-        category: 'E-commerce',
-        title: 'Crafting an Elegant E-commerce Experience for Vesa Homes',
-        excerpt: 'A deep dive into building a direct-to-consumer brand for a premium home textile company.',
-        imageUrl: 'https://www.vgotyou.com/assets/vesahomes.png',
-        publishedDate: '2023-11-05',
-        author: 'VGot You'
-    },
-    {
-        slug: 'blog-post/branding-identity',
-        category: 'Branding',
-        title: 'Beyond the Logo: How Strategic Branding Builds Lasting Impressions',
-        excerpt: 'Discover how we helped brands like Arctic Textiles and Bloomgreen Developers craft powerful identities that resonate.',
-        imageUrl: 'https://images.unsplash.com/photo-1558655146-364adaf1fcc9?q=80&w=1974&auto=format&fit=crop',
-        publishedDate: '2023-11-12',
-        author: 'VGot You'
-    }
-];
-
-const [featuredPost, ...otherPosts] = posts;
-
-// SEO Component for JSON-LD structured data. This is preserved for SEO.
-const BlogSeoData = () => {
-    const schema = {
-        "@context": "https://schema.org",
-        "@type": "Blog",
-        "name": "VGot You Blog",
-        "description": "Insights, case studies, and thoughts on design, development, and digital strategy from VGot You.",
-        "blogPost": posts.map(post => ({
-            "@type": "BlogPosting",
-            "mainEntityOfPage": {
-                "@type": "WebPage",
-                "@id": `https://vgotyou.example.com/${post.slug}` 
-            },
-            "headline": post.title,
-            "description": post.excerpt,
-            "image": post.imageUrl,
-            "author": {
-                "@type": "Organization",
-                "name": post.author
-            },
-            "publisher": {
-                "@type": "Organization",
-                "name": "VGot You",
-                "logo": {
-                    "@type": "ImageObject",
-                    "url": "https://vgotyou.example.com/logo.png"
+    return (
+        <main className="min-h-screen bg-[#020202] text-white selection:bg-red-600/30 overflow-x-hidden pt-24 pb-32">
+            <style>{`
+                .text-technical { font-family: 'JetBrains Mono', 'Fira Code', monospace; }
+                @keyframes scanline {
+                    0% { transform: translateY(-100%); }
+                    100% { transform: translateY(100%); }
                 }
-            },
-            "datePublished": post.publishedDate
-        }))
-    };
-    return (
-        <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-        />
-    );
-};
+                .scanline {
+                    position: absolute;
+                    top: 0; left: 0; width: 100%; height: 1px;
+                    background: linear-gradient(to right, transparent, #dc2626, transparent);
+                    animation: scanline 3s linear infinite;
+                    z-index: 10;
+                    opacity: 0;
+                }
+                .group:hover .scanline { opacity: 1; }
+                .no-scrollbar::-webkit-scrollbar { display: none; }
+                .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+            `}</style>
+            <Helmet>
+  {/* ================= BASIC SEO ================= */}
+  <title>VGot You Blog | Web Design, SEO & Digital Growth Insights</title>
 
-const FeaturedPostCard: React.FC<(typeof posts[0]) & { onReadMore: (slug: string) => void }> = ({ slug, category, title, excerpt, imageUrl, publishedDate, onReadMore }) => {
-    const handleReadMoreClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-        e.preventDefault();
-        onReadMore(slug);
-    }
-    
-    return (
-        <article className="group grid md:grid-cols-2 gap-8 md:gap-12 items-center mb-20 md:mb-28 border-b border-gray-200 dark:border-zinc-800 pb-20">
-            <a href={`#${slug}`} onClick={handleReadMoreClick} className="block overflow-hidden" aria-label={`Read more about ${title}`}>
-                <img 
-                    src={imageUrl} 
-                    alt={title} 
-                    className="w-full aspect-video md:aspect-auto h-full object-cover transition-all duration-500 ease-in-out group-hover:scale-105 filter grayscale group-hover:grayscale-0"
-                />
-            </a>
-            <div>
-                <p className="text-red-600 dark:text-red-500 text-sm font-bold mb-3 tracking-widest uppercase">
-                    <span>{category}</span> <span className="text-gray-400">&bull;</span> <span className="text-black/60 dark:text-white/60">{new Date(publishedDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
-                </p>
-                <h2 className="text-3xl md:text-4xl font-serif font-bold text-black dark:text-white mb-4">
-                    <a href={`#${slug}`} onClick={handleReadMoreClick} className="hover:text-red-600 dark:hover:text-red-500 transition-colors">
-                        {title}
-                    </a>
-                </h2>
-                <p className="text-black/70 dark:text-white/70 text-lg mb-6 leading-relaxed">{excerpt}</p>
-                <a href={`#${slug}`} onClick={handleReadMoreClick} className="text-black dark:text-white font-bold mt-auto self-start text-lg pb-1 bg-left-bottom bg-gradient-to-r from-red-600 to-red-600 dark:from-red-500 dark:to-red-500 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out group-hover:text-red-600 dark:group-hover:text-red-500">
-                    Read Story
-                    <span className="inline-block transition-transform group-hover:translate-x-2 motion-reduce:transform-none ml-2">&rarr;</span>
-                </a>
-            </div>
-        </article>
-    );
-};
+  <meta
+    name="description"
+    content="Explore in-depth case studies, web design insights, SEO strategies, and branding guides by VGot You, a digital agency in Karur, Tamil Nadu helping businesses grow online."
+  />
 
-const PostCard: React.FC<(typeof posts[0]) & { onReadMore: (slug: string) => void }> = ({ slug, category, title, excerpt, imageUrl, publishedDate, onReadMore }) => {
-    const handleReadMoreClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-        e.preventDefault();
-        onReadMore(slug);
-    }
+  <link rel="canonical" href="https://www.vgotyou.com/blog" />
+  <meta name="robots" content="index, follow" />
 
-    return (
-        <article className="group flex flex-col">
-            <a href={`#${slug}`} onClick={handleReadMoreClick} className="block overflow-hidden mb-6" aria-label={`Read more about ${title}`}>
-                <img 
-                    src={imageUrl} 
-                    alt={title} 
-                    className="w-full aspect-video object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500 ease-in-out group-hover:scale-105" 
-                />
-            </a>
-            <div className="flex flex-col flex-grow">
-                <p className="text-red-600 dark:text-red-500 text-xs font-bold mb-2 tracking-widest uppercase">
-                    <span>{category}</span> <span className="text-gray-400">&bull;</span> <span className="text-black/60 dark:text-white/60">{new Date(publishedDate).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
-                </p>
-                <h3 className="text-2xl font-serif font-bold text-black dark:text-white mb-4 flex-grow">
-                    <a href={`#${slug}`} onClick={handleReadMoreClick} className="hover:text-red-600 dark:hover:text-red-500 transition-colors">
-                        {title}
-                    </a>
-                </h3>
-                <p className="text-black/70 dark:text-white/70 text-base mb-5">{excerpt}</p>
-                <a href={`#${slug}`} onClick={handleReadMoreClick} className="text-black dark:text-white font-bold mt-auto self-start pb-1 bg-left-bottom bg-gradient-to-r from-red-600 to-red-600 dark:from-red-500 dark:to-red-500 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out group-hover:text-red-600 dark:group-hover:text-red-500">
-                    Read Story
-                    <span className="inline-block transition-transform group-hover:translate-x-2 motion-reduce:transform-none ml-2">&rarr;</span>
-                </a>
-            </div>
-        </article>
-    );
-};
+  {/* ================= OPEN GRAPH ================= */}
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="VGot You Blog | Digital Marketing & Web Design Insights" />
+  <meta
+    property="og:description"
+    content="Actionable insights on web design, SEO, branding, and online business growth by VGot You."
+  />
+  <meta
+    property="og:image"
+    content="https://www.vgotyou.com/assets/logo.png"
+  />
+  <meta property="og:url" content="https://www.vgotyou.com/blog" />
+  <meta property="og:site_name" content="VGot You" />
+  <meta property="og:locale" content="en_IN" />
 
-const BlogPostModal: React.FC<{ slug: string; onClose: () => void; setPage: (page: string) => void; }> = ({ slug, onClose, setPage }) => {
-    
-    const handleNavigate = (page: string) => {
-        onClose();
-        setPage(page);
-    };
-    
-    const PostComponent = () => {
-        switch (slug) {
-            case 'blog-post/arctic-textiles':
-                return <ArcticTextilesPost onNavigate={handleNavigate} />;
-            case 'blog-post/vesa-homes':
-                return <VesaHomesPost onNavigate={handleNavigate} />;
-            case 'blog-post/branding-identity':
-                return <BrandingPost onNavigate={handleNavigate} />;
-            default:
-                return null;
+  {/* ================= TWITTER ================= */}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="VGot You Blog | Web Design & SEO Knowledge Hub" />
+  <meta
+    name="twitter:description"
+    content="Latest articles on web design, SEO, branding, and digital marketing by VGot You."
+  />
+  <meta
+    name="twitter:image"
+    content="https://www.vgotyou.com/assets/logo.png"
+  />
+
+  {/* ================= BLOG PAGE SCHEMA ================= */}
+  <script type="application/ld+json">
+    {JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "@id": "https://www.vgotyou.com/blog#blog",
+      name: "VGot You Blog",
+      url: "https://www.vgotyou.com/blog",
+      description:
+        "Expert blog by VGot You covering web design, SEO, branding, digital marketing, and online business growth.",
+      publisher: {
+        "@type": "Organization",
+        name: "VGot You",
+        url: "https://www.vgotyou.com",
+        logo: {
+          "@type": "ImageObject",
+          url: "https://www.vgotyou.com/assets/logo.png"
         }
-    };
-
-    useEffect(() => {
-        const handleKeyDown = (event: KeyboardEvent) => {
-            if (event.key === 'Escape') {
-                onClose();
-            }
-        };
-        window.addEventListener('keydown', handleKeyDown);
-        return () => {
-            window.removeEventListener('keydown', handleKeyDown);
-        };
-    }, [onClose]);
-
-    return (
-        <div
-            className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fade-in"
-            onClick={onClose}
-            aria-modal="true"
-            role="dialog"
-        >
-            <div
-                className="bg-white dark:bg-black border border-gray-200 dark:border-white/10 rounded-lg shadow-2xl w-full max-w-4xl max-h-[90vh] relative flex flex-col transition-colors duration-300"
-                onClick={(e) => e.stopPropagation()} 
-            >
-                 <div className="flex-shrink-0 p-4">
-                    <button
-                        onClick={onClose}
-                        className="absolute top-4 right-4 text-black dark:text-white hover:text-red-600 dark:hover:text-red-500 transition-colors z-20 bg-white/50 dark:bg-black/50 backdrop-blur-sm rounded-full p-2"
-                        aria-label="Close post"
-                    >
-                        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                    </button>
-                </div>
-                {/* Redesigned Custom Scrollbar matching Black/White/Red theme */}
-                <div className="overflow-y-auto px-2 sm:px-0 flex-grow [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-white [&::-webkit-scrollbar-track]:dark:bg-black [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-thumb]:bg-red-600 [&::-webkit-scrollbar-thumb]:rounded-full hover:[&::-webkit-scrollbar-thumb]:bg-red-700">
-                    <PostComponent />
-                </div>
-            </div>
-        </div>
-    );
-};
-
-const Blog: React.FC<BlogProps> = ({ setPage }) => {
-    const [selectedPostSlug, setSelectedPostSlug] = useState<string | null>(null);
-
-    useEffect(() => {
-        if (selectedPostSlug) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = 'auto';
+      },
+      about: {
+        "@type": "Service",
+        name: "Web Design, SEO & Digital Marketing",
+        provider: {
+          "@type": "LocalBusiness",
+          name: "VGot You",
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: "Karur",
+            addressRegion: "Tamil Nadu",
+            addressCountry: "IN"
+          }
         }
-        return () => {
-            document.body.style.overflow = 'auto';
-        };
-    }, [selectedPostSlug]);
+      }
+    })}
+  </script>
+</Helmet>
 
-    const handleReadMore = (slug: string) => {
-        setSelectedPostSlug(slug);
-    };
 
-    const handleCloseModal = () => {
-        setSelectedPostSlug(null);
-    };
-
-    return (
-        <>
-            <BlogSeoData />
-            <main className="w-full max-w-6xl mx-auto animate-fade-in px-4 py-20 sm:py-28">
-                <header className="text-center mb-20 md:mb-28">
-                    <h1 className="text-5xl md:text-7xl font-serif font-bold text-black dark:text-white tracking-tight">
-                        The Journal
-                    </h1>
-                    <p className="text-lg text-black/60 dark:text-white/60 mt-4 max-w-2xl mx-auto">
-                        Insights, case studies, and thoughts on design, development, and digital strategy from our studio.
-                    </p>
-                </header>
-
-                {featuredPost && <FeaturedPostCard {...featuredPost} onReadMore={handleReadMore} />}
+            {/* Header Section */}
+            <section className="relative px-6 pt-16 pb-20 border-b border-zinc-900 overflow-hidden">
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff02_1px,transparent_1px),linear-gradient(to_bottom,#ffffff02_1px,transparent_1px)] bg-[size:40px_40px] opacity-20"></div>
+                <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-red-600/5 to-transparent pointer-events-none"></div>
                 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-20">
-                    {otherPosts.map(post => (
-                        <PostCard key={post.slug} {...post} onReadMore={handleReadMore} />
-                    ))}
+                <div className="container mx-auto max-w-7xl relative z-10">
+                    <m.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8 }}
+                    >
+                        <span className="inline-block px-3 py-1 mb-4 border border-zinc-800 rounded-sm bg-black/50 text-technical text-[9px] md:text-[10px] tracking-[0.4em] uppercase text-zinc-500">
+                            Archive v.4.0 / Knowledge_Base
+                        </span>
+                        <h1 className="sr-only">
+                        VGot You Blog – Web Design, SEO, Branding & Digital Growth Case Studies
+                        </h1>
+
+                        <h1 className="text-[14vw] sm:text-[10vw] md:text-[7vw] font-black leading-[0.85] tracking-tighter uppercase mb-6">
+                            The <br/>
+                            <span className="text-zinc-800">Journal</span>
+                        </h1>
+                        <p className="text-zinc-500 max-w-xl text-base md:text-lg font-light leading-relaxed">
+                            A collection of technical case studies and digital growth strategies from the VGot You laboratory.
+                        </p>
+                    </m.div>
                 </div>
-            </main>
-            {selectedPostSlug && <BlogPostModal slug={selectedPostSlug} onClose={handleCloseModal} setPage={setPage} />}
-        </>
+            </section>
+
+            {/* Category Filter */}
+            <section className="sticky top-[72px] md:top-[80px] z-40 bg-black/80 backdrop-blur-md border-b border-zinc-900 overflow-hidden">
+                <div className="container mx-auto max-w-7xl relative">
+                    <div className="px-6 py-4 flex items-center gap-4 overflow-x-auto no-scrollbar scroll-smooth">
+                        <span className="text-technical text-[8px] uppercase tracking-widest text-red-600 mr-2 font-bold whitespace-nowrap">Node:</span>
+                        {categories.map((cat) => (
+                            <button
+                                key={cat}
+                                onClick={() => setActiveCategory(cat)}
+                                className={`text-technical text-[10px] uppercase tracking-[0.2em] whitespace-nowrap transition-all px-4 py-2 rounded-sm border active:scale-95 ${
+                                    activeCategory === cat 
+                                        ? 'bg-red-600 border-red-600 text-white shadow-[0_0_15px_rgba(220,38,38,0.3)]' 
+                                        : 'border-zinc-800 text-zinc-500 hover:text-zinc-300 hover:border-zinc-700'
+                                }`}
+                            >
+                                {cat}
+                            </button>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Blog Grid */}
+            <section className="container mx-auto max-w-7xl px-4 py-12 md:py-20">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                    <AnimatePresence mode="popLayout">
+                        {filteredPosts.map((post, index) => (
+                            <m.article
+                                key={post.slug}
+                                layout
+                                initial={{ opacity: 0, scale: 0.95 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 0.95 }}
+                                transition={{ duration: 0.4, delay: index * 0.1 }}
+                                className="group flex flex-col h-full bg-[#080808] border border-zinc-900 hover:border-red-600/30 transition-all duration-500 rounded-sm overflow-hidden active:scale-[0.98] md:active:scale-100"
+                            >
+                                <div className="flex justify-between items-center px-4 py-3 border-b border-zinc-900 bg-zinc-950/50">
+                                    <div className="flex items-center gap-2">
+                                        <div className="w-1 h-1 rounded-full bg-red-600 group-hover:animate-pulse"></div>
+                                        <span className="text-technical text-[8px] tracking-[0.2em] text-zinc-600 uppercase">{post.idCode || 'ENTRY'}</span>
+                                    </div>
+                                    <span className="text-technical text-[7px] text-zinc-800">READY</span>
+                                </div>
+
+                                <Link to={`/blog/${post.slug}`} className="relative aspect-video block overflow-hidden">
+                                    <div className="scanline"></div>
+                                    <img 
+                                        src={post.imageUrl} 
+                                        alt={post.title} 
+                                        className="w-full h-full object-cover grayscale md:transition-all duration-700 md:group-hover:grayscale-0 md:group-hover:scale-110 opacity-70 group-hover:opacity-100"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
+                                    
+                                    <div className="absolute bottom-3 left-4 flex gap-4 text-technical text-[7px] text-white/50 tracking-widest uppercase">
+                                        <span>{post.readTime || '5 min'}</span>
+                                        <span>{new Date(post.publishedDate).toLocaleDateString()}</span>
+                                    </div>
+                                </Link>
+
+                                <div className="p-5 md:p-6 flex flex-col flex-grow">
+                                    <span className="text-technical text-[9px] font-bold text-red-600 uppercase tracking-[0.3em] mb-3 block">
+                                        {post.category}
+                                    </span>
+                                    <h2 className="text-xl font-bold text-white mb-4 leading-tight group-hover:text-red-500 transition-colors">
+                                        <Link to={`/blog/${post.slug}`}>
+                                            {post.title}
+                                        </Link>
+                                    </h2>
+                                    <p className="text-zinc-500 text-sm leading-relaxed mb-8 flex-grow line-clamp-3">
+                                        {post.excerpt}
+                                    </p>
+
+                                    <div className="flex items-center justify-between mt-auto">
+                                        <Link 
+                                            to={`/blog/${post.slug}`} 
+                                            className="group/btn relative inline-flex items-center gap-3 text-technical text-[9px] font-bold uppercase tracking-[0.3em] text-white hover:text-red-500 transition-colors"
+                                        >
+                                            Read_Entry
+                                            <span className="w-6 h-[1px] bg-zinc-800 group-hover/btn:w-10 group-hover/btn:bg-red-600 transition-all duration-300"></span>
+                                        </Link>
+                                    </div>
+                                </div>
+                            </m.article>
+                        ))}
+                    </AnimatePresence>
+                </div>
+            </section>
+        </main>
     );
 };
 

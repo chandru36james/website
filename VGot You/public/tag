@@ -1,0 +1,188 @@
+ <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XRBQTY2DLC"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-XRBQTY2DLC');
+    </script>
+
+
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "tiybrh7g7z");
+</script>
+
+
+
+  <Helmet>
+  <title>Logo Showcase | Creative Logo Designs by VGot You</title>
+  <meta 
+    name="description" 
+    content="Explore VGot You’s showcase of custom and professional logo designs created to elevate brand identities." 
+  />
+  <meta 
+    name="keywords" 
+    content="logo showcase, professional logo designs, branding, creative logos, VGot You" 
+  />
+  <link rel="canonical" href="https://www.vgotyou.com/logo-showcase" />
+
+  {/* Open Graph */}
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Logo Showcase | VGot You" />
+  <meta property="og:description" content="See unique and creative logo designs made for brands worldwide." />
+  <meta property="og:image" content="https://www.vgotyou.com/assets/logo-designer.png" />
+  <meta property="og:url" content="https://www.vgotyou.com/logo-showcase" />
+
+  {/* Twitter */}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Logo Showcase | VGot You" />
+  <meta name="twitter:description" content="Browse our logo showcase with professional branding solutions." />
+  <meta name="twitter:image" content="https://www.vgotyou.com/assets/logo-designer.png" />
+
+  {/* Schema.org */}
+  <script type="application/ld+json">
+    {`
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Logo Showcase",
+      "url": "https://www.vgotyou.com/logo-showcase",
+      "description": "Collection of creative and professional logos designed by VGot You."
+    }
+    `}
+  </script>
+</Helmet>
+
+
+       <Helmet>
+  <title>Web Design Services | Custom Websites by VGot You</title>
+  <meta 
+    name="description" 
+    content="VGot You provides responsive, SEO-friendly, and custom web design services to help businesses build their online presence." 
+  />
+  <meta 
+    name="keywords" 
+    content="web design, responsive websites, custom web development, UI UX design, SEO-friendly sites, VGot You" 
+  />
+  <link rel="canonical" href="https://www.vgotyou.com/web-design" />
+
+  {/* Open Graph */}
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Web Design Services | Custom Websites by VGot You" />
+  <meta property="og:description" content="Modern and responsive web design services to grow your brand." />
+  <meta property="og:image" content="https://www.vgotyou.com/assets/web-designer.jpg" />
+  <meta property="og:url" content="https://www.vgotyou.com/web-design" />
+
+  {/* Twitter */}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Web Design Services | Custom Websites by VGot You" />
+  <meta name="twitter:description" content="Custom websites designed for performance, SEO, and user experience." />
+  <meta name="twitter:image" content="https://www.vgotyou.com/assets/web-designer.jpg" />
+
+  {/* Schema.org */}
+  <script type="application/ld+json">
+    {`
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Web Design",
+      "url": "https://www.vgotyou.com/web-design",
+      "description": "Custom and responsive web design services by VGot You.",
+      "provider": {
+        "@type": "Organization",
+        "name": "VGot You",
+        "url": "https://www.vgotyou.com",
+        "logo": "https://www.vgotyou.com/assets/VGotYou.png"
+      },
+      "areaServed": {
+        "@type": "Place",
+        "name": "Worldwide"
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://www.vgotyou.com/web-design",
+        "priceCurrency": "USD",
+        "price": "0",
+        "eligibleRegion": {
+          "@type": "Place",
+          "name": "Worldwide"
+        }
+      }
+    }
+    `}
+  </script>
+</Helmet>
+
+
+ <Helmet>
+  {/* ================= BASIC SEO ================= */}
+  <title>Contact VGot You | Hire a Web & Logo Designer in Karur</title>
+
+  <meta
+    name="description"
+    content="Contact VGot You for professional web design, logo design, and branding services. Let’s build a strong digital presence for your business."
+  />
+
+  <link rel="canonical" href="https://www.vgotyou.com/contact" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="index, follow" />
+
+  {/* ================= OPEN GRAPH ================= */}
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Contact VGot You | Web & Logo Design Studio" />
+  <meta
+    property="og:description"
+    content="Get in touch with VGot You for expert web design, logo design, and branding services."
+  />
+  <meta property="og:url" content="https://www.vgotyou.com/contact" />
+  <meta property="og:site_name" content="VGot You" />
+  <meta
+    property="og:image"
+    content="https://www.vgotyou.com/assets/VGotYou-32x32.png"
+  />
+  <meta property="og:locale" content="en_IN" />
+
+  {/* ================= TWITTER ================= */}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Contact VGot You | Web & Logo Design Studio" />
+  <meta
+    name="twitter:description"
+    content="Let’s collaborate with VGot You for modern web design and branding."
+  />
+  <meta
+    name="twitter:image"
+    content="https://www.vgotyou.com/assets/contact-preview.jpg"
+  />
+
+  {/* ================= CONTACT PAGE SCHEMA ================= */}
+  <script type="application/ld+json">
+    {JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "@id": "https://www.vgotyou.com/#localbusiness",
+      name: "VGot You",
+      url: "https://www.vgotyou.com/contact",
+      logo: "https://www.vgotyou.com/assets/VGotYou.png",
+      image: "https://www.vgotyou.com/assets/contact-preview.jpg",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Karur",
+        addressRegion: "Tamil Nadu",
+        addressCountry: "IN"
+      },
+      contactPoint: {
+        "@type": "ContactPoint",
+        telephone: "+91-7871120415",
+        email: "info@vgotyou.com",
+        contactType: "customer support",
+        availableLanguage: ["English", "Tamil"]
+      }
+    })}
+  </script>
+</Helmet>

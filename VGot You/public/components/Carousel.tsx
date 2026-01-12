@@ -80,7 +80,7 @@ const ProjectCarousel: React.FC = () => {
   const visibleProjects = projects.slice(startIndex, startIndex + THUMBNAILS_PER_PAGE);
 
   return (
-    <section className="bg-gray-50 py-10 md:py-12 px-4">
+    <section className="bg-black py-10 md:py-12 px-4">
       <div className="container mx-auto text-center max-w-5xl">
         <h2 className="text-2xl md:text-3xl font-bold">Our Project Showcase</h2>
         <p className="mt-2 text-base text-gray-600">

@@ -1,24 +1,14 @@
-
 import React from 'react';
 import { SEO } from '../components/SEO';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
-interface PostProps {
-    onNavigate: (page: string) => void;
-}
-
-const VesaHomesPost: React.FC<PostProps> = ({ onNavigate }) => {
-    const handleContactClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-        e.preventDefault();
-        onNavigate('contact');
-    };
-
+const VesaHomesPost: React.FC = () => {
     return (
-        <div className="animate-fade-in p-6 sm:p-12 text-black dark:text-white transition-colors duration-300">
+        <div className="animate-fade-in p-6 sm:p-12 pt-28 sm:pt-36 text-black dark:text-white transition-colors duration-300 max-w-5xl mx-auto">
             <SEO 
                 title="Crafting an Elegant E-commerce Experience for Vesa Homes"
                 description="A deep dive into building a direct-to-consumer brand for a premium home textile company. Learn how we used design to drive sales."
-                image="https://vgotyou.com/assets/vesa-Cf2lvZK9.png"
+                image="https://vgotyou.com/assets/vesa.png"
                 datePublished="2023-11-05"
                 url="https://vgotyou.com/blog/vesa-homes"
             />
@@ -36,7 +26,7 @@ const VesaHomesPost: React.FC<PostProps> = ({ onNavigate }) => {
 
                 {/* Featured Image */}
                 <img 
-                    src="https://www.vgotyou.com/assets/vesahomes.png" 
+                    src="https://vgotyou.com/assets/vesa.png" 
                     alt="Cozy and modern home textiles from Vesa Homes"
                     className="w-full h-auto max-h-[500px] object-cover rounded-lg shadow-2xl mb-12 grayscale hover:grayscale-0 transition-all duration-500"
                 />
@@ -95,14 +85,14 @@ const VesaHomesPost: React.FC<PostProps> = ({ onNavigate }) => {
                     
                     <h2 className="text-2xl font-bold">Final Thoughts</h2>
                     <p>This project proves that a thoughtful, story-driven e-commerce design can bridge the gap between a traditional craft and the modern digital consumer. For Vesa Homes, their website is now the heart of their brand, beautifully showcasing their products to the world.</p>
-                    <p>Ready to build an online store that tells your brand's story?  <Link
-    to="/contact"
-    className="font-bold border-b-2 border-red-600 hover:text-red-600 transition-colors no-underline"
-  >
-    Get in touch with us.
-  </Link></p>
+                    <p>Ready to build an online store that tells your brand's story? <Link to="/contact" className="font-bold border-b-2 border-red-600 hover:text-red-600 transition-colors no-underline">Get in touch with us.</Link></p>
                 </div>
             </article>
+            <div className="mt-16 text-center">
+                <Link to="/blog" className="inline-flex items-center gap-2 text-zinc-400 hover:text-white transition-colors">
+                    &larr; Back to Journal
+                </Link>
+            </div>
         </div>
     );
 };

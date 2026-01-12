@@ -9,9 +9,15 @@ import WebDesign from './pages/WebDesign';
 import LogoShowcase from './pages/LogoShowcase';
 import AboutMe from './pages/chandru';
 import Blog from "./pages/Blog";
+import ArcticTextilesPost from './pages/ArcticTextilesPost';
+import VesaHomesPost from './pages/VesaHomesPost';
+import BrandingPost from './pages/BrandingPost';
 import Contact from './pages/Contact';
 import CookieConsent from './components/CookieConsent';
 import NotFound from "./pages/NotFound";
+
+import BlogPostPage from './pages/BlogPostPage';
+
 
 const ScrollToTop: React.FC = () => {
     const { pathname } = useLocation();
@@ -26,6 +32,7 @@ const ScrollToTop: React.FC = () => {
 const App: React.FC = () => {
     return (
         <BrowserRouter>
+        
             <ScrollToTop />
             <Header />
             <main>
@@ -35,6 +42,7 @@ const App: React.FC = () => {
                     <Route path="/logo-showcase" element={<LogoShowcase />} />
                     <Route path="/chandru" element={<AboutMe />} />
                     <Route path="/Blog" element={<Blog />} />
+                    <Route path="/blog/:slug" element={<BlogPostPage />} />
                     <Route path="/contact" element={<Contact />} />
                         {/* Catch-all 404 */}
                     <Route path="*" element={<NotFound />} />

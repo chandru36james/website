@@ -1,26 +1,16 @@
-
 import React from 'react';
 import { SEO } from '../components/SEO';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
-interface PostProps {
-    onNavigate: (page: string) => void;
-}
-
-const ArcticTextilesPost: React.FC<PostProps> = ({ onNavigate }) => {
-    const handleContactClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-        e.preventDefault();
-        onNavigate('Contact');
-    };
-
+const ArcticTextilesPost: React.FC = () => {
     return (
-        <div className="animate-fade-in p-6 sm:p-12 text-black dark:text-white transition-colors duration-300">
+        <div className="animate-fade-in p-6 sm:p-12 pt-28 sm:pt-36 text-black dark:text-white transition-colors duration-300 max-w-5xl mx-auto">
             <SEO 
                 title="How Our Web Design Helped Arctic Textiles Reach Global Markets"
                 description="See how a modern, SEO-optimized website design helped Arctic Textiles expand globally. A deep dive case study by VGot You."
-                image="https://vgotyou.com/assets/arctic_home-1F48Ee0h.png"
-                datePublished="2023-10-26"
-                url="https://vgotyou.com/blog/arctic-textiles"
+                image="https://vgotyou.com/assets/arctic.png"
+                datePublished="2024-10-26"
+                url="https://medium.com/@vgotyou/how-our-web-design-helped-arctic-textiles-reach-global-markets-7b2d6e62bd26"
             />
             <article>
                 {/* Post Header */}
@@ -29,17 +19,36 @@ const ArcticTextilesPost: React.FC<PostProps> = ({ onNavigate }) => {
                     <h1 className="text-4xl md:text-5xl font-bold text-red-600 dark:text-red-500 mt-2 mb-4 leading-tight">
                         How Our Web Design Helped Arctic Textiles Reach Global Markets
                     </h1>
-                    <p className="text-black/60 dark:text-white/60 text-sm font-medium">
-                        Published on October 26, 2023 by VGot You
-                    </p>
+                    
+                    {/* External Link Section */}
+                    <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-6">
+                        <p className="text-black/60 dark:text-white/60 text-sm font-medium">
+                            Published on October 26, 2023 by VGot You
+                        </p>
+                        <span className="w-1.5 h-1.5 bg-red-600 rounded-full hidden sm:block"></span>
+                        <a 
+                            href="https://medium.com/@vgotyou/how-our-web-design-helped-arctic-textiles-reach-global-markets-7b2d6e62bd26" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="text-xs font-mono uppercase tracking-[0.2em] text-zinc-500 hover:text-red-600 flex items-center gap-2 transition-colors group"
+                        >
+                            Read on Medium
+                            <svg className="w-3 h-3 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                        </a>
+                    </div>
                 </header>
 
                 {/* Featured Image */}
-                <img 
-                    src="https://vgotyou.com/assets/arctic.png" 
-                    alt="High-quality fabrics from Arctic Textiles"
-                    className="w-full h-auto max-h-[500px] object-cover rounded-lg shadow-2xl mb-12 grayscale hover:grayscale-0 transition-all duration-500"
-                />
+                <div className="relative group mb-12 overflow-hidden rounded-lg">
+                    <img 
+                        src="https://vgotyou.com/assets/arctic.png" 
+                        alt="High-quality fabrics from Arctic Textiles"
+                        className="w-full h-auto max-h-[500px] object-cover shadow-2xl grayscale hover:grayscale-0 transition-all duration-700"
+                    />
+                    <div className="absolute inset-0 border border-white/5 pointer-events-none rounded-lg"></div>
+                </div>
 
                 {/* Post Content */}
                 <div className="space-y-6 text-lg leading-relaxed prose prose-lg max-w-none 
@@ -103,14 +112,14 @@ const ArcticTextilesPost: React.FC<PostProps> = ({ onNavigate }) => {
 
                     <h2 className="text-2xl font-bold">Final Thoughts</h2>
                     <p>If your business wants to expand internationally or attract B2B clients, your website is your strongest marketing tool. A well-planned, SEO-optimized design — like Arctic Textiles’ — can redefine your digital growth.</p>
-                    <p>Want to elevate your brand’s online presence? <Link
-  to="/contact"
-  className="font-bold border-b-2 border-red-600 hover:text-red-600 transition-colors no-underline"
->
-  Let’s build your website today.
-</Link></p>
+                    <p>Want to elevate your brand’s online presence? <Link to="/contact" className="font-bold border-b-2 border-red-600 hover:text-red-600 transition-colors no-underline">Let’s build your website today.</Link></p>
                 </div>
             </article>
+            <div className="mt-16 text-center">
+                <Link to="/blog" className="inline-flex items-center gap-2 text-zinc-400 hover:text-white transition-colors group">
+                    <span className="transition-transform group-hover:-translate-x-1">&larr;</span> Back to Journal
+                </Link>
+            </div>
         </div>
     );
 };
