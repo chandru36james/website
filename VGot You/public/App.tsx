@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
@@ -9,15 +8,21 @@ import WebDesign from './pages/WebDesign';
 import LogoShowcase from './pages/LogoShowcase';
 import AboutMe from './pages/chandru';
 import Blog from "./pages/Blog";
-import ArcticTextilesPost from './pages/ArcticTextilesPost';
-import VesaHomesPost from './pages/VesaHomesPost';
-import BrandingPost from './pages/BrandingPost';
 import Contact from './pages/Contact';
 import CookieConsent from './components/CookieConsent';
 import NotFound from "./pages/NotFound";
-
+import WebDesignTN from './pages/webdesignTN';
+import WebDesignKarur from './pages/WebDesignKarur';
 import BlogPostPage from './pages/BlogPostPage';
+import WebDesignIndia from './pages/WebDesignIndia';
+import SeoServices from './pages/SeoServices';
+import DigitalMarketing from './pages/DigitalMarketing';
+import Portfolio from './pages/Portfolio';
+import DigitalStudio from './pages/DigitalStudio';
+import TestimonialsPage from './pages/TestimonialsPage';
 
+// ✅ NEW IMPORT
+import { loadAnalytics } from './analytics/analyticsLoader';
 
 const ScrollToTop: React.FC = () => {
     const { pathname } = useLocation();
@@ -30,24 +35,42 @@ const ScrollToTop: React.FC = () => {
 };
 
 const App: React.FC = () => {
+
+    // ✅ THIS IS THE IMPORTANT PART
+    useEffect(() => {
+        const consent = localStorage.getItem('vgotyou-cookie-consent');
+
+        if (consent === 'accepted') {
+            loadAnalytics();
+        }
+    }, []);
+
     return (
         <BrowserRouter>
-        
             <ScrollToTop />
             <Header />
+
             <main>
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/web-design" element={<WebDesign />} />
                     <Route path="/logo-showcase" element={<LogoShowcase />} />
                     <Route path="/chandru" element={<AboutMe />} />
-                    <Route path="/Blog" element={<Blog />} />
+                    <Route path="/web-design-tamil-nadu" element={<WebDesignTN />} />
+                    <Route path="/web-design-karur" element={<WebDesignKarur />} />
+                    <Route path="/web-design-india" element={<WebDesignIndia />} />
+                    <Route path="/seo-services" element={<SeoServices />} />
+                    <Route path="/digital-marketing" element={<DigitalMarketing />} />
+                    <Route path="/digital-studio-tamil-nadu" element={<DigitalStudio />} />
+                    <Route path="/portfolio" element={<Portfolio />} />
+                    <Route path="/testimonials" element={<TestimonialsPage />} />
+                    <Route path="/blog" element={<Blog />} />
                     <Route path="/blog/:slug" element={<BlogPostPage />} />
                     <Route path="/contact" element={<Contact />} />
-                        {/* Catch-all 404 */}
                     <Route path="*" element={<NotFound />} />
                 </Routes>
             </main>
+
             <FloatingWidgets />
             <Footer />
             <CookieConsent />

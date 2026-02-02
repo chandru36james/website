@@ -1,3 +1,4 @@
+
 import React from 'react';
 
 
@@ -13,6 +14,8 @@ const SocialIcon: React.FC<{ href: string; children: React.ReactNode }> = ({ hre
 );
 
 const Footer: React.FC = () => {
+  const googleLink = "https://www.google.com/search?q=VGot+You+%E2%80%93+Web+Design+Company+in+karur&stick=H4sIAAAAAAAA_-NgU1I1qEhMMzVLMzNJtjS3NDY2MTK3MqhISjQ1TU6zMLGwME4xTjNKXsSqEeaeX6IQmV-q8KhhskJ4apKCS2pxZnqegnN-bkFiXqVCZp5CdmJRaREAmWh1LVQAAAA&hl=en&mat=CTYW_efeDqo4ElcBTVDHnjSrL1i_VTCa8_kuXYpK1iyu8maHPcIxMv-VA5S0wxGQN2FTkjTuTCQOIc3qOOv2BGOZtzpI4JPgrHCDZf5fjf6TpSzgZ-TLIOOTRC7snP24iCY&authuser=0";
+
   return (
     <footer className="bg-black text-white py-12 border-t border-zinc-800">
       <div className="container mx-auto px-6 text-center">
@@ -86,7 +89,7 @@ const Footer: React.FC = () => {
             </svg>
           </SocialIcon>
 
-          <SocialIcon href="https://share.google/dFoHWjrgvSH8htAoH">
+          <SocialIcon href={googleLink}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"

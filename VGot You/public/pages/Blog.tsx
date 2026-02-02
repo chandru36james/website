@@ -37,7 +37,7 @@ const Blog: React.FC = () => {
             `}</style>
             <Helmet>
   {/* ================= BASIC SEO ================= */}
-  <title>VGot You Blog | Web Design, SEO & Digital Growth Insights</title>
+  <title>Blog | Web Design, SEO & Digital Growth Insights | VGot You</title>
 
   <meta
     name="description"
@@ -189,7 +189,7 @@ const Blog: React.FC = () => {
                                     <div className="scanline"></div>
                                     <img 
                                         src={post.imageUrl} 
-                                        alt={post.title} 
+                                        alt={`${post.title} – Web design and branding case study by VGot You`} 
                                         className="w-full h-full object-cover grayscale md:transition-all duration-700 md:group-hover:grayscale-0 md:group-hover:scale-110 opacity-70 group-hover:opacity-100"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>

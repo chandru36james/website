@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { CodeBracketIcon, EditIcon, DesktopIcon, BookIcon, RocketIcon } from './Icons.tsx';
 
 // --- Local Utils ---
@@ -13,15 +14,20 @@ function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+// 1. Update Interface to include 'to'
+interface BentoCardProps {
+    children?: React.ReactNode;
+    className?: string;
+    delay?: number;
+    to?: string; // Optional path for navigation
+}
+
 const BentoCard = ({ 
     children, 
     className, 
-    delay = 0 
-}: { 
-    children?: React.ReactNode, 
-    className?: string, 
-    delay?: number 
-}) => (
+    delay = 0,
+    to 
+}: BentoCardProps) => (
     <m.div 
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -29,9 +35,25 @@ const BentoCard = ({
         transition={{ duration: 0.6, delay }}
         className={cn(
             "group relative rounded-[1.5rem] md:rounded-[2rem] overflow-hidden border border-zinc-900 transition-all duration-500",
+            // Add cursor pointer if it's a link
+            to ? "cursor-pointer hover:border-zinc-700" : "", 
             className
         )}
     >
+        {/* 
+            2. The Overlay Link 
+            If 'to' is provided, we render an invisible Link that stretches 
+            to cover the entire parent div.
+        */}
+        {to && (
+            <Link 
+                to={to} 
+                className="absolute inset-0 z-20 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-black rounded-[2rem]"
+                aria-label="View Details"
+            />
+        )}
+        
+        {/* Content remains exactly the same */}
         {children}
     </m.div>
 );
@@ -65,7 +87,12 @@ export const ServicesBento: React.FC = () => {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-6 gap-3 md:gap-6 auto-rows-min md:auto-rows-[350px]">
-                    <BentoCard className="md:col-span-4 bg-zinc-950 border-zinc-800 shadow-2xl min-h-[240px] md:min-h-[350px]">
+                    
+                    {/* 3. Add 'to' props to your cards */}
+                    <BentoCard 
+                        to="/web-design" 
+                        className="md:col-span-4 bg-zinc-950 border-zinc-800 shadow-2xl min-h-[240px] md:min-h-[350px]"
+                    >
                         <div className="absolute right-0 top-0 w-full md:w-3/5 h-full opacity-10 group-hover:opacity-30 transition-opacity duration-700 font-mono text-[8px] md:text-xs text-green-500 p-6 md:p-8 select-none leading-relaxed pointer-events-none overflow-hidden hidden sm:block">
                             {`const Innovation = ({ vision, tools }) => {
   const [success, setSuccess] = useState(false);
@@ -91,6 +118,7 @@ export const ServicesBento: React.FC = () => {
                                 <CodeBracketIcon className="w-6 h-6 md:w-8 md:h-8" />
                             </div>
                             <div>
+                                <div className="text-[10px] font-mono text-green-500 mb-2 tracking-[0.3em] uppercase">Node_01 // Core_Architecture</div>
                                 <h3 className="text-2xl md:text-4xl font-bold text-white mb-2 md:mb-4">Web Development</h3>
                                 <p className="text-zinc-400 max-w-sm text-sm md:text-lg leading-relaxed">
                                     High-performance applications built with React, Next.js, and TypeScript. Optimized for speed and scalability.
@@ -99,7 +127,11 @@ export const ServicesBento: React.FC = () => {
                         </div>
                     </BentoCard>
 
-                    <BentoCard className="md:col-span-2 bg-zinc-900 border-zinc-800 shadow-xl min-h-[220px] md:min-h-[350px]" delay={0.1}>
+                    <BentoCard 
+                        to="/logo-showcase" 
+                        className="md:col-span-2 bg-zinc-900 border-zinc-800 shadow-xl min-h-[220px] md:min-h-[350px]" 
+                        delay={0.1}
+                    >
                          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:18px_18px] md:bg-[size:24px_24px] opacity-100 group-hover:opacity-50 transition-opacity"></div>
                          <div className="absolute -top-12 -right-12 w-48 h-48 bg-red-600/5 rounded-full blur-3xl group-hover:bg-red-600/10 transition-all duration-700"></div>
                          <div className="relative z-10 h-full p-6 md:p-10 flex flex-col justify-between">
@@ -107,6 +139,7 @@ export const ServicesBento: React.FC = () => {
                                 <EditIcon className="w-6 h-6 md:w-8 md:h-8" />
                             </div>
                             <div>
+                                <div className="text-[9px] font-mono text-red-500 mb-1 tracking-[0.3em] uppercase">Node_02 // Identity</div>
                                 <h3 className="text-xl md:text-3xl font-bold text-white mb-2 md:mb-3">Brand Identity</h3>
                                 <p className="text-gray-400 leading-relaxed text-sm md:text-lg">
                                     Crafting visual systems that define your market presence.
@@ -115,7 +148,11 @@ export const ServicesBento: React.FC = () => {
                          </div>
                     </BentoCard>
 
-                    <BentoCard className="md:col-span-2 bg-red-600 border-red-500 shadow-2xl text-white min-h-[220px] md:min-h-[350px]" delay={0.2}>
+                    <BentoCard 
+                        to="/seo-services" 
+                        className="md:col-span-2 bg-red-600 border-red-500 shadow-2xl text-white min-h-[220px] md:min-h-[350px]" 
+                        delay={0.2}
+                    >
                         <div className="absolute top-0 right-0 p-6 opacity-10 transform scale-110 rotate-12 group-hover:scale-125 group-hover:rotate-0 transition-transform duration-700">
                              <RocketIcon className="w-20 h-20 md:w-32 md:h-32" />
                         </div>
@@ -124,15 +161,20 @@ export const ServicesBento: React.FC = () => {
                                 <DesktopIcon className="w-6 h-6 md:w-8 md:h-8" />
                             </div>
                              <div>
-                                <h3 className="text-xl md:text-3xl font-bold mb-2 md:mb-3">Conversion Flow</h3>
+                                <div className="text-[9px] font-mono text-white/60 mb-1 tracking-[0.3em] uppercase">Node_03 // Visibility</div> 
+                                <h3 className="text-xl md:text-3xl font-bold mb-2 md:mb-3">SEO Excellence</h3>
                                 <p className="text-red-50 leading-relaxed text-sm md:text-lg">
-                                    Strategic landing pages engineered to maximize engagement.
+                                     Strategic search engineering to maximize organic growth.
                                 </p>
                             </div>
                         </div>
                     </BentoCard>
 
-                    <BentoCard className="md:col-span-4 bg-zinc-900 border-zinc-800 shadow-xl min-h-[240px] md:min-h-[350px]" delay={0.3}>
+                    <BentoCard 
+                        to="/digital-marketing" 
+                        className="md:col-span-4 bg-zinc-900 border-zinc-800 shadow-xl min-h-[240px] md:min-h-[350px]" 
+                        delay={0.3}
+                    >
                         <div className="absolute inset-y-0 right-0 w-full md:w-1/2 opacity-30 group-hover:opacity-50 transition-opacity duration-700 hidden sm:grid grid-cols-2 gap-4 p-6 transform md:skew-x-[-8deg] md:translate-x-12 md:scale-110 group-hover:translate-x-6">
                              <div className="flex flex-col gap-4">
                                 <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=1964&auto=format&fit=crop" className="w-full h-48 object-cover rounded-2xl shadow-xl" alt="Showcase 1" loading="lazy" />
@@ -149,9 +191,10 @@ export const ServicesBento: React.FC = () => {
                                 <BookIcon className="w-6 h-6 md:w-8 md:h-8" />
                             </div>
                             <div>
-                                <h3 className="text-2xl md:text-4xl font-bold text-white mb-2 md:mb-4">Content Showcase</h3>
+                                <div className="text-[10px] font-mono text-red-500 mb-2 tracking-[0.3em] uppercase">Node_04 // Scale_Factor</div>
+                                <h3 className="text-2xl md:text-4xl font-bold text-white mb-2 md:mb-4">Digital Marketing</h3>
                                 <p className="text-gray-400 text-sm md:text-xl leading-relaxed">
-                                    Bespoke portfolio websites designed to tell your unique brand story with elegance.
+                                    High-conversion ad campaigns and data-driven growth strategies that deliver measurable impact.
                                 </p>
                             </div>
                         </div>

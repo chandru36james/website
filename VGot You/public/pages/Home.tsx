@@ -77,7 +77,7 @@ const Home: React.FC = () => {
         <div className="bg-black text-gray-100 transition-colors duration-300">
             <Helmet>
   {/* ================= BASIC SEO ================= */}
-  <title>VGot You – Web Design, Branding & SEO Company in India | Karur</title>
+  <title>VGot You – Web Design, Branding & SEO Company in Karur, Tamil Nadu</title>
 
   <meta
     name="description"
@@ -124,10 +124,12 @@ const Home: React.FC = () => {
       url: "https://www.vgotyou.com/",
       logo: "https://www.vgotyou.com/assets/logo.png",
       sameAs: [
-        "https://www.instagram.com/vgot_you/",
-        "https://www.linkedin.com/company/vgotyou",
-        "https://share.google/vZ5YXKMHIBe17GjLI",
-        "https://vgotyou.medium.com/"
+        "https://www.linkedin.com/in/vgotyou/",
+  "https://www.instagram.com/vgot_you/",
+  "https://vgotyou.medium.com/",
+  "https://vgotyou.sulekha.com",
+  "https://clutch.co/profile/vgot-you",
+  "https://www.justdial.com/Karur/VGot-You-Andankoil/9999P4324-4324-260118183447-U7H4_BZDET?via=scode"
       ],
       address: {
         "@type": "PostalAddress",

@@ -106,8 +106,11 @@ const AboutMe: React.FC = () => {
       ],
       sameAs: [
         "https://www.linkedin.com/in/vgotyou/",
-        "https://www.instagram.com/vgot_you/",
-        "https://share.google/vZ5YXKMHIBe17GjLI"
+  "https://www.instagram.com/vgot_you/",
+  "https://vgotyou.medium.com/",
+  "https://vgotyou.sulekha.com",
+  "https://clutch.co/profile/vgot-you",
+  "https://www.justdial.com/Karur/VGot-You-Andankoil/9999P4324-4324-260118183447-U7H4_BZDET?via=scode"
       ]
     })}
   </script>

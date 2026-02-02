@@ -40,6 +40,8 @@ const CountUp = ({ end, duration = 2000, delay = 0 }: { end: number, duration?: 
 };
 
 export const HeroSection: React.FC = () => {
+    const googleBusinessUrl = "https://www.google.com/search?q=VGot+You+%E2%80%93+Web+Design+Company+in+karur&stick=H4sIAAAAAAAA_-NgU1I1qEhMMzVLMzNJtjS3NDY2MTK3MqhISjQ1TU6zMLGwME4xTjNKXsSqEeaeX6IQmV-q8KhhskJ4apKCS2pxZnqegnN-bkFiXqVCZp5CdmJRaREAmWh1LVQAAAA&hl=en&mat=CTYW_efeDqo4ElcBTVDHnjSrL1i_VTCa8_kuXYpK1iyu8maHPcIxMv-VA5S0wxGQN2FTkjTuTCQOIc3qOOv2BGOZtzpI4JPgrHCDZf5fjf6TpSzgZ-TLIOOTRC7snP24iCY&authuser=0";
+
     return (
         <section className="h-[100dvh] w-full relative flex flex-col overflow-hidden bg-black transition-colors duration-300 transform-gpu">
             <div className="absolute inset-0 z-0 pointer-events-none">
@@ -73,7 +75,7 @@ export const HeroSection: React.FC = () => {
                     <a href="https://www.instagram.com/vgot_you/" target="_blank" rel="noopener noreferrer" aria-label="Instagram Profile" className="text-gray-400 hover:text-white transition-all hover:scale-110 duration-300">
                         <InstagramIcon className="w-5 h-5" />
                     </a>
-                    <a href="https://share.google/dFoHWjrgvSH8htAoH" target="_blank" rel="noopener noreferrer" aria-label="Google Shared Portfolio" className="text-gray-400 hover:text-white transition-all hover:scale-110 duration-300">
+                    <a href={googleBusinessUrl} target="_blank" rel="noopener noreferrer" aria-label="Google Business Profile" className="text-gray-400 hover:text-white transition-all hover:scale-110 duration-300">
                         <GoogleIcon className="w-5 h-5" />
                     </a>
                  </div>
@@ -88,18 +90,32 @@ export const HeroSection: React.FC = () => {
                         </p>
                     </div>
 
-                    <h1 className="flex flex-col items-center">
-                        <span className="sr-only">Web Design Company in Karur, Tamil Nadu</span>
-                        <span className="text-[clamp(4.5rem,20vw,9rem)] md:text-[10vw] lg:text-[8vw] leading-[0.8] font-black font-sans text-white tracking-tighter mix-blend-difference mb-10 md:mb-16 h-[1.2em] flex items-center justify-center text-center">
-                            VGOT<br/>YOU
-                        </span>
-                        <span className="max-w-[280px] sm:max-w-xs md:max-w-2xl lg:max-w-lg text-zinc-500 text-[11px] md:text-base leading-relaxed mb-10 md:mb-14 font-medium mx-auto block text-center">
-                            Crafting <span className="text-white font-semibold">Professional Web Design</span>, <span className="text-white font-semibold">Website Development</span>, <span className="text-white font-semibold">Hosting</span>, and <span className="text-white font-semibold">SEO</span> solutions in <span className="text-red-600 font-bold">Karur</span> with <span className="text-red-600 font-bold">Fast Delivery</span>.
-                        </span>
-                    </h1>
+                   <h1 className="flex flex-col items-center">
+  <span className="sr-only">Web Design Company in Karur, Tamil Nadu</span>
+
+  <span className="text-[clamp(4.5rem,20vw,9rem)] md:text-[10vw] lg:text-[8vw] 
+    leading-[0.8] font-black tracking-tighter 
+    font-sans
+    text-white mix-blend-difference mb-10 md:mb-16 
+    h-[1.2em] flex items-center justify-center text-center">
+    VGot<br/>You
+  </span>
+
+  <span className="max-w-[280px] sm:max-w-xs md:max-w-2xl lg:max-w-lg 
+    text-zinc-500 text-[11px] md:text-base leading-relaxed 
+    mb-10 md:mb-14 font-medium mx-auto block text-center">
+    Crafting <span className="text-white font-semibold">Professional Web Design</span>, 
+    <span className="text-white font-semibold">Website Development</span>, 
+    <span className="text-white font-semibold">Hosting</span>, and 
+    <span className="text-white font-semibold"> SEO</span> solutions in 
+    <span className="text-red-600 font-bold"> Karur</span> with 
+    <span className="text-red-600 font-bold"> Fast Delivery</span>.
+  </span>
+</h1>
+
 
                     <div className="flex flex-col items-center gap-8 md:gap-10">
-                        <a href="#project" className="group relative inline-flex items-center gap-3 md:gap-4 overflow-hidden border border-white/20 px-6 py-3.5 md:px-8 md:py-4 text-[9px] md:text-sm font-bold uppercase tracking-widest text-white transition-all hover:bg-white hover:text-black active:scale-95">
+                        <a href="#portfolio" className="group relative inline-flex items-center gap-3 md:gap-4 overflow-hidden border border-white/20 px-6 py-3.5 md:px-8 md:py-4 text-[9px] md:text-sm font-bold uppercase tracking-widest text-white transition-all hover:bg-white hover:text-black active:scale-95">
                             <span className="relative z-10">Start Project</span>
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5 md:h-4 md:w-4 transform transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -118,7 +134,7 @@ export const HeroSection: React.FC = () => {
                             <a href="https://www.instagram.com/vgot_you/" target="_blank" rel="noopener noreferrer" aria-label="Instagram Profile" className="text-gray-500 hover:text-white transition-colors">
                                 <InstagramIcon className="w-5 h-5" />
                             </a>
-                            <a href="https://share.google/dFoHWjrgvSH8htAoH" target="_blank" rel="noopener noreferrer" aria-label="Google Shared Portfolio" className="text-gray-500 hover:text-white transition-colors">
+                            <a href={googleBusinessUrl} target="_blank" rel="noopener noreferrer" aria-label="Google Business Profile" className="text-gray-500 hover:text-white transition-colors">
                                 <GoogleIcon className="w-5 h-5" />
                             </a>
                         </div>

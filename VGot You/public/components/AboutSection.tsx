@@ -1,6 +1,9 @@
 import React from 'react';
 import FadeInSection from './FadeInSection';
-import { Link } from "react-router-dom";
+// FIX: Using namespace import for react-router-dom to resolve "no exported member" errors
+import * as ReactRouterDOM from 'react-router-dom';
+
+const { Link } = ReactRouterDOM as any;
 
 const AboutSection: React.FC = () => {
     const abt1 = "https://vgotyou.com/assets/abt1.png";
@@ -16,8 +19,8 @@ const AboutSection: React.FC = () => {
                         Designing the <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-red-400">Future</span>, Today.
                     </h2>
                     <p className="text-zinc-400 mb-10 text-base md:text-lg leading-relaxed max-w-2xl lg:max-w-none">
-  We are a professional web design and branding studio based in Tamil Nadu, helping startups and businesses build high-performance websites, strong brand identities, and conversion-focused digital experiences. By combining clean code, strategic UI/UX, and SEO-driven design, we create websites that not only look premium but also generate real business growth.
-</p>
+                        We are a professional web design and branding <Link to="/digital-studio-tamil-nadu" className="text-zinc-400 hover:text-zinc-300 transition-colors">studio</Link> based in Tamil Nadu, helping startups and businesses build high-performance websites, strong brand identities, and conversion-focused digital experiences. By combining clean code, strategic UI/UX, and SEO-driven design, we create websites that not only look premium but also generate real business growth.
+                    </p>
 
                     
                     {/* Features Grid */}

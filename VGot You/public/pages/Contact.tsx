@@ -9,7 +9,7 @@ const AccordionItem: React.FC<{ title: string; children: React.ReactNode; isOpen
         <div className="border-b border-zinc-800">
             <Helmet>
   {/* ================= BASIC SEO ================= */}
-  <title>Contact VGot You | Web Design & Branding Company in Karur, India</title>
+  <title>Contact | Web Design & Branding Company in Karur, India | VGot You </title>
 
   <meta
     name="description"
@@ -75,9 +75,12 @@ const AccordionItem: React.FC<{ title: string; children: React.ReactNode; isOpen
           availableLanguage: ["English", "Tamil"]
         },
         sameAs: [
-          "https://share.google/vZ5YXKMHIBe17GjLI",
-          "https://www.instagram.com/vgot_you/",
-          "https://www.linkedin.com/company/vgotyou"
+          "https://www.linkedin.com/in/vgotyou/",
+  "https://www.instagram.com/vgot_you/",
+  "https://vgotyou.medium.com/",
+  "https://vgotyou.sulekha.com",
+  "https://clutch.co/profile/vgot-you",
+  "https://www.justdial.com/Karur/VGot-You-Andankoil/9999P4324-4324-260118183447-U7H4_BZDET?via=scode"
         ]
       }
     })}

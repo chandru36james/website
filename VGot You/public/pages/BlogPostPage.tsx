@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+// FIX: Using namespace import for react-router-dom to resolve "no exported member" errors
+import * as ReactRouterDOM from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { SEO } from '../components/SEO';
 import { blogs, BlogPost } from '../lib/data';
 
+const { useParams, Link, useNavigate } = ReactRouterDOM as any;
 const m = motion as any;
 
 const BlogPostPage: React.FC = () => {
-    const { slug } = useParams<{ slug: string }>();
+    // FIX: Removed generic type parameter from useParams call to resolve "Untyped function calls may not accept type arguments" error since useParams is extracted from 'any'
+    const { slug } = useParams();
     const [post, setPost] = useState<BlogPost | null>(null);
     const navigate = useNavigate();
 

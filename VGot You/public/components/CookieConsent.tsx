@@ -21,7 +21,7 @@ const CookieConsent: React.FC = () => {
 
     const handleAccept = () => {
         localStorage.setItem('vgotyou-cookie-consent', 'accepted');
-        setIsVisible(false);
+        window.location.reload(); // important
     };
 
     const handleDecline = () => {

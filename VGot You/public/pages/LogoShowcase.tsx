@@ -2,7 +2,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { BulbIcon, PenToolIcon, RocketIcon, SparklesIcon } from '../components/Icons';
+import { BulbIcon, PenToolIcon, RocketIcon, SparklesIcon, ChevronLeftIcon, ChevronRightIcon } from '../components/Icons';
 import { Helmet } from "react-helmet";   // ✅ SEO
 
 // FIX: Cast motion to any to resolve IntrinsicAttributes prop errors for motion components
@@ -11,9 +11,9 @@ const m = motion as any;
 // Enhanced Logo Assets with Technical Metadata
 const logos = [
   { id: 1, src: "https://www.vgotyou.com/assets/arctictextiles.png", title: "Arctic Textiles", category: "Geometric", specs: { geometry: "Euclidean", complexity: "2.4", ratio: "1:1.618" } },
-  { id: 2, src: "https://www.vgotyou.com/assets/rudhraaexim.png", title: "Rudhraa Exports and Imports", category: "Organic", specs: { geometry: "Fibonacci", complexity: "1.8", ratio: "1:1" } },
+  { id: 2, src: "https://www.vgotyou.com/assets/rudhraaexim.png", title: "Rudhraa Exports", category: "Organic", specs: { geometry: "Fibonacci", complexity: "1.8", ratio: "1:1" } },
   { id: 3, src: "https://www.vgotyou.com/assets/bloomgreen.png", title: "BloomGreen Developers", category: "Abstract", specs: { geometry: "Dynamic", complexity: "3.1", ratio: "4:3" } },
-  { id: 4, src: "https://www.vgotyou.com/assets/akshaya.png", title: "Akshaya Tours And Travels", category: "Minimalist", specs: { geometry: "Linear", complexity: "1.2", ratio: "16:9" } },
+  { id: 4, src: "https://www.vgotyou.com/assets/akshaya.png", title: "Akshaya Tours", category: "Minimalist", specs: { geometry: "Linear", complexity: "1.2", ratio: "16:9" } },
   { id: 5, src: "https://www.vgotyou.com/assets/pixel.png", title: "Pixels", category: "Luxury", specs: { geometry: "Symmetrical", complexity: "4.0", ratio: "1:1" } },
 ];
 
@@ -24,7 +24,6 @@ const DiagnosticOverlay = ({ isActive }: { isActive: boolean }) => (
     <div className="absolute top-0 right-0 w-[1px] h-full bg-red-600/20"></div>
     <div className="absolute top-1/2 left-0 w-full h-[1px] border-t border-dashed border-red-600/10"></div>
     <div className="absolute top-0 left-1/2 w-[1px] h-full border-l border-dashed border-red-600/10"></div>
-    {/* Geometric markers */}
     <div className="absolute top-4 left-4 w-2 h-2 border border-red-600"></div>
     <div className="absolute top-4 right-4 w-2 h-2 border border-red-600"></div>
     <div className="absolute bottom-4 left-4 w-2 h-2 border border-red-600"></div>
@@ -32,34 +31,54 @@ const DiagnosticOverlay = ({ isActive }: { isActive: boolean }) => (
   </div>
 );
 
+const AccordionItem: React.FC<{ title: string; children: React.ReactNode; isOpen: boolean; onClick: () => void; }> = ({ title, children, isOpen, onClick }) => {
+    return (
+        <div className="border-b border-zinc-900">
+            <button onClick={onClick} className="w-full flex justify-between items-center text-left py-6 text-sm md:text-base font-bold text-white hover:text-red-500 transition-colors uppercase tracking-widest font-mono">
+                <span className="pr-4">{title}</span>
+                <svg className={`w-4 h-4 shrink-0 transition-transform transform ${isOpen ? 'rotate-180' : 'rotate-0'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+            </button>
+            <div className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
+                <div className="pb-8 text-zinc-500 text-sm leading-relaxed font-light">{children}</div>
+            </div>
+        </div>
+    );
+};
+
 const LogoDesign: React.FC = () => {
   const [activeLogo, setActiveLogo] = useState<number | null>(null);
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
   const { scrollYProgress } = useScroll();
   const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
+  const scrollIndicatorOpacity = useTransform(scrollYProgress, [0, 0.05], [1, 0]);
 
   const scrollToArchive = () => {
     document.getElementById('specimen-lab')?.scrollIntoView({ behavior: 'smooth' });
   };
 
- const whatsappMessage = encodeURIComponent(
-  "Hello VGot You! I am looking for a professional logo design and branding company. I need a custom business logo and complete brand identity for my company. How we can get started."
-);
+  const whatsappMessage = encodeURIComponent(
+    "Hello VGot You! I am interested in getting a professional logo designed for my business. I'm based in Tamil Nadu and looking for a custom branding solution. Let's talk!"
+  );
 
+  const faqs = [
+    {
+      q: "Do you provide logo design services in Karur?",
+      a: "Yes, VGot You is a logo design company based in Karur, offering professional logo and branding services tailored to the specific needs of local businesses and international exporters alike."
+    },
+    {
+      q: "Do you design logos for textile companies in Tamil Nadu?",
+      a: "Yes, we specialize in logo design and branding for textile manufacturers and exporters across Tamil Nadu. We understand the heritage and visual cues required for the spinning, weaving, and garment industries."
+    },
+    {
+      q: "Do you work with clients outside Tamil Nadu?",
+      a: "Yes, while we focus on Karur and Tamil Nadu, we also serve clients across India. Our digital collaboration process is seamless, allowing us to deliver high-quality branding to businesses nationwide."
+    }
+  ];
 
   return (
     <div className="bg-[#020202] text-white selection:bg-red-600/30 overflow-x-hidden font-sans">
-      <style>{`
-        @keyframes scan {
-          0% { transform: translateY(0); }
-          100% { transform: translateY(100vh); }
-        }
-        .animate-scan {
-          animation: scan 8s linear infinite;
-        }
-        .text-technical {
-          font-family: 'JetBrains Mono', 'Fira Code', monospace;
-        }
-      `}</style>
       <Helmet>
   {/* ================= BASIC SEO ================= */}
   <title>Logo Design Portfolio | Professional Branding by VGot You – Karur, India</title>
@@ -138,9 +157,22 @@ const LogoDesign: React.FC = () => {
     })}
   </script>
 </Helmet>
-
-      {/* Industrial Hero */}
-      <section className="relative h-[100dvh] flex flex-col items-center justify-center px-6 overflow-hidden border-b border-zinc-900">
+      
+      <style>{`
+        @keyframes scan {
+          0% { transform: translateY(0); }
+          100% { transform: translateY(100vh); }
+        }
+        .animate-scan {
+          animation: scan 8s linear infinite;
+        }
+        .text-technical {
+          font-family: 'JetBrains Mono', 'Fira Code', monospace;
+        }
+      `}</style>
+      
+      {/* Hero Section */}
+      <section id="hero" className="relative h-[100dvh] flex flex-col items-center justify-center px-6 overflow-hidden border-b border-zinc-900">
         <m.div style={{ y: backgroundY }} className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(220,38,38,0.05)_0%,transparent_70%)]"></div>
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse:60%_50%_at_50%_50%,#000_70%,transparent_100%)]"></div>
@@ -153,62 +185,167 @@ const LogoDesign: React.FC = () => {
             transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
             className="mb-8 p-3 sm:p-4 border border-red-600/30 rounded-sm bg-red-600/10 text-technical text-[9px] sm:text-[10px] tracking-[0.4em] uppercase text-red-500 font-bold"
           >
-            Laboratory Phase: Visual Forging 01
+            System Node: Identity_Forge_Karur
           </m.div>
 
-          {/* LCP Target: High contrast and priority */}
-          <h1 className="sr-only">
-  Logo Design Company in Karur, Tamil Nadu | Professional Branding by VGot You
-</h1>
-          <h1 className="text-[14vw] sm:text-[12vw] md:text-[10vw] font-black leading-[0.75] tracking-tighter uppercase mb-12 text-center text-white">
-            Forge <br/>
-            <span className="text-zinc-800">Identity</span>
+          <h1 className="text-[10vw] sm:text-[8vw] md:text-[6.5vw] font-black leading-[0.85] tracking-tighter uppercase mb-12 text-center text-white">
+            Logo Design Company <br/>
+            <span className="text-zinc-800">Serving Tamil Nadu</span>
           </h1>
-<p className="max-w-2xl text-zinc-400 text-center text-sm md:text-base mt-6">
-  VGot You is a professional <strong>logo design and branding agency in Karur, Tamil Nadu</strong>,
-  creating custom business logos, startup brand identities, and visual systems for companies across India.
-</p>
+          
+          <p className="max-w-3xl text-zinc-500 text-center text-sm md:text-lg mt-6 leading-relaxed font-light">
+            Your logo is the foundation of your brand identity. For businesses in <strong>Karur, Tamil Nadu</strong>, a professionally designed logo helps build trust, recognition, and long-term value. <strong>VGot You</strong> is a trusted logo design company in Karur, delivering custom branding solutions for local businesses, textile manufacturers, and growing brands.
+          </p>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 md:gap-24 w-full max-w-4xl mt-12 border-t border-zinc-900 pt-12">
-            {[
-              { label: "Core Geometry", val: "Vector" },
-              { label: "Design Depth", val: "N-Dim" },
-              { label: "Studio Hub", val: "VGOT" },
-              { label: "Process", val: "Kinetic" },
-            ].map((stat, i) => (
-              <div key={i} className="flex flex-col items-center md:items-start text-center md:text-left">
-                <span className="text-technical text-[8px] uppercase tracking-widest text-zinc-400 mb-1">{stat.label}</span>
-                <span className="text-lg sm:text-xl font-bold uppercase tracking-tighter text-white">{stat.val}</span>
-              </div>
-            ))}
+          <div className="flex flex-col sm:flex-row gap-6 mt-12">
+            <a 
+              href={`https://wa.me/917871120415?text=${whatsappMessage}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-red-600 text-white px-10 py-5 font-bold uppercase text-[10px] tracking-[0.3em] hover:bg-red-700 transition-all shadow-[0_0_30px_rgba(220,38,38,0.2)]"
+            >
+              Start Consultation
+            </a>
+            <button 
+              onClick={scrollToArchive}
+              className="border border-zinc-800 text-white px-10 py-5 font-bold uppercase text-[10px] tracking-[0.3em] hover:bg-zinc-900 transition-all"
+            >
+              View Specimens
+            </button>
           </div>
         </div>
 
-        <m.button 
-          onClick={scrollToArchive}
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          className="absolute bottom-8 sm:bottom-12 flex flex-col items-center gap-4 group cursor-pointer"
-          aria-label="Scroll to archive"
+        {/* Enhanced Scroll Indicator - Hidden on Mobile */}
+        <m.div 
+          style={{ opacity: scrollIndicatorOpacity }}
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-3 z-20 pointer-events-none"
         >
-          <div className="w-[1px] h-12 bg-gradient-to-b from-red-600 to-transparent group-hover:from-red-400 transition-colors"></div>
-          <span className="text-technical text-[8px] uppercase tracking-[0.5em] text-red-600 font-bold group-hover:text-red-400">Initiate Analysis</span>
-        </m.button>
+            <div className="w-5 h-8 border-2 border-zinc-800 rounded-full flex justify-center p-1.5 overflow-hidden">
+                <m.div 
+                    animate={{ y: [0, 8, 0] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                    className="w-1 h-1.5 bg-red-600 rounded-full"
+                />
+            </div>
+            <span className="text-technical text-[7px] tracking-[0.4em] text-zinc-600 uppercase font-black">Descend_Node</span>
+        </m.div>
+      </section>
+
+      {/* Why Professional Logo Design Matters */}
+      <section id="why-logo" className="py-24 sm:py-40 border-b border-zinc-900 bg-[#050505]">
+        <div className="container mx-auto px-6 max-w-7xl">
+            <div className="grid lg:grid-cols-2 gap-20 items-center">
+                <div className="relative aspect-square border border-zinc-900 rounded-lg p-12 overflow-hidden flex items-center justify-center">
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(220,38,38,0.03)_0%,transparent_70%)]"></div>
+                    <div className="relative z-10 w-full h-full border border-dashed border-zinc-800 rounded-full flex items-center justify-center">
+                        <img src="https://www.vgotyou.com/assets/logo.png"  alt="VGot You Logo"  className="w-70 h-70 opacity-90 object-contain"/>
+
+                        <div className="absolute inset-0 flex items-center justify-center animate-pulse">
+                            <div className="w-48 h-48 border border-red-600/10 rounded-full"></div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h2 className="text-technical text-red-500 text-[10px] font-bold uppercase tracking-[0.4em] mb-4">Regional Market Logic</h2>
+                    <h3 className="text-3xl sm:text-5xl font-black uppercase tracking-tighter mb-8 leading-none">Why It Matters for Karur Businesses</h3>
+                    <p className="text-zinc-400 text-lg leading-relaxed mb-10 font-light">
+                        In competitive markets like Karur and across Tamil Nadu, customers form opinions quickly. A professionally designed logo helps your business stand out and appear credible from the first interaction.
+                    </p>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        {[
+                            { t: "Powerful First Impression", d: "Capture attention instantly." },
+                            { t: "Build Trust & Recognition", d: "Position your brand as a reliable leader." },
+                            { t: "Stand Out from Competitors", d: "Differentiate with unique visual logic." },
+                            { t: "Platform Consistency", d: "Seamless scaling across web and print." }
+                        ].map((item, i) => (
+                            <div key={i} className="flex gap-4 p-4 border border-zinc-900 bg-black rounded-sm">
+                                <div className="text-red-600 font-mono text-xs font-bold">0{i+1}</div>
+                                <div>
+                                    <h5 className="text-xs font-bold uppercase tracking-widest text-white mb-1">{item.t}</h5>
+                                    <p className="text-[10px] text-zinc-500 leading-tight">{item.d}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </div>
+      </section>
+
+      {/* Services Grid */}
+      <section id="services" className="py-24 sm:py-40 px-6 relative overflow-hidden">
+        <div className="container mx-auto max-w-7xl">
+            <div className="text-center mb-20">
+                <h2 className="text-technical text-red-500 text-[10px] font-bold uppercase tracking-[0.4em] mb-4">Forge Capabilities</h2>
+                <h3 className="text-3xl sm:text-6xl font-black uppercase tracking-tighter mb-6">Logo Design Services in Karur</h3>
+                <p className="text-zinc-500 max-w-2xl mx-auto font-light">As a creative logo design and branding studio in Karur, we focus on simplicity, clarity, and brand relevance.</p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {[
+                    { t: "Custom Logo Design", d: "Original concepts with zero templates. Built specifically for your unique business DNA." },
+                    { t: "Startups & MSMEs", d: "Professional branding packages designed to help new ventures scale and gain market trust." },
+                    { t: "Textile Company Logo", d: "Specialized design for Karur textile exporters, spinning mills, and manufacturers." },
+                    { t: "Corporate Identity", d: "Comprehensive brand systems for established businesses looking for global visual standards." },
+                    { t: "Minimalist Styles", d: "Timeless, clean, and modern logo styles that remain effective for decades." },
+                    { t: "Redesign & Rebranding", d: "Modernizing legacy brands for the digital age without losing their heritage." }
+                ].map((service, i) => (
+                    <div key={i} className="p-8 border border-zinc-900 bg-[#080808] group hover:border-red-600/30 transition-all">
+                        <div className="w-10 h-10 bg-zinc-900 rounded-sm mb-6 flex items-center justify-center text-red-600 group-hover:bg-red-600 group-hover:text-white transition-all">
+                            <SparklesIcon className="w-5 h-5" />
+                        </div>
+                        <h4 className="text-lg font-bold uppercase tracking-tight text-white mb-3">{service.t}</h4>
+                        <p className="text-zinc-500 text-sm leading-relaxed font-light">{service.d}</p>
+                    </div>
+                ))}
+            </div>
+        </div>
+      </section>
+
+      {/* Regional Focus Section */}
+      <section id="regional" className="py-24 sm:py-40 bg-red-600 text-white">
+        <div className="container mx-auto px-6 max-w-7xl">
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 className="text-technical text-white/60 text-[10px] font-bold uppercase tracking-[0.4em] mb-4">Regional Hub: Karur HQ</h2>
+                    <h3 className="text-3xl sm:text-6xl font-black uppercase tracking-tighter mb-8 leading-none">Logo Design Company in Tamil Nadu</h3>
+                    <p className="text-red-100 text-lg leading-relaxed mb-8">
+                        VGot You works with businesses across Tamil Nadu, including manufacturers, exporters, retailers, and service providers. As an experienced logo designer in Tamil Nadu, we understand regional industries while delivering branding that meets national standards.
+                    </p>
+                    <div className="grid sm:grid-cols-2 gap-4">
+                        {[
+                            { label: "Websites & Platforms", link: "/web-design" },
+                            { label: "Business Cards & Stationery" },
+                            { label: "Packaging & Product Labels" },
+                            { label: "Social Media & Marketing" }
+                        ].map((item, i) => (
+                            <div key={i} className="flex items-center gap-3 font-bold uppercase tracking-widest text-[10px]">
+                                <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
+                                {item.link ? (
+                                    <Link to={item.link} className="hover:underline">{item.label}</Link>
+                                ) : (
+                                    <span>{item.label}</span>
+                                )}
+                            </div>
+                        ))}
+                    </div>
+                </div>
+                <div className="relative aspect-video rounded-sm overflow-hidden bg-black/20 backdrop-blur-sm border border-white/20 p-8 flex items-center justify-center">
+                    <div className="text-center">
+                        <h4 className="text-6xl font-black mb-2 tracking-tighter italic">TN</h4>
+                        <p className="text-xs uppercase tracking-[0.2em] font-bold">Native Digital Architect</p>
+                    </div>
+                </div>
+            </div>
+        </div>
       </section>
 
       {/* The Specimen Lab (Gallery) */}
-      <section id="specimen-lab" className="py-16 sm:py-24 px-4 md:px-12 relative">
+      <section id="specimen-lab" className="py-24 sm:py-40 px-4 md:px-12 relative">
         <div className="container mx-auto max-w-7xl">
-          <div className="mb-12 sm:mb-20 flex flex-col md:flex-row md:items-end justify-between gap-8">
-            <div className="max-w-xl">
-              <h2 className="text-technical text-red-500 text-[10px] sm:text-xs font-bold uppercase tracking-[0.3em] mb-4">Diagnostic Archive</h2>
-              <p className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white">Examination of <span className="italic text-zinc-400">Singular Marks.</span></p>
-            </div>
-            <div className="text-technical text-[10px] text-zinc-400 uppercase tracking-widest leading-relaxed text-left md:text-right hidden sm:block">
-              [Status: Online] <br/>
-              [Encrypted: True] <br/>
-              [Scale: Multi-Node]
-            </div>
+          <div className="mb-20">
+            <h2 className="text-technical text-red-500 text-[10px] font-bold uppercase tracking-[0.3em] mb-4">Archive Analysis</h2>
+            <h3 className="text-3xl sm:text-6xl font-black uppercase tracking-tighter">Specimen Archive</h3>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-12">
@@ -224,45 +361,29 @@ const LogoDesign: React.FC = () => {
                 className="group relative flex flex-col"
               >
                 <div className="flex justify-between items-center mb-4 px-2 text-technical text-[9px] text-zinc-400 uppercase tracking-widest font-bold">
-                  <span>REF_ID: 00{logo.id}</span>
+                  <span>REF_ID: {logo.id}</span>
                   <span className="text-red-500">{logo.category}</span>
                 </div>
 
-                <div className="relative aspect-square bg-[#080808] border border-zinc-900 rounded-lg overflow-hidden transition-all duration-700 group-hover:border-red-600/40">
+                <div className="relative aspect-square bg-[#080808] border border-zinc-900 rounded-sm overflow-hidden transition-all duration-700 group-hover:border-red-600/40">
                   <DiagnosticOverlay isActive={activeLogo === logo.id} />
-                  
                   <img
                     src={logo.src}
-                    alt={`${logo.title} logo design by VGot You in Karur Tamil Nadu`}
-                    width="512"
-                    height="512"
-                    loading="lazy"
-                    className="w-full h-full object-contain p-8 sm:p-12 transition-all duration-1000 group-hover:scale-105 filter grayscale contrast-125 group-hover:grayscale-0"
+                    alt={`${logo.title} custom logo design in Karur`}
+                    className="w-full h-full object-contain p-12 transition-all duration-1000 group-hover:scale-105 filter grayscale contrast-125 group-hover:grayscale-0"
                   />
-
-                  <div className="absolute top-4 left-4 text-technical text-[8px] text-zinc-600 opacity-0 sm:group-hover:opacity-100 transition-opacity">LAT_X: 42.8</div>
-                  <div className="absolute bottom-4 right-4 text-technical text-[8px] text-zinc-600 opacity-0 sm:group-hover:opacity-100 transition-opacity">LNG_Y: -71.2</div>
                 </div>
 
-                <div className="mt-6 flex justify-between items-start px-2">
-                  <div className="flex-grow">
-                    <h3 className="text-xl sm:text-2xl font-bold uppercase tracking-tight mb-2 text-white">{logo.title}</h3>
-                    <div className="flex flex-wrap gap-x-4 gap-y-2">
-                      {Object.entries(logo.specs).map(([key, val]) => (
+                <div className="mt-6 px-2">
+                    <h3 className="text-xl font-bold uppercase tracking-tight text-white mb-2">{logo.title}</h3>
+                    <div className="flex flex-wrap gap-4">
+                        {Object.entries(logo.specs).map(([key, val]) => (
                         <div key={key}>
-                          <p className="text-technical text-[7px] text-zinc-400 uppercase mb-0.5">{key}</p>
-                          <p className="text-technical text-[9px] font-bold text-zinc-200">{val}</p>
+                            <p className="text-technical text-[7px] text-zinc-600 uppercase mb-0.5">{key}</p>
+                            <p className="text-technical text-[9px] font-bold text-zinc-400">{val}</p>
                         </div>
-                      ))}
+                        ))}
                     </div>
-                  </div>
-                  <Link 
-                    to="/contact"
-                    className="w-10 h-10 border border-zinc-800 rounded-full flex items-center justify-center cursor-pointer hover:bg-red-600 hover:border-red-600 hover:text-white transition-all duration-300 shrink-0 ml-4"
-                    title="Request logo design quote from VGot You"
-                  >
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" /></svg>
-                  </Link>
                 </div>
               </m.div>
             ))}
@@ -270,92 +391,151 @@ const LogoDesign: React.FC = () => {
         </div>
       </section>
 
-      {/* The Methodology Lab (Process) */}
-      <section className="py-24 sm:py-40 bg-[#050505] border-y border-zinc-900 overflow-hidden">
+      {/* Process Section */}
+      <section id="process" className="py-24 sm:py-40 bg-[#050505] border-y border-zinc-900">
         <div className="container mx-auto px-6 max-w-7xl">
-          <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-            <div className="relative">
-              <div className="absolute -top-16 sm:-top-24 -left-6 sm:-left-12 text-[15vw] font-black text-zinc-900/40 pointer-events-none select-none">SYSTEM</div>
-              <h2 className="text-4xl sm:text-5xl md:text-8xl font-black uppercase leading-[0.85] mb-8 sm:mb-12 relative z-10 text-white">
-                The <span className="text-red-600">Forge</span> <br/>
-                Logic.
-              </h2>
-              <p className="text-zinc-400 text-base sm:text-lg md:text-xl leading-relaxed mb-8 sm:mb-12 max-w-lg font-light">
-                We are a strategic <strong>logo design and branding company in Karur, Tamil Nadu</strong>
-specializing in custom logo creation, corporate brand identity, startup branding,
-and scalable vector logo systems for businesses across India.
-      </p>
-              
-              <Link to="/contact" className="group flex items-center gap-4 text-technical text-xs font-bold uppercase tracking-[0.3em] text-red-500 hover:text-red-400 transition-colors">
-                Initiate Project Phase
-                <span className="w-12 h-[1px] bg-zinc-800 group-hover:bg-red-600 transition-all group-hover:w-20"></span>
-              </Link>
+            <div className="text-center mb-20">
+                <h2 className="text-technical text-red-500 text-[10px] font-bold uppercase tracking-[0.4em] mb-4">Systematic Method</h2>
+                <h3 className="text-3xl sm:text-6xl font-black uppercase tracking-tighter">Our Design Process</h3>
             </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
-              {[
-                { title: "Geometric Purity", icon: <PenToolIcon className="w-6 h-6" />, desc: "Every curve is calculated using non-linear math." },
-                { title: "Stress Legibility", icon: <BulbIcon className="w-6 h-6" />, desc: "Tested at 16px to ensure total recognition." },
-                { title: "Brand DNA", icon: <SparklesIcon className="w-6 h-6" />, desc: "Extracting the core ethos into static form." },
-                { title: "Vector Permanence", icon: <RocketIcon className="w-6 h-6" />, desc: "Indefinitely scalable digital assets." }
-              ].map((step, i) => (
-                <m.div 
-                  key={i}
-                  whileHover={{ x: 10 }}
-                  className="p-6 sm:p-8 bg-[#020202] border border-zinc-900 rounded-lg group transition-colors hover:border-red-600/30 flex items-center gap-6 sm:gap-8"
-                >
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 bg-zinc-950 rounded-md flex items-center justify-center text-red-600 group-hover:bg-red-600 group-hover:text-white transition-all duration-500 shrink-0 border border-zinc-900">
-                    {step.icon}
-                  </div>
-                  <div>
-                    <h3 className="text-technical text-xs sm:text-sm font-bold uppercase tracking-widest mb-1 sm:mb-2 text-white">{step.title}</h3>
-                    <p className="text-zinc-400 text-[10px] sm:text-xs leading-relaxed font-light">{step.desc}</p>
-                  </div>
-                </m.div>
-              ))}
+            
+            <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
+                {[
+                    { s: "Understanding", d: "Learning about your business and audience.", i: "01" },
+                    { s: "Concept Creation", d: "Developing unique visual explorations.", i: "02" },
+                    { s: "Refinement", d: "Refining symbols, type and color systems.", i: "03" },
+                    { s: "Feedback", d: "Improving based on your inputs.", i: "04" },
+                    { s: "Final Delivery", d: "Complete format suite for all uses.", i: "05" }
+                ].map((step, i) => (
+                    <div key={i} className="p-8 border border-zinc-900 bg-black group hover:border-red-600/30 transition-all">
+                        <div className="text-technical text-zinc-800 text-3xl font-black mb-6 group-hover:text-red-600 transition-colors">{step.i}</div>
+                        <h4 className="text-sm font-bold uppercase tracking-widest text-white mb-3">{step.s}</h4>
+                        <p className="text-[11px] text-zinc-600 leading-relaxed uppercase font-mono">{step.d}</p>
+                    </div>
+                ))}
             </div>
-          </div>
         </div>
       </section>
 
-      {/* Diagnostic Finalization (CTA) */}
-      <section className="py-32 sm:py-48 px-6 text-center bg-black relative">
+      {/* Package & Why Us Section */}
+      <section id="packages" className="py-24 sm:py-40 px-6">
+        <div className="container mx-auto max-w-7xl">
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
+                <div className="bg-zinc-900 border border-zinc-800 p-8 sm:p-12 rounded-lg">
+                    <h3 className="text-2xl font-bold uppercase tracking-tighter mb-8 text-white">Logo Design Packages</h3>
+                    <ul className="space-y-6">
+                        {[
+                            "Primary Logo + Variations",
+                            "Color & Monochrome Versions",
+                            "High-Resolution Files (PNG, JPG, SVG, PDF)",
+                            "Ready for Web & High-Quality Print",
+                            "Branding Support for Consistency",
+                            "Technical Usage Documentation"
+                        ].map((item, i) => (
+                            <li key={i} className="flex items-center gap-4 text-zinc-400 font-light">
+                                <div className="w-1.5 h-1.5 bg-red-600 rounded-full"></div>
+                                {item}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+                <div>
+                    <h2 className="text-technical text-red-500 text-[10px] font-bold uppercase tracking-[0.4em] mb-4">Quality Verification</h2>
+                    <h3 className="text-3xl sm:text-5xl font-black uppercase tracking-tighter mb-8 leading-none">Why Choose VGot You for Logo Design in Karur?</h3>
+                    <p className="text-zinc-500 text-lg leading-relaxed mb-8 font-light">
+                        We don’t just design logos — we build strong brand identities. We combine local expertise in <strong>Karur & Tamil Nadu</strong> with global design standards and clear, smooth communication. Our approach is often aligned with our <Link to="/web-design" className="text-white hover:text-red-500 transition-colors underline decoration-zinc-700 underline-offset-4">web design strategies</Link> for total brand cohesion.
+                    </p>
+                    <div className="space-y-4">
+                        <div className="flex gap-4 p-4 border border-zinc-900 rounded-sm">
+                            <RocketIcon className="w-6 h-6 text-red-600" />
+                            <div>
+                                <h5 className="text-xs font-bold uppercase tracking-widest text-white">Digital Alignment</h5>
+                                <p className="text-[10px] text-zinc-600 font-mono mt-1">OPTIMIZED FOR WEB & MARKETING.</p>
+                            </div>
+                        </div>
+                        <div className="flex gap-4 p-4 border border-zinc-900 rounded-sm">
+                            <PenToolIcon className="w-6 h-6 text-red-600" />
+                            <div>
+                                <h5 className="text-xs font-bold uppercase tracking-widest text-white">Textile Experts</h5>
+                                <p className="text-[10px] text-zinc-600 font-mono mt-1">PROVEN INDUSTRIAL EXPERIENCE.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </section>
+
+      {/* India Focus */}
+      <section id="nationwide" className="py-24 sm:py-40 bg-[#050505] border-t border-zinc-900">
+        <div className="container mx-auto px-6 max-w-7xl text-center">
+            <h2 className="text-technical text-red-500 text-[10px] font-bold uppercase tracking-[0.4em] mb-4">Scope: Nationwide</h2>
+            <h3 className="text-3xl sm:text-6xl font-black uppercase tracking-tighter mb-8">Logo Design Services Across India</h3>
+            <p className="text-zinc-500 max-w-3xl mx-auto text-lg font-light leading-relaxed">
+                While our primary focus is Karur and Tamil Nadu, VGot You also provides logo design services across India, working with clients remotely and delivering consistent branding support nationwide.
+            </p>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section id="faq" className="py-24 sm:py-40 bg-black border-t border-zinc-900">
+        <div className="container mx-auto px-6 max-w-4xl">
+            <div className="text-center mb-16">
+                <h2 className="text-technical text-red-500 text-[10px] font-bold uppercase tracking-[0.4em] mb-4">Diagnostics</h2>
+                <h3 className="text-3xl sm:text-5xl font-black uppercase tracking-tighter">Frequent Queries</h3>
+            </div>
+            <div className="space-y-2">
+                {faqs.map((faq, index) => (
+                    <AccordionItem 
+                        key={index} 
+                        title={faq.q} 
+                        isOpen={openFaq === index} 
+                        onClick={() => setOpenFaq(openFaq === index ? null : index)}
+                    >
+                        {faq.a}
+                    </AccordionItem>
+                ))}
+            </div>
+        </div>
+      </section>
+
+      {/* Final Call to Action */}
+      <section id="cta" className="py-32 sm:py-48 px-6 text-center bg-black relative">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_100%,rgba(220,38,38,0.1)_0%,transparent_50%)]"></div>
         
         <m.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="max-w-4xl mx-auto relative z-10"
+          className="max-w-5xl mx-auto relative z-10"
         >
-          <div className="text-technical text-[10px] sm:text-xs text-red-600 font-bold uppercase tracking-[0.5em] mb-10 sm:mb-12">System Output: Signature Needed</div>
-          <h2 className="text-[14vw] sm:text-[10vw] md:text-[9vw] font-black uppercase leading-[0.8] mb-12 sm:mb-16 tracking-tighter text-white">
-            Build Your <br/>
-            <span className="text-zinc-800">Legacy.</span>
+          <div className="text-technical text-[10px] sm:text-xs text-red-600 font-bold uppercase tracking-[0.5em] mb-12">Action: Initiate_Branding</div>
+          <h2 className="text-[12vw] sm:text-[10vw] md:text-[8vw] font-black uppercase leading-[0.8] mb-16 tracking-tighter text-white">
+            Get a Professional Logo <br/>
+            <span className="text-zinc-800">Designed for Your Business</span>
           </h2>
           
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-8 md:gap-12">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-12">
             <m.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="relative group w-full sm:w-auto"
             >
-              <div className="absolute -inset-1 bg-gradient-to-r from-red-600 to-orange-600 rounded-sm blur opacity-25 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+              <div className="absolute -inset-1 bg-gradient-to-r from-red-600 to-orange-600 rounded-sm blur opacity-25 group-hover:opacity-100 transition duration-1000"></div>
               <a 
                   href={`https://wa.me/917871120415?text=${whatsappMessage}`} 
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="relative w-full sm:w-auto px-10 sm:px-16 py-5 sm:py-6 bg-red-600 text-white font-bold rounded-sm text-base sm:text-lg uppercase tracking-[0.3em] shadow-[0_0_50px_rgba(220,38,38,0.3)] transition-all flex items-center justify-center"
+                  className="relative w-full sm:w-auto px-16 py-6 bg-red-600 text-white font-bold rounded-sm text-lg uppercase tracking-[0.3em] shadow-[0_0_50px_rgba(220,38,38,0.3)] transition-all flex items-center justify-center"
               >
-                  Get Your Custom Logo
-
+                  Forge Logo Now
               </a>
             </m.div>
             
-            <div className="text-technical text-[9px] sm:text-[10px] text-zinc-500 uppercase tracking-widest text-left hidden sm:block leading-loose font-bold">
-              // READY FOR DEPLOYMENT <br/>
-              // WAITING FOR SIGNAL <br/>
-              // PORT: 8080
+            <div className="text-technical text-[10px] text-zinc-500 uppercase tracking-widest text-left hidden sm:block leading-loose font-bold">
+              // HUB: KARUR_HQ <br/>
+              // NODE: TAMIL_NADU <br/>
+              // STATUS: WAITING_SIGNAL
             </div>
           </div>
         </m.div>
