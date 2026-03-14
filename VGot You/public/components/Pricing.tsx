@@ -118,7 +118,8 @@ const PricingCard = ({
 
 const Pricing: React.FC = () => {
     return (
-        <FadeInSection className="py-24 bg-black transition-colors duration-300 relative overflow-hidden">
+        <FadeInSection className="py-24 bg-black transition-colors duration-300 relative overflow-hidden rounded-[7rem]">
+
              {/* Background Decoration */}
              <div className="absolute inset-0 pointer-events-none overflow-hidden">
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-gradient-to-b from-zinc-900 to-transparent opacity-50"></div>

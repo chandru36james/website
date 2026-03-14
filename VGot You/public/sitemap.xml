@@ -9,9 +9,24 @@
     <priority>1.0</priority>
   </url>
 
-  <!-- CHANDRU -->
+  <!-- ABOUT-->
   <url>
+    <loc>https://www.vgotyou.com/about</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+<!-- CHANDRU -->
+<url>
     <loc>https://www.vgotyou.com/chandru</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+<!-- SARANRAJ V -->
+  <url>
+    <loc>https://www.vgotyou.com/saran-raj</loc>
     <lastmod>2025-01-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

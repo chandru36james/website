@@ -60,7 +60,7 @@ const BentoCard = ({
 
 export const ServicesBento: React.FC = () => {
     return (
-        <section className="py-16 md:py-32 bg-black text-white relative overflow-hidden">
+        <section className="py-16 md:py-32 bg-white text-black relative overflow-hidden">
             {/* Background Ambient Glows */}
             <div className="absolute top-0 left-1/4 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-red-500/5 rounded-full blur-[80px] md:blur-[120px] pointer-events-none"></div>
             <div className="absolute bottom-0 right-1/4 w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-blue-500/5 rounded-full blur-[80px] md:blur-[120px] pointer-events-none"></div>
@@ -204,3 +204,4 @@ export const ServicesBento: React.FC = () => {
         </section>
     );
 };
+export default ServicesBento;

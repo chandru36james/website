@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Globe } from './ui/globe';
 import { SparklesCore } from './ui/sparkles';
-import { LinkedInIcon, GitHubIcon, InstagramIcon, GoogleIcon } from './Icons';
+import { LinkedInIcon, GitHubIcon, InstagramIcon, GoogleIcon, MediumIcon } from './Icons';
 
 const CountUp = ({ end, duration = 2000, delay = 0 }: { end: number, duration?: number, delay?: number }) => {
     const [count, setCount] = useState(0);
@@ -69,8 +69,8 @@ export const HeroSection: React.FC = () => {
                     <a href="https://www.linkedin.com/in/vgotyou/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" className="text-gray-400 hover:text-white transition-all hover:scale-110 duration-300">
                         <LinkedInIcon className="w-5 h-5" />
                     </a>
-                    <a href="https://github.com/chandru36james/" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile" className="text-gray-400 hover:text-white transition-all hover:scale-110 duration-300">
-                        <GitHubIcon className="w-5 h-5" />
+                    <a href="https://vgotyou.medium.com/" target="_blank" rel="noopener noreferrer" aria-label="Medium Profile" className="text-gray-400 hover:text-white transition-all hover:scale-110 duration-300">
+                        <MediumIcon className="w-5 h-5" />
                     </a>
                     <a href="https://www.instagram.com/vgot_you/" target="_blank" rel="noopener noreferrer" aria-label="Instagram Profile" className="text-gray-400 hover:text-white transition-all hover:scale-110 duration-300">
                         <InstagramIcon className="w-5 h-5" />
@@ -128,8 +128,8 @@ export const HeroSection: React.FC = () => {
                             <a href="https://www.linkedin.com/in/vgotyou/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" className="text-gray-500 hover:text-white transition-colors">
                                 <LinkedInIcon className="w-5 h-5" />
                             </a>
-                            <a href="https://github.com/chandru36james/" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile" className="text-gray-500 hover:text-white transition-colors">
-                                <GitHubIcon className="w-5 h-5" />
+                            <a href="https://vgotyou.medium.com/" target="_blank" rel="noopener noreferrer" aria-label="Medium Profile" className="text-gray-500 hover:text-white transition-colors">
+                                <MediumIcon className="w-5 h-5" />
                             </a>
                             <a href="https://www.instagram.com/vgot_you/" target="_blank" rel="noopener noreferrer" aria-label="Instagram Profile" className="text-gray-500 hover:text-white transition-colors">
                                 <InstagramIcon className="w-5 h-5" />

@@ -1,32 +1,63 @@
 <Helmet>
-  <title>Portfolio | Web Design, Branding & Digital Projects – VGot You</title>
+  {/* Primary SEO */}
+  <title>
+    Portfolio | Web Design, Branding & Digital Projects in India – VGot You
+  </title>
 
   <meta
     name="description"
-    content="Explore selected web design, branding, SEO, and digital marketing projects by VGot You. See how we help businesses grow through design and strategy."
+    content="Explore our portfolio of web design, branding, SEO, and digital marketing projects by VGot You. Helping businesses across India and globally grow through design and strategy."
   />
 
   <link rel="canonical" href="https://www.vgotyou.com/portfolio" />
   <meta name="robots" content="index, follow" />
 
+  {/* Open Graph */}
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Portfolio | VGot You Digital Studio" />
+  <meta property="og:site_name" content="VGot You" />
+  <meta
+    property="og:title"
+    content="Portfolio | Web Design & Digital Projects by VGot You"
+  />
   <meta
     property="og:description"
-    content="A curated portfolio of websites, branding, SEO, and digital projects delivered by VGot You."
+    content="A curated portfolio of web design, branding, SEO, and digital projects delivered by VGot You for growing businesses."
   />
   <meta property="og:url" content="https://www.vgotyou.com/portfolio" />
-  <meta property="og:image" content="https://www.vgotyou.com/assets/logo.png" />
+  <meta
+    property="og:image"
+    content="https://www.vgotyou.com/assets/vgotyou.png"
+  />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
 
+  {/* Twitter / X */}
   <meta name="twitter:card" content="summary_large_image" />
+  <meta
+    name="twitter:title"
+    content="Portfolio | VGot You Web Design & Digital Studio"
+  />
+  <meta
+    name="twitter:description"
+    content="View selected web design, branding, SEO, and digital projects delivered by VGot You."
+  />
+  <meta
+    name="twitter:image"
+    content="https://www.vgotyou.com/assets/vgotyou.png"
+  />
 
+  {/* Structured Data */}
   <script type="application/ld+json">
     {JSON.stringify({
       "@context": "https://schema.org",
       "@type": "CollectionPage",
       "@id": "https://www.vgotyou.com/portfolio#collection",
       name: "VGot You Portfolio",
-      isPartOf: { "@id": "https://www.vgotyou.com/#website" }
+      description:
+        "Portfolio of web design, branding, SEO, and digital projects by VGot You.",
+      isPartOf: {
+        "@id": "https://www.vgotyou.com/#website"
+      }
     })}
   </script>
 </Helmet>

@@ -183,3 +183,33 @@ export const MoonIcon: React.FC<IconProps> = ({ className }) => (
     <path strokeLinecap="round" strokeLinejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
   </svg>
 );
+
+export const CheckCircleIcon: React.FC<IconProps> = ({ className }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+  </svg>
+);
+
+export const RocketLaunchIcon: React.FC<IconProps> = ({ className }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.82m5.84-2.56a12.022 12.022 0 00-5.84 0m5.84 0a11.953 11.953 0 01-5.84 0M3 16.22a21.722 21.722 0 0115.36-15.36M16.22 3a21.722 21.722 0 00-15.36 15.36" />
+  </svg>
+);
+
+export const LightBulbIcon: React.FC<IconProps> = ({ className }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.311a7.5 7.5 0 01-7.5 0c-1.42 0-2.798-.48-3.982-1.32M9 6.75a3 3 0 013-3m3 3a3 3 0 00-3-3m-3.75 7.478A12.06 12.06 0 0112 15a12.06 12.06 0 013.75-2.522m-3.75-2.311a7.5 7.5 0 00-7.5 0c-1.42 0-2.798-.48-3.982-1.32M15 6.75a3 3 0 00-3-3m-6.75 4.5a7.5 7.5 0 1113.5 0M9 18.75a3 3 0 013-3m3 3a3 3 0 00-3-3m-3-3.75a3 3 0 013-3m3 3a3 3 0 00-3-3" />
+  </svg>
+);
+
+export const MediumIcon: React.FC<IconProps> = ({ className }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" className={className} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.41-3.38 6.41s-3.38-2.87-3.38-6.41 1.51-6.41 3.38-6.41 3.38 2.87 3.38 6.41zM24 12c0 3.17-.53 5.75-1.19 5.75s-1.19-2.58-1.19-5.75.53-5.75 1.19-5.75S24 8.83 24 12z"/>
+  </svg>
+);
+
+export const UserGroupIcon: React.FC<IconProps> = ({ className }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-3.833-6.247 4.125 4.125 0 00-3.833 6.247 9.337 9.337 0 004.121.952 9.38 9.38 0 002.625-.372M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
+  </svg>
+);

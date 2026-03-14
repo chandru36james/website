@@ -20,6 +20,84 @@ const FAQItem = ({ question, answer }: { question: string, answer: string }) => 
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="border-b border-zinc-900 group">
+      <button 
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full py-6 flex justify-between items-center text-left hover:text-red-500 transition-colors"
+      >
+        <span className="text-sm md:text-base font-bold uppercase tracking-tight">{question}</span>
+        <span className={`text-red-600 transform transition-transform duration-300 ${isOpen ? 'rotate-45' : 'rotate-0'}`}>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 5v14M5 12h14"/></svg>
+        </span>
+      </button>
+      <AnimatePresence>
+        {isOpen && (
+          <m.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            className="overflow-hidden"
+          >
+            <p className="pb-6 text-zinc-500 text-sm leading-relaxed max-w-3xl">
+              {answer}
+            </p>
+          </m.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
+
+const CityPill = ({ name }: { name: string }) => (
+  <m.div 
+    whileHover={{ scale: 1.05, borderColor: '#dc2626' }}
+    className="px-4 py-2 border border-zinc-800 bg-zinc-950/50 rounded-sm text-technical text-[10px] uppercase tracking-widest text-zinc-400 hover:text-white transition-all cursor-default whitespace-nowrap"
+  >
+    {name}
+  </m.div>
+);
+
+const WebDesignTN: React.FC = () => {
+  const cities = [
+    "Chennai", "Coimbatore", "Madurai", "Trichy", "Salem", "Tiruppur", "Erode", "Karur", 
+    "Vellore", "Thanjavur", "Tirunelveli", "Thoothukudi", "Dindigul", "Hosur", "Nagercoil", 
+    "Kanchipuram", "Chengalpattu", "Cuddalore", "Villupuram"
+  ];
+
+  const regionalTestimonials = [
+    { name: "Murali", city: "Karur", text: "VGot You transformed our textile exports remotely. Their process is seamless.", business: "Textile Export House" },
+    { name: "Karthik", city: "Coimbatore", text: "The best online developer in TN. Communication was perfect throughout the project.", business: "Manufacturing Hub" },
+    { name: "Priya", city: "Chennai", text: "Strategic SEO that delivered results without needing an in-person meeting.", business: "Tech Startup" }
+  ];
+
+  const services = [
+    {
+      title: "Business Website Design",
+      desc: "High-end corporate website development for industries looking to build global authority through a digital-first approach.",
+      icon: "🏢",
+      code: "CORP-TN"
+    },
+    {
+      title: "E-commerce Development",
+      desc: "Scalable online stores with remote setup and integration, optimized for the South Indian retail sector.",
+      icon: "🛒",
+      code: "ECOMM-X"
+    },
+    {
+      title: "SEO Mastery",
+      desc: "Strategic search engine optimization to help your brand rank at the top of national and regional searches.",
+      icon: "🚀",
+      code: "SEO-MAX"
+    },
+    {
+      title: "Custom UI/UX Engineering",
+      desc: "Digital interface designs crafted for maximum global resonance and local conversion rates.",
+      icon: "🎨",
+      code: "UX-LAB"
+    }
+  ];
+
+  return (
+    <div className="bg-[#020202] text-white selection:bg-red-600/30 overflow-x-hidden pt-20">
       <Helmet>
   {/* ================= BASIC SEO ================= */}
   <title>Web Design Company in Tamil Nadu | Professional Website Designers – VGot You</title>
@@ -117,85 +195,6 @@ const FAQItem = ({ question, answer }: { question: string, answer: string }) => 
     })}
   </script>
 </Helmet>
-
-      <button 
-        onClick={() => setIsOpen(!isOpen)}
-        className="w-full py-6 flex justify-between items-center text-left hover:text-red-500 transition-colors"
-      >
-        <span className="text-sm md:text-base font-bold uppercase tracking-tight">{question}</span>
-        <span className={`text-red-600 transform transition-transform duration-300 ${isOpen ? 'rotate-45' : 'rotate-0'}`}>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 5v14M5 12h14"/></svg>
-        </span>
-      </button>
-      <AnimatePresence>
-        {isOpen && (
-          <m.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            className="overflow-hidden"
-          >
-            <p className="pb-6 text-zinc-500 text-sm leading-relaxed max-w-3xl">
-              {answer}
-            </p>
-          </m.div>
-        )}
-      </AnimatePresence>
-    </div>
-  );
-};
-
-const CityPill = ({ name }: { name: string }) => (
-  <m.div 
-    whileHover={{ scale: 1.05, borderColor: '#dc2626' }}
-    className="px-4 py-2 border border-zinc-800 bg-zinc-950/50 rounded-sm text-technical text-[10px] uppercase tracking-widest text-zinc-400 hover:text-white transition-all cursor-default whitespace-nowrap"
-  >
-    {name}
-  </m.div>
-);
-
-const WebDesignTN: React.FC = () => {
-  const cities = [
-    "Chennai", "Coimbatore", "Madurai", "Trichy", "Salem", "Tiruppur", "Erode", "Karur", 
-    "Vellore", "Thanjavur", "Tirunelveli", "Thoothukudi", "Dindigul", "Hosur", "Nagercoil", 
-    "Kanchipuram", "Chengalpattu", "Cuddalore", "Villupuram"
-  ];
-
-  const regionalTestimonials = [
-    { name: "Murali", city: "Karur", text: "VGot You transformed our textile exports remotely. Their process is seamless.", business: "Textile Export House" },
-    { name: "Karthik", city: "Coimbatore", text: "The best online developer in TN. Communication was perfect throughout the project.", business: "Manufacturing Hub" },
-    { name: "Priya", city: "Chennai", text: "Strategic SEO that delivered results without needing an in-person meeting.", business: "Tech Startup" }
-  ];
-
-  const services = [
-    {
-      title: "Business Website Design",
-      desc: "High-end corporate website development for industries looking to build global authority through a digital-first approach.",
-      icon: "🏢",
-      code: "CORP-TN"
-    },
-    {
-      title: "E-commerce Development",
-      desc: "Scalable online stores with remote setup and integration, optimized for the South Indian retail sector.",
-      icon: "🛒",
-      code: "ECOMM-X"
-    },
-    {
-      title: "SEO Mastery",
-      desc: "Strategic search engine optimization to help your brand rank at the top of national and regional searches.",
-      icon: "🚀",
-      code: "SEO-MAX"
-    },
-    {
-      title: "Custom UI/UX Engineering",
-      desc: "Digital interface designs crafted for maximum global resonance and local conversion rates.",
-      icon: "🎨",
-      code: "UX-LAB"
-    }
-  ];
-
-  return (
-    <div className="bg-[#020202] text-white selection:bg-red-600/30 overflow-x-hidden pt-20">
       <style>{`
         .text-technical { font-family: 'JetBrains Mono', 'Fira Code', monospace; }
         .grid-bg {

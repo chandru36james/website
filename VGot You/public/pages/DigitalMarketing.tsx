@@ -80,26 +80,7 @@ const FAQItem = ({ question, answer }: { question: string, answer: string }) => 
 const DigitalMarketing: React.FC = () => {
   return (
     <div className="bg-[#020202] text-white selection:bg-red-600/30 overflow-x-hidden pt-16 md:pt-20">
-      <style>{`
-        .text-technical { font-family: 'JetBrains Mono', 'Fira Code', monospace; }
-        .bg-grid {
-          background-image: linear-gradient(to right, #ffffff02 1px, transparent 1px),
-                            linear-gradient(to bottom, #ffffff02 1px, transparent 1px);
-          background-size: 30px 30px;
-        }
-        @media (min-width: 768px) {
-          .bg-grid { background-size: 50px 50px; }
-        }
-        @keyframes flow {
-          0% { background-position: 0% 0%; }
-          100% { background-position: 100% 100%; }
-        }
-        .animate-flow {
-          animation: flow 20s linear infinite;
-        }
-      `}</style>
-
-     <Helmet>
+      <Helmet>
   {/* ================= BASIC SEO ================= */}
   <title>Digital Marketing Company | Online Marketing Services – VGot You</title>
 
@@ -124,9 +105,8 @@ const DigitalMarketing: React.FC = () => {
     property="og:description"
     content="Grow your business online with SEO, Google Ads, and social media marketing by VGot You, a results-driven digital marketing agency."
   />
-  <meta property="og:image" content="https://www.vgotyou.com/assets/digital-marketing.png" />
+  <meta property="og:image" content="https://www.vgotyou.com/assets/vgotyou.png" />
   <meta property="og:url" content="https://www.vgotyou.com/digital-marketing" />
-  <meta property="og:site_name" content="VGot You" />
   <meta property="og:locale" content="en_IN" />
 
   {/* ================= TWITTER ================= */}
@@ -136,7 +116,7 @@ const DigitalMarketing: React.FC = () => {
     name="twitter:description"
     content="Performance-driven digital marketing services including SEO, PPC, and social media marketing by VGot You."
   />
-  <meta name="twitter:image" content="https://www.vgotyou.com/assets/digital-marketing.png" />
+  <meta name="twitter:image" content="https://www.vgotyou.com/assets/vgotyou.png" />
 
   {/* ================= SERVICE SCHEMA ================= */}
   <script type="application/ld+json">
@@ -157,8 +137,8 @@ const DigitalMarketing: React.FC = () => {
         logo: "https://www.vgotyou.com/assets/vgotyou.png"
       },
       areaServed: {
-        "@type": "Place",
-        name: "Worldwide"
+        "@type": "AdministrativeArea",
+         name: "India"
       }
     })}
   </script>
@@ -185,6 +165,26 @@ const DigitalMarketing: React.FC = () => {
     })}
   </script>
 </Helmet>
+      <style>{`
+        .text-technical { font-family: 'JetBrains Mono', 'Fira Code', monospace; }
+        .bg-grid {
+          background-image: linear-gradient(to right, #ffffff02 1px, transparent 1px),
+                            linear-gradient(to bottom, #ffffff02 1px, transparent 1px);
+          background-size: 30px 30px;
+        }
+        @media (min-width: 768px) {
+          .bg-grid { background-size: 50px 50px; }
+        }
+        @keyframes flow {
+          0% { background-position: 0% 0%; }
+          100% { background-position: 100% 100%; }
+        }
+        .animate-flow {
+          animation: flow 20s linear infinite;
+        }
+      `}</style>
+
+     
 
 
       {/* Hero: The Growth Engine */}

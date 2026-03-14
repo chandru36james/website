@@ -225,7 +225,7 @@ const WebDesign: React.FC = () => {
               Module: Core_Architecture / VGot_You_Phase_02
             </span>
             <h1 className="text-[14vw] sm:text-[10vw] md:text-[8vw] font-black mb-8 tracking-tighter uppercase leading-[0.8]">
-              <span className="text-red-800">VGot You:</span> <br/>
+              <span className="text-red-600">VGot You:</span> <br/>
               Strategic Web Design.
             </h1>
             <p className="text-base sm:text-lg md:text-xl text-zinc-500 max-w-3xl mx-auto font-light leading-relaxed">

@@ -44,7 +44,7 @@ const ProcessSection: React.FC = () => {
     ];
 
     return (
-        <section className="relative py-20 px-4 bg-black overflow-hidden">
+        <section className="relative py-20 px-4 bg-white overflow-hidden">
              {/* Radar Pattern Background - Scanning Animation */}
              <div className="absolute inset-0 z-0 pointer-events-none opacity-40">
                 {/* Static Rings */}
@@ -57,15 +57,7 @@ const ProcessSection: React.FC = () => {
                     }}
                 ></div>
 
-                {/* Scanning Beam Animation */}
-                <motion.div
-                    className="absolute inset-0"
-                    style={{
-                        background: 'conic-gradient(from 0deg at 100% 50%, transparent 0deg, transparent 280deg, rgba(239, 68, 68, 0.4) 360deg)',
-                    }}
-                    animate={{ rotate: 360 }}
-                    transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-                ></motion.div>
+                
              </div>
 
             <motion.div
@@ -75,7 +67,7 @@ const ProcessSection: React.FC = () => {
                 transition={{ duration: 0.8, ease: "easeOut" }}
                 className="relative z-10 container mx-auto text-center"
             >
-                <h2 className="text-4xl font-bold mb-16 text-white">Our Proven Process</h2>
+                <h2 className="text-4xl font-bold mb-16 text-red-600">Our Proven Process</h2>
             </motion.div>
             
             <div className="relative max-w-5xl mx-auto z-10">

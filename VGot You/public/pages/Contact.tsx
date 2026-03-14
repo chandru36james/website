@@ -7,86 +7,7 @@ import { Helmet } from "react-helmet";   // ✅ SEO
 const AccordionItem: React.FC<{ title: string; children: React.ReactNode; isOpen: boolean; onClick: () => void; }> = ({ title, children, isOpen, onClick }) => {
     return (
         <div className="border-b border-zinc-800">
-            <Helmet>
-  {/* ================= BASIC SEO ================= */}
-  <title>Contact | Web Design & Branding Company in Karur, India | VGot You </title>
-
-  <meta
-    name="description"
-    content="Contact VGot You, a professional web design, logo design, and branding company in Karur, India. Get expert consultation for websites, SEO, and digital growth."
-  />
-
-  <meta
-    name="keywords"
-    content="contact web designer Karur, hire website designer India, branding company contact, SEO company Karur, VGot You contact, digital agency Tamil Nadu"
-  />
-
-  <link rel="canonical" href="https://www.vgotyou.com/contact" />
-  <meta name="robots" content="index, follow" />
-
-  {/* ================= OPEN GRAPH ================= */}
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Contact VGot You | Web Design & Branding Company" />
-  <meta
-    property="og:description"
-    content="Get in touch with VGot You for professional website design, branding, and SEO services in Karur, Tamil Nadu."
-  />
-  <meta property="og:url" content="https://www.vgotyou.com/contact" />
-  <meta property="og:site_name" content="VGot You" />
-  <meta property="og:image" content="https://www.vgotyou.com/assets/vgotyou.png" />
-  <meta property="og:locale" content="en_IN" />
-
-  {/* ================= TWITTER ================= */}
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Contact VGot You | Web Design Company in Karur" />
-  <meta
-    name="twitter:description"
-    content="Speak with VGot You for website design, branding, and SEO consultation."
-  />
-  <meta name="twitter:image" content="https://www.vgotyou.com/assets/vgotyou.png" />
-
-  {/* ================= LOCAL BUSINESS + CONTACT SCHEMA ================= */}
-  <script type="application/ld+json">
-    {JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "ContactPage",
-      "@id": "https://www.vgotyou.com/contact#contactpage",
-      url: "https://www.vgotyou.com/contact",
-      name: "Contact VGot You",
-      description:
-        "Contact page for VGot You, a web design, branding, and SEO company in Karur, Tamil Nadu.",
-      about: {
-        "@type": "LocalBusiness",
-        "@id": "https://www.vgotyou.com/#localbusiness",
-        name: "VGot You",
-        url: "https://www.vgotyou.com/",
-        logo: "https://www.vgotyou.com/assets/vgotyou.png",
-        address: {
-          "@type": "PostalAddress",
-          addressLocality: "Karur",
-          addressRegion: "Tamil Nadu",
-          addressCountry: "IN"
-        },
-        contactPoint: {
-          "@type": "ContactPoint",
-          telephone: "+91-7871120415",
-          email: "info@vgotyou.com",
-          contactType: "Sales & Support",
-          availableLanguage: ["English", "Tamil"]
-        },
-        sameAs: [
-          "https://www.linkedin.com/in/vgotyou/",
-  "https://www.instagram.com/vgot_you/",
-  "https://vgotyou.medium.com/",
-  "https://vgotyou.sulekha.com",
-  "https://clutch.co/profile/vgot-you",
-  "https://www.justdial.com/Karur/VGot-You-Andankoil/9999P4324-4324-260118183447-U7H4_BZDET?via=scode"
-        ]
-      }
-    })}
-  </script>
-</Helmet>
-
+            
             <button onClick={onClick} className="w-full flex justify-between items-center text-left py-4 md:py-6 text-sm md:text-lg font-semibold focus:outline-none text-white hover:text-red-500 transition-colors">
                 <span className="pr-4">{title}</span>
                 <svg className={`w-4 h-4 md:w-5 md:h-5 shrink-0 transition-transform transform ${isOpen ? 'rotate-180' : 'rotate-0'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -177,6 +98,86 @@ const Contact: React.FC = () => {
 
     return (
         <div className="bg-black text-white selection:bg-red-600/30">
+            <Helmet>
+  {/* ================= BASIC SEO ================= */}
+  <title>Contact | Web Design & Branding Company in Karur, India | VGot You </title>
+
+  <meta
+    name="description"
+    content="Contact VGot You, a professional web design, logo design, and branding company in Karur, India. Get expert consultation for websites, SEO, and digital growth."
+  />
+
+  <meta
+    name="keywords"
+    content="contact web designer Karur, hire website designer India, branding company contact, SEO company Karur, VGot You contact, digital agency Tamil Nadu"
+  />
+
+  <link rel="canonical" href="https://www.vgotyou.com/contact" />
+  <meta name="robots" content="index, follow" />
+
+  {/* ================= OPEN GRAPH ================= */}
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Contact VGot You | Web Design & Branding Company" />
+  <meta
+    property="og:description"
+    content="Get in touch with VGot You for professional website design, branding, and SEO services in Karur, Tamil Nadu."
+  />
+  <meta property="og:url" content="https://www.vgotyou.com/contact" />
+  <meta property="og:site_name" content="VGot You" />
+  <meta property="og:image" content="https://www.vgotyou.com/assets/vgotyou.png" />
+  <meta property="og:locale" content="en_IN" />
+
+  {/* ================= TWITTER ================= */}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Contact VGot You | Web Design Company in Karur" />
+  <meta
+    name="twitter:description"
+    content="Speak with VGot You for website design, branding, and SEO consultation."
+  />
+  <meta name="twitter:image" content="https://www.vgotyou.com/assets/vgotyou.png" />
+
+  {/* ================= LOCAL BUSINESS + CONTACT SCHEMA ================= */}
+  <script type="application/ld+json">
+    {JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "ContactPage",
+      "@id": "https://www.vgotyou.com/contact#contactpage",
+      url: "https://www.vgotyou.com/contact",
+      name: "Contact VGot You",
+      description:
+        "Contact page for VGot You, a web design, branding, and SEO company in Karur, Tamil Nadu.",
+      about: {
+        "@type": "LocalBusiness",
+        "@id": "https://www.vgotyou.com/#localbusiness",
+        name: "VGot You",
+        url: "https://www.vgotyou.com/",
+        logo: "https://www.vgotyou.com/assets/vgotyou.png",
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Karur",
+          addressRegion: "Tamil Nadu",
+          addressCountry: "IN"
+        },
+        contactPoint: {
+          "@type": "ContactPoint",
+          telephone: "+91-7871120415",
+          email: "info@vgotyou.com",
+          contactType: "Sales & Support",
+          availableLanguage: ["English", "Tamil"]
+        },
+        sameAs: [
+          "https://www.linkedin.com/in/vgotyou/",
+          "https://www.instagram.com/vgot_you/",
+          "https://vgotyou.medium.com/",
+          "https://vgotyou.sulekha.com",
+          "https://clutch.co/profile/vgot-you",
+          "https://www.justdial.com/Karur/VGot-You-Andankoil/9999P4324-4324-260118183447-U7H4_BZDET?via=scode"
+        ]
+      }
+    })}
+  </script>
+</Helmet>
+
            
             {/* Hero Section - Reduced mobile height and cleared header */}
             <section className="h-[35vh] md:h-[50vh] w-full relative flex items-center justify-center text-center overflow-hidden">

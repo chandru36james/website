@@ -88,10 +88,10 @@ const NavLinks: React.FC<{className?: string; onClick?: () => void;}> = ({ class
                     </>
                 )}
             </NavLink>
-            <NavLink to="/chandru" className={linkBaseClass} onClick={onClick}>
+            <NavLink to="/about" className={linkBaseClass} onClick={onClick}>
                  {({isActive}) => (
                     <>
-                        About Me
+                        About Us
                         <span className={underlineClassName(isActive)}></span>
                     </>
                 )}
@@ -234,8 +234,8 @@ const Header: React.FC = () => {
                                 </m.div>
 
                                 <m.div variants={linkVariants}>
-                                    <NavLink to="/chandru" onClick={() => setIsMenuOpen(false)} className={({isActive}) => `block transition-colors ${isActive ? 'text-red-600' : 'text-zinc-500 hover:text-white'}`}>
-                                        <span className="text-xs font-mono mr-4 text-zinc-800">02</span>ABOUT ME
+                                    <NavLink to="/about" onClick={() => setIsMenuOpen(false)} className={({isActive}) => `block transition-colors ${isActive ? 'text-red-600' : 'text-zinc-500 hover:text-white'}`}>
+                                        <span className="text-xs font-mono mr-4 text-zinc-800">02</span>ABOUT US
                                     </NavLink>
                                 </m.div>
 

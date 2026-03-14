@@ -69,7 +69,8 @@ const CarouselManual: React.FC = () => {
     <div className="w-full">
       {/* Section Title */}
       <div className="text-center mb-10 px-4">
-        <h2 className="text-3xl md:text-5xl font-bold font-display text-white mb-2">Our Projects</h2>
+        <h2 className="text-3xl md:text-5xl font-bold font-display text-red-600 mb-2">Our Projects</h2>
+
         <p className="text-sm md:text-lg text-zinc-400 max-w-2xl mx-auto">
           Explore our portfolio of digital experiences.
         </p>

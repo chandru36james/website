@@ -55,10 +55,10 @@ const Footer: React.FC = () => {
             </svg>
           </SocialIcon>
 
-          <SocialIcon href="https://github.com/chandru36james/">
+          <SocialIcon href="https://vgotyou.medium.com/">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="24"
+              width="26"
               height="24"
               viewBox="0 0 24 24"
               fill="none"
@@ -67,8 +67,8 @@ const Footer: React.FC = () => {
               strokeLinecap="round"
               strokeLinejoin="round"
             >
-              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-            </svg>
+              <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.41-3.38 6.41s-3.38-2.87-3.38-6.41 1.51-6.41 3.38-6.41 3.38 2.87 3.38 6.41zM24 12c0 3.17-.53 5.75-1.19 5.75s-1.19-2.58-1.19-5.75.53-5.75 1.19-5.75S24 8.83 24 12z"/>
+  </svg>
           </SocialIcon>
 
           <SocialIcon href="https://www.instagram.com/vgot_you/">

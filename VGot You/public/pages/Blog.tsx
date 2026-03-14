@@ -17,24 +17,6 @@ const Blog: React.FC = () => {
 
     return (
         <main className="min-h-screen bg-[#020202] text-white selection:bg-red-600/30 overflow-x-hidden pt-24 pb-32">
-            <style>{`
-                .text-technical { font-family: 'JetBrains Mono', 'Fira Code', monospace; }
-                @keyframes scanline {
-                    0% { transform: translateY(-100%); }
-                    100% { transform: translateY(100%); }
-                }
-                .scanline {
-                    position: absolute;
-                    top: 0; left: 0; width: 100%; height: 1px;
-                    background: linear-gradient(to right, transparent, #dc2626, transparent);
-                    animation: scanline 3s linear infinite;
-                    z-index: 10;
-                    opacity: 0;
-                }
-                .group:hover .scanline { opacity: 1; }
-                .no-scrollbar::-webkit-scrollbar { display: none; }
-                .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-            `}</style>
             <Helmet>
   {/* ================= BASIC SEO ================= */}
   <title>Blog | Web Design, SEO & Digital Growth Insights | VGot You</title>
@@ -110,6 +92,25 @@ const Blog: React.FC = () => {
     })}
   </script>
 </Helmet>
+            <style>{`
+                .text-technical { font-family: 'JetBrains Mono', 'Fira Code', monospace; }
+                @keyframes scanline {
+                    0% { transform: translateY(-100%); }
+                    100% { transform: translateY(100%); }
+                }
+                .scanline {
+                    position: absolute;
+                    top: 0; left: 0; width: 100%; height: 1px;
+                    background: linear-gradient(to right, transparent, #dc2626, transparent);
+                    animation: scanline 3s linear infinite;
+                    z-index: 10;
+                    opacity: 0;
+                }
+                .group:hover .scanline { opacity: 1; }
+                .no-scrollbar::-webkit-scrollbar { display: none; }
+                .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+            `}</style>
+            
 
 
             {/* Header Section */}
