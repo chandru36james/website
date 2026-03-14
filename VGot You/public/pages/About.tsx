@@ -22,7 +22,7 @@ const About: React.FC = () => {
             }
         },
         {
-            name: "Saran Raj",
+            name: "Saranraj",
             title: "Co-Founder & Tech Lead",
             description: "Specializes in scalable web development, cloud infrastructure, and digital growth strategies.",
             image: "https://www.vgotyou.com/assets/saran.png",
@@ -126,7 +126,7 @@ const About: React.FC = () => {
         {
           "@type": "Person",
           "@id": "https://www.vgotyou.com/saranraj#person",
-          name: "Saranraj V",
+          name: "Saranraj Vasanthi",
           jobTitle: "Co-Founder & AI Engineer"
         }
       ],
