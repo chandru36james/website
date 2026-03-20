@@ -1,0 +1,134 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { 
+    CheckCircleIcon, 
+    RocketLaunchIcon, 
+    UserGroupIcon, 
+    SparklesIcon, 
+    CodeBracketIcon,
+    ChevronRightIcon,
+    StarIcon
+} from '../../components/Icons';
+
+const m = motion as any;
+
+const TechnicalHeader = ({ label, code }: { label: string; code: string }) => (
+  <div className="flex items-center gap-4 mb-8">
+    <div className="h-[1px] flex-grow bg-zinc-800"></div>
+    <div className="flex flex-col items-center">
+      <span className="text-[10px] font-mono text-red-600 tracking-[0.4em] uppercase">{label}</span>
+      <span className="text-[8px] font-mono text-zinc-600 mt-1">{code}</span>
+    </div>
+    <div className="h-[1px] flex-grow bg-zinc-800"></div>
+  </div>
+);
+
+const UKDigitalMarketing: React.FC = () => {
+    return (
+        <div className="bg-[#020202] text-white selection:bg-red-600/30 overflow-x-hidden pt-20">
+            
+
+            <style>{`
+                .text-technical { font-family: 'JetBrains Mono', 'Fira Code', monospace; }
+                @keyframes scanline {
+                    0% { transform: translateY(-100%); }
+                    100% { transform: translateY(100vh); }
+                }
+                .scanline-overlay {
+                    position: fixed;
+                    top: 0; left: 0; width: 100%; height: 2px;
+                    background: linear-gradient(to bottom, transparent, rgba(220,38,38,0.1), transparent);
+                    z-index: 100; pointer-events: none;
+                    animation: scanline 10s linear infinite;
+                }
+            `}</style>
+            
+            <div className="scanline-overlay"></div>
+
+            {/* Hero Section */}
+            <section className="relative h-[80dvh] w-full flex items-center justify-center overflow-hidden border-b border-zinc-950">
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(220,38,38,0.05)_0%,transparent_70%)]"></div>
+                
+                <div className="relative z-10 px-6 max-w-7xl mx-auto text-center">
+                    <m.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 1 }}
+                    >
+                        <span className="inline-block px-3 py-1 mb-6 border border-zinc-800 rounded-sm bg-black/50 text-[10px] font-mono tracking-[0.4em] uppercase text-zinc-500">
+                            Service: Digital_Marketing / UK_Market
+                        </span>
+                        <h1 className="text-5xl sm:text-7xl md:text-[6vw] font-black mb-6 md:mb-8 tracking-tighter uppercase leading-[0.9]">
+                            Scale Your <br/>
+                            <span className="text-red-600">UK Brand.</span>
+                        </h1>
+                        <p className="text-sm sm:text-lg md:text-xl text-zinc-400 max-w-3xl mx-auto font-light leading-relaxed mb-8 md:mb-12">
+                            Performance-driven <strong className="text-white">digital marketing UK</strong>. We combine data science with creative excellence to deliver measurable growth for British businesses.
+                        </p>
+                        <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+                            <Link to="/contact" className="px-10 py-5 bg-red-600 text-white font-bold rounded-sm uppercase tracking-[0.2em] hover:bg-red-700 transition-all shadow-[0_0_30px_rgba(220,38,38,0.2)]">
+                                Get Strategy Call
+                            </Link>
+                            <Link to="/portfolio" className="px-10 py-5 border border-zinc-800 text-white font-bold rounded-sm uppercase tracking-[0.2em] hover:bg-white hover:text-black transition-all">
+                                View Results
+                            </Link>
+                        </div>
+                    </m.div>
+                </div>
+            </section>
+
+            {/* Marketing Channels */}
+            <section className="py-24 px-6 border-b border-zinc-900">
+                <div className="container mx-auto max-w-7xl">
+                    <TechnicalHeader label="Marketing Channels" code="UK_GROWTH_ENGINE" />
+                    <div className="grid md:grid-cols-3 gap-8">
+                        {[
+                            {
+                                title: "Paid Search (PPC)",
+                                desc: "High-ROI Google Ads and Bing Ads campaigns designed for the UK market. We focus on conversion, not just clicks.",
+                                icon: <RocketLaunchIcon className="w-6 h-6" />
+                            },
+                            {
+                                title: "Social Media Ads",
+                                desc: "Targeted Meta, LinkedIn, and TikTok campaigns that build brand awareness and drive sales for UK audiences.",
+                                icon: <UserGroupIcon className="w-6 h-6" />
+                            },
+                            {
+                                title: "Content Marketing",
+                                desc: "Strategic content that educates, inspires, and converts. We build your UK brand's authority through storytelling.",
+                                icon: <SparklesIcon className="w-6 h-6" />
+                            }
+                        ].map((channel, i) => (
+                            <div key={i} className="p-8 bg-[#080808] border border-zinc-900 rounded-sm">
+                                <div className="text-red-600 mb-6">{channel.icon}</div>
+                                <h3 className="text-xl font-bold mb-4 uppercase tracking-tight text-white">{channel.title}</h3>
+                                <p className="text-zinc-500 text-sm leading-relaxed">{channel.desc}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Final CTA */}
+            <section className="py-24 px-6 text-center bg-black relative">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(220,38,38,0.1)_0%,transparent_70%)]"></div>
+                <div className="max-w-4xl mx-auto relative z-10">
+                    <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-8">
+                        Ready to <br/>
+                        <span className="text-red-600">Accelerate?</span>
+                    </h2>
+                    <p className="text-zinc-500 mb-12 text-lg max-w-xl mx-auto">
+                        Don't leave your UK growth to chance. Partner with VGot You and build a predictable lead generation machine.
+                    </p>
+                    <Link to="/contact" className="px-12 py-5 bg-red-600 text-white font-bold rounded-sm uppercase tracking-[0.3em] shadow-[0_0_50px_rgba(220,38,38,0.3)] hover:bg-red-700 transition-all inline-block">
+                        Start Your Campaign
+                    </Link>
+                </div>
+            </section>
+        </div>
+    );
+};
+
+export default UKDigitalMarketing;
