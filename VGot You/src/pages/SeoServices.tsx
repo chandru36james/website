@@ -53,90 +53,181 @@ const FAQItem = ({ question, answer }: { question: string, answer: string }) => 
 const SeoServices: React.FC = () => {
   return (
     <div className="bg-[#020202] text-white selection:bg-red-600/30 overflow-x-hidden pt-16 md:pt-20">
-      <Helmet>
+      
+<Helmet>
+
   {/* ================= BASIC SEO ================= */}
-  <title>SEO Company | Search Engine Optimization Services – VGot You</title>
+  <html lang="en-IN" />
+
+  {/* FIXED: Added India & UK location signal */}
+  <title>SEO Services in India & UK | Search Engine Optimization – VGot You</title>
 
   <meta
     name="description"
-    content="VGot You is a professional SEO company offering result-driven search engine optimization services to help businesses rank higher on Google, increase traffic, and generate quality leads."
+    content="VGot You offers professional SEO services in India and the UK — helping businesses rank higher on Google, increase organic traffic, and generate quality leads through technical SEO, local SEO and content strategy."
   />
 
-  <meta
-    name="keywords"
-    content="seo company, seo services, search engine optimization, professional seo agency, website ranking services, local seo, ecommerce seo, technical seo"
-  />
+  {/* FIXED: Removed meta keywords */}
 
-  <link rel="canonical" href="https://www.vgotyou.com/seo-services" />
+  <meta name="author" content="VGot You" />
   <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.vgotyou.com/seo-services" />
+
+  {/* ================= HREFLANG ================= */}
+  {/* ADDED: Was completely missing */}
+  <link rel="alternate" hrefLang="en-IN" href="https://www.vgotyou.com/seo-services" />
+  <link rel="alternate" hrefLang="en-GB" href="https://www.vgotyou.com/seo-services-uk" />
+  <link rel="alternate" hrefLang="x-default" href="https://www.vgotyou.com/seo-services" />
 
   {/* ================= OPEN GRAPH ================= */}
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="SEO Company | Search Engine Optimization Services – VGot You" />
+  <meta property="og:site_name" content="VGot You" />
+  {/* FIXED: og:title now matches <title> exactly */}
+  <meta property="og:title" content="SEO Services in India & UK | Search Engine Optimization – VGot You" />
   <meta
     property="og:description"
-    content="Professional SEO services by VGot You to improve Google rankings, traffic, and conversions for businesses."
+    content="Professional SEO services in India and the UK by VGot You — technical SEO, local SEO, e-commerce SEO and content strategy to improve Google rankings and drive organic growth."
   />
-  <meta property="og:image" content="https://www.vgotyou.com/assets/logo.png" />
   <meta property="og:url" content="https://www.vgotyou.com/seo-services" />
-  <meta property="og:site_name" content="VGot You" />
+  {/* FIXED: logo.png → og-home.png, consistent across all pages */}
+  <meta property="og:image" content="https://www.vgotyou.com/assets/og-home.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  {/* FIXED: og:image:alt was missing */}
+  <meta property="og:image:alt" content="SEO Services in India and UK – VGot You Search Engine Optimization" />
   <meta property="og:locale" content="en_IN" />
+  {/* FIXED: og:locale:alternate was missing */}
+  <meta property="og:locale:alternate" content="en_GB" />
 
-  {/* ================= TWITTER ================= */}
+  {/* ================= TWITTER / X ================= */}
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="SEO Company | Search Engine Optimization Services – VGot You" />
+  {/* FIXED: twitter:title now matches <title> exactly */}
+  <meta name="twitter:title" content="SEO Services in India & UK | Search Engine Optimization – VGot You" />
   <meta
     name="twitter:description"
-    content="Rank higher on Google with professional SEO services by VGot You."
+    content="Professional SEO services in India and the UK by VGot You — technical SEO, local SEO and content strategy to improve Google rankings and drive organic growth."
   />
-  <meta name="twitter:image" content="https://www.vgotyou.com/assets/seo-services.png" />
+  {/* FIXED: Unified image — og and twitter now use same image */}
+  <meta name="twitter:image" content="https://www.vgotyou.com/assets/og-home.png" />
+  {/* FIXED: twitter:site and twitter:creator were missing */}
+  <meta name="twitter:site" content="@vgotyou" />
+  <meta name="twitter:creator" content="@vgotyou" />
 
-  {/* ================= SERVICE SCHEMA ================= */}
-  <script type="application/ld+json">
-    {JSON.stringify({
+  {/* ================= SCHEMA: WEB PAGE ================= */}
+  {/* ADDED: Was completely missing */}
+  <script type="application/ld+json">{`
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "@id": "https://www.vgotyou.com/seo-services#webpage",
+      "url": "https://www.vgotyou.com/seo-services",
+      "name": "SEO Services in India & UK | Search Engine Optimization – VGot You",
+      "description": "Professional SEO services in India and the UK by VGot You — technical SEO, local SEO, e-commerce SEO and content strategy.",
+      "inLanguage": "en-IN",
+      "isPartOf": {
+        "@id": "https://www.vgotyou.com/#website"
+      },
+      "publisher": {
+        "@id": "https://www.vgotyou.com/#organization"
+      },
+      "about": {
+        "@id": "https://www.vgotyou.com/seo-services#service"
+      }
+    }
+  `}</script>
+
+  {/* ================= SCHEMA: SERVICE ================= */}
+  
+  <script type="application/ld+json">{`
+    {
       "@context": "https://schema.org",
       "@type": "Service",
       "@id": "https://www.vgotyou.com/seo-services#service",
-      name: "Search Engine Optimization Services",
-      serviceType: "SEO Services",
-      url: "https://www.vgotyou.com/seo-services",
-      description:
-        "Professional SEO services to improve website rankings, organic traffic, and online visibility.",
-      provider: {
-        "@type": "Organization",
-        "@id": "https://www.vgotyou.com/#organization",
-        name: "VGot You",
-        url: "https://www.vgotyou.com/",
-        logo: "https://www.vgotyou.com/assets/vgotyou.png"
+      "name": "Search Engine Optimization Services",
+      "url": "https://www.vgotyou.com/seo-services",
+      "description": "Professional SEO services to improve website rankings, organic traffic, and online visibility for businesses across India and the UK.",
+      "serviceType": [
+        "Search Engine Optimization",
+        "Local SEO",
+        "Technical SEO",
+        "On-Page SEO",
+        "Off-Page SEO",
+        "E-commerce SEO",
+        "Google Business Profile Optimization",
+        "SEO Audit",
+        "Keyword Research",
+        "Link Building",
+        "Content Strategy"
+      ],
+      "provider": {
+        "@id": "https://www.vgotyou.com/#localbusiness"
       },
-      areaServed: {
-        "@type": "AdministrativeArea",
-        name: "India"
+      "areaServed": [
+        { "@type": "Country", "name": "India" },
+        { "@type": "Country", "name": "United Kingdom" },
+        { "@type": "State", "name": "Tamil Nadu" },
+        { "@type": "City", "name": "Karur" }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "SEO Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", "name": "Local SEO for Indian Businesses" }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", "name": "Technical SEO Audit and Fixes" }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", "name": "E-commerce SEO India and UK" }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", "name": "Google Business Profile Optimization" }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", "name": "SEO Services for UK Businesses" }
+          }
+        ]
+      },
+      "offers": {
+        "@type": "Offer",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "priceCurrency": "INR",
+          "description": "Custom SEO packages based on business size, competition and target keywords"
+        }
       }
-    })}
-  </script>
+    }
+  `}</script>
 
-  {/* ================= BREADCRUMB SCHEMA ================= */}
-  <script type="application/ld+json">
-    {JSON.stringify({
+  {/* ================= SCHEMA: BREADCRUMB ================= */}
+
+  <script type="application/ld+json">{`
+    {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
-      itemListElement: [
+      "itemListElement": [
         {
           "@type": "ListItem",
-          position: 1,
-          name: "Home",
-          item: "https://www.vgotyou.com/"
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.vgotyou.com/"
         },
         {
           "@type": "ListItem",
-          position: 2,
-          name: "SEO Services",
-          item: "https://www.vgotyou.com/seo-services"
+          "position": 2,
+          "name": "SEO Services",
+          "item": "https://www.vgotyou.com/seo-services"
         }
       ]
-    })}
-  </script>
+    }
+  `}</script>
+
 </Helmet>
 
 
@@ -177,6 +268,9 @@ const SeoServices: React.FC = () => {
               <span className="text-red-600">VGot You:</span> <br/>
               Rank Higher, <span className="text-zinc-800">Get Leads.</span>
             </h1>
+            <h2 className="sr-only">
+              SEO Services in India & UK – Technical SEO, Local SEO & Google Rankings | VGot You
+            </h2>
             <p className="text-base md:text-xl text-zinc-500 font-light leading-relaxed mb-10 md:mb-12 max-w-3xl mx-auto px-4 md:px-0">
               <strong className="text-white font-bold">VGot You</strong> is a results-driven <strong className="text-zinc-300">SEO company in Tamil Nadu</strong> helping businesses improve Google rankings, generate organic traffic, and convert visitors into loyal customers.
             </p>

@@ -7,6 +7,7 @@ import {
     RocketLaunchIcon,
     ChevronRightIcon
 } from '../../components/Icons';
+import { Helmet } from "react-helmet";
 
 const m = motion as any;
 
@@ -24,7 +25,38 @@ const TechnicalHeader = ({ label, code }: { label: string; code: string }) => (
 const EdinburghWebPage: React.FC = () => {
     return (
         <div className="bg-[#020202] text-white selection:bg-red-600/30 overflow-x-hidden pt-20">
-            
+            <Helmet>
+  <html lang="en-GB" />
+  <title>Web Design Company in Edinburgh | SEO-Ready Websites | VGot You</title>
+  <meta name="description" content="VGot You offers professional web design for Edinburgh businesses — from Old Town tourism firms to New Town financial services. Fast, affordable websites from £1,499." />
+  <meta name="author" content="VGot You" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.vgotyou.com/web-design-edinburgh" />
+  <link rel="alternate" hreflang="en-GB" href="https://www.vgotyou.com/web-design-edinburgh" />
+  <link rel="alternate" hreflang="en-IN" href="https://www.vgotyou.com/" />
+  <link rel="alternate" hreflang="x-default" href="https://www.vgotyou.com/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="VGot You" />
+  <meta property="og:title" content="Web Design Company in Edinburgh | SEO-Ready Websites | VGot You" />
+  <meta property="og:description" content="Professional web design for Edinburgh businesses — from Old Town tourism firms to New Town financial services. Fast, affordable websites from £1,499." />
+  <meta property="og:url" content="https://www.vgotyou.com/web-design-edinburgh" />
+  <meta property="og:image" content="https://www.vgotyou.com/assets/og-home.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Web Design Services in Edinburgh – VGot You" />
+  <meta property="og:locale" content="en_GB" />
+  <meta property="og:locale:alternate" content="en_IN" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Web Design Company in Edinburgh | SEO-Ready Websites | VGot You" />
+  <meta name="twitter:description" content="Professional web design for Edinburgh businesses. Fast, affordable websites from £1,499." />
+  <meta name="twitter:image" content="https://www.vgotyou.com/assets/og-home.png" />
+  <meta name="twitter:site" content="@vgotyou" />
+  <meta name="twitter:creator" content="@vgotyou" />
+  <script type="application/ld+json">{`{"@context":"https://schema.org","@type":"WebPage","@id":"https://www.vgotyou.com/web-design-edinburgh#webpage","url":"https://www.vgotyou.com/web-design-edinburgh","name":"Web Design Company in Edinburgh | SEO-Ready Websites | VGot You","description":"Professional web design for Edinburgh businesses — from Old Town tourism firms to New Town financial services. Fast, affordable websites from £1,499.","inLanguage":"en-GB","isPartOf":{"@id":"https://www.vgotyou.com/#website"},"publisher":{"@id":"https://www.vgotyou.com/#organization"},"about":{"@id":"https://www.vgotyou.com/web-design-edinburgh#service"}}`}</script>
+  <script type="application/ld+json">{`{"@context":"https://schema.org","@type":"Service","@id":"https://www.vgotyou.com/web-design-edinburgh#service","name":"Web Design Services in Edinburgh","url":"https://www.vgotyou.com/web-design-edinburgh","description":"Professional web design for Edinburgh businesses — custom websites, e-commerce and SEO-optimised development across Edinburgh and the Lothians.","serviceType":["Web Design Edinburgh","Custom Website Design","E-commerce Website Development Edinburgh","SEO-Optimised Web Design","Mobile-First Website Design","Small Business Website Design Edinburgh"],"provider":{"@id":"https://www.vgotyou.com/#organization"},"areaServed":[{"@type":"City","name":"Edinburgh"},{"@type":"Country","name":"United Kingdom"}],"offers":{"@type":"Offer","priceSpecification":{"@type":"PriceSpecification","priceCurrency":"GBP","minPrice":"1499","description":"Web design packages for Edinburgh businesses starting from £1,499"}}}`}</script>
+  <script type="application/ld+json">{`{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Do you provide web design services in Edinburgh?","acceptedAnswer":{"@type":"Answer","text":"Yes, VGot You provides professional web design for businesses across Edinburgh including the Old Town, New Town, Leith and across the Lothians."}},{"@type":"Question","name":"How much does web design cost in Edinburgh?","acceptedAnswer":{"@type":"Answer","text":"Our Edinburgh web design packages start from £1,499. Fixed-price, transparent quotes — no hidden costs."}},{"@type":"Question","name":"Do you build websites for Edinburgh tourism businesses?","acceptedAnswer":{"@type":"Answer","text":"Yes, we build high-performing, booking-optimised websites for Edinburgh's hotels, tour operators, restaurants and tourism businesses."}},{"@type":"Question","name":"Can you build websites for Edinburgh financial firms?","acceptedAnswer":{"@type":"Answer","text":"Absolutely. We build professional, trust-focused websites for Edinburgh's financial sector — designed to build authority and generate qualified leads."}}]}`}</script>
+  <script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.vgotyou.com/"},{"@type":"ListItem","position":2,"name":"Web Design UK","item":"https://www.vgotyou.com/web-design-uk"},{"@type":"ListItem","position":3,"name":"Web Design Edinburgh","item":"https://www.vgotyou.com/web-design-edinburgh"}]}`}</script>
+</Helmet>
 
             <style>{`
                 .text-technical { font-family: 'JetBrains Mono', 'Fira Code', monospace; }

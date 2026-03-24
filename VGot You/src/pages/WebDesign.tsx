@@ -103,91 +103,180 @@ const WebDesign: React.FC = () => {
 
   return (
     <div className="bg-[#020202] text-white selection:bg-red-600/30 overflow-x-hidden">
-      
-<Helmet>
+   <Helmet>
+
   {/* ================= BASIC SEO ================= */}
-  <title>Website Design Company in Karur, India | Web Design Services – VGot You</title>
+  <html lang="en-IN" />
+
+  <title>Professional Web Design Services | Custom Websites for Businesses | VGot You</title>
 
   <meta
     name="description"
-    content="VGot You is a professional website design company in Karur, India, offering custom, responsive, and SEO-optimized web design services for startups and growing businesses across India and worldwide."
+    content="VGot You is a professional website design company in Karur, India, offering custom, responsive, and SEO-optimised web design services for startups and growing businesses across India and the UK."
   />
 
-  <meta
-    name="keywords"
-    content="website design company in karur, web design services india, responsive website design, seo web development, ui ux design company, business website designers, professional web designers, ecommerce website development"
-  />
+  {/* FIXED: Removed meta keywords — no SEO value */}
 
-  <link rel="canonical" href="https://www.vgotyou.com/web-design" />
+  <meta name="author" content="VGot You" />
   <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.vgotyou.com/web-design" />
+
+  {/* ================= HREFLANG ================= */}
+  <link rel="alternate" hrefLang="en-IN" href="https://www.vgotyou.com/web-design" />
+  <link rel="alternate" hrefLang="en-GB" href="https://www.vgotyou.com/web-design" />
+  <link rel="alternate" hrefLang="x-default" href="https://www.vgotyou.com/web-design" />
 
   {/* ================= OPEN GRAPH ================= */}
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Website Design Company in Karur, India | VGot You" />
+  <meta property="og:site_name" content="VGot You" />
+  {/* FIXED: og:title now matches <title> exactly */}
+  <meta property="og:title" content="Professional Web Design Services | Custom Websites for Businesses | VGot You" />
   <meta
     property="og:description"
-    content="Custom, fast, and SEO-friendly website design services by VGot You, a leading web design company serving Karur and businesses across India."
+    content="VGot You is a professional website design company in Karur, India, offering custom, responsive, and SEO-optimised web design services for startups and growing businesses across India and the UK."
   />
-  <meta property="og:image" content="https://www.vgotyou.com/assets/web-designer.png" />
   <meta property="og:url" content="https://www.vgotyou.com/web-design" />
-  <meta property="og:site_name" content="VGot You" />
+  {/* Keeping page-specific image — web-designer.png */}
+  <meta property="og:image" content="https://www.vgotyou.com/assets/web-designer.png" />
+  {/* FIXED: og:image:width, height and alt were missing */}
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Professional Web Design Services by VGot You – Karur, Tamil Nadu" />
   <meta property="og:locale" content="en_IN" />
+  {/* FIXED: og:locale:alternate was missing */}
+  <meta property="og:locale:alternate" content="en_GB" />
 
-  {/* ================= TWITTER ================= */}
+  {/* ================= TWITTER / X ================= */}
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Website Design Company in Karur, India | VGot You" />
+  {/* FIXED: twitter:title now matches <title> exactly */}
+  <meta name="twitter:title" content="Professional Web Design Services | Custom Websites for Businesses | VGot You" />
   <meta
     name="twitter:description"
-    content="Professional website design, UI/UX, and SEO services for startups and businesses by VGot You."
+    content="Professional website design, UI/UX, and SEO services for startups and businesses across India and the UK by VGot You, Karur."
   />
   <meta name="twitter:image" content="https://www.vgotyou.com/assets/web-designer.png" />
+  {/* FIXED: twitter:site and twitter:creator were missing */}
+  <meta name="twitter:site" content="@vgotyou" />
+  <meta name="twitter:creator" content="@vgotyou" />
 
-  {/* ================= SERVICE SCHEMA ================= */}
-  <script type="application/ld+json">
-    {JSON.stringify({
+  {/* ================= SCHEMA: WEB PAGE ================= */}
+  
+  <script type="application/ld+json">{`
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "@id": "https://www.vgotyou.com/web-design#webpage",
+      "url": "https://www.vgotyou.com/web-design",
+      "name": "Professional Web Design Services | Custom Websites for Businesses | VGot You",
+      "description": "Professional website design and development services offering responsive, SEO-optimised, and conversion-focused websites for businesses across India and the UK.",
+      "inLanguage": "en-IN",
+      "isPartOf": {
+        "@id": "https://www.vgotyou.com/#website"
+      },
+      "publisher": {
+        "@id": "https://www.vgotyou.com/#organization"
+      },
+      "about": {
+        "@id": "https://www.vgotyou.com/web-design#service"
+      }
+    }
+  `}</script>
+
+  {/* ================= SCHEMA: SERVICE ================= */}
+
+  <script type="application/ld+json">{`
+    {
       "@context": "https://schema.org",
       "@type": "Service",
       "@id": "https://www.vgotyou.com/web-design#service",
-      name: "Website Design Services",
-      serviceType: "Web Design & Development",
-      url: "https://www.vgotyou.com/web-design",
-      description:
-        "Professional website design and development services offering responsive, SEO-optimized, and conversion-focused websites for businesses across India and worldwide.",
-      provider: {
-        "@type": "Organization",
-        "@id": "https://www.vgotyou.com/#organization",
-        name: "VGot You",
-        url: "https://www.vgotyou.com/",
-        logo: "https://www.vgotyou.com/assets/vgotyou.png"
+      "name": "Website Design Services",
+      "url": "https://www.vgotyou.com/web-design",
+      "description": "Professional website design and development services offering responsive, SEO-optimised, and conversion-focused websites for businesses across India and the UK.",
+      "serviceType": [
+        "Web Design",
+        "Website Development",
+        "UI UX Design",
+        "Responsive Web Design",
+        "E-commerce Website Design",
+        "SEO-Optimised Web Design",
+        "Landing Page Design",
+        "Website Redesign"
+      ],
+      "provider": {
+        "@id": "https://www.vgotyou.com/#organization"
       },
-      areaServed: {
-        "@type": "Place",
-        name: "Worldwide"
+      "areaServed": [
+        { "@type": "Country", "name": "India" },
+        { "@type": "Country", "name": "United Kingdom" }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Web Design Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Business Website Design"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "E-commerce Website Design"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "UI UX Design"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Website Redesign"
+            }
+          }
+        ]
+      },
+      "offers": {
+        "@type": "Offer",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "priceCurrency": "INR",
+          "description": "Custom pricing based on project scope and requirements"
+        }
       }
-    })}
-  </script>
+    }
+  `}</script>
 
-  {/* ================= BREADCRUMB SCHEMA ================= */}
-  <script type="application/ld+json">
-    {JSON.stringify({
+  {/* ================= SCHEMA: BREADCRUMB ================= */}
+  
+  <script type="application/ld+json">{`
+    {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
-      itemListElement: [
+      "itemListElement": [
         {
           "@type": "ListItem",
-          position: 1,
-          name: "Home",
-          item: "https://www.vgotyou.com/"
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.vgotyou.com/"
         },
         {
           "@type": "ListItem",
-          position: 2,
-          name: "Web Design",
-          item: "https://www.vgotyou.com/web-design"
+          "position": 2,
+          "name": "Web Design",
+          "item": "https://www.vgotyou.com/web-design"
         }
       ]
-    })}
-  </script>
+    }
+  `}</script>
+
 </Helmet>
 
 

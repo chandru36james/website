@@ -10,6 +10,7 @@ import {
     ChevronRightIcon,
     StarIcon
 } from '../../components/Icons';
+import { Helmet } from "react-helmet";
 
 const m = motion as any;
 
@@ -28,6 +29,98 @@ const UKDigitalMarketing: React.FC = () => {
     return (
         <div className="bg-[#020202] text-white selection:bg-red-600/30 overflow-x-hidden pt-20">
             
+
+<Helmet>
+  {/* ================= BASIC SEO ================= */}
+  <title>Digital Marketing Company UK | Online Marketing Services | VGot You</title>
+
+  <meta
+    name="description"
+    content="Leading digital marketing company in the UK. VGot You offers SEO, Google Ads, social media marketing, and lead generation services to help businesses grow online."
+  />
+
+  <meta
+    name="keywords"
+    content="digital marketing company UK, online marketing UK, SEO services UK, Google Ads UK, social media marketing UK, lead generation UK, performance marketing UK"
+  />
+
+  <link rel="canonical" href="https://www.vgotyou.com/digital-marketing-uk" />
+  <meta name="robots" content="index, follow" />
+
+  {/* ================= OPEN GRAPH ================= */}
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="VGot You" />
+  <meta property="og:title" content="Digital Marketing Company UK | VGot You" />
+  <meta
+    property="og:description"
+    content="Grow your business with expert digital marketing services in the UK including SEO, PPC, and social media marketing."
+  />
+  <meta property="og:image" content="https://www.vgotyou.com/assets/vgotyou.png" />
+  <meta property="og:url" content="https://www.vgotyou.com/digital-marketing-uk" />
+  <meta property="og:locale" content="en_GB" />
+
+  {/* ================= TWITTER ================= */}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Digital Marketing Company UK | VGot You" />
+  <meta
+    name="twitter:description"
+    content="Performance-driven digital marketing services for UK businesses including SEO, PPC, and social media marketing."
+  />
+  <meta name="twitter:image" content="https://www.vgotyou.com/assets/vgotyou.png" />
+
+  {/* ================= SERVICE SCHEMA ================= */}
+  <script type="application/ld+json">
+    {JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "@id": "https://www.vgotyou.com/digital-marketing-uk#service",
+      name: "Digital Marketing Services UK",
+      serviceType: "Online Marketing & Growth Strategy",
+      url: "https://www.vgotyou.com/digital-marketing-uk",
+      description:
+        "Professional digital marketing services for UK businesses including SEO, PPC, social media marketing, and lead generation.",
+      provider: {
+        "@type": "Organization",
+        "@id": "https://www.vgotyou.com/#organization",
+        name: "VGot You",
+        url: "https://www.vgotyou.com/",
+        logo: "https://www.vgotyou.com/assets/vgotyou.png"
+      },
+      areaServed: {
+        "@type": "Country",
+        name: "United Kingdom"
+      }
+    })}
+  </script>
+
+  {/* ================= BREADCRUMB SCHEMA ================= */}
+  <script type="application/ld+json">
+    {JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://www.vgotyou.com/"
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Digital Marketing",
+          item: "https://www.vgotyou.com/digital-marketing"
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: "Digital Marketing UK",
+          item: "https://www.vgotyou.com/digital-marketing-uk"
+        }
+      ]
+    })}
+  </script>
+</Helmet>
 
             <style>{`
                 .text-technical { font-family: 'JetBrains Mono', 'Fira Code', monospace; }

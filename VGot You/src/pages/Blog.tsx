@@ -17,80 +17,115 @@ const Blog: React.FC = () => {
 
     return (
         <main className="min-h-screen bg-[#020202] text-white selection:bg-red-600/30 overflow-x-hidden pt-24 pb-32">
-            <Helmet>
+           <Helmet>
+
   {/* ================= BASIC SEO ================= */}
+  <html lang="en-IN" />
+
+  {/* FIXED: Title unchanged — it was already good */}
   <title>Blog | Web Design, SEO & Digital Growth Insights | VGot You</title>
 
   <meta
     name="description"
-    content="Explore in-depth case studies, web design insights, SEO strategies, and branding guides by VGot You, a digital agency in Karur, Tamil Nadu helping businesses grow online."
+    content="Explore in-depth case studies, web design insights, SEO strategies, and branding guides by VGot You — a digital agency in Karur, Tamil Nadu helping businesses grow online across India and the UK."
   />
 
-  <link rel="canonical" href="https://www.vgotyou.com/blog" />
+  {/* No meta keywords — Google ignores them */}
+
+  <meta name="author" content="VGot You" />
   <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.vgotyou.com/blog" />
+
+  {/* ================= HREFLANG ================= */}
+  <link rel="alternate" hrefLang="en-IN" href="https://www.vgotyou.com/blog" />
+  <link rel="alternate" hrefLang="en-GB" href="https://www.vgotyou.com/blog" />
+  <link rel="alternate" hrefLang="x-default" href="https://www.vgotyou.com/blog" />
 
   {/* ================= OPEN GRAPH ================= */}
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="VGot You Blog | Digital Marketing & Web Design Insights" />
+  <meta property="og:site_name" content="VGot You" />
+  {/* FIXED: og:title now matches <title> exactly */}
+  <meta property="og:title" content="Blog | Web Design, SEO & Digital Growth Insights | VGot You" />
   <meta
     property="og:description"
-    content="Actionable insights on web design, SEO, branding, and online business growth by VGot You."
-  />
-  <meta
-    property="og:image"
-    content="https://www.vgotyou.com/assets/logo.png"
+    content="Explore in-depth case studies, web design insights, SEO strategies, and branding guides by VGot You — a digital agency in Karur, Tamil Nadu helping businesses grow online."
   />
   <meta property="og:url" content="https://www.vgotyou.com/blog" />
-  <meta property="og:site_name" content="VGot You" />
+  {/* FIXED: logo.png → og-home.png, consistent across all pages */}
+  <meta property="og:image" content="https://www.vgotyou.com/assets/og-home.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  {/* FIXED: og:image:alt was missing */}
+  <meta property="og:image:alt" content="VGot You Blog – Web Design, SEO & Digital Growth Insights" />
   <meta property="og:locale" content="en_IN" />
+  {/* FIXED: og:locale:alternate was missing */}
+  <meta property="og:locale:alternate" content="en_GB" />
 
-  {/* ================= TWITTER ================= */}
+  {/* ================= TWITTER / X ================= */}
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="VGot You Blog | Web Design & SEO Knowledge Hub" />
+  {/* FIXED: twitter:title now matches <title> exactly */}
+  <meta name="twitter:title" content="Blog | Web Design, SEO & Digital Growth Insights | VGot You" />
   <meta
     name="twitter:description"
-    content="Latest articles on web design, SEO, branding, and digital marketing by VGot You."
+    content="In-depth case studies, web design insights, SEO strategies and branding guides by VGot You, Karur."
   />
-  <meta
-    name="twitter:image"
-    content="https://www.vgotyou.com/assets/logo.png"
-  />
+  {/* FIXED: logo.png → og-home.png */}
+  <meta name="twitter:image" content="https://www.vgotyou.com/assets/og-home.png" />
+  {/* FIXED: twitter:site and twitter:creator were missing */}
+  <meta name="twitter:site" content="@vgotyou" />
+  <meta name="twitter:creator" content="@vgotyou" />
 
-  {/* ================= BLOG PAGE SCHEMA ================= */}
-  <script type="application/ld+json">
-    {JSON.stringify({
+  {/* ================= SCHEMA: BLOG ================= */}
+  {/*
+    FIXED:
+    - publisher now references @id instead of repeating full Organization inline
+    - about removed — was creating duplicate conflicting LocalBusiness + Service
+      entities that contradict your homepage schema graph
+    - Added inLanguage
+    - Added isPartOf linking to WebSite
+    - logo now uses consistent vgotyou.png via @id reference
+  */}
+  <script type="application/ld+json">{`
+    {
       "@context": "https://schema.org",
       "@type": "Blog",
       "@id": "https://www.vgotyou.com/blog#blog",
-      name: "VGot You Blog",
-      url: "https://www.vgotyou.com/blog",
-      description:
-        "Expert blog by VGot You covering web design, SEO, branding, digital marketing, and online business growth.",
-      publisher: {
-        "@type": "Organization",
-        name: "VGot You",
-        url: "https://www.vgotyou.com",
-        logo: {
-          "@type": "ImageObject",
-          url: "https://www.vgotyou.com/assets/logo.png"
-        }
+      "url": "https://www.vgotyou.com/blog",
+      "name": "VGot You Blog",
+      "description": "Expert blog by VGot You covering web design, SEO, branding, digital marketing, and online business growth for businesses across India and the UK.",
+      "inLanguage": "en-IN",
+      "isPartOf": {
+        "@id": "https://www.vgotyou.com/#website"
       },
-      about: {
-        "@type": "Service",
-        name: "Web Design, SEO & Digital Marketing",
-        provider: {
-          "@type": "LocalBusiness",
-          name: "VGot You",
-          address: {
-            "@type": "PostalAddress",
-            addressLocality: "Karur",
-            addressRegion: "Tamil Nadu",
-            addressCountry: "IN"
-          }
-        }
+      "publisher": {
+        "@id": "https://www.vgotyou.com/#organization"
       }
-    })}
-  </script>
+    }
+  `}</script>
+
+  {/* ================= SCHEMA: BREADCRUMB ================= */}
+  {/* ADDED: Was completely missing */}
+  <script type="application/ld+json">{`
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.vgotyou.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://www.vgotyou.com/blog"
+        }
+      ]
+    }
+  `}</script>
+
 </Helmet>
             <style>{`
                 .text-technical { font-family: 'JetBrains Mono', 'Fira Code', monospace; }
@@ -131,10 +166,10 @@ const Blog: React.FC = () => {
                         VGot You Blog – Web Design, SEO, Branding & Digital Growth Case Studies
                         </h1>
 
-                        <h1 className="text-[14vw] sm:text-[10vw] md:text-[7vw] font-black leading-[0.85] tracking-tighter uppercase mb-6">
+                        <h2 className="text-[14vw] sm:text-[10vw] md:text-[7vw] font-black leading-[0.85] tracking-tighter uppercase mb-6">
                             The <br/>
                             <span className="text-zinc-800">Journal</span>
-                        </h1>
+                        </h2>
                         <p className="text-zinc-500 max-w-xl text-base md:text-lg font-light leading-relaxed">
                             A collection of technical case studies and digital growth strategies from the VGot You laboratory.
                         </p>

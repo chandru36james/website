@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { LinkedInIcon, GitHubIcon, CodeBracketIcon, SparklesIcon } from '../components/Icons';
+import { LinkedInIcon, GitHubIcon, CodeBracketIcon, SparklesIcon, InstagramIcon} from '../components/Icons';
 import { Helmet } from "react-helmet";   // ✅ SEO
 
 const m = motion as any;
@@ -46,102 +46,157 @@ const SaranrajProfile: React.FC = () => {
     return (
         <div className="relative w-full min-h-screen bg-white overflow-hidden transition-colors duration-300">
             <Helmet>
-  {/* ================= BASIC SEO ================= */}
-  <title>Saranraj Vasanthi | Co-Founder & AI Engineer at VGot You</title>
 
-  <meta
-    name="description"
-    content="Saranraj Vasanthi is the Co-Founder of VGot You, specializing in Artificial Intelligence, Machine Learning, and data-driven technologies. Based in Birmingham, UK, he helps businesses build innovative digital solutions and scalable systems for global clients."
-  />
+        {/* ================= BASIC SEO ================= */}
+        <html lang="en-GB" />
+        {/* FIXED: lang="en-GB" since Saranraj is based in Birmingham, UK */}
 
-  <meta
-    name="keywords"
-    content="Saranraj Vasanthi, VGot You co founder, AI engineer India, machine learning engineer, data scientist VGot You, artificial intelligence developer, predictive models expert"
-  />
+        <title>Saranraj Vasanthi | Co-Founder & AI Engineer at VGot You | Birmingham, UK</title>
 
-  <meta name="author" content="Saranraj Vasanthi | VGot You" />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://www.vgotyou.com/saran-raj" />
+        <meta
+          name="description"
+          content="Meet Saranraj Vasanthi, Co-Founder and AI Engineer at VGot You. Based in Birmingham, UK, Saranraj specialises in Artificial Intelligence, Machine Learning, and data-driven digital solutions for businesses across the UK and India."
+        />
 
-  {/* ================= OPEN GRAPH ================= */}
-  <meta property="og:type" content="profile" />
-  <meta property="og:url" content="https://www.vgotyou.com/saran-raj" />
-  <meta property="og:title" content="Saranraj Vasanthi | Co-Founder of VGot You" />
-  <meta
-    property="og:description"
-    content="Meet Saranraj Vasanthi, Co-Founder of VGot You and specialist in Artificial Intelligence, Machine Learning, and Data Science."
-  />
-  <meta property="og:image" content="https://www.vgotyou.com/assets/saran.png" />
+        {/* FIXED: Removed meta keywords — no SEO value */}
 
-  {/* ================= TWITTER ================= */}
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Saranraj Vasanthi | AI & Data Science Specialist" />
-  <meta
-    name="twitter:description"
-    content="Co-Founder of VGot You with expertise in Artificial Intelligence, Machine Learning, and predictive data systems."
-  />
-  <meta name="twitter:image" content="https://www.vgotyou.com/assets/saran.png" />
+        <meta name="author" content="Saranraj Vasanthi, VGot You" />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://www.vgotyou.com/saran-raj" />
 
-  {/* ================= PERSON SCHEMA ================= */}
-  <script type="application/ld+json">
-    {JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "@id": "https://www.vgotyou.com/saranraj#person",
-      name: "Saranraj Vasanthi",
-      url: "https://www.vgotyou.com/saran-raj",
-      image: "https://www.vgotyou.com/assets/saran.png",
-      jobTitle: "Co-Founder & AI Engineer",
-      worksFor: {
-        "@id": "https://www.vgotyou.com/#organization"
-      },
-      address: {
-        "@type": "PostalAddress",
-        addressCountry: "IN"
-      },
-      knowsAbout: [
-        "Artificial Intelligence",
-        "Machine Learning",
-        "Data Science",
-        "Predictive Models",
-        "Deep Learning",
-        "Python",
-        "Natural Language Processing",
-        "Web Development"
-      ],
-      sameAs: [
-        "https://www.linkedin.com/in/saranraj-vasanthi-297ba625a/",
-        "https://github.com/Saran830",
-      ]
-    })}
-  </script>
+        {/* ================= HREFLANG ================= */}
+        {/* FIXED: en-GB first since Saranraj is UK-based */}
+        <link rel="alternate" hrefLang="en-GB" href="https://www.vgotyou.com/saran-raj" />
+        <link rel="alternate" hrefLang="en-IN" href="https://www.vgotyou.com/saran-raj" />
+        <link rel="alternate" hrefLang="x-default" href="https://www.vgotyou.com/saran-raj" />
 
-  {/* ================= ORGANIZATION ENTITY ================= */}
-  <script type="application/ld+json">
-    {JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "@id": "https://www.vgotyou.com/#organization",
-      name: "VGot You",
-      url: "https://www.vgotyou.com/",
-      logo: "https://www.vgotyou.com/assets/vgotyou.png"
-    })}
-  </script>
+        {/* ================= OPEN GRAPH ================= */}
+        
+        <meta property="og:type" content="profile" />
+        <meta property="og:site_name" content="VGot You" />
+        <meta property="profile:first_name" content="Saranraj" />
+        <meta property="profile:last_name" content="Vasanthi" />
+        <meta property="profile:username" content="saran-raj" />
+        {/* FIXED: og:title matches <title> exactly */}
+        <meta property="og:title" content="Saranraj Vasanthi | Co-Founder & AI Engineer at VGot You | Birmingham, UK" />
+        <meta
+          property="og:description"
+          content="Meet Saranraj Vasanthi, Co-Founder and AI Engineer at VGot You. Based in Birmingham, UK, specialising in Artificial Intelligence, Machine Learning, and data-driven digital solutions."
+        />
+        <meta property="og:url" content="https://www.vgotyou.com/saran-raj" />
+        <meta property="og:image" content="https://www.vgotyou.com/assets/saran.png" />
+        {/* FIXED: og:image:width, height and alt were missing */}
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Saranraj Vasanthi – Co-Founder & AI Engineer at VGot You, Birmingham" />
+        {/* FIXED: og:locale was missing — en_GB since he is UK-based */}
+        <meta property="og:locale" content="en_GB" />
+        <meta property="og:locale:alternate" content="en_IN" />
 
-  {/* ================= WEBSITE ENTITY ================= */}
-  <script type="application/ld+json">
-    {JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "@id": "https://www.vgotyou.com/#website",
-      url: "https://www.vgotyou.com/",
-      name: "VGot You",
-      publisher: {
-        "@id": "https://www.vgotyou.com/#organization"
-      }
-    })}
-  </script>
-</Helmet>
+        {/* ================= TWITTER / X ================= */}
+        <meta name="twitter:card" content="summary_large_image" />
+        {/* FIXED: twitter:title matches <title> exactly */}
+        <meta name="twitter:title" content="Saranraj Vasanthi | Co-Founder & AI Engineer at VGot You | Birmingham, UK" />
+        <meta
+          name="twitter:description"
+          content="Co-Founder and AI Engineer at VGot You, based in Birmingham, UK. Specialising in Artificial Intelligence, Machine Learning, and data-driven digital solutions."
+        />
+        <meta name="twitter:image" content="https://www.vgotyou.com/assets/saran.png" />
+        {/* FIXED: twitter:site and twitter:creator were missing */}
+        <meta name="twitter:site" content="@vgotyou" />
+        <meta name="twitter:creator" content="@vgotyou" />
+
+        {/* ================= SCHEMA: PERSON ================= */}
+        
+        <script type="application/ld+json">{`
+          {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "@id": "https://www.vgotyou.com/saran-raj#person",
+            "name": "Saranraj Vasanthi",
+            "url": "https://www.vgotyou.com/saran-raj",
+            "image": "https://www.vgotyou.com/assets/saran.png",
+            "jobTitle": "Co-Founder & AI Engineer",
+            "description": "Saranraj Vasanthi is the Co-Founder and AI Engineer at VGot You, based in Birmingham, UK. He specialises in Artificial Intelligence, Machine Learning, and data-driven digital solutions for businesses across the UK and India.",
+            "worksFor": {
+              "@id": "https://www.vgotyou.com/#organization"
+            },
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Birmingham",
+              "addressRegion": "West Midlands",
+              "addressCountry": "GB"
+            },
+            "knowsAbout": [
+              "Artificial Intelligence",
+              "Machine Learning",
+              "Data Science",
+              "Predictive Models",
+              "Deep Learning",
+              "Python",
+              "Natural Language Processing",
+              "Web Development"
+            ],
+            "mainEntityOfPage": {
+              "@type": "ProfilePage",
+              "@id": "https://www.vgotyou.com/saran-raj#webpage"
+            },
+            "sameAs": [
+              "https://www.linkedin.com/in/saranraj-vasanthi-297ba625a/",
+              "https://github.com/Saran830",
+              "https://www.instagram.com/saranraj_vasanthi/"
+            ]
+          }
+        `}</script>
+
+        {/* ================= SCHEMA: PROFILE PAGE ================= */}
+ 
+        <script type="application/ld+json">{`
+          {
+            "@context": "https://schema.org",
+            "@type": "ProfilePage",
+            "@id": "https://www.vgotyou.com/saran-raj#webpage",
+            "url": "https://www.vgotyou.com/saran-raj",
+            "name": "Saranraj Vasanthi | Co-Founder & AI Engineer at VGot You | Birmingham, UK",
+            "description": "Meet Saranraj Vasanthi, Co-Founder and AI Engineer at VGot You, based in Birmingham, UK. Specialising in AI, Machine Learning, and data-driven digital solutions.",
+            "inLanguage": "en-GB",
+            "isPartOf": {
+              "@id": "https://www.vgotyou.com/#website"
+            },
+            "about": {
+              "@id": "https://www.vgotyou.com/saran-raj#person"
+            },
+            "publisher": {
+              "@id": "https://www.vgotyou.com/#organization"
+            }
+          }
+        `}</script>
+
+        {/* ================= SCHEMA: BREADCRUMB ================= */}
+     
+        <script type="application/ld+json">{`
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://www.vgotyou.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Saranraj Vasanthi",
+                "item": "https://www.vgotyou.com/saran-raj"
+              }
+            ]
+          }
+        `}</script>
+
+
+      </Helmet>
             
             {/* Background Decor */}
             <div className="absolute inset-0 pointer-events-none">
@@ -199,7 +254,8 @@ const SaranrajProfile: React.FC = () => {
                             <div className="flex gap-2">
                                 {[
                                     { icon: LinkedInIcon, href: "https://www.linkedin.com/in/saranraj-vasanthi-297ba625a/", label: "LinkedIn" },
-                                    { icon: GitHubIcon, href: "https://github.com/Saran830", label: "GitHub" }
+                                    { icon: GitHubIcon, href: "https://github.com/Saran830", label: "GitHub" },
+                                    { icon: InstagramIcon, href: "https://www.instagram.com/saranraj_vasanthi/", label: "Instagram" }
                                 ].map((social, idx) => (
                                     <a 
                                         key={idx}

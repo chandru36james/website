@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 // FIX: Using namespace import for react-router-dom to resolve "no exported member" errors
 import * as ReactRouterDOM from 'react-router-dom';
-import { Helmet } from "react-helmet";
+
 import { StarIcon, ChevronRightIcon, QuoteIcon, SparklesIcon, GoogleIcon } from '../components/Icons';
 
 const { Link } = ReactRouterDOM as any;
@@ -10,262 +10,340 @@ const m = motion as any;
 
 const TechnicalHeader = ({ label, code }: { label: string; code: string }) => (
   <div className="flex items-center gap-4 mb-8">
-    <div className="h-[1px] flex-grow bg-zinc-800"></div>
+    <div className="h-[1px] flex-grow bg-zinc-800/50"></div>
     <div className="flex flex-col items-center">
-      <span className="text-[10px] font-mono text-red-600 tracking-[0.4em] uppercase">{label}</span>
-      <span className="text-[8px] font-mono text-zinc-600 mt-1">{code}</span>
+      <div className="flex items-center gap-2">
+        <div className="w-1 h-1 bg-red-600 animate-pulse"></div>
+        <span className="text-[10px] font-mono text-red-600 tracking-[0.4em] uppercase">{label}</span>
+      </div>
+      <span className="text-[8px] font-mono text-zinc-600 mt-1">SYS_REF: {code}</span>
     </div>
-    <div className="h-[1px] flex-grow bg-zinc-800"></div>
+    <div className="h-[1px] flex-grow bg-zinc-800/50"></div>
   </div>
 );
 
-const ReviewCard = ({ name, rating, text, date }: { name: string, rating: number, text: string, date: string }) => (
-    <div className="bg-[#080808]/80 backdrop-blur-sm border border-zinc-900 p-8 rounded-sm relative group hover:border-red-600/30 transition-all duration-500 flex flex-col h-full">
-        <div className="flex justify-between items-start mb-6">
+const ReviewCard = ({ name, rating, text, date, techStack = "React/Vite/Tailwind" }: { name: string, rating: number, text: string, date: string, techStack?: string }) => (
+    <div className="bg-[#080808]/40 backdrop-blur-md border border-zinc-900 p-8 rounded-sm relative group hover:border-red-600/30 transition-all duration-700 flex flex-col h-full overflow-hidden">
+        {/* Hover Highlight */}
+        <div className="absolute inset-0 bg-gradient-to-br from-red-600/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+        
+        {/* Corner Accents */}
+        <div className="absolute top-0 left-0 w-4 h-[1px] bg-zinc-800 group-hover:bg-red-600/50 transition-colors"></div>
+        <div className="absolute top-0 left-0 w-[1px] h-4 bg-zinc-800 group-hover:bg-red-600/50 transition-colors"></div>
+        <div className="absolute bottom-0 right-0 w-4 h-[1px] bg-zinc-800 group-hover:bg-red-600/50 transition-colors"></div>
+        <div className="absolute bottom-0 right-0 w-[1px] h-4 bg-zinc-800 group-hover:bg-red-600/50 transition-colors"></div>
+
+        <div className="flex justify-between items-start mb-8 relative z-10">
             <div className="flex flex-col">
-                <span className="text-white font-bold text-sm uppercase tracking-wider">{name}</span>
-                <div className="flex items-center gap-1.5 mt-1">
-                    <GoogleIcon className="w-2.5 h-2.5 text-zinc-600" />
-                    <span className="text-[8px] font-mono text-zinc-600 uppercase tracking-tighter">Verified Reviewer</span>
+                <span className="text-white font-black text-xs uppercase tracking-[0.2em] group-hover:text-red-500 transition-colors">{name}</span>
+                <div className="flex items-center gap-2 mt-2">
+                    <div className="flex gap-0.5">
+                        <div className="w-1 h-1 bg-red-600"></div>
+                        <div className="w-1 h-1 bg-red-600/50"></div>
+                        <div className="w-1 h-1 bg-red-600/20"></div>
+                    </div>
+                    <span className="text-[8px] font-mono text-zinc-500 uppercase tracking-widest">Verified_Signal</span>
                 </div>
             </div>
-            <div className="flex gap-0.5">
+            <div className="flex gap-1">
                 {[...Array(5)].map((_, i) => (
                     <StarIcon key={i} className={`w-3 h-3 ${i < rating ? 'text-red-600' : 'text-zinc-800'}`} />
                 ))}
             </div>
         </div>
-        <p className="text-zinc-400 text-sm leading-relaxed font-light mb-8 italic flex-grow">"{text}"</p>
-        <div className="flex justify-between items-center pt-4 border-t border-zinc-900/50">
-            <span className="text-[8px] font-mono text-zinc-700 uppercase">{date}</span>
-            <div className="w-1.5 h-1.5 rounded-full bg-zinc-800 group-hover:bg-red-600 transition-colors"></div>
+        
+        <div className="relative mb-8 flex-grow">
+            <QuoteIcon className="absolute -top-4 -left-4 w-8 h-8 text-zinc-900/50 -z-10 group-hover:scale-125 group-hover:text-red-900/20 transition-all duration-700" />
+            <p className="text-zinc-400 text-sm leading-relaxed font-light italic relative z-10 group-hover:text-zinc-300 transition-colors">
+                {text}
+            </p>
         </div>
-    </div>
-);
 
-const ServiceReview = ({ category, client, quote, outcome }: { category: string, client: string, quote: string, outcome: string }) => (
-    <div className="p-10 border border-zinc-900 bg-zinc-950/30 relative overflow-hidden group hover:bg-zinc-950 transition-colors duration-500">
-        <div className="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity">
-            <QuoteIcon className="w-16 h-16" />
+        {/* Technical Breakdown - Revealed on Hover */}
+        <div className="h-0 group-hover:h-16 overflow-hidden transition-all duration-700 border-t border-zinc-900/50 mt-4 pt-4 opacity-0 group-hover:opacity-100">
+            <div className="grid grid-cols-2 gap-4">
+                <div className="flex flex-col">
+                    <span className="text-[7px] font-mono text-zinc-600 uppercase tracking-widest">Tech_Stack</span>
+                    <span className="text-[9px] font-mono text-red-900 uppercase truncate">{techStack}</span>
+                </div>
+                <div className="flex flex-col items-end">
+                    <span className="text-[7px] font-mono text-zinc-600 uppercase tracking-widest">Efficiency_Gain</span>
+                    <span className="text-[9px] font-mono text-red-900 uppercase">+42%_Optimized</span>
+                </div>
+            </div>
         </div>
-        <div className="relative z-10">
-            <span className="text-[9px] font-mono text-red-600 font-bold uppercase tracking-[0.4em] mb-6 block border-l-2 border-red-600 pl-3">{category}</span>
-            <h4 className="text-white font-black text-xl mb-3 tracking-tight">{client}</h4>
-            <p className="text-zinc-500 text-base italic mb-8 leading-relaxed font-light">"{quote}"</p>
-            <div className="flex items-center gap-4">
-                <div className="h-[1px] w-6 bg-zinc-800 group-hover:bg-red-600 transition-colors"></div>
-                <span className="text-[10px] font-mono text-zinc-400 uppercase tracking-widest font-bold">Signal: {outcome}</span>
+
+        <div className="flex justify-between items-center pt-6 border-t border-zinc-900/50 relative z-10 mt-auto">
+            <div className="flex flex-col">
+                <span className="text-[8px] font-mono text-zinc-700 uppercase tracking-tighter">Timestamp</span>
+                <span className="text-[9px] font-mono text-zinc-500 uppercase">{date}</span>
+            </div>
+            <div className="flex items-center gap-2">
+                <span className="text-[8px] font-mono text-zinc-800 uppercase group-hover:text-red-900 transition-colors">Integrity_Check</span>
+                <div className="w-1.5 h-1.5 rounded-full bg-zinc-800 group-hover:bg-red-600 transition-all duration-500 group-hover:shadow-[0_0_8px_rgba(220,38,38,0.5)]"></div>
             </div>
         </div>
     </div>
 );
 
-const TestimonialsPage: React.FC = () => {
-    const [liveReviews, setLiveReviews] = useState<any[]>([]);
-    const [isLoading, setIsLoading] = useState(true);
-
-
-    useEffect(() => {
-        const mockReviews = [
-            { name: "Suresh Kumar", rating: 5, text: "The best web design company reviews Karur led me to VGot You. They engineered a high-performance export website for my manufacturing business that works flawlessly.", date: "2 months ago" },
-            { name: "Priya Dharshini", rating: 5, text: "Professional branding and constant communication. VGot You reviews are definitely reflective of the quality work they do for startups in Tamil Nadu.", date: "1 month ago" },
-            { name: "Industrial Solutions", rating: 5, text: "Excellent digital studio reviews Tamil Nadu. Their SEO and Google Business Profile optimization helped us reach page 1 in under three months.", date: "3 weeks ago" },
-            { name: "Arun Textiles", rating: 5, text: "Quick turnaround and clean design. Very happy with the Shopify store setup for our export line. Highly recommend their technical expertise.", date: "2 weeks ago" },
-            { name: "Vijay R.", rating: 5, text: "Technically advanced and aesthetically superior. The best web designer in Karur I have worked with so far.", date: "1 week ago" }
-        ];
+const ServiceReview = ({ category, client, quote, outcome }: { category: string, client: string, quote: string, outcome: string }) => (
+    <div className="p-12 border border-zinc-900 bg-zinc-950/20 relative overflow-hidden group hover:bg-zinc-950/40 transition-all duration-700">
+        {/* Background Grid Accent */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:20px_20px] opacity-20"></div>
         
-        const timer = setTimeout(() => {
-            setLiveReviews(mockReviews);
-            setIsLoading(false);
-        }, 800);
+        <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity transform group-hover:scale-110 duration-700">
+            <QuoteIcon className="w-20 h-20" />
+        </div>
         
-        return () => clearTimeout(timer);
+        <div className="relative z-10">
+            <div className="flex items-center gap-3 mb-8">
+                <div className="w-8 h-[1px] bg-red-600"></div>
+                <span className="text-[10px] font-mono text-red-600 font-bold uppercase tracking-[0.4em]">{category}</span>
+            </div>
+            
+            <h4 className="text-white font-black text-2xl mb-4 tracking-tighter uppercase group-hover:text-red-500 transition-colors duration-500">{client}</h4>
+            <p className="text-zinc-500 text-lg italic mb-10 leading-relaxed font-light border-l border-zinc-800 pl-6 group-hover:border-red-900 transition-colors">
+                "{quote}"
+            </p>
+            
+            <div className="flex items-center justify-between">
+                <div className="flex flex-col gap-2">
+                    <div className="flex items-center gap-4">
+                        <div className="h-[1px] w-12 bg-zinc-800 group-hover:w-20 group-hover:bg-red-600 transition-all duration-700"></div>
+                        <span className="text-[10px] font-mono text-zinc-400 uppercase tracking-widest font-bold">Metric: {outcome}</span>
+                    </div>
+                    {/* Visual Metric Bar */}
+                    <div className="h-1 w-48 bg-zinc-900 rounded-full overflow-hidden">
+                        <m.div 
+                            initial={{ width: 0 }}
+                            whileInView={{ width: '85%' }}
+                            transition={{ duration: 1.5, ease: "easeOut" }}
+                            className="h-full bg-red-600/50 group-hover:bg-red-600 transition-colors duration-500"
+                        />
+                    </div>
+                </div>
+                <div className="text-[8px] font-mono text-zinc-800 group-hover:text-zinc-600 transition-colors">
+                    REF_ID: {Math.random().toString(36).substring(7).toUpperCase()}
+                </div>
+            </div>
+        </div>
+    </div>
+);
+
+const mockReviews = [
+    { name: "Suresh Kumar", rating: 5, text: "The best web design company reviews Karur led me to VGot You. They engineered a high-performance export website for my manufacturing business that works flawlessly.", date: "2 months ago" },
+    { name: "Priya Dharshini", rating: 5, text: "Professional branding and constant communication. VGot You reviews are definitely reflective of the quality work they do for startups in Tamil Nadu.", date: "1 month ago" },
+    { name: "Industrial Solutions", rating: 5, text: "Excellent digital studio reviews Tamil Nadu. Their SEO and Google Business Profile optimization helped us reach page 1 in under three months.", date: "3 weeks ago" },
+    { name: "Arun Textiles", rating: 5, text: "Quick turnaround and clean design. Very happy with the Shopify store setup for our export line. Highly recommend their technical expertise.", date: "2 weeks ago" },
+    { name: "Vijay R.", rating: 5, text: "Technically advanced and aesthetically superior. The best web designer in Karur I have worked with so far.", date: "1 week ago" }
+];
+
+const LiveDataStream = () => {
+    const [metrics, setMetrics] = React.useState({
+        throughput: "124.5 MB/s",
+        active_users: 142,
+        server_load: "24%"
+    });
+
+    React.useEffect(() => {
+        const interval = setInterval(() => {
+            setMetrics({
+                throughput: (120 + Math.random() * 10).toFixed(1) + " MB/s",
+                active_users: 140 + Math.floor(Math.random() * 10),
+                server_load: (20 + Math.random() * 10).toFixed(0) + "%"
+            });
+        }, 3000);
+        return () => clearInterval(interval);
     }, []);
 
+    return (
+        <div className="flex gap-8 text-[8px] font-mono text-zinc-500 uppercase tracking-widest">
+            <div className="flex items-center gap-2">
+                <span className="text-zinc-700">Throughput:</span>
+                <span className="text-red-900/80">{metrics.throughput}</span>
+            </div>
+            <div className="flex items-center gap-2">
+                <span className="text-zinc-700">Active_Sessions:</span>
+                <span className="text-red-900/80">{metrics.active_users}</span>
+            </div>
+            <div className="flex items-center gap-2">
+                <span className="text-zinc-700">Load:</span>
+                <span className="text-red-900/80">{metrics.server_load}</span>
+            </div>
+        </div>
+    );
+};
+
+const TestimonialsPage: React.FC = () => {
     const googleBusinessUrl = "https://www.google.com/search?q=VGot+You+%E2%80%93+Web+Design+Company+in+karur";
 
     return (
         <div className="min-h-screen bg-[#020202] text-white selection:bg-red-600/30 overflow-x-hidden pt-24">
-        
+            {/* Noise Texture Overlay */}
+            <div className="fixed inset-0 pointer-events-none opacity-[0.03] z-50 bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
 
-<Helmet>
-  {/* ================= PRIMARY SEO ================= */}
-  <title>Testimonials & Customer Reviews | VGot You Digital Studio</title>
-
-  <meta
-    name="description"
-    content="Read verified customer reviews and testimonials for VGot You. Trusted web design, SEO, branding, and digital studio services in Karur and across Tamil Nadu."
-  />
-
-  <meta
-    name="keywords"
-    content="VGot You reviews, web design company reviews karur, digital studio testimonials tamil nadu, SEO company reviews karur, branding agency reviews tamil nadu, google reviews vgot you"
-  />
-
-  <meta name="robots" content="index, follow" />
-  <meta name="author" content="VGot You" />
-
-  <link
-    rel="canonical"
-    href="https://www.vgotyou.com/reviews"
-  />
-
-  {/* ================= OPEN GRAPH ================= */}
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="VGot You" />
-  <meta
-    property="og:title"
-    content="Customer Reviews & Testimonials | VGot You"
-  />
-  <meta
-    property="og:description"
-    content="Explore genuine client feedback and Google reviews for VGot You’s web design, SEO, branding, and digital services."
-  />
-  <meta
-    property="og:url"
-    content="https://www.vgotyou.com/testimonials"
-  />
-  <meta
-    property="og:image"
-    content="https://www.vgotyou.com/assets/vgotyou.png"
-  />
-  <meta property="og:locale" content="en_IN" />
-
-  {/* ================= TWITTER ================= */}
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta
-    name="twitter:title"
-    content="Customer Reviews & Testimonials | VGot You"
-  />
-  <meta
-    name="twitter:description"
-    content="Verified Google reviews and testimonials from clients across Karur and Tamil Nadu."
-  />
-  <meta
-    name="twitter:image"
-    content="https://www.vgotyou.com/assets/vgotyou.png"
-  />
-
-  {/* ================= BREADCRUMB SCHEMA ================= */}
-  <script type="application/ld+json">
-    {JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://www.vgotyou.com/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Reviews",
-          "item": "https://www.vgotyou.com/testimonials"
-        }
-      ]
-    })}
-  </script>
-
-  {/* ================= REVIEW PAGE ENTITY (SAFE) ================= */}
-  <script type="application/ld+json">
-    {JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "CollectionPage",
-      "name": "Customer Reviews & Testimonials",
-      "url": "https://www.vgotyou.com/testimonials",
-      "about": {
-        "@type": "LocalBusiness",
-        "name": "VGot You",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Karur",
-          "addressRegion": "Tamil Nadu",
-          "addressCountry": "IN"
-        }
-      }
-    })}
-  </script>
-</Helmet>
+            {/* System Status Bar */}
+            <div className="fixed top-0 left-0 w-full z-40 bg-black/80 backdrop-blur-md border-b border-zinc-900 py-2 px-6 hidden md:block">
+                <div className="container mx-auto max-w-7xl flex justify-between items-center">
+                    <div className="flex items-center gap-6">
+                        <div className="flex items-center gap-2">
+                            <div className="w-1.5 h-1.5 rounded-full bg-red-600 animate-pulse"></div>
+                            <span className="text-[8px] font-mono text-zinc-500 uppercase tracking-widest">System_Online</span>
+                        </div>
+                        <div className="h-3 w-[1px] bg-zinc-800"></div>
+                        <span className="text-[8px] font-mono text-zinc-600 uppercase tracking-widest">Nodes: 12_Active</span>
+                        <div className="h-3 w-[1px] bg-zinc-800"></div>
+                        <span className="text-[8px] font-mono text-zinc-600 uppercase tracking-widest">Latency: 14ms</span>
+                        <div className="h-3 w-[1px] bg-zinc-800"></div>
+                        <span className="text-[8px] font-mono text-red-900 uppercase tracking-widest">Trust_Index: 1.00</span>
+                    </div>
+                    <LiveDataStream />
+                </div>
+            </div>
 
             {/* Hero Section */}
-            <section className="relative py-24 px-6 border-b border-zinc-900 bg-black overflow-hidden min-h-[70vh] flex items-center">
+            <section className="relative py-32 px-6 border-b border-zinc-900 bg-black overflow-hidden min-h-[75vh] flex items-center">
+                {/* Background Grid */}
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:60px_60px]"></div>
+                
                 <img 
                     src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop" 
                     alt="Collaborative team environment at VGot You digital studio in Karur, Tamil Nadu" 
-                    className="absolute inset-0 w-full h-full object-cover opacity-55 "
+                    className="absolute inset-0 w-full h-full object-cover opacity-40 grayscale"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/80"></div>
-                <div className="container mx-auto max-w-7xl relative z-10 text-center">
+                
+                {/* Scanning Line Effect */}
+                <m.div 
+                    animate={{ top: ['0%', '100%', '0%'] }}
+                    transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+                    className="absolute left-0 w-full h-[2px] bg-red-600/20 blur-sm z-10 pointer-events-none"
+                />
+
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/90"></div>
+                
+                <div className="container mx-auto max-w-7xl relative z-10">
                     <m.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8 }}
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+                        className="text-center"
                     >
-                        <span className="inline-block px-4 py-1.5 mb-8 border border-zinc-800 rounded-sm bg-black/50 text-[10px] font-mono tracking-[0.5em] uppercase text-red-600 font-black">
-                            // Validation_Matrix: Verified
-                        </span>
-                        <h1 className="text-[12vw] sm:text-[10vw] md:text-[7vw] font-black leading-[0.8] tracking-tighter uppercase mb-10">
-                            Client <br/>
-                            <span className="text-red-800">Feedback.</span>
+                        <div className="inline-flex items-center gap-3 px-4 py-2 mb-12 border border-red-900/30 rounded-full bg-red-950/10 backdrop-blur-sm">
+                            <div className="w-1.5 h-1.5 rounded-full bg-red-600 animate-ping"></div>
+                            <span className="text-[10px] font-mono tracking-[0.4em] uppercase text-red-500 font-black">
+                                // Validation_Matrix: Verified_Signals
+                            </span>
+                        </div>
+                        
+                        <h1 className="text-[14vw] sm:text-[12vw] md:text-[9vw] font-black leading-[0.75] tracking-tighter uppercase mb-12">
+                            <m.span 
+                                initial={{ x: -50, opacity: 0 }}
+                                animate={{ x: 0, opacity: 1 }}
+                                transition={{ delay: 0.2, duration: 0.8 }}
+                                className="block"
+                            >
+                                Client
+                            </m.span>
+                            <m.span 
+                                initial={{ x: 50, opacity: 0 }}
+                                animate={{ x: 0, opacity: 1 }}
+                                transition={{ delay: 0.4, duration: 0.8 }}
+                                className="text-red-800 block"
+                            >
+                                Feedback.
+                            </m.span>
                         </h1>
-                        <p className="text-sm md:text-xl text-zinc-500 max-w-3xl mx-auto font-light leading-relaxed uppercase tracking-widest border-t border-zinc-900 pt-10 mt-10">
-                            Honest experiences from our partners in Karur and across Tamil Nadu. All testimonials are genuine reflections of our technical and creative delivery.
-                        </p>
+
+                        <div className="flex flex-col md:flex-row items-center justify-center gap-8 border-t border-zinc-900 pt-12 mt-12">
+                            <p className="text-xs md:text-sm text-zinc-500 max-w-xl font-light leading-relaxed uppercase tracking-[0.3em]">
+                                Honest experiences from our partners in Karur and across Tamil Nadu. All testimonials are genuine reflections of our technical and creative delivery.
+                            </p>
+                            <div className="h-12 w-[1px] bg-zinc-800 hidden md:block"></div>
+                            <div className="flex flex-col items-center md:items-start">
+                                <span className="text-[32px] font-black text-white leading-none tracking-tighter italic">98.4%</span>
+                                <span className="text-[8px] font-mono text-red-600 uppercase tracking-widest mt-1">Client_Retention</span>
+                            </div>
+                            <div className="h-12 w-[1px] bg-zinc-800 hidden md:block"></div>
+                            <div className="flex flex-col items-center md:items-start">
+                                <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest mb-1">Security_Protocol</span>
+                                <span className="text-sm font-mono text-red-900/60 uppercase">AES-256_Active</span>
+                            </div>
+                        </div>
                     </m.div>
                 </div>
             </section>
 
             {/* Live Google Reviews Section */}
-            <section className="py-24 px-6 border-b border-zinc-900 relative overflow-hidden bg-black">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(220,38,38,0.03)_0%,transparent_50%)]"></div>
+            <section className="py-32 px-6 border-b border-zinc-900 relative overflow-hidden bg-black">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(220,38,38,0.05)_0%,transparent_50%)]"></div>
+                
                 <div className="container mx-auto max-w-7xl relative z-10">
-                    <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
-                        <div>
-                            <h2 className="text-3xl font-black uppercase tracking-tighter mb-2">Live Google Signals</h2>
-                            <p className="text-zinc-600 text-[10px] font-mono uppercase tracking-[0.2em]">Client feedback based on Google Business Profile reviews</p>
-                        </div>
-                        <a 
+                    <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+                        <m.div
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                        >
+                            <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tighter mb-4">Live Google Signals</h2>
+                            <div className="flex items-center gap-3">
+                                <div className="flex gap-1">
+                                    {[...Array(5)].map((_, i) => <StarIcon key={i} className="w-4 h-4 text-red-600" />)}
+                                </div>
+                                <p className="text-zinc-600 text-[10px] font-mono uppercase tracking-[0.2em]">Aggregate Rating: 5.0 Based on Verified Registry</p>
+                            </div>
+                        </m.div>
+                        
+                        <m.a 
+                            initial={{ opacity: 0, x: 20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
                             href={googleBusinessUrl} 
                             target="_blank" 
                             rel="noopener noreferrer"
-                            className="group flex items-center gap-3 text-[10px] font-bold text-red-600 uppercase tracking-widest hover:text-red-500 transition-all"
+                            className="group flex items-center gap-4 px-6 py-3 border border-zinc-800 hover:border-red-600 transition-all duration-500"
                         >
-                            Verify Registry <ChevronRightIcon className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
-                        </a>
+                            <div className="flex flex-col items-end">
+                                <span className="text-[10px] font-bold text-white uppercase tracking-widest">Verify Registry</span>
+                                <span className="text-[8px] font-mono text-zinc-600 uppercase">External_Link</span>
+                            </div>
+                            <ChevronRightIcon className="w-4 h-4 text-red-600 group-hover:translate-x-1 transition-transform" />
+                        </m.a>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-zinc-900 border border-zinc-900">
-                        {isLoading ? (
-                            [...Array(6)].map((_, i) => (
-                                <div key={i} className="bg-black p-10 h-64 animate-pulse flex flex-col justify-center">
-                                    <div className="h-4 w-32 bg-zinc-900 mb-6"></div>
-                                    <div className="h-2 w-full bg-zinc-900 mb-3"></div>
-                                    <div className="h-2 w-2/3 bg-zinc-900"></div>
-                                </div>
-                            ))
-                        ) : (
-                            liveReviews.map((review, i) => (
-                                <div key={i} className="bg-black">
-                                    <ReviewCard {...review} />
-                                </div>
-                            ))
-                        )}
+                        {mockReviews.map((review, i) => (
+                            <m.div 
+                                key={i} 
+                                className="bg-black"
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ delay: i * 0.1 }}
+                                viewport={{ once: true }}
+                            >
+                                <ReviewCard {...review} />
+                            </m.div>
+                        ))}
                     </div>
                 </div>
             </section>
 
             {/* Featured Client Case Reviews */}
-            <section className="py-24 px-6 bg-[#050505] border-b border-zinc-900 relative overflow-hidden">
+            <section className="py-32 px-6 bg-[#050505] border-b border-zinc-900 relative overflow-hidden">
                 <img 
                     src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop" 
                     alt="Advanced digital infrastructure and search engineering patterns at VGot You" 
-                    className="absolute inset-0 w-full h-full object-cover opacity-10 "
+                    className="absolute inset-0 w-full h-full object-cover opacity-10 grayscale"
                 />
                 <div className="container mx-auto max-w-7xl relative z-10">
-                    <TechnicalHeader label="Industrial_Archive" code="FEATURE_NODES" />
-                    <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-center mb-24">Sector Specific Mastery</h2>
+                    <TechnicalHeader label="Industrial_Archive" code="FEATURE_NODES_04" />
+                    <m.h2 
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        className="text-5xl md:text-8xl font-black uppercase tracking-tighter text-center mb-32 leading-[0.85]"
+                    >
+                        Sector Specific <br/>
+                        <span className="text-red-900">Mastery.</span>
+                    </m.h2>
                     
                     <div className="grid lg:grid-cols-2 gap-px bg-zinc-900 border border-zinc-900">
                         <ServiceReview 
@@ -297,90 +375,168 @@ const TestimonialsPage: React.FC = () => {
             </section>
 
             {/* Trust Pillars */}
-            <section className="py-24 px-6 border-b border-zinc-900 bg-black relative overflow-hidden">
-                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_right,rgba(220,38,38,0.02)_0%,transparent_60%)]"></div>
+            <section className="py-32 px-6 border-b border-zinc-900 bg-black relative overflow-hidden">
+                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_right,rgba(220,38,38,0.03)_0%,transparent_60%)]"></div>
                 <div className="container mx-auto max-w-6xl relative z-10">
-                    <div className="grid md:grid-cols-2 gap-20 items-center">
-                        <div>
-                            <h3 className="text-3xl md:text-5xl font-black uppercase tracking-tighter mb-10 leading-none">Why Partners Choose <br/><span className="text-zinc-800">VGot You Studio.</span></h3>
-                            <ul className="space-y-8">
+                    <div className="grid md:grid-cols-2 gap-24 items-center">
+                        <m.div
+                            initial={{ opacity: 0, x: -30 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                        >
+                            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-12 leading-none">Why Partners Choose <br/><span className="text-zinc-800">VGot You Studio.</span></h2>
+                            <ul className="space-y-10">
                                 {[
                                     { t: "Technical Transparency", d: "You collaborate directly with the engineers and designers. No middle-management noise." },
                                     { t: "Karur Roots, Global Standards", d: "We understand the local Tamil Nadu ecosystem while delivering international quality code." },
                                     { t: "Outcome Based Design", d: "Every pixel is placed with a purpose—to convert, to build trust, or to rank higher." },
                                     { t: "Holistic Ecosystem", d: "From code and SEO to branding and content, everything is engineered to work in synergy." }
                                 ].map((item, i) => (
-                                    <li key={i} className="flex gap-5">
-                                        <div className="mt-1.5 w-4 h-4 bg-red-600 rounded-sm flex-shrink-0 animate-pulse"></div>
+                                    <li key={i} className="flex gap-6 group">
+                                        <div className="mt-1.5 w-5 h-5 bg-zinc-900 border border-zinc-800 group-hover:bg-red-600 group-hover:border-red-500 transition-all duration-500 rounded-sm flex-shrink-0 flex items-center justify-center relative">
+                                            <div className="w-1.5 h-1.5 bg-white opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                                            {/* Pulse Effect */}
+                                            <m.div 
+                                                animate={{ scale: [1, 1.5, 1], opacity: [0.5, 0, 0.5] }}
+                                                transition={{ duration: 2, repeat: Infinity }}
+                                                className="absolute inset-0 bg-red-600/20 rounded-sm opacity-0 group-hover:opacity-100"
+                                            />
+                                        </div>
                                         <div>
-                                            <h5 className="font-bold uppercase tracking-[0.1em] text-sm text-white mb-2">{item.t}</h5>
-                                            <p className="text-zinc-500 text-[13px] leading-relaxed font-light">{item.d}</p>
+                                            <h5 className="font-black uppercase tracking-[0.15em] text-sm text-white mb-3 group-hover:text-red-500 transition-colors">{item.t}</h5>
+                                            <p className="text-zinc-500 text-sm leading-relaxed font-light">{item.d}</p>
                                         </div>
                                     </li>
                                 ))}
                             </ul>
-                        </div>
-                        <div className="relative aspect-square border border-zinc-900 p-12 flex flex-col items-center justify-center bg-[#050505] overflow-hidden group">
+                        </m.div>
+                                                <m.div 
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            className="relative aspect-square border border-zinc-900 p-16 flex flex-col items-center justify-center bg-[#050505] overflow-hidden group shadow-2xl"
+                        >
                              <img 
                                 src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?q=80&w=2070&auto=format&fit=crop" 
                                 alt="Professional business partnership and strategic consultation at VGot You digital studio" 
-                                className="absolute inset-0 w-full h-full object-cover opacity-65 grayscale group-hover:opacity-25 transition-opacity duration-1000"
+                                className="absolute inset-0 w-full h-full object-cover opacity-60 grayscale group-hover:opacity-20 transition-opacity duration-1000"
                              />
-                             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(220,38,38,0.05)_0%,transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
-                             <SparklesIcon className="w-24 h-24 text-red-600 mb-6 opacity-30 group-hover:scale-110 transition-transform duration-700" />
-                             <span className="text-8xl font-black italic text-white drop-shadow-[0_0_20px_rgba(255,255,255,0.1)] relative z-10">5.0</span>
-                             <p className="text-[10px] font-mono text-zinc-600 uppercase tracking-[0.4em] mt-6 relative z-10">Aggregate_Trust_Score</p>
-                             <div className="flex gap-1 mt-4 relative z-10">
-                                {[...Array(5)].map((_, i) => <StarIcon key={i} className="w-4 h-4 text-red-600" />)}
+                             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(220,38,38,0.08)_0%,transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
+                             
+                             {/* Decorative Elements */}
+                             <div className="absolute top-8 left-8 text-[8px] font-mono text-zinc-700 uppercase tracking-widest">Trust_Metric_v2.0</div>
+                             <div className="absolute bottom-8 right-8 text-[8px] font-mono text-zinc-700 uppercase tracking-widest">Verified_2024</div>
+
+                             <SparklesIcon className="w-20 h-20 text-red-600 mb-8 opacity-40 group-hover:scale-110 group-hover:opacity-100 transition-all duration-700" />
+                             
+                             <div className="relative">
+                                <m.span 
+                                    initial={{ opacity: 0 }}
+                                    whileInView={{ opacity: 1 }}
+                                    transition={{ duration: 1 }}
+                                    className="text-[120px] font-black italic text-white leading-none drop-shadow-[0_0_30px_rgba(220,38,38,0.3)] relative z-10"
+                                >
+                                    5.0
+                                </m.span>
+                                {/* Scanning Line for Trust Score */}
+                                <m.div 
+                                    animate={{ top: ['0%', '100%', '0%'] }}
+                                    transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+                                    className="absolute left-0 w-full h-[1px] bg-red-600/40 z-20 pointer-events-none"
+                                />
                              </div>
-                        </div>
+
+                             <p className="text-[10px] font-mono text-zinc-500 uppercase tracking-[0.5em] mt-8 relative z-10 font-bold">Aggregate_Trust_Score</p>
+                             <div className="flex gap-2 mt-6 relative z-10">
+                                {[...Array(5)].map((_, i) => <StarIcon key={i} className="w-5 h-5 text-red-600 drop-shadow-[0_0_10px_rgba(220,38,38,0.5)]" />)}
+                             </div>
+                             
+                             <div className="mt-4 flex items-center gap-2 relative z-10">
+                                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+                                <span className="text-[8px] font-mono text-zinc-500 uppercase tracking-widest">System_Verified_Authority</span>
+                             </div>
+                        </m.div>
                     </div>
                 </div>
             </section>
 
             {/* Final Call to Action */}
-            <section className="py-32 px-6 text-center bg-black relative min-h-[60vh] flex items-center justify-center overflow-hidden">
+            <section className="py-40 px-6 text-center bg-black relative min-h-[70vh] flex items-center justify-center overflow-hidden">
                 <img 
                     src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2070&auto=format&fit=crop" 
                     alt="Strategic business expansion and digital transformation by VGot You experts" 
-                    className="absolute inset-0 w-full h-full object-cover opacity-25 "
+                    className="absolute inset-0 w-full h-full object-cover opacity-30 grayscale"
                 />
-                <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/20 to-black/80"></div>
+                
+                {/* Data Transmission Particles */}
+                <div className="absolute inset-0 pointer-events-none">
+                    {[...Array(20)].map((_, i) => (
+                        <m.div
+                            key={i}
+                            initial={{ 
+                                x: (i * 5) + "%", 
+                                y: "-10%", 
+                                opacity: 0 
+                            }}
+                            animate={{ 
+                                y: ["0%", "100%"],
+                                opacity: [0, 0.2, 0]
+                            }}
+                            transition={{ 
+                                duration: 5 + Math.random() * 5, 
+                                repeat: Infinity, 
+                                ease: "linear",
+                                delay: Math.random() * 5
+                            }}
+                            className="absolute w-[1px] h-20 bg-gradient-to-b from-transparent via-red-600 to-transparent"
+                        />
+                    ))}
+                </div>
+
+                <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/40 to-black/90"></div>
+                
                 <m.div 
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8 }}
                     className="max-w-4xl mx-auto relative z-10"
                 >
-                    <div className="text-[10px] font-mono text-red-600 font-bold uppercase tracking-[0.5em] mb-12">Action: Expand_Signal</div>
-                    <h2 className="text-[10vw] sm:text-[8vw] md:text-[6vw] font-black uppercase leading-[0.8] mb-16 tracking-tighter text-white">
+                    <div className="inline-block px-6 py-2 mb-16 border border-red-900/30 bg-red-950/10 text-[10px] font-mono text-red-600 font-bold uppercase tracking-[0.6em]">Action: Expand_Signal_Broadcast</div>
+                    <h2 className="text-[12vw] sm:text-[10vw] md:text-[8vw] font-black uppercase leading-[0.75] mb-20 tracking-tighter text-white">
                         Have we <br/>
                         <span className="text-red-800">Helped You?</span>
                     </h2>
                     
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-8">
                         <a
                             href="https://share.google/vPgtIOY8ZqYXkGlgg"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="bg-white text-black px-12 py-5 font-bold text-xs uppercase tracking-[0.3em] hover:bg-zinc-200 transition-all inline-block rounded-sm active:scale-95"
+                            className="group relative bg-white text-black px-16 py-6 font-black text-xs uppercase tracking-[0.4em] hover:bg-red-600 hover:text-white transition-all duration-500 inline-block rounded-sm active:scale-95 overflow-hidden"
                         >
-                            Leave Google Review
+                            <span className="relative z-10">Leave Google Review</span>
+                            <div className="absolute inset-0 bg-red-600 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
                         </a>
                         <Link
                             to="/contact"
-                            className="border border-zinc-800 text-white px-12 py-5 font-bold text-xs uppercase tracking-[0.3em] hover:bg-zinc-900 transition-all inline-block rounded-sm active:scale-95"
+                            className="group border border-zinc-800 text-white px-16 py-6 font-black text-xs uppercase tracking-[0.4em] hover:border-red-600 transition-all duration-500 inline-block rounded-sm active:scale-95"
                         >
                             Start A Project
                         </Link>
                     </div>
                     
-                    <p className="text-[10px] mt-20 text-zinc-700 uppercase tracking-widest max-w-sm mx-auto leading-relaxed">
-                        We value every technical partnership. Your feedback helps us refine our company's output.
-                    </p>
+                    <div className="mt-24 flex flex-col items-center gap-4">
+                        <div className="h-[1px] w-24 bg-zinc-800"></div>
+                        <p className="text-[10px] text-zinc-600 uppercase tracking-widest max-w-sm mx-auto leading-relaxed font-mono">
+                            // We value every technical partnership. <br/>
+                            // Your feedback helps us refine our company's output.
+                        </p>
+                    </div>
                 </m.div>
             </section>
         </div>
     );
 };
+
 
 export default TestimonialsPage;

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { SEO } from '../components/SEO';
 import { Helmet } from "react-helmet";   // ✅ SEO
 
 // FIX: Cast motion to any to resolve IntrinsicAttributes prop errors for motion components
@@ -67,96 +66,247 @@ const WebDesignIndia: React.FC = () => {
   return (
     <div className="bg-[#020202] text-white selection:bg-red-600/30 overflow-x-hidden pt-16 md:pt-20">
       <Helmet>
+
   {/* ================= BASIC SEO ================= */}
-  <title>Web Design Company in India | Professional Website Designers – VGOT YOU</title>
+  <html lang="en-IN" />
+
+
+  {/* FIXED: Trimmed to under 60 chars */}
+  <title>Web Design Company in India | VGot You – Karur, Tamil Nadu</title>
 
   <meta
     name="description"
-    content="VGOT YOU is a leading web design company in India offering custom, responsive, and SEO-optimized website design services for startups, MSMEs, exporters, and enterprises across India."
+    content="VGot You is a leading web design company in India offering custom, responsive, and SEO-optimised websites for startups, MSMEs, exporters and enterprises. Based in Karur, Tamil Nadu, serving clients nationwide."
   />
 
-  <meta
-    name="keywords"
-    content="web design company in india, website designer in india, web development company in india, responsive website design india, seo web design india, ui ux design agency india, ecommerce website development india"
-  />
+  {/* FIXED: Removed meta keywords */}
 
-  <link rel="canonical" href="https://www.vgotyou.com/web-design-india" />
+  <meta name="author" content="VGot You" />
   <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.vgotyou.com/web-design-india" />
+
+  {/* ================= HREFLANG ================= */}
+  {/* ADDED: Was completely missing */}
+  <link rel="alternate" hrefLang="en-IN" href="https://www.vgotyou.com/web-design-india" />
+  <link rel="alternate" hrefLang="en-GB" href="https://www.vgotyou.com/web-design-uk" />
+  <link rel="alternate" hrefLang="x-default" href="https://www.vgotyou.com/" />
 
   {/* ================= OPEN GRAPH ================= */}
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Web Design Company in India | VGOT YOU" />
+  
+  <meta property="og:site_name" content="VGot You" />
+  {/* FIXED: og:title now matches <title> exactly */}
+  <meta property="og:title" content="Web Design Company in India | VGot You – Karur, Tamil Nadu" />
   <meta
     property="og:description"
-    content="Professional website design, UI/UX, and SEO-ready development for businesses across India by VGOT YOU."
+    content="VGot You is a leading web design company in India offering custom, responsive, and SEO-optimised websites for startups, MSMEs, exporters and enterprises. Based in Karur, Tamil Nadu."
   />
-  <meta property="og:image" content="https://www.vgotyou.com/assets/web-designer.png" />
   <meta property="og:url" content="https://www.vgotyou.com/web-design-india" />
-  <meta property="og:site_name" content="VGOT YOU" />
+  <meta property="og:image" content="https://www.vgotyou.com/assets/web-designer.png" />
+  {/* FIXED: width, height and alt were missing */}
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Web Design Company in India – VGot You, Karur Tamil Nadu" />
   <meta property="og:locale" content="en_IN" />
+  {/* FIXED: og:locale:alternate was missing */}
+  <meta property="og:locale:alternate" content="en_GB" />
 
-  {/* ================= TWITTER ================= */}
+  {/* ================= TWITTER / X ================= */}
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Web Design Company in India | VGOT YOU" />
+  {/* FIXED: twitter:title now matches <title> exactly */}
+  <meta name="twitter:title" content="Web Design Company in India | VGot You – Karur, Tamil Nadu" />
   <meta
     name="twitter:description"
-    content="High-performance, SEO-optimized website design services for startups and enterprises across India."
+    content="Leading web design company in India. Custom, SEO-optimised websites for startups, MSMEs, exporters and enterprises. Based in Karur, Tamil Nadu."
   />
   <meta name="twitter:image" content="https://www.vgotyou.com/assets/web-designer.png" />
+  {/* FIXED: twitter:site and twitter:creator were missing */}
+  <meta name="twitter:site" content="@vgotyou" />
+  <meta name="twitter:creator" content="@vgotyou" />
 
-  {/* ================= SERVICE SCHEMA ================= */}
-  <script type="application/ld+json">
-    {JSON.stringify({
+  {/* ================= SCHEMA: WEB PAGE ================= */}
+  {/* ADDED: Was completely missing — links page into schema graph */}
+  <script type="application/ld+json">{`
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "@id": "https://www.vgotyou.com/web-design-india#webpage",
+      "url": "https://www.vgotyou.com/web-design-india",
+      "name": "Web Design Company in India | VGot You – Karur, Tamil Nadu",
+      "description": "Leading web design company in India offering custom, responsive, and SEO-optimised websites for startups, MSMEs, exporters and enterprises across all major cities and states.",
+      "inLanguage": "en-IN",
+      "isPartOf": {
+        "@id": "https://www.vgotyou.com/#website"
+      },
+      "publisher": {
+        "@id": "https://www.vgotyou.com/#organization"
+      },
+      "about": {
+        "@id": "https://www.vgotyou.com/web-design-india#service"
+      }
+    }
+  `}</script>
+
+  {/* ================= SCHEMA: SERVICE ================= */}
+  
+  <script type="application/ld+json">{`
+    {
       "@context": "https://schema.org",
       "@type": "Service",
       "@id": "https://www.vgotyou.com/web-design-india#service",
-      name: "Website Design Services in India",
-      serviceType: "Web Design & Development",
-      url: "https://www.vgotyou.com/web-design-india",
-      description:
-        "Professional website design and development services offering responsive, SEO-optimized, and conversion-focused websites for businesses across India.",
-      provider: {
-        "@type": "Organization",
-        "@id": "https://www.vgotyou.com/#organization",
-        name: "VGOT YOU",
-        url: "https://www.vgotyou.com/",
-        logo: "https://www.vgotyou.com/assets/vgotyou.png"
+      "name": "Web Design Services in India",
+      "url": "https://www.vgotyou.com/web-design-india",
+      "description": "Professional website design and development services across India — offering responsive, SEO-optimised, and conversion-focused websites for startups, MSMEs, exporters and enterprises in Tamil Nadu, Karnataka, Maharashtra, Delhi, Kerala and all major states.",
+      "serviceType": [
+        "Web Design",
+        "Website Development",
+        "UI UX Design",
+        "Responsive Web Design",
+        "E-commerce Website Design",
+        "SEO-Optimised Web Design",
+        "Startup Website Design",
+        "Corporate Website Development",
+        "Lead Generation Website Design",
+        "MSME Website Design India"
+      ],
+      "provider": {
+        "@id": "https://www.vgotyou.com/#localbusiness"
       },
-      areaServed: {
-        "@type": "Country",
-        name: "India"
+      "areaServed": [
+        { "@type": "Country", "name": "India" },
+        { "@type": "State", "name": "Tamil Nadu" },
+        { "@type": "State", "name": "Karnataka" },
+        { "@type": "State", "name": "Kerala" },
+        { "@type": "State", "name": "Maharashtra" },
+        { "@type": "State", "name": "Telangana" },
+        { "@type": "State", "name": "Andhra Pradesh" },
+        { "@type": "State", "name": "Gujarat" },
+        { "@type": "State", "name": "West Bengal" },
+        { "@type": "City", "name": "Chennai" },
+        { "@type": "City", "name": "Mumbai" },
+        { "@type": "City", "name": "Bengaluru" },
+        { "@type": "City", "name": "Hyderabad" },
+        { "@type": "City", "name": "Delhi" },
+        { "@type": "City", "name": "Coimbatore" },
+        { "@type": "City", "name": "Karur" }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Web Design Services across India",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", "name": "Business Website Design for Indian SMEs and MSMEs" }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", "name": "E-commerce Website Development India" }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", "name": "Startup Branding and Website Design India" }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", "name": "SEO Services for Indian Businesses" }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", "name": "B2B Export Website Design India" }
+          }
+        ]
+      },
+      "offers": {
+        "@type": "Offer",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "priceCurrency": "INR",
+          "minPrice": "4999",
+          "maxPrice": "200000",
+          "description": "Web design packages for Indian businesses starting from ₹4,999 up to ₹2,00,000 for enterprise projects"
+        }
       }
-    })}
-  </script>
+    }
+  `}</script>
 
-  {/* ================= BREADCRUMB SCHEMA ================= */}
-  <script type="application/ld+json">
-    {JSON.stringify({
+  {/* ================= SCHEMA: FAQ PAGE ================= */}
+  {/*
+    ADDED: Critical — 4 FAQ items on page with zero FAQ schema.
+    Matches exact questions and answers in your FAQItem components.
+    The pricing FAQ is especially powerful for Google rich results.
+  */}
+  <script type="application/ld+json">{`
+    {
       "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      itemListElement: [
+      "@type": "FAQPage",
+      "mainEntity": [
         {
-          "@type": "ListItem",
-          position: 1,
-          name: "Home",
-          item: "https://www.vgotyou.com/"
+          "@type": "Question",
+          "name": "What are the web design costs in India?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Web design costs in India vary based on project scope. Basic custom sites start from ₹4,999, while large-scale corporate portals and e-commerce platforms can range from ₹25,000 to ₹2,00,000 depending on features and technical complexity."
+          }
         },
         {
-          "@type": "ListItem",
-          position: 2,
-          name: "Web Design",
-          item: "https://www.vgotyou.com/web-design"
+          "@type": "Question",
+          "name": "Can an Indian web design agency handle international projects?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolutely. VGot You specialises in building websites for Indian exporters and manufacturers that meet global design and performance standards, ensuring you look world-class to international buyers."
+          }
         },
         {
-          "@type": "ListItem",
-          position: 3,
-          name: "India",
-          item: "https://www.vgotyou.com/web-design-india"
+          "@type": "Question",
+          "name": "How do you handle SEO for Indian businesses?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We implement a multi-layered SEO strategy including technical optimisation, schema markup, and keyword-focused content that targets both national keywords like 'web development India' and city-level queries."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you provide website maintenance services in India?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, we offer comprehensive 24/7 technical support and maintenance packages for businesses across India to ensure high uptime, security updates, and performance optimisation."
+          }
         }
       ]
-    })}
-  </script>
+    }
+  `}</script>
+
+  {/* ================= SCHEMA: BREADCRUMB ================= */}
+  {/* KEPT: Already correct — converted to template literal */}
+  <script type="application/ld+json">{`
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.vgotyou.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Web Design",
+          "item": "https://www.vgotyou.com/web-design"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "India",
+          "item": "https://www.vgotyou.com/web-design-india"
+        }
+      ]
+    }
+  `}</script>
+
 </Helmet>
+
 
       <style>{`
         .text-technical { font-family: 'JetBrains Mono', 'Fira Code', monospace; }
@@ -176,7 +326,7 @@ const WebDesignIndia: React.FC = () => {
       `}</style>
 
       {/* Hero Section: The National Hub */}
-      <section className="relative min-h-[80vh] md:min-h-[95vh] flex items-center justify-center border-b border-zinc-900 bg-grid overflow-hidden px-6">
+      <section className="relative min-h-[85vh] md:min-h-[85vh] flex items-center justify-center border-b border-zinc-900 bg-grid overflow-hidden px-6">
         <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black opacity-90"></div>
         <div className="absolute top-1/4 right-0 w-1/2 h-1/2 bg-red-600/5 blur-[120px] rounded-full pointer-events-none"></div>
         
@@ -196,14 +346,20 @@ const WebDesignIndia: React.FC = () => {
                 <TechnicalBadge className="mb-0">Node_Active: Pan_India_Uplink</TechnicalBadge>
               </div>
               
-              <h1 className="text-[14vw] sm:text-[10vw] md:text-[8.5vw] font-black leading-[0.8] tracking-tighter uppercase mb-8 md:mb-10">
-                Scaling <br/>
-                <span className="text-zinc-800">Digital India.</span>
-              </h1>
-              
-              <p className="text-base md:text-xl text-zinc-500 font-light leading-relaxed mb-10 md:mb-12 max-w-xl">
-                VGot You is a premier <Link to="/web-design-india" className="text-zinc-300 hover:text-red-600 transition-colors">web design company in India</Link>, building high-performance digital assets for startups, MSMEs, and global exporters.
-              </p>
+              <h1 className="text-[14vw] sm:text-[9.5vw] md:text-[8vw] font-black leading-[0.75] tracking-tighter uppercase mb-8 md:mb-10">
+                  Scaling <br/>
+                  <span className="text-zinc-800">Digital India.</span>
+                </h1>
+
+                {/* ADDED: sr-only h2 for keyword support */}
+                <h2 className="sr-only">
+                  Web Design Company in India – Custom Websites for Startups, MSMEs & Exporters | VGot You
+                </h2>
+
+                <p className="text-base md:text-xl text-zinc-500 font-light leading-relaxed mb-10 md:mb-12 max-w-xl">
+                  {/* FIXED: Self-link removed — page should not link to itself */}
+                  VGot You is a premier <span className="text-zinc-300">web design company in India</span>, building high-performance digital assets for startups, MSMEs, and global exporters.
+                </p>
 
               <div className="flex flex-col sm:flex-row gap-6 md:gap-8">
                 <Link to="/contact" className="w-full sm:w-auto group relative px-10 md:px-12 py-4 md:py-5 bg-red-600 text-white font-bold rounded-sm text-[10px] md:text-xs uppercase tracking-[0.4em] overflow-hidden transition-all shadow-[0_0_40px_rgba(220,38,38,0.2)] hover:shadow-red-600/40 text-center">
@@ -233,8 +389,8 @@ const WebDesignIndia: React.FC = () => {
 
                 <div className="relative w-full h-full overflow-hidden border border-zinc-900 rounded-sm grayscale group-hover:grayscale-0 transition-all duration-1000">
                   <img 
-                    src="https://vgotyou.com/assets/bse.jpg" 
-                    alt="Corporate India Digital Infrastructure" 
+                    src="https://www.vgotyou.com/assets/bse.jpg" 
+                    alt="Web design services for Indian businesses – VGot You, Karur Tamil Nadu" 
                     className="w-full h-full object-cover opacity-40 group-hover:opacity-60 transition-opacity" 
                     loading="eager"
                     decoding="async"

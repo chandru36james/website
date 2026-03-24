@@ -60,108 +60,237 @@ const WebDesignKarur: React.FC = () => {
   return (
     <div className="bg-[#020202] text-white selection:bg-red-600/30 overflow-x-hidden pt-16 md:pt-20">
       <Helmet>
+
   {/* ================= BASIC SEO ================= */}
-  <title>Web Design Company in Karur, Tamil Nadu | Professional Website Designers – VGot You</title>
+  <html lang="en-IN" />
+
+  {/* FIXED: Trimmed from 74 chars to under 60 */}
+  <title>Web Design Company in Karur, Tamil Nadu | VGot You</title>
 
   <meta
     name="description"
-    content="VGot You is a leading web design company in Karur, Tamil Nadu offering custom, responsive, and SEO-optimized website design services for textile exporters, startups, and growing businesses."
+    content="VGot You is a leading web design company in Karur, Tamil Nadu offering custom, responsive, and SEO-optimised websites for textile exporters, MSME businesses, and startups across India."
   />
 
-  <meta
-    name="keywords"
-    content="web design company in karur, website designer in karur, web development company karur, responsive website design karur, seo web design karur, ui ux design agency karur, ecommerce website development karur"
-  />
+  {/* FIXED: Removed meta keywords */}
 
-  <link rel="canonical" href="https://www.vgotyou.com/web-design-karur" />
+  <meta name="author" content="VGot You" />
   <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.vgotyou.com/web-design-karur" />
+
+  {/* ================= HREFLANG ================= */}
+  {/* ADDED: Was completely missing */}
+  <link rel="alternate" hrefLang="en-IN" href="https://www.vgotyou.com/web-design-karur" />
+  <link rel="alternate" hrefLang="en-GB" href="https://www.vgotyou.com/web-design-karur" />
+  <link rel="alternate" hrefLang="x-default" href="https://www.vgotyou.com/web-design-karur" />
 
   {/* ================= OPEN GRAPH ================= */}
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Web Design Company in Karur | VGot You" />
+  <meta property="og:site_name" content="VGot You" />
+  {/* FIXED: og:title now matches <title> exactly */}
+  <meta property="og:title" content="Web Design Company in Karur, Tamil Nadu | VGot You" />
   <meta
     property="og:description"
-    content="Professional website design, UI/UX, and SEO-ready development for businesses in Karur by VGot You."
+    content="VGot You is a leading web design company in Karur, Tamil Nadu offering custom, responsive, and SEO-optimised websites for textile exporters, MSME businesses, and startups across India."
   />
-  <meta property="og:image" content="https://www.vgotyou.com/assets/web-designer.png" />
   <meta property="og:url" content="https://www.vgotyou.com/web-design-karur" />
-  <meta property="og:site_name" content="VGot You" />
+  <meta property="og:image" content="https://www.vgotyou.com/assets/web-designer.png" />
+  {/* FIXED: width, height and alt were missing */}
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Web Design Company in Karur, Tamil Nadu – VGot You" />
   <meta property="og:locale" content="en_IN" />
+  {/* FIXED: og:locale:alternate was missing */}
+  <meta property="og:locale:alternate" content="en_GB" />
 
-  {/* ================= TWITTER ================= */}
+  {/* ================= TWITTER / X ================= */}
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Web Design Company in Karur | VGot You" />
+  {/* FIXED: twitter:title now matches <title> exactly */}
+  <meta name="twitter:title" content="Web Design Company in Karur, Tamil Nadu | VGot You" />
   <meta
     name="twitter:description"
-    content="High-performance, SEO-optimized website design services for businesses in Karur by VGot You."
+    content="Leading web design company in Karur, Tamil Nadu. Custom, SEO-optimised websites for textile exporters, MSME businesses and startups across India."
   />
   <meta name="twitter:image" content="https://www.vgotyou.com/assets/web-designer.png" />
+  {/* FIXED: twitter:site and twitter:creator were missing */}
+  <meta name="twitter:site" content="@vgotyou" />
+  <meta name="twitter:creator" content="@vgotyou" />
 
-  {/* ================= SERVICE SCHEMA ================= */}
-  <script type="application/ld+json">
-    {JSON.stringify({
+  {/* ================= SCHEMA: WEB PAGE ================= */}
+ 
+  <script type="application/ld+json">{`
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "@id": "https://www.vgotyou.com/web-design-karur#webpage",
+      "url": "https://www.vgotyou.com/web-design-karur",
+      "name": "Web Design Company in Karur, Tamil Nadu | VGot You",
+      "description": "Professional web design company in Karur, Tamil Nadu offering custom, responsive, and SEO-optimised websites for textile exporters, MSME businesses and startups.",
+      "inLanguage": "en-IN",
+      "isPartOf": {
+        "@id": "https://www.vgotyou.com/#website"
+      },
+      "publisher": {
+        "@id": "https://www.vgotyou.com/#organization"
+      },
+      "about": {
+        "@id": "https://www.vgotyou.com/web-design-karur#service"
+      }
+    }
+  `}</script>
+
+  {/* ================= SCHEMA: SERVICE ================= */}
+  
+  <script type="application/ld+json">{`
+    {
       "@context": "https://schema.org",
       "@type": "Service",
       "@id": "https://www.vgotyou.com/web-design-karur#service",
-      name: "Website Design Services in Karur",
-      serviceType: "Web Design & Development",
-      url: "https://www.vgotyou.com/web-design-karur",
-      description:
-        "Professional website design and development services offering responsive, SEO-optimized, and conversion-focused websites for businesses in Karur, Tamil Nadu.",
-      provider: {
-        "@type": "Organization",
-        "@id": "https://www.vgotyou.com/#organization",
-        name: "VGot You",
-        url: "https://www.vgotyou.com/",
-        logo: "https://www.vgotyou.com/assets/vgotyou.png"
+      "name": "Web Design Services in Karur, Tamil Nadu",
+      "url": "https://www.vgotyou.com/web-design-karur",
+      "description": "Professional website design and development services in Karur, Tamil Nadu — offering responsive, SEO-optimised, and conversion-focused websites for textile exporters, MSME businesses, and startups.",
+      "serviceType": [
+        "Web Design",
+        "Website Development",
+        "UI UX Design",
+        "Responsive Web Design",
+        "E-commerce Website Design",
+        "SEO-Optimised Web Design",
+        "Website Redesign",
+        "B2B Export Catalog Websites"
+      ],
+      "provider": {
+        "@id": "https://www.vgotyou.com/#localbusiness"
       },
-      areaServed: {
-        "@type": "City",
-        name: "Karur"
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Karur",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "Tamil Nadu"
+          }
+        },
+        {
+          "@type": "State",
+          "name": "Tamil Nadu"
+        },
+        {
+          "@type": "Country",
+          "name": "India"
+        }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Web Design Services in Karur",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", "name": "Business Website Design for Karur SMEs" }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", "name": "Textile Export Catalog Websites" }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", "name": "E-commerce Website Design" }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", "name": "SEO Services for Karur Businesses" }
+          }
+        ]
+      },
+      "offers": {
+        "@type": "Offer",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "priceCurrency": "INR",
+          "description": "Affordable web design packages for Karur businesses — custom pricing based on project scope"
+        }
       }
-    })}
-  </script>
+    }
+  `}</script>
 
-  {/* ================= BREADCRUMB SCHEMA ================= */}
-  <script type="application/ld+json">
-    {JSON.stringify({
+  {/* ================= SCHEMA: FAQ PAGE ================= */}
+  
+  <script type="application/ld+json">{`
+    {
       "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      itemListElement: [
+      "@type": "FAQPage",
+      "mainEntity": [
         {
-          "@type": "ListItem",
-          position: 1,
-          name: "Home",
-          item: "https://www.vgotyou.com/"
+          "@type": "Question",
+          "name": "How do I start a project if you are an online service?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Starting is easy. You can contact us via WhatsApp or our online form. We then schedule a video call to discuss your vision and requirements, providing a full digital proposal within 24 hours."
+          }
         },
         {
-          "@type": "ListItem",
-          position: 2,
-          name: "Web Design",
-          item: "https://www.vgotyou.com/web-design"
+          "@type": "Question",
+          "name": "Do you provide maintenance for Karur textile websites?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, our ongoing support packages are specifically designed for manufacturers, ensuring your international inquiry portals stay online and perform at 100% efficiency."
+          }
         },
         {
-          "@type": "ListItem",
-          position: 3,
-          name: "India",
-          item: "https://www.vgotyou.com/web-design-india"
-        },
-        {
-          "@type": "ListItem",
-          position: 4,
-          name: "Tamil Nadu",
-          item: "https://www.vgotyou.com/web-design-tamil-nadu"
-        },
-        {
-          "@type": "ListItem",
-          position: 5,
-          name: "Karur",
-          item: "https://www.vgotyou.com/web-design-karur"
+          "@type": "Question",
+          "name": "Can you handle large-scale e-commerce projects remotely?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolutely. Our entire development pipeline is built for remote collaboration. We use shared staging environments where you can review progress in real-time from anywhere."
+          }
         }
       ]
-    })}
-  </script>
+    }
+  `}</script>
+
+  {/* ================= SCHEMA: BREADCRUMB ================= */}
+
+  <script type="application/ld+json">{`
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.vgotyou.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Web Design",
+          "item": "https://www.vgotyou.com/web-design"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "India",
+          "item": "https://www.vgotyou.com/web-design-india"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Tamil Nadu",
+          "item": "https://www.vgotyou.com/web-design-tamil-nadu"
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "name": "Karur",
+          "item": "https://www.vgotyou.com/web-design-karur"
+        }
+      ]
+    }
+  `}</script>
+
 </Helmet>
+
 
       <style>{`
         .text-technical { font-family: 'JetBrains Mono', 'Fira Code', monospace; }
@@ -181,7 +310,7 @@ const WebDesignKarur: React.FC = () => {
       `}</style>
 
       {/* Hero Section */}
-      <section className="relative min-h-[85vh] md:min-h-[95vh] flex items-center justify-center border-b border-zinc-900 bg-grid overflow-hidden px-6">
+      <section className="relative min-h-[80vh] md:min-h-[80vh] flex items-center justify-center border-b border-zinc-900 bg-grid overflow-hidden px-6">
         <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black opacity-90"></div>
         <div className="absolute top-1/4 right-0 w-1/2 h-1/2 bg-red-600/5 blur-[120px] rounded-full pointer-events-none"></div>
         
@@ -201,13 +330,13 @@ const WebDesignKarur: React.FC = () => {
                 <TechnicalBadge className="mb-0">Node_Active: Karur_Service_Center</TechnicalBadge>
               </div>
               
-              <h1 className="text-[14vw] sm:text-[10vw] md:text-[8.5vw] font-black leading-[0.8] tracking-tighter uppercase mb-8 md:mb-10">
-                Forging <br/>
-                <span className="text-zinc-800">Karur's Future.</span>
-              </h1>
+             <h1 className="text-[8vw] sm:text-[6vw] md:text-[3.3vw] font-black leading-[0.9] tracking-tight uppercase mb-6 md:mb-8">
+  Built for Karur. <br/>
+  <span className="text-zinc-800">Built for Growth.</span>
+</h1>
               
               <p className="text-base md:text-xl text-zinc-500 font-light leading-relaxed mb-10 md:mb-12 max-w-xl">
-                VGot You is a top-rated <Link to="/web-design" className="text-zinc-300 hover:text-red-600 transition-colors">online web design agency for Karur</Link>, specializing in digital platforms for the city's global textile export backbone.
+                VGot You is a top-rated affordable <Link to="/web-design" className="text-zinc-300 hover:text-red-600 transition-colors">online web design agency for Karur</Link>, specializing in digital platforms for the city's global textile export backbone.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-6 md:gap-8">
@@ -238,8 +367,8 @@ const WebDesignKarur: React.FC = () => {
 
                 <div className="relative w-full h-full overflow-hidden border border-zinc-900 rounded-sm grayscale group-hover:grayscale-0 transition-all duration-1000">
                   <img 
-                    src="https://vgotyou.com/assets/Karur.jpg" 
-                    alt="Industrial High-Performance Textiles" 
+                    src="https://www.vgotyou.com/assets/Karur.jpg" 
+                    alt="Karur textile industry – web design services for exporters by VGot You" 
                     className="w-full h-full object-cover opacity-40 group-hover:opacity-60 transition-opacity" 
                   />
                   
@@ -256,7 +385,7 @@ const WebDesignKarur: React.FC = () => {
                         <span>Local_Market_Impact</span>
                         <span className="text-red-600">94%</span>
                       </div>
-                      <div className="h-[2px] w-full bg-zinc-900 overflow-hidden">
+                      <div className="h-[2px] w-full bg-zinc-950 overflow-hidden">
                         <m.div 
                           initial={{ width: 0 }}
                           animate={{ width: "94%" }}
@@ -274,7 +403,7 @@ const WebDesignKarur: React.FC = () => {
       </section>
 
       {/* SEO Section */}
-      <section className="py-16 md:py-24 px-6 border-b border-zinc-900 bg-[#050505]">
+      <section className="py-16 md:py-24 px-6 border-b border-zinc-950 bg-[#000000]">
         <div className="container mx-auto max-w-7xl">
           <div className="grid lg:grid-cols-3 gap-10 md:gap-16">
             <div className="lg:col-span-1">
@@ -343,8 +472,8 @@ const WebDesignKarur: React.FC = () => {
             <div className="flex-1 order-2 lg:order-1">
               <div className="relative aspect-[16/10] rounded-sm overflow-hidden border border-zinc-800 shadow-2xl group">
                 <img 
-                  src="https://vgotyou.com/assets/arctic.png" 
-                  alt="Web design project for Karur company" 
+                  src="https://www.vgotyou.com/assets/arctic.png" 
+                  alt="Arctic Textiles website design – Karur textile exporter case study by VGot You" 
                   className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>

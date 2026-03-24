@@ -118,103 +118,268 @@ const UKWebDesign: React.FC = () => {
 
     return (
         <div className="bg-[#020202] text-white selection:bg-red-600/30 overflow-x-hidden">
-           import { Helmet } from "react-helmet";
+            <Helmet>
 
-<Helmet>
   {/* ================= BASIC SEO ================= */}
-  <title>Web Design UK | Professional Website Design Services | VGot You</title>
+  {/* FIXED: html lang="en-GB" — this is a UK page */}
+  <html lang="en-GB" />
+
+  {/* FIXED: Title improved with clearer UK signal */}
+  <title>Web Design UK | Professional Website Design for UK Businesses | VGot You</title>
 
   <meta
     name="description"
-    content="Premium web design services across the UK. We build fast, SEO-optimized websites for businesses in London, Manchester, Birmingham, Leeds and more."
+    content="VGot You offers premium web design services across the UK — fast, SEO-optimised, conversion-focused websites for businesses in London, Manchester, Birmingham, Leeds, Glasgow and more. Starting from £1,499."
   />
 
-  <meta
-    name="keywords"
-    content="web design UK, UK website design, London web design, Manchester web design, Birmingham web development"
-  />
+  {/* FIXED: Removed meta keywords */}
 
   <meta name="author" content="VGot You" />
   <meta name="robots" content="index, follow" />
-
   <link rel="canonical" href="https://www.vgotyou.com/web-design-uk" />
+
+  {/* ================= HREFLANG ================= */}
+  {/* ADDED: Was completely missing. en-GB is primary for UK page */}
+  <link rel="alternate" hrefLang="en-GB" href="https://www.vgotyou.com/web-design-uk" />
+  <link rel="alternate" hrefLang="en-IN" href="https://www.vgotyou.com/web-design-india" />
+  <link rel="alternate" hrefLang="x-default" href="https://www.vgotyou.com/" />
 
   {/* ================= OPEN GRAPH ================= */}
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.vgotyou.com/web-design-uk" />
-  <meta property="og:title" content="Web Design UK | VGot You" />
+  {/* FIXED: og:site_name was missing */}
+  <meta property="og:site_name" content="VGot You" />
+  {/* FIXED: og:title now matches <title> exactly */}
+  <meta property="og:title" content="Web Design UK | Professional Website Design for UK Businesses | VGot You" />
   <meta
     property="og:description"
-    content="High-performance web design for UK businesses. SEO-focused, fast and conversion-driven websites."
+    content="Premium web design services across the UK — fast, SEO-optimised, conversion-focused websites for businesses in London, Manchester, Birmingham, Leeds, Glasgow and more."
   />
-  <meta property="og:image" content="https://www.vgotyou.com/assets/vgotyou.png" />
+  <meta property="og:url" content="https://www.vgotyou.com/web-design-uk" />
+  {/* FIXED: vgotyou.png → og-home.png */}
+  <meta property="og:image" content="https://www.vgotyou.com/assets/og-home.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  {/* FIXED: og:image:alt was missing */}
+  <meta property="og:image:alt" content="Web Design Services for UK Businesses – VGot You" />
+  {/* FIXED: og:locale was missing — en_GB for UK page */}
+  <meta property="og:locale" content="en_GB" />
+  <meta property="og:locale:alternate" content="en_IN" />
 
-  {/* ================= TWITTER ================= */}
+  {/* ================= TWITTER / X ================= */}
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Web Design UK | VGot You" />
+  {/* FIXED: twitter:title now matches <title> exactly */}
+  <meta name="twitter:title" content="Web Design UK | Professional Website Design for UK Businesses | VGot You" />
   <meta
     name="twitter:description"
-    content="Professional web design services tailored for UK businesses. Fast, SEO-ready and conversion-focused."
+    content="Premium web design services across the UK — fast, SEO-optimised, conversion-focused websites for businesses in London, Manchester, Birmingham and more."
   />
-  <meta name="twitter:image" content="https://www.vgotyou.com/assets/vgotyou.png" />
+  {/* FIXED: vgotyou.png → og-home.png */}
+  <meta name="twitter:image" content="https://www.vgotyou.com/assets/og-home.png" />
+  {/* FIXED: twitter:site and twitter:creator were missing */}
+  <meta name="twitter:site" content="@vgotyou" />
+  <meta name="twitter:creator" content="@vgotyou" />
 
-  {/* ================= SERVICE SCHEMA ================= */}
-  <script type="application/ld+json">
-    {JSON.stringify({
+  {/* ================= SCHEMA: WEB PAGE ================= */}
+  {/* ADDED: Was completely missing */}
+  <script type="application/ld+json">{`
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "@id": "https://www.vgotyou.com/web-design-uk#webpage",
+      "url": "https://www.vgotyou.com/web-design-uk",
+      "name": "Web Design UK | Professional Website Design for UK Businesses | VGot You",
+      "description": "Premium web design services across the UK — fast, SEO-optimised websites for businesses in London, Manchester, Birmingham, Leeds, Glasgow and more.",
+      "inLanguage": "en-GB",
+      "isPartOf": {
+        "@id": "https://www.vgotyou.com/#website"
+      },
+      "publisher": {
+        "@id": "https://www.vgotyou.com/#organization"
+      },
+      "about": {
+        "@id": "https://www.vgotyou.com/web-design-uk#service"
+      }
+    }
+  `}</script>
+
+  {/* ================= SCHEMA: SERVICE ================= */}
+  {/*
+    FIXED:
+    - Added @id and name (were completely missing)
+    - provider now references @id only
+    - serviceType expanded to array of specific services
+    - areaServed expanded to include major UK cities
+    - Added hasOfferCatalog with pricing packages
+    - Added offers with GBP pricing from your pricing section
+    - REMOVED WebSite schema — homepage only
+  */}
+  <script type="application/ld+json">{`
+    {
       "@context": "https://schema.org",
       "@type": "Service",
-      serviceType: "Web Design Services",
-      provider: {
-        "@type": "Organization",
-        name: "VGot You",
-        url: "https://www.vgotyou.com"
+      "@id": "https://www.vgotyou.com/web-design-uk#service",
+      "name": "Web Design Services UK",
+      "url": "https://www.vgotyou.com/web-design-uk",
+      "description": "Professional web design services for UK businesses including custom website design, e-commerce development, SEO-optimised development, landing page design and business website development.",
+      "serviceType": [
+        "Web Design UK",
+        "Custom Website Design",
+        "Business Website Development",
+        "E-commerce Website Development UK",
+        "Landing Page Design",
+        "SEO-Optimised Web Development",
+        "Mobile-First Website Design",
+        "Startup Website Design UK",
+        "Small Business Website Design UK"
+      ],
+      "provider": {
+        "@id": "https://www.vgotyou.com/#organization"
       },
-      areaServed: {
-        "@type": "Country",
-        name: "United Kingdom"
+      "areaServed": [
+        { "@type": "Country", "name": "United Kingdom" },
+        { "@type": "City", "name": "London" },
+        { "@type": "City", "name": "Manchester" },
+        { "@type": "City", "name": "Birmingham" },
+        { "@type": "City", "name": "Leeds" },
+        { "@type": "City", "name": "Glasgow" },
+        { "@type": "City", "name": "Liverpool" },
+        { "@type": "City", "name": "Bristol" },
+        { "@type": "City", "name": "Sheffield" },
+        { "@type": "City", "name": "Edinburgh" },
+        { "@type": "City", "name": "Leicester" },
+        { "@type": "City", "name": "Cardiff" },
+        { "@type": "City", "name": "Belfast" }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "UK Web Design Packages",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "name": "Startup Web Design Package UK",
+            "price": "1499",
+            "priceCurrency": "GBP",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Startup Website Design – 5 Custom Pages"
+            }
+          },
+          {
+            "@type": "Offer",
+            "name": "Business Web Design Package UK",
+            "price": "2999",
+            "priceCurrency": "GBP",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Business Website Design – 10 Custom Pages with Advanced SEO"
+            }
+          },
+          {
+            "@type": "Offer",
+            "name": "Enterprise Web Design Package UK",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Enterprise Website Design – Custom E-commerce and API Integration"
+            }
+          }
+        ]
       },
-      description:
-        "Professional web design services for UK businesses including SEO optimization, responsive design and branding."
-    })}
-  </script>
+      "offers": {
+        "@type": "Offer",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "priceCurrency": "GBP",
+          "minPrice": "1499",
+          "description": "UK web design packages starting from £1,499 for startup websites"
+        }
+      }
+    }
+  `}</script>
 
-  {/* ================= WEBSITE SCHEMA ================= */}
-  <script type="application/ld+json">
-    {JSON.stringify({
+  {/* ================= SCHEMA: FAQ PAGE ================= */}
+  {/*
+    ADDED: 5 FAQ items on page with zero FAQ schema.
+    The pricing FAQ (£1,500+) and timeline FAQ are especially
+    strong candidates for Google featured snippets in UK search.
+  */}
+  <script type="application/ld+json">{`
+    {
       "@context": "https://schema.org",
-      "@type": "WebSite",
-      name: "VGot You",
-      url: "https://www.vgotyou.com"
-    })}
-  </script>
-
-  {/* ================= BREADCRUMB ================= */}
-  <script type="application/ld+json">
-    {JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      itemListElement: [
+      "@type": "FAQPage",
+      "mainEntity": [
         {
-          "@type": "ListItem",
-          position: 1,
-          name: "Home",
-          item: "https://www.vgotyou.com"
+          "@type": "Question",
+          "name": "How much does web design cost in the UK?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Web design costs in the UK vary depending on complexity. A standard business website typically starts from £1,500, while bespoke e-commerce platforms or enterprise solutions can range from £5,000 to £20,000+. We provide transparent, fixed-price quotes based on your specific requirements."
+          }
         },
         {
-          "@type": "ListItem",
-          position: 2,
-          name: "Web Design",
-          item: "https://www.vgotyou.com/web-design"
+          "@type": "Question",
+          "name": "How long does it take to build a website?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A typical project takes between 4 to 8 weeks from discovery to launch. Simple landing pages can be delivered in 2 weeks, while complex custom developments may take 12 weeks or more. We follow a strict timeline to ensure your UK business goes live on schedule."
+          }
         },
         {
-          "@type": "ListItem",
-          position: 3,
-          name: "Web Design UK",
-          item: "https://www.vgotyou.com/web-design-uk"
+          "@type": "Question",
+          "name": "Do you offer SEO with web design?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, every website we build includes foundational SEO-optimised development. This includes clean code, mobile responsiveness, fast loading speeds, and meta-tag structure. We also offer advanced SEO services to help you dominate search results for your target keywords."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you work with small businesses in the UK?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolutely. We provide affordable web design solutions tailored for startups and small businesses in the UK. Our goal is to provide high-quality digital experiences that help smaller British companies compete with larger established brands."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Will my website be mobile-friendly?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, we follow a mobile-first development approach. Given that over 60% of UK web traffic comes from mobile devices, we ensure your website looks and functions perfectly on all screen sizes, from smartphones to desktops."
+          }
         }
       ]
-    })}
-  </script>
+    }
+  `}</script>
+
+  {/* ================= SCHEMA: BREADCRUMB ================= */}
+  {/* FIXED: Converted from JSON.stringify to template literal */}
+  <script type="application/ld+json">{`
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.vgotyou.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Web Design",
+          "item": "https://www.vgotyou.com/web-design"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Web Design UK",
+          "item": "https://www.vgotyou.com/web-design-uk"
+        }
+      ]
+    }
+  `}</script>
+
 </Helmet>
             
 
@@ -264,6 +429,8 @@ const UKWebDesign: React.FC = () => {
                             Strategic <br/>
                             <span className="text-red-600">Web Design UK.</span>
                         </h1>
+                         <h2 className="sr-only">
+                          Professional Web Design Services for UK Businesses – VGot You </h2>
                         <p className="text-sm sm:text-lg md:text-xl text-zinc-400 max-w-3xl mx-auto font-light leading-relaxed mb-8 md:mb-12">
                             VGot You is a premier <strong className="text-white">UK web design agency</strong> delivering high-conversion, <strong className="text-white">SEO-optimised websites</strong> for forward-thinking British businesses. We also specialise in <Link to="/seo-services-uk" className="text-red-600 hover:underline">SEO services UK</Link> and <Link to="/digital-marketing-uk" className="text-red-600 hover:underline">digital marketing UK</Link> to ensure your brand dominates the search results.
                         </p>
@@ -350,7 +517,7 @@ const UKWebDesign: React.FC = () => {
                         </div>
                         <div className="relative">
                             <div className="aspect-square bg-zinc-900 border border-zinc-800 rounded-sm overflow-hidden relative group">
-                                <img src="https://picsum.photos/seed/ukweb/800/800" alt="UK Web Design Excellence" className="w-full h-full object-cover opacity-50 grayscale group-hover:grayscale-0 group-hover:opacity-80 transition-all duration-700" referrerPolicy="no-referrer" />
+                                <img src="https://picsum.photos/seed/ukweb/800/800" alt="Professional web design services for UK businesses – VGot You" className="w-full h-full object-cover opacity-50 grayscale group-hover:grayscale-0 group-hover:opacity-80 transition-all duration-700" referrerPolicy="no-referrer" />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent"></div>
                                 <div className="absolute bottom-10 left-10">
                                     <div className="text-5xl font-black text-white mb-2">UK-WIDE</div>

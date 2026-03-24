@@ -26,22 +26,38 @@ const LeicesterWebPage: React.FC = () => {
     return (
         <div className="bg-[#020202] text-white selection:bg-red-600/30 overflow-x-hidden pt-20">
             <Helmet>
-  <title>Web Design Leicester | Professional Web Design Services</title>
-  <meta name="description" content="Expert web design services in Leicester. Custom, high-performance and SEO-friendly websites for businesses." />
+  <html lang="en-GB" />
+  <title>Web Design Company in Leicester | Affordable Websites | VGot You</title>
+  <meta name="description" content="VGot You delivers professional web design for Leicester businesses — from textile and fashion firms to retail and tech startups. SEO-optimised websites from £1,499." />
+  <meta name="author" content="VGot You" />
+  <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://www.vgotyou.com/web-design-leicester" />
-
-  <script type="application/ld+json">
-    {JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {"@type": "ListItem","position": 1,"name": "Home","item": "https://www.vgotyou.com"},
-        {"@type": "ListItem","position": 2,"name": "Web Design UK","item": "https://www.vgotyou.com/web-design-uk" },
-        {"@type": "ListItem","position": 3,"name": "Web Design Leicester","item": "https://www.vgotyou.com/web-design-leicester"}
-      ]
-    })}
-  </script>
+  <link rel="alternate" hreflang="en-GB" href="https://www.vgotyou.com/web-design-leicester" />
+  <link rel="alternate" hreflang="en-IN" href="https://www.vgotyou.com/" />
+  <link rel="alternate" hreflang="x-default" href="https://www.vgotyou.com/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="VGot You" />
+  <meta property="og:title" content="Web Design Company in Leicester | Affordable Websites | VGot You" />
+  <meta property="og:description" content="Professional web design for Leicester businesses — from textile and fashion firms to retail and tech startups. SEO-optimised websites from £1,499." />
+  <meta property="og:url" content="https://www.vgotyou.com/web-design-leicester" />
+  <meta property="og:image" content="https://www.vgotyou.com/assets/og-home.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Web Design Services in Leicester – VGot You" />
+  <meta property="og:locale" content="en_GB" />
+  <meta property="og:locale:alternate" content="en_IN" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Web Design Company in Leicester | Affordable Websites | VGot You" />
+  <meta name="twitter:description" content="Professional web design for Leicester businesses. SEO-optimised websites from £1,499." />
+  <meta name="twitter:image" content="https://www.vgotyou.com/assets/og-home.png" />
+  <meta name="twitter:site" content="@vgotyou" />
+  <meta name="twitter:creator" content="@vgotyou" />
+  <script type="application/ld+json">{`{"@context":"https://schema.org","@type":"WebPage","@id":"https://www.vgotyou.com/web-design-leicester#webpage","url":"https://www.vgotyou.com/web-design-leicester","name":"Web Design Company in Leicester | Affordable Websites | VGot You","description":"Professional web design for Leicester businesses — from textile and fashion firms to retail and tech startups. SEO-optimised websites from £1,499.","inLanguage":"en-GB","isPartOf":{"@id":"https://www.vgotyou.com/#website"},"publisher":{"@id":"https://www.vgotyou.com/#organization"},"about":{"@id":"https://www.vgotyou.com/web-design-leicester#service"}}`}</script>
+  <script type="application/ld+json">{`{"@context":"https://schema.org","@type":"Service","@id":"https://www.vgotyou.com/web-design-leicester#service","name":"Web Design Services in Leicester","url":"https://www.vgotyou.com/web-design-leicester","description":"Professional web design for Leicester businesses — custom websites, e-commerce and SEO-optimised development across Leicestershire.","serviceType":["Web Design Leicester","Custom Website Design","E-commerce Website Development Leicester","SEO-Optimised Web Design","Mobile-First Website Design","Small Business Website Design Leicester","Textile Industry Website Design Leicester"],"provider":{"@id":"https://www.vgotyou.com/#organization"},"areaServed":[{"@type":"City","name":"Leicester"},{"@type":"Country","name":"United Kingdom"}],"offers":{"@type":"Offer","priceSpecification":{"@type":"PriceSpecification","priceCurrency":"GBP","minPrice":"1499","description":"Web design packages for Leicester businesses starting from £1,499"}}}`}</script>
+  <script type="application/ld+json">{`{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Do you provide web design services in Leicester?","acceptedAnswer":{"@type":"Answer","text":"Yes, VGot You provides professional web design for businesses across Leicester including the city centre, Golden Mile and across Leicestershire."}},{"@type":"Question","name":"How much does web design cost in Leicester?","acceptedAnswer":{"@type":"Answer","text":"Our Leicester web design packages start from £1,499. Transparent, fixed-price quotes — no hidden fees."}},{"@type":"Question","name":"Do you build e-commerce websites for Leicester textile businesses?","acceptedAnswer":{"@type":"Answer","text":"Yes, we specialise in B2B and e-commerce websites for Leicester's textile and fashion industry — built to showcase products and win national and international buyers."}},{"@type":"Question","name":"Can you help Leicester small businesses with web design?","acceptedAnswer":{"@type":"Answer","text":"Absolutely. We work with Leicester SMEs, family businesses and startups to deliver affordable, professional websites with SEO built in from day one."}}]}`}</script>
+  <script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.vgotyou.com/"},{"@type":"ListItem","position":2,"name":"Web Design UK","item":"https://www.vgotyou.com/web-design-uk"},{"@type":"ListItem","position":3,"name":"Web Design Leicester","item":"https://www.vgotyou.com/web-design-leicester"}]}`}</script>
 </Helmet>
+
 
             <style>{`
                 .text-technical { font-family: 'JetBrains Mono', 'Fira Code', monospace; }

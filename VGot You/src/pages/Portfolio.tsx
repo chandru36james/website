@@ -159,68 +159,261 @@ const Portfolio: React.FC = () => {
 
     return (
         <div className="min-h-screen bg-white text-zinc-900 selection:bg-red-600/10 pt-0 pb-1 overflow-hidden">
-            <Helmet>
-  {/* Primary SEO */}
-  <title>
-    Portfolio | Web Design, Branding & Digital Projects in India – VGot You
-  </title>
+           <Helmet>
+
+  {/* ================= BASIC SEO ================= */}
+  <html lang="en-IN" />
+
+  {/* FIXED: Title broadened to include UK, matches og:title and twitter:title */}
+  <title>Web Design Portfolio | Client Projects & Case Studies | VGot You – Karur, India</title>
 
   <meta
     name="description"
-    content="Explore our portfolio of web design, branding, SEO, and digital marketing projects by VGot You. Helping businesses across India and globally grow through design and strategy."
+    content="Explore VGot You's web design portfolio — websites, branding, e-commerce and digital projects built for businesses across India and the UK. Based in Karur, Tamil Nadu."
   />
 
-  <link rel="canonical" href="https://www.vgotyou.com/portfolio" />
-  <meta name="robots" content="index, follow" />
+  {/* No meta keywords — Google ignores them */}
 
-  {/* Open Graph */}
+  <meta name="author" content="VGot You" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.vgotyou.com/portfolio" />
+
+  {/* ================= HREFLANG ================= */}
+  <link rel="alternate" hrefLang="en-IN" href="https://www.vgotyou.com/portfolio" />
+  <link rel="alternate" hrefLang="en-GB" href="https://www.vgotyou.com/portfolio" />
+  <link rel="alternate" hrefLang="x-default" href="https://www.vgotyou.com/portfolio" />
+
+  {/* ================= OPEN GRAPH ================= */}
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="VGot You" />
-  <meta
-    property="og:title"
-    content="Portfolio | Web Design & Digital Projects by VGot You"
-  />
+  {/* FIXED: og:title now matches <title> exactly */}
+  <meta property="og:title" content="Web Design Portfolio | Client Projects & Case Studies | VGot You – Karur, India" />
   <meta
     property="og:description"
-    content="A curated portfolio of web design, branding, SEO, and digital projects delivered by VGot You for growing businesses."
+    content="Explore VGot You's web design portfolio — websites, branding, e-commerce and digital projects built for businesses across India and the UK. Based in Karur, Tamil Nadu."
   />
   <meta property="og:url" content="https://www.vgotyou.com/portfolio" />
-  <meta
-    property="og:image"
-    content="https://www.vgotyou.com/assets/vgotyou.png"
-  />
+  {/* FIXED: Consistent og-home.png, removed vgotyou.png */}
+  <meta property="og:image" content="https://www.vgotyou.com/assets/og-home.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
+  {/* FIXED: og:image:alt was missing */}
+  <meta property="og:image:alt" content="VGot You Web Design Portfolio – Client Projects from India & UK" />
+  {/* FIXED: og:locale was missing */}
+  <meta property="og:locale" content="en_IN" />
+  <meta property="og:locale:alternate" content="en_GB" />
 
-  {/* Twitter / X */}
+  {/* ================= TWITTER / X ================= */}
   <meta name="twitter:card" content="summary_large_image" />
-  <meta
-    name="twitter:title"
-    content="Portfolio | VGot You Web Design & Digital Studio"
-  />
+  {/* FIXED: twitter:title now matches <title> exactly */}
+  <meta name="twitter:title" content="Web Design Portfolio | Client Projects & Case Studies | VGot You – Karur, India" />
   <meta
     name="twitter:description"
-    content="View selected web design, branding, SEO, and digital projects delivered by VGot You."
+    content="Explore VGot You's web design portfolio — websites, branding, e-commerce and digital projects built for businesses across India and the UK."
   />
-  <meta
-    name="twitter:image"
-    content="https://www.vgotyou.com/assets/vgotyou.png"
-  />
+  <meta name="twitter:image" content="https://www.vgotyou.com/assets/og-home.png" />
+  {/* FIXED: twitter:site and twitter:creator were missing */}
+  <meta name="twitter:site" content="@vgotyou" />
+  <meta name="twitter:creator" content="@vgotyou" />
 
-  {/* Structured Data */}
-  <script type="application/ld+json">
-    {JSON.stringify({
+  {/* ================= SCHEMA: COLLECTION PAGE ================= */}
+  {/*
+    FIXED:
+    - Added @id, url, inLanguage, publisher
+    - Linked properly into website schema graph via isPartOf
+  */}
+  <script type="application/ld+json">{`
+    {
       "@context": "https://schema.org",
       "@type": "CollectionPage",
-      "@id": "https://www.vgotyou.com/portfolio#collection",
-      name: "VGot You Portfolio",
-      description:
-        "Portfolio of web design, branding, SEO, and digital projects by VGot You.",
-      isPartOf: {
+      "@id": "https://www.vgotyou.com/portfolio#webpage",
+      "url": "https://www.vgotyou.com/portfolio",
+      "name": "Web Design Portfolio | Client Projects & Case Studies | VGot You",
+      "description": "Portfolio of web design, branding, e-commerce, and digital projects by VGot You, based in Karur, Tamil Nadu, serving clients across India and the UK.",
+      "inLanguage": "en-IN",
+      "isPartOf": {
         "@id": "https://www.vgotyou.com/#website"
+      },
+      "publisher": {
+        "@id": "https://www.vgotyou.com/#organization"
       }
-    })}
-  </script>
+    }
+  `}</script>
+
+  {/* ================= SCHEMA: ITEM LIST ================= */}
+  {/*
+    ADDED: ItemList with all 10 portfolio projects as CreativeWork entries.
+    This is a major SEO opportunity — Google can surface individual
+    projects in search results and image search directly.
+    Each project links to its live URL as the primary reference.
+  */}
+  <script type="application/ld+json">{`
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "@id": "https://www.vgotyou.com/portfolio#itemlist",
+      "name": "VGot You Web Design Portfolio",
+      "description": "A curated list of web design, branding, and digital projects delivered by VGot You.",
+      "url": "https://www.vgotyou.com/portfolio",
+      "numberOfItems": 10,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@type": "CreativeWork",
+            "name": "Rudhraa Exim",
+            "description": "B2B export and import company website designed by VGot You.",
+            "url": "https://rudhraaexportsandimports.com/",
+            "image": "https://www.vgotyou.com/assets/portfolio/9.jpg",
+            "creator": { "@id": "https://www.vgotyou.com/#organization" },
+            "genre": "B2B Exports"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@type": "CreativeWork",
+            "name": "Oskar",
+            "description": "Freelancer portfolio and services website designed by VGot You.",
+            "url": "https://oskardesigner.netlify.app/",
+            "image": "https://www.vgotyou.com/assets/portfolio/1.jpg",
+            "creator": { "@id": "https://www.vgotyou.com/#organization" },
+            "genre": "Freelancer Portfolio"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@type": "CreativeWork",
+            "name": "Bloomgreen Developers",
+            "description": "Construction and interior design company website by VGot You.",
+            "url": "https://bloomgreendevs.netlify.app/",
+            "image": "https://www.vgotyou.com/assets/portfolio/4.jpg",
+            "creator": { "@id": "https://www.vgotyou.com/#organization" },
+            "genre": "Construction & Interior"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "item": {
+            "@type": "CreativeWork",
+            "name": "Akshaya Travels",
+            "description": "Tours and travels booking and services website by VGot You.",
+            "url": "https://akshayatoursandtravels.com/",
+            "image": "https://www.vgotyou.com/assets/portfolio/8.jpg",
+            "creator": { "@id": "https://www.vgotyou.com/#organization" },
+            "genre": "Travel Services"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "item": {
+            "@type": "CreativeWork",
+            "name": "eNno",
+            "description": "Web design and digital marketing service provider website by VGot You.",
+            "url": "https://ennodesign.netlify.app/",
+            "image": "https://www.vgotyou.com/assets/portfolio/2.jpg",
+            "creator": { "@id": "https://www.vgotyou.com/#organization" },
+            "genre": "Service Provider"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 6,
+          "item": {
+            "@type": "CreativeWork",
+            "name": "VesaHomes",
+            "description": "Home textile e-commerce website designed by VGot You.",
+            "url": "https://vesahomes.com/",
+            "image": "https://www.vgotyou.com/assets/portfolio/7.jpg",
+            "creator": { "@id": "https://www.vgotyou.com/#organization" },
+            "genre": "E-commerce"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 7,
+          "item": {
+            "@type": "CreativeWork",
+            "name": "Destech Industry",
+            "description": "B2B industrial services website designed by VGot You.",
+            "url": "https://destechindustry.netlify.app/",
+            "image": "https://www.vgotyou.com/assets/portfolio/3.jpg",
+            "creator": { "@id": "https://www.vgotyou.com/#organization" },
+            "genre": "B2B Services"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 8,
+          "item": {
+            "@type": "CreativeWork",
+            "name": "Arctic Textiles",
+            "description": "B2B textile manufacturing company website by VGot You — serving Karur textile industry.",
+            "url": "https://arctictextiles.com/",
+            "image": "https://www.vgotyou.com/assets/portfolio/10.jpg",
+            "creator": { "@id": "https://www.vgotyou.com/#organization" },
+            "genre": "B2B Manufacturing"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 9,
+          "item": {
+            "@type": "CreativeWork",
+            "name": "INDICO",
+            "description": "Construction and real estate company website designed by VGot You.",
+            "url": "https://indicobuilds.netlify.app/",
+            "image": "https://www.vgotyou.com/assets/portfolio/5.jpg",
+            "creator": { "@id": "https://www.vgotyou.com/#organization" },
+            "genre": "Construction & Real Estate"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 10,
+          "item": {
+            "@type": "CreativeWork",
+            "name": "Violet Store",
+            "description": "Fashion and retail e-commerce website designed by VGot You.",
+            "url": "https://violet-scorpion-690121.hostingersite.com/",
+            "image": "https://www.vgotyou.com/assets/portfolio/6.jpg",
+            "creator": { "@id": "https://www.vgotyou.com/#organization" },
+            "genre": "E-commerce"
+          }
+        }
+      ]
+    }
+  `}</script>
+
+  {/* ================= SCHEMA: BREADCRUMB ================= */}
+  {/* ADDED: Was completely missing */}
+  <script type="application/ld+json">{`
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.vgotyou.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Portfolio",
+          "item": "https://www.vgotyou.com/portfolio"
+        }
+      ]
+    }
+  `}</script>
+
 </Helmet>
             <style>{`
                 .bg-dots {

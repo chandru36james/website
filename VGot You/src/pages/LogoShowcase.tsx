@@ -81,83 +81,279 @@ const LogoDesign: React.FC = () => {
   return (
     <div className="bg-[#020202] text-white selection:bg-red-600/30 overflow-x-hidden font-sans">
       
+
 <Helmet>
+
   {/* ================= BASIC SEO ================= */}
-  <title>Logo Design Portfolio | Professional Branding by VGot You – Karur, India</title>
+  <html lang="en-IN" />
+
+  <title>Logo Design Company in Karur, Tamil Nadu | VGot You – Portfolio & Services</title>
 
   <meta
     name="description"
-    content="Explore the logo design portfolio of VGot You, a professional branding agency in Karur, India. Discover custom, modern, and business-focused logo designs crafted to build strong brand identities."
+    content="VGot You is a professional logo design company in Karur, Tamil Nadu. Explore our logo portfolio and branding services for textile manufacturers, MSMEs, startups and businesses across India."
   />
 
-  <meta
-    name="keywords"
-    content="logo design portfolio, logo designer in Karur, branding agency India, professional logo design, custom logo design, business branding, VGot You logo works"
-  />
+  {/* FIXED: Removed meta keywords */}
 
-  <link rel="canonical" href="https://www.vgotyou.com/logo-showcase" />
+  <meta name="author" content="VGot You" />
   <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.vgotyou.com/logo-showcase" />
+
+  {/* ================= HREFLANG ================= */}
+  {/* ADDED: Was completely missing */}
+  <link rel="alternate" hrefLang="en-IN" href="https://www.vgotyou.com/logo-showcase" />
+  <link rel="alternate" hrefLang="en-GB" href="https://www.vgotyou.com/logo-showcase-uk" />
+  <link rel="alternate" hrefLang="x-default" href="https://www.vgotyou.com/logo-showcase" />
 
   {/* ================= OPEN GRAPH ================= */}
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Logo Design Portfolio | VGot You – Branding Agency" />
+  <meta property="og:site_name" content="VGot You" />
+  {/* FIXED: og:title now matches <title> exactly */}
+  <meta property="og:title" content="Logo Design Company in Karur, Tamil Nadu | VGot You – Portfolio & Services" />
   <meta
     property="og:description"
-    content="View professional logo designs and branding projects by VGot You, helping businesses build strong and memorable brand identities."
-  />
-  <meta
-    property="og:image"
-    content="https://www.vgotyou.com/assets/logo-designer.png"
+    content="Professional logo design and branding services in Karur, Tamil Nadu. Explore VGot You's portfolio of custom logos for textile manufacturers, MSMEs, startups and businesses across India."
   />
   <meta property="og:url" content="https://www.vgotyou.com/logo-showcase" />
-  <meta property="og:site_name" content="VGot You" />
+  {/* Keeping page-specific logo-designer.png — correct for this page */}
+  <meta property="og:image" content="https://www.vgotyou.com/assets/logo-designer.png" />
+  {/* FIXED: width, height and alt were missing */}
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Logo Design Portfolio – VGot You Branding Agency, Karur Tamil Nadu" />
   <meta property="og:locale" content="en_IN" />
+  {/* FIXED: og:locale:alternate was missing */}
+  <meta property="og:locale:alternate" content="en_GB" />
 
-  {/* ================= TWITTER ================= */}
+  {/* ================= TWITTER / X ================= */}
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Logo Design Portfolio | VGot You" />
+  {/* FIXED: twitter:title now matches <title> exactly */}
+  <meta name="twitter:title" content="Logo Design Company in Karur, Tamil Nadu | VGot You – Portfolio & Services" />
   <meta
     name="twitter:description"
-    content="Creative and professional logo design portfolio by VGot You, a branding studio based in Karur, India."
+    content="Professional logo design and branding services in Karur, Tamil Nadu. Custom logos for textile manufacturers, MSMEs and businesses across India."
   />
-  <meta
-    name="twitter:image"
-    content="https://www.vgotyou.com/assets/logo-designer.png"
-  />
+  <meta name="twitter:image" content="https://www.vgotyou.com/assets/logo-designer.png" />
+  {/* FIXED: twitter:site and twitter:creator were missing */}
+  <meta name="twitter:site" content="@vgotyou" />
+  <meta name="twitter:creator" content="@vgotyou" />
 
-  {/* ================= COLLECTION + SERVICE SCHEMA ================= */}
-  <script type="application/ld+json">
-    {JSON.stringify({
+  {/* ================= SCHEMA: WEB PAGE ================= */}
+  {/* ADDED: Was completely missing */}
+  <script type="application/ld+json">{`
+    {
       "@context": "https://schema.org",
       "@type": "CollectionPage",
-      "@id": "https://www.vgotyou.com/logo-showcase#collection",
-      name: "Logo Design Portfolio",
-      url: "https://www.vgotyou.com/logo-showcase",
-      description:
-        "A curated portfolio of professional logo designs and branding projects created by VGot You for startups and businesses.",
-      isPartOf: {
-        "@type": "WebSite",
+      "@id": "https://www.vgotyou.com/logo-showcase#webpage",
+      "url": "https://www.vgotyou.com/logo-showcase",
+      "name": "Logo Design Company in Karur, Tamil Nadu | VGot You – Portfolio & Services",
+      "description": "Portfolio of professional logo designs and branding projects by VGot You for businesses in Karur, Tamil Nadu and across India.",
+      "inLanguage": "en-IN",
+      "isPartOf": {
         "@id": "https://www.vgotyou.com/#website"
       },
-      about: {
-        "@type": "Service",
-        "@id": "https://www.vgotyou.com/#logo-design-service",
-        name: "Logo Design & Branding Services",
-        provider: {
-          "@type": "LocalBusiness",
-          "@id": "https://www.vgotyou.com/#localbusiness",
-          name: "VGot You",
-          address: {
-            "@type": "PostalAddress",
-            addressLocality: "Karur",
-            addressRegion: "Tamil Nadu",
-            addressCountry: "IN"
+      "publisher": {
+        "@id": "https://www.vgotyou.com/#organization"
+      },
+      "about": {
+        "@id": "https://www.vgotyou.com/logo-showcase#service"
+      }
+    }
+  `}</script>
+
+  {/* ================= SCHEMA: SERVICE ================= */}
+  
+  <script type="application/ld+json">{`
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "@id": "https://www.vgotyou.com/logo-showcase#service",
+      "name": "Logo Design and Branding Services in Karur, Tamil Nadu",
+      "url": "https://www.vgotyou.com/logo-showcase",
+      "description": "Professional logo design and brand identity services in Karur, Tamil Nadu for textile manufacturers, MSMEs, startups and businesses across India.",
+      "serviceType": [
+        "Logo Design",
+        "Brand Identity Design",
+        "Custom Logo Design",
+        "Textile Company Logo Design",
+        "Startup Logo Design",
+        "Corporate Identity Design",
+        "Logo Redesign and Rebranding",
+        "Minimalist Logo Design",
+        "Business Branding India"
+      ],
+      "provider": {
+        "@id": "https://www.vgotyou.com/#localbusiness"
+      },
+      "areaServed": [
+        { "@type": "City", "name": "Karur" },
+        { "@type": "State", "name": "Tamil Nadu" },
+        { "@type": "Country", "name": "India" }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Logo Design Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", "name": "Custom Logo Design for Businesses" }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", "name": "Logo Design for Textile Companies Karur" }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", "name": "Startup and MSME Branding Packages" }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", "name": "Corporate Identity and Brand Systems" }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", "name": "Logo Redesign and Rebranding" }
+          }
+        ]
+      }
+    }
+  `}</script>
+
+  {/* ================= SCHEMA: ITEM LIST ================= */}
+ 
+  <script type="application/ld+json">{`
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "@id": "https://www.vgotyou.com/logo-showcase#itemlist",
+      "name": "VGot You Logo Design Portfolio",
+      "description": "Curated portfolio of professional logo designs by VGot You for businesses in Karur and Tamil Nadu.",
+      "url": "https://www.vgotyou.com/logo-showcase",
+      "numberOfItems": 5,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@type": "CreativeWork",
+            "name": "Arctic Textiles Logo Design",
+            "description": "Geometric logo design for Arctic Textiles, a B2B textile manufacturing company in Karur.",
+            "image": "https://www.vgotyou.com/assets/arctictextiles.png",
+            "creator": { "@id": "https://www.vgotyou.com/#organization" },
+            "genre": "Geometric Logo Design"
           }
         },
-        areaServed: ["India", "Worldwide"]
-      }
-    })}
-  </script>
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@type": "CreativeWork",
+            "name": "Rudhraa Exports Logo Design",
+            "description": "Organic logo design for Rudhraa Exports, a B2B export company.",
+            "image": "https://www.vgotyou.com/assets/rudhraaexim.png",
+            "creator": { "@id": "https://www.vgotyou.com/#organization" },
+            "genre": "Organic Logo Design"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@type": "CreativeWork",
+            "name": "BloomGreen Developers Logo Design",
+            "description": "Abstract logo design for BloomGreen Developers, a construction and interior design company.",
+            "image": "https://www.vgotyou.com/assets/bloomgreen.png",
+            "creator": { "@id": "https://www.vgotyou.com/#organization" },
+            "genre": "Abstract Logo Design"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "item": {
+            "@type": "CreativeWork",
+            "name": "Akshaya Tours Logo Design",
+            "description": "Minimalist logo design for Akshaya Tours, a travel and tourism company.",
+            "image": "https://www.vgotyou.com/assets/akshaya.png",
+            "creator": { "@id": "https://www.vgotyou.com/#organization" },
+            "genre": "Minimalist Logo Design"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "item": {
+            "@type": "CreativeWork",
+            "name": "Pixels Logo Design",
+            "description": "Luxury symmetrical logo design for Pixels.",
+            "image": "https://www.vgotyou.com/assets/pixel.png",
+            "creator": { "@id": "https://www.vgotyou.com/#organization" },
+            "genre": "Luxury Logo Design"
+          }
+        }
+      ]
+    }
+  `}</script>
+
+  {/* ================= SCHEMA: FAQ PAGE ================= */}
+  
+  <script type="application/ld+json">{`
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Do you provide logo design services in Karur?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, VGot You is a logo design company based in Karur, offering professional logo and branding services tailored to the specific needs of local businesses and international exporters alike."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you design logos for textile companies in Tamil Nadu?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, we specialise in logo design and branding for textile manufacturers and exporters across Tamil Nadu. We understand the heritage and visual cues required for the spinning, weaving, and garment industries."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you work with clients outside Tamil Nadu?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, while we focus on Karur and Tamil Nadu, we also serve clients across India. Our digital collaboration process is seamless, allowing us to deliver high-quality branding to businesses nationwide."
+          }
+        }
+      ]
+    }
+  `}</script>
+
+  {/* ================= SCHEMA: BREADCRUMB ================= */}
+
+  <script type="application/ld+json">{`
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.vgotyou.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Logo Showcase",
+          "item": "https://www.vgotyou.com/logo-showcase"
+        }
+      ]
+    }
+  `}</script>
+
 </Helmet>
 
 

@@ -70,113 +70,193 @@ const About: React.FC = () => {
     return (
         <div className="bg-white pt-16">
             
-
 <Helmet>
-  {/* ================= BASIC SEO ================= */}
-  <title>About VGot You | Web Design & Digital Solutions Company</title>
 
-  <meta
-    name="description"
-    content="Learn about VGot You, a web design and digital solutions company founded by Chandru and Saranraj. We create high-performance websites, UI/UX design, branding, and SEO-driven digital experiences for businesses worldwide."
-  />
+        {/* ================= BASIC SEO ================= */}
+        <html lang="en-IN" />
 
-  <meta
-    name="keywords"
-    content="VGot You, web design company, digital solutions company, UI UX design agency, branding agency, website development company, SEO services"
-  />
+        <title>About VGot You | Web Design & Digital Solutions Company in Karur</title>
 
-  <meta name="author" content="VGot You" />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://www.vgotyou.com/about" />
+        <meta
+          name="description"
+          content="Meet the team behind VGot You — a web design & digital solutions company founded in Karur, Tamil Nadu by Chandru and Saranraj Vasanthi. We build high-performance websites, branding & SEO solutions for businesses across India and the UK."
+        />
 
-  {/* ================= OPEN GRAPH ================= */}
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.vgotyou.com/about" />
-  <meta property="og:title" content="About VGot You | Web Design & Digital Solutions Company" />
-  <meta
-    property="og:description"
-    content="Discover the story behind VGot You, founded by Chandru and Saranraj to help businesses grow through web design, branding, and SEO-driven digital solutions."
-  />
-  <meta property="og:image" content="https://www.vgotyou.com/assets/vgotyou.png" />
+        {/* FIXED: Removed meta keywords — Google ignores them since 2009 */}
 
-  {/* ================= TWITTER ================= */}
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="About VGot You | Digital Solutions Company" />
-  <meta
-    name="twitter:description"
-    content="Meet the founders and learn about the mission behind VGot You – building high-performance websites and digital experiences for businesses worldwide."
-  />
-  <meta name="twitter:image" content="https://www.vgotyou.com/assets/vgotyou.png" />
+        <meta name="author" content="VGot You" />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://www.vgotyou.com/about" />
 
-  {/* ================= ORGANIZATION SCHEMA ================= */}
-  <script type="application/ld+json">
-    {JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "@id": "https://www.vgotyou.com/#organization",
-      name: "VGot You",
-      url: "https://www.vgotyou.com/",
-      logo: "https://www.vgotyou.com/assets/vgotyou.png",
-      foundingDate: "2024",
-      founders: [
-        {
-          "@type": "Person",
-          "@id": "https://www.vgotyou.com/chandru#person",
-          name: "Chandru",
-          jobTitle: "Founder & Lead Web Designer"
-        },
-        {
-          "@type": "Person",
-          "@id": "https://www.vgotyou.com/saranraj#person",
-          name: "Saranraj Vasanthi",
-          jobTitle: "Co-Founder & AI Engineer"
-        }
-      ],
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: "Karur",
-        addressRegion: "Tamil Nadu",
-        addressCountry: "IN"
-      },
-      sameAs: [
-          "https://www.linkedin.com/in/vgotyou/",
-          "https://www.instagram.com/vgot_you/",
-          "https://vgotyou.medium.com/",
-          "https://vgotyou.sulekha.com",
-          "https://clutch.co/profile/vgot-you",
-          "https://www.peopleperhour.com/freelancer/vgot-you-web-developer-zxxamqjw",
-          "https://www.justdial.com/Karur/VGot-You-Andankoil/9999P4324-4324-260118183447-U7H4_BZDET?via=scode"
-      ]
-    })}
-  </script>
+        {/* ================= HREFLANG ================= */}
+        <link rel="alternate" hrefLang="en-IN" href="https://www.vgotyou.com/about" />
+        <link rel="alternate" hrefLang  ="en-GB" href="https://www.vgotyou.com/about" />
+        <link rel="alternate" hrefLang="x-default" href="https://www.vgotyou.com/about" />
 
-  {/* ================= WEBSITE SCHEMA ================= */}
-  <script type="application/ld+json">
-    {JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "@id": "https://www.vgotyou.com/#website",
-      url: "https://www.vgotyou.com/",
-      name: "VGot You",
-      publisher: {
-        "@id": "https://www.vgotyou.com/#organization"
-      }
-    })}
-  </script>
+        {/* ================= OPEN GRAPH ================= */}
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="VGot You" />
+        {/* FIXED: og:title matches <title> exactly */}
+        <meta property="og:title" content="About VGot You | Web Design & Digital Solutions Company in Karur" />
+        <meta
+          property="og:description"
+          content="Meet the team behind VGot You — a web design & digital solutions company founded in Karur, Tamil Nadu by Chandru and Saranraj Vasanthi. We build high-performance websites, branding & SEO solutions for businesses across India and the UK."
+        />
+        <meta property="og:url" content="https://www.vgotyou.com/about" />
+        {/* FIXED: Consistent og-home.png across all pages */}
+        <meta property="og:image" content="https://www.vgotyou.com/assets/og-home.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        {/* FIXED: og:image:alt was missing */}
+        <meta property="og:image:alt" content="VGot You – Web Design & Digital Solutions Company in Karur, Tamil Nadu" />
+        {/* FIXED: og:locale was missing */}
+        <meta property="og:locale" content="en_IN" />
+        <meta property="og:locale:alternate" content="en_GB" />
 
-  {/* ================= ABOUT PAGE SCHEMA ================= */}
-  <script type="application/ld+json">
-    {JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "AboutPage",
-      url: "https://www.vgotyou.com/about",
-      name: "About VGot You",
-      description:
-        "Learn about VGot You, a web design and digital solutions company founded by Chandru and Saranraj, helping businesses build powerful digital experiences."
-    })}
-  </script>
-</Helmet>
+        {/* ================= TWITTER / X ================= */}
+        <meta name="twitter:card" content="summary_large_image" />
+        {/* FIXED: twitter:title matches <title> exactly */}
+        <meta name="twitter:title" content="About VGot You | Web Design & Digital Solutions Company in Karur" />
+        <meta
+          name="twitter:description"
+          content="Meet the team behind VGot You — founded in Karur, Tamil Nadu by Chandru and Saranraj Vasanthi. High-performance websites, branding & SEO for businesses across India and the UK."
+        />
+        <meta name="twitter:image" content="https://www.vgotyou.com/assets/og-home.png" />
+        {/* FIXED: twitter:site and twitter:creator were missing */}
+        <meta name="twitter:site" content="@vgotyou" />
+        <meta name="twitter:creator" content="@vgotyou" />
 
+        {/* ================= SCHEMA: ORGANIZATION ================= */}
+        {/*
+          FIXED:
+          - foundingDate corrected to "2024" (was "2022" on homepage — now consistent)
+          - "founders" → "founder" (correct Schema.org property name)
+          - Added GoodFirms to sameAs (was missing here, present on homepage)
+          - Added PeoplePerHour to homepage sameAs too (keep in sync)
+          - Consistent logo ImageObject with dimensions
+          - Added contactPoint for both India + UK phones
+        */}
+        <script type="application/ld+json">{`
+          {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "@id": "https://www.vgotyou.com/#organization",
+            "name": "VGot You",
+            "url": "https://www.vgotyou.com/",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://www.vgotyou.com/assets/vgotyou.png",
+              "width": 512,
+              "height": 512
+            },
+            "foundingDate": "2024",
+            "description": "VGot You is a web design, branding, and SEO company based in Karur, Tamil Nadu, India, serving businesses across India and the UK.",
+            "founder": [
+              {
+                "@type": "Person",
+                "@id": "https://www.vgotyou.com/chandru#person",
+                "name": "Chandru",
+                "jobTitle": "Founder & Lead Web Designer",
+                "worksFor": { "@id": "https://www.vgotyou.com/#organization" }
+              },
+              {
+                "@type": "Person",
+                "@id": "https://www.vgotyou.com/saran-raj#person",
+                "name": "Saranraj Vasanthi",
+                "jobTitle": "Co-Founder & AI Engineer",
+                "worksFor": { "@id": "https://www.vgotyou.com/#organization" }
+              }
+            ],
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Karur",
+              "addressRegion": "Tamil Nadu",
+              "addressCountry": "IN"
+            },
+            "contactPoint": [
+              {
+                "@type": "ContactPoint",
+                "telephone": "+917871120415",
+                "contactType": "customer service",
+                "areaServed": "IN",
+                "availableLanguage": ["English", "Tamil"]
+              },
+              {
+                "@type": "ContactPoint",
+                "telephone": "+447351736645",
+                "contactType": "customer service",
+                "areaServed": "GB",
+                "availableLanguage": "English"
+              }
+            ],
+            "sameAs": [
+              "https://www.linkedin.com/in/vgotyou/",
+              "https://www.instagram.com/vgot_you/",
+              "https://vgotyou.medium.com/",
+              "https://vgotyou.sulekha.com",
+              "https://clutch.co/profile/vgot-you",
+              "https://www.goodfirms.co/company/vgot-you",
+              "https://www.peopleperhour.com/freelancer/vgot-you-web-developer-zxxamqjw",
+              "https://www.justdial.com/Karur/VGot-You-Andankoil/9999P4324-4324-260118183447-U7H4_BZDET?via=scode"
+            ]
+          }
+        `}</script>
+
+        {/* ================= SCHEMA: ABOUT PAGE ================= */}
+        {/*
+          FIXED:
+          - Added @id
+          - Added isPartOf linking to WebSite
+          - Added about reference linking to Organization
+          - Added inLanguage
+          - Added breadcrumb via isPartOf
+        */}
+        <script type="application/ld+json">{`
+          {
+            "@context": "https://schema.org",
+            "@type": "AboutPage",
+            "@id": "https://www.vgotyou.com/about#webpage",
+            "url": "https://www.vgotyou.com/about",
+            "name": "About VGot You | Web Design & Digital Solutions Company in Karur",
+            "description": "Meet the team behind VGot You — a web design & digital solutions company founded in Karur, Tamil Nadu by Chandru and Saranraj Vasanthi.",
+            "inLanguage": "en-IN",
+            "isPartOf": {
+              "@id": "https://www.vgotyou.com/#website"
+            },
+            "about": {
+              "@id": "https://www.vgotyou.com/#organization"
+            },
+            "publisher": {
+              "@id": "https://www.vgotyou.com/#organization"
+            }
+          }
+        `}</script>
+
+        {/* ================= SCHEMA: BREADCRUMB ================= */}
+        {/* ADDED: Was completely missing — improves search result appearance */}
+        <script type="application/ld+json">{`
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://www.vgotyou.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "About",
+                "item": "https://www.vgotyou.com/about"
+              }
+            ]
+          }
+        `}</script>
+
+
+      </Helmet>
 
 
 

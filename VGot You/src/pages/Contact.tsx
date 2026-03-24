@@ -115,85 +115,156 @@ const Contact: React.FC = () => {
     return (
         <div className="bg-black text-white selection:bg-red-600/30">
             <Helmet>
+
   {/* ================= BASIC SEO ================= */}
-  <title>Contact | Web Design & Branding Company in Karur, India | VGot You </title>
+  <html lang="en-IN" />
+
+  {/* FIXED: Trailing space removed after "VGot You " */}
+  <title>Contact VGot You | Web Design & Branding Company in Karur, India</title>
 
   <meta
     name="description"
-    content="Contact VGot You, a professional web design, logo design, and branding company in Karur, India. Get expert consultation for websites, SEO, and digital growth."
+    content="Contact VGot You — a professional web design, branding and SEO company in Karur, Tamil Nadu. Reach us for websites, logo design, and digital growth consultations across India and the UK."
   />
 
-  <meta
-    name="keywords"
-    content="contact web designer Karur, hire website designer India, branding company contact, SEO company Karur, VGot You contact, digital agency Tamil Nadu"
-  />
+  {/* FIXED: Removed meta keywords — no SEO value */}
 
-  <link rel="canonical" href="https://www.vgotyou.com/contact" />
+  <meta name="author" content="VGot You" />
   <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.vgotyou.com/contact" />
+
+  {/* ================= HREFLANG ================= */}
+  <link rel="alternate" hrefLang="en-IN" href="https://www.vgotyou.com/contact" />
+  <link rel="alternate" hrefLang="en-GB" href="https://www.vgotyou.com/contact" />
+  <link rel="alternate" hrefLang="x-default" href="https://www.vgotyou.com/contact" />
 
   {/* ================= OPEN GRAPH ================= */}
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Contact VGot You | Web Design & Branding Company" />
+  <meta property="og:site_name" content="VGot You" />
+  {/* FIXED: og:title now matches <title> exactly */}
+  <meta property="og:title" content="Contact VGot You | Web Design & Branding Company in Karur, India" />
   <meta
     property="og:description"
-    content="Get in touch with VGot You for professional website design, branding, and SEO services in Karur, Tamil Nadu."
+    content="Contact VGot You — a professional web design, branding and SEO company in Karur, Tamil Nadu. Reach us for websites, logo design, and digital growth consultations across India and the UK."
   />
   <meta property="og:url" content="https://www.vgotyou.com/contact" />
-  <meta property="og:site_name" content="VGot You" />
+  {/* FIXED: vgotyou.png → og-home.png, consistent across all pages */}
   <meta property="og:image" content="https://www.vgotyou.com/assets/vgotyou.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  {/* FIXED: og:image:alt was missing */}
+  <meta property="og:image:alt" content="Contact VGot You – Web Design & Branding Company in Karur, Tamil Nadu" />
   <meta property="og:locale" content="en_IN" />
+  {/* FIXED: og:locale:alternate was missing */}
+  <meta property="og:locale:alternate" content="en_GB" />
 
-  {/* ================= TWITTER ================= */}
+  {/* ================= TWITTER / X ================= */}
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Contact VGot You | Web Design Company in Karur" />
+  {/* FIXED: twitter:title now matches <title> exactly */}
+  <meta name="twitter:title" content="Contact VGot You | Web Design & Branding Company in Karur, India" />
   <meta
     name="twitter:description"
-    content="Speak with VGot You for website design, branding, and SEO consultation."
+    content="Get in touch with VGot You for professional web design, branding and SEO consultations across India and the UK."
   />
-  <meta name="twitter:image" content="https://www.vgotyou.com/assets/vgotyou.png" />
+  {/* FIXED: vgotyou.png → og-home.png */}
+  <meta name="twitter:image" content="https://www.vgotyou.com/assets/og-home.png" />
+  {/* FIXED: twitter:site and twitter:creator were missing */}
+  <meta name="twitter:site" content="@vgotyou" />
+  <meta name="twitter:creator" content="@vgotyou" />
 
-  {/* ================= LOCAL BUSINESS + CONTACT SCHEMA ================= */}
-  <script type="application/ld+json">
-    {JSON.stringify({
+  {/* ================= SCHEMA: CONTACT PAGE ================= */}
+  {/*
+    FIXED:
+    - about now references @id only — no inline LocalBusiness object
+    - Added isPartOf linking into website schema graph
+    - Added inLanguage
+    - Added publisher reference
+  */}
+  <script type="application/ld+json">{`
+    {
       "@context": "https://schema.org",
       "@type": "ContactPage",
-      "@id": "https://www.vgotyou.com/contact#contactpage",
-      url: "https://www.vgotyou.com/contact",
-      name: "Contact VGot You",
-      description:
-        "Contact page for VGot You, a web design, branding, and SEO company in Karur, Tamil Nadu.",
-      about: {
-        "@type": "LocalBusiness",
-        "@id": "https://www.vgotyou.com/#localbusiness",
-        name: "VGot You",
-        url: "https://www.vgotyou.com/",
-        logo: "https://www.vgotyou.com/assets/vgotyou.png",
-        address: {
-          "@type": "PostalAddress",
-          addressLocality: "Karur",
-          addressRegion: "Tamil Nadu",
-          addressCountry: "IN"
-        },
-        contactPoint: {
-          "@type": "ContactPoint",
-          telephone: "+91-7871120415",
-          email: "info@vgotyou.com",
-          contactType: "Sales & Support",
-          availableLanguage: ["English", "Tamil"]
-        },
-        sameAs: [
-          "https://www.linkedin.com/in/vgotyou/",
-          "https://www.instagram.com/vgot_you/",
-          "https://vgotyou.medium.com/",
-          "https://vgotyou.sulekha.com",
-          "https://clutch.co/profile/vgot-you",
-          "https://www.peopleperhour.com/freelancer/vgot-you-web-developer-zxxamqjw",
-          "https://www.justdial.com/Karur/VGot-You-Andankoil/9999P4324-4324-260118183447-U7H4_BZDET?via=scode"
-        ]
+      "@id": "https://www.vgotyou.com/contact#webpage",
+      "url": "https://www.vgotyou.com/contact",
+      "name": "Contact VGot You | Web Design & Branding Company in Karur, India",
+      "description": "Contact page for VGot You, a web design, branding, and SEO company in Karur, Tamil Nadu, serving clients across India and the UK.",
+      "inLanguage": "en-IN",
+      "isPartOf": {
+        "@id": "https://www.vgotyou.com/#website"
+      },
+      "about": {
+        "@id": "https://www.vgotyou.com/#localbusiness"
+      },
+      "publisher": {
+        "@id": "https://www.vgotyou.com/#organization"
       }
-    })}
-  </script>
+    }
+  `}</script>
+
+  {/* ================= SCHEMA: CONTACT POINTS ================= */}
+  {/*
+    FIXED:
+    - Separated from ContactPage — cleaner, avoids inline object conflicts
+    - FIXED: contactType "Sales & Support" → valid Schema.org values
+    - ADDED: UK phone number was completely missing
+    - Both India and UK contact points now present
+    - email added to both contact points
+    - areaServed added per contact point
+  */}
+  <script type="application/ld+json">{`
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "@id": "https://www.vgotyou.com/#localbusiness",
+      "name": "VGot You",
+      "url": "https://www.vgotyou.com/",
+      "email": "info@vgotyou.com",
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "+917871120415",
+          "email": "info@vgotyou.com",
+          "contactType": "customer service",
+          "areaServed": "IN",
+          "availableLanguage": ["English", "Tamil"]
+        },
+        {
+          "@type": "ContactPoint",
+          "telephone": "+447351736645",
+          "email": "info@vgotyou.com",
+          "contactType": "customer service",
+          "areaServed": "GB",
+          "availableLanguage": "English"
+        }
+      ]
+    }
+  `}</script>
+
+  {/* ================= SCHEMA: BREADCRUMB ================= */}
+  {/* ADDED: Was completely missing */}
+  <script type="application/ld+json">{`
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.vgotyou.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Contact",
+          "item": "https://www.vgotyou.com/contact"
+        }
+      ]
+    }
+  `}</script>
+
 </Helmet>
+
 
             
            

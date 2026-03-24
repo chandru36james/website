@@ -99,102 +99,268 @@ const WebDesignTN: React.FC = () => {
   return (
     <div className="bg-[#020202] text-white selection:bg-red-600/30 overflow-x-hidden pt-20">
       <Helmet>
+
   {/* ================= BASIC SEO ================= */}
-  <title>Web Design Company in Tamil Nadu | Professional Website Designers – VGot You</title>
+  <html lang="en-IN" />
+
+  {/* FIXED: Trimmed to under 60 chars */}
+  <title>Web Design Company in Tamil Nadu | VGot You – Karur</title>
 
   <meta
     name="description"
-    content="VGot You is a leading web design company in Tamil Nadu offering custom, responsive, and SEO-optimized website design services for startups, manufacturers, exporters, and growing businesses."
+    content="VGot You is a leading web design company in Tamil Nadu offering custom, responsive, and SEO-optimised websites for startups, manufacturers, exporters and MSMEs across all 38 districts. Based in Karur."
   />
 
-  <meta
-    name="keywords"
-    content="web design company in tamil nadu, website designer tamil nadu, web development company tamil nadu, responsive website design tamil nadu, seo web design tamil nadu, ui ux design agency tamil nadu, ecommerce website development tamil nadu"
-  />
+  {/* FIXED: Removed meta keywords */}
 
-  <link rel="canonical" href="https://www.vgotyou.com/web-design-tamil-nadu" />
+  <meta name="author" content="VGot You" />
   <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.vgotyou.com/web-design-tamil-nadu" />
+
+  {/* ================= HREFLANG ================= */}
+  {/* ADDED: Was completely missing */}
+  <link rel="alternate" hrefLang="en-IN" href="https://www.vgotyou.com/web-design-tamil-nadu" />
+  <link rel="alternate" hrefLang="en-GB" href="https://www.vgotyou.com/web-design-tamil-nadu" />
+  <link rel="alternate" hrefLang="x-default" href="https://www.vgotyou.com/web-design-tamil-nadu" />
 
   {/* ================= OPEN GRAPH ================= */}
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Web Design Company in Tamil Nadu | VGot You" />
+  <meta property="og:site_name" content="VGot You" />
+  {/* FIXED: og:title now matches <title> exactly */}
+  <meta property="og:title" content="Web Design Company in Tamil Nadu | VGot You – Karur" />
   <meta
     property="og:description"
-    content="Professional website design, UI/UX, and SEO-ready development for businesses across Tamil Nadu by VGot You."
+    content="VGot You is a leading web design company in Tamil Nadu offering custom, responsive, and SEO-optimised websites for startups, manufacturers, exporters and MSMEs across all 38 districts."
   />
-  <meta property="og:image" content="https://www.vgotyou.com/assets/web-designer.png" />
   <meta property="og:url" content="https://www.vgotyou.com/web-design-tamil-nadu" />
-  <meta property="og:site_name" content="VGot You" />
+  <meta property="og:image" content="https://www.vgotyou.com/assets/web-designer.png" />
+  {/* FIXED: width, height and alt were missing */}
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Web Design Company in Tamil Nadu – VGot You, Karur" />
   <meta property="og:locale" content="en_IN" />
+  {/* FIXED: og:locale:alternate was missing */}
+  <meta property="og:locale:alternate" content="en_GB" />
 
-  {/* ================= TWITTER ================= */}
+  {/* ================= TWITTER / X ================= */}
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Web Design Company in Tamil Nadu | VGot You" />
+  {/* FIXED: twitter:title now matches <title> exactly */}
+  <meta name="twitter:title" content="Web Design Company in Tamil Nadu | VGot You – Karur" />
   <meta
     name="twitter:description"
-    content="High-performance, SEO-optimized website design services for startups and enterprises across Tamil Nadu."
+    content="Leading web design company in Tamil Nadu. Custom, SEO-optimised websites for startups, manufacturers, exporters and MSMEs across all 38 districts. Based in Karur."
   />
   <meta name="twitter:image" content="https://www.vgotyou.com/assets/web-designer.png" />
+  {/* FIXED: twitter:site and twitter:creator were missing */}
+  <meta name="twitter:site" content="@vgotyou" />
+  <meta name="twitter:creator" content="@vgotyou" />
 
-  {/* ================= SERVICE SCHEMA ================= */}
-  <script type="application/ld+json">
-    {JSON.stringify({
+  {/* ================= SCHEMA: WEB PAGE ================= */}
+  
+  <script type="application/ld+json">{`
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "@id": "https://www.vgotyou.com/web-design-tamil-nadu#webpage",
+      "url": "https://www.vgotyou.com/web-design-tamil-nadu",
+      "name": "Web Design Company in Tamil Nadu | VGot You – Karur",
+      "description": "Professional web design company in Tamil Nadu offering custom, responsive, and SEO-optimised websites for startups, manufacturers, exporters and MSMEs across all 38 districts.",
+      "inLanguage": "en-IN",
+      "isPartOf": {
+        "@id": "https://www.vgotyou.com/#website"
+      },
+      "publisher": {
+        "@id": "https://www.vgotyou.com/#organization"
+      },
+      "about": {
+        "@id": "https://www.vgotyou.com/web-design-tamil-nadu#service"
+      }
+    }
+  `}</script>
+
+  {/* ================= SCHEMA: SERVICE ================= */}
+  
+  <script type="application/ld+json">{`
+    {
       "@context": "https://schema.org",
       "@type": "Service",
       "@id": "https://www.vgotyou.com/web-design-tamil-nadu#service",
-      name: "Website Design Services in Tamil Nadu",
-      serviceType: "Web Design & Development",
-      url: "https://www.vgotyou.com/web-design-tamil-nadu",
-      description:
-        "Professional website design and development services offering responsive, SEO-optimized, and conversion-focused websites for businesses across Tamil Nadu.",
-      provider: {
-        "@type": "Organization",
-        "@id": "https://www.vgotyou.com/#organization",
-        name: "VGot You",
-        url: "https://www.vgotyou.com/",
-        logo: "https://www.vgotyou.com/assets/vgotyou.png"
+      "name": "Web Design Services in Tamil Nadu",
+      "url": "https://www.vgotyou.com/web-design-tamil-nadu",
+      "description": "Professional website design and development services in Tamil Nadu — offering responsive, SEO-optimised, and conversion-focused websites for businesses across Chennai, Coimbatore, Madurai, Trichy, Salem, Karur and all 38 districts.",
+      "serviceType": [
+        "Web Design",
+        "Website Development",
+        "UI UX Design",
+        "Responsive Web Design",
+        "E-commerce Website Design",
+        "SEO-Optimised Web Design",
+        "Bilingual Website Design Tamil and English",
+        "Website Redesign",
+        "Corporate Website Development"
+      ],
+      "provider": {
+        "@id": "https://www.vgotyou.com/#localbusiness"
       },
-      areaServed: {
-        "@type": "State",
-        name: "Tamil Nadu"
+      "areaServed": [
+        { "@type": "State", "name": "Tamil Nadu" },
+        { "@type": "City", "name": "Chennai" },
+        { "@type": "City", "name": "Coimbatore" },
+        { "@type": "City", "name": "Madurai" },
+        { "@type": "City", "name": "Trichy" },
+        { "@type": "City", "name": "Salem" },
+        { "@type": "City", "name": "Tiruppur" },
+        { "@type": "City", "name": "Erode" },
+        { "@type": "City", "name": "Karur" },
+        { "@type": "City", "name": "Vellore" },
+        { "@type": "City", "name": "Thanjavur" },
+        { "@type": "City", "name": "Tirunelveli" }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Web Design Services across Tamil Nadu",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", "name": "Business Website Design for Tamil Nadu SMEs" }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", "name": "E-commerce Website Development Tamil Nadu" }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", "name": "Bilingual Tamil and English Website Design" }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", "name": "SEO Services Tamil Nadu" }
+          }
+        ]
+      },
+      "offers": {
+        "@type": "Offer",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "priceCurrency": "INR",
+          "minPrice": "4999",
+          "description": "Web design packages for Tamil Nadu businesses starting from ₹4,999"
+        }
       }
-    })}
-  </script>
+    }
+  `}</script>
 
-  {/* ================= BREADCRUMB SCHEMA ================= */}
-  <script type="application/ld+json">
-    {JSON.stringify({
+  {/* ================= SCHEMA: FAQ PAGE ================= */}
+  
+  <script type="application/ld+json">{`
+    {
       "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      itemListElement: [
+      "@type": "FAQPage",
+      "mainEntity": [
         {
-          "@type": "ListItem",
-          position: 1,
-          name: "Home",
-          item: "https://www.vgotyou.com/"
+          "@type": "Question",
+          "name": "How do you work with clients remotely?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We use a structured digital workflow involving video consultations, collaborative design tools like Figma, and consistent updates via email or WhatsApp. This ensures transparency and efficiency without needing a physical office visit."
+          }
         },
         {
-          "@type": "ListItem",
-          position: 2,
-          name: "Web Design",
-          item: "https://www.vgotyou.com/web-design"
+          "@type": "Question",
+          "name": "What is the average web design cost in Tamil Nadu?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pricing depends on scope. Basic sites start from ₹4,999, while custom e-commerce or large corporate portals range based on technical complexity."
+          }
         },
         {
-          "@type": "ListItem",
-          position: 3,
-          name: "India",
-          item: "https://www.vgotyou.com/web-design-india"
+          "@type": "Question",
+          "name": "Can you design a multi-language website (Tamil and English)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, we specialise in bilingual website development, ensuring beautiful Tamil typography that is also optimised for search engines."
+          }
         },
         {
-          "@type": "ListItem",
-          position: 4,
-          name: "Tamil Nadu",
-          item: "https://www.vgotyou.com/web-design-tamil-nadu"
+          "@type": "Question",
+          "name": "Do you provide maintenance for Tamil Nadu businesses?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolutely. We offer 24/7 technical support packages for businesses across Tamil Nadu to ensure peak performance and zero downtime."
+          }
         }
       ]
-    })}
-  </script>
+    }
+  `}</script>
+
+  {/* ================= SCHEMA: REVIEWS ================= */}
+  
+  <script type="application/ld+json">{`
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "@id": "https://www.vgotyou.com/#localbusiness",
+      "review": [
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "Murali" },
+          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+          "reviewBody": "VGot You transformed our textile exports remotely. Their process is seamless."
+        },
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "Karthik" },
+          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+          "reviewBody": "The best online developer in TN. Communication was perfect throughout the project."
+        },
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "Priya" },
+          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+          "reviewBody": "Strategic SEO that delivered results without needing an in-person meeting."
+        }
+      ]
+    }
+  `}</script>
+
+  {/* ================= SCHEMA: BREADCRUMB ================= */}
+
+  <script type="application/ld+json">{`
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.vgotyou.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Web Design",
+          "item": "https://www.vgotyou.com/web-design"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "India",
+          "item": "https://www.vgotyou.com/web-design-india"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Tamil Nadu",
+          "item": "https://www.vgotyou.com/web-design-tamil-nadu"
+        }
+      ]
+    }
+  `}</script>
+
 </Helmet>
+
+
       <style>{`
         .text-technical { font-family: 'JetBrains Mono', 'Fira Code', monospace; }
         .grid-bg {
@@ -205,12 +371,12 @@ const WebDesignTN: React.FC = () => {
       `}</style>
 
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] w-full flex items-center justify-center overflow-hidden border-b border-zinc-900">
+      <section className="relative min-h-[85vh] w-full flex items-center justify-center overflow-hidden border-b border-zinc-900">
         <div className="absolute inset-0 grid-bg opacity-40"></div>
         <div className="absolute inset-0 bg-gradient-to-t from-[#020202] via-transparent to-transparent"></div>
         
         <div className="absolute right-0 top-0 w-full h-full opacity-20 pointer-events-none">
-          <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop" alt="Technology Network Grid" className="w-full h-full object-cover grayscale" />
+          <img src="https://www.vgotyou.com/assets/tamil-nadu-hero.jpg" alt="Digital web design services for Tamil Nadu businesses – VGot You" className="w-full h-full object-cover grayscale" />
         </div>
 
         <div className="relative z-10 container mx-auto px-6 max-w-7xl">
@@ -223,12 +389,12 @@ const WebDesignTN: React.FC = () => {
               <span className="inline-block px-3 py-1 mb-6 border border-zinc-800 rounded-sm bg-black/50 text-technical text-[10px] tracking-[0.4em] uppercase text-red-600 font-bold">
                 Remote Node: TN_NETWORK_HUB
               </span>
-              <h1 className="text-[10vw] sm:text-[8vw] md:text-[6.5vw] font-black mb-8 tracking-tighter uppercase leading-[0.85]">
+              <h1 className="text-[9vw] sm:text-[7vw] md:text-[5.5vw] font-black mb-7 tracking-tighter uppercase leading-[0.85]">
                 Powering <br/>
                 <span className="text-zinc-800">Tamil Nadu's Digital Era.</span>
               </h1>
               <p className="text-sm md:text-xl text-zinc-400 max-w-xl font-light leading-relaxed mb-12">
-                As a leading <Link to="/web-design" className="text-zinc-300 hover:text-red-600 transition-colors">web design agency for Tamil Nadu</Link>, we build digital systems for corporate giants and rising MSMEs across the state.
+                As a leading <Link to="/web-design" className="text-zinc-300 hover:text-red-600 transition-colors">web design agency for Tamil Nadu</Link>, we build digital systems at affordable costs for corporate giants and rising MSMEs across the state.
               </p>
               
               <div className="flex flex-wrap gap-6">
@@ -258,7 +424,7 @@ const WebDesignTN: React.FC = () => {
               <div className="w-full h-full overflow-hidden border border-zinc-900 rounded-sm grayscale group hover:grayscale-0 transition-all duration-1000">
                 <img 
                   src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2070&auto=format&fit=crop" 
-                  alt="Modern Corporate Infrastructure" 
+                  alt="Professional web design agency serving Tamil Nadu – VGot You Karur" 
                   className="w-full h-full object-cover opacity-60 hover:opacity-100 transition-opacity" 
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
@@ -272,7 +438,7 @@ const WebDesignTN: React.FC = () => {
       </section>
 
       {/* Intro Section */}
-      <section className="py-24 px-6 relative border-b border-zinc-900 bg-zinc-950/20">
+      <section className="py-24 px-6 relative border-b border-zinc-950 bg-zinc-950/20">
         <div className="container mx-auto max-w-7xl">
           <TechnicalHeader label="Service Architecture" code="TN_REGIONAL_COVERAGE" />
           <h2 className="text-3xl md:text-5xl font-black text-center uppercase tracking-tighter mb-12">Premier Web Development Solutions for South India</h2>
@@ -319,7 +485,7 @@ const WebDesignTN: React.FC = () => {
         <div className="container mx-auto max-w-7xl">
           <div className="mb-20">
             <span className="text-technical text-red-600 text-[10px] font-bold uppercase tracking-[0.4em] block mb-4">Core_Capabilities</span>
-            <h3 className="text-4xl md:text-7xl font-black uppercase tracking-tighter mb-8 leading-none">Engineering <br/><span className="text-zinc-800">Business Growth.</span></h3>
+            <h2 className="text-4xl md:text-7xl font-black uppercase tracking-tighter mb-8 leading-none">Engineering <br/><span className="text-zinc-800">Business Growth.</span></h2>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">

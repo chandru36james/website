@@ -39,114 +39,154 @@ const AboutMe: React.FC = () => {
     return (
         // KEY FIX: overflow-hidden on the root container restricts everything inside.
         <div className="relative w-full min-h-screen bg-white dark:bg-black overflow-hidden transition-colors duration-300">
-            <Helmet>
-  {/* ================= BASIC SEO ================= */}
-  <title>Chandru | Founder & Lead Web Designer at VGot You | Karur, India</title>
+             <Helmet>
 
-  <meta
-    name="description"
-    content="Chandru is the Founder and Lead Web Designer at VGot You, specializing in high-conversion websites, UI/UX design, branding, and SEO. Based in Karur, Tamil Nadu, serving clients worldwide."
-  />
+        {/* ================= BASIC SEO ================= */}
+        <html lang="en-IN" />
 
-  <meta
-    name="keywords"
-    content="Chandru web designer, founder of VGot You, web designer in Karur, UI UX designer Tamil Nadu, branding expert India, SEO specialist Karur, creative director VGot You"
-  />
+        <title>Chandru | Founder & Lead Web Designer at VGot You | Karur, India</title>
 
-  <meta name="author" content="Chandru | VGot You" />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://www.vgotyou.com/chandru" />
+        <meta
+          name="description"
+          content="Meet Chandru, Founder and Lead Web Designer at VGot You, Karur. Specialising in high-conversion websites, UI/UX design, branding, and SEO for businesses across India and the UK."
+        />
 
-  {/* ================= OPEN GRAPH ================= */}
-  <meta property="og:type" content="profile" />
-  <meta property="og:url" content="https://www.vgotyou.com/chandru" />
-  <meta property="og:title" content="Chandru | Founder & Lead Designer at VGot You" />
-  <meta
-    property="og:description"
-    content="Meet Chandru, Founder of VGot You and expert in web design, branding, UI/UX, and SEO-driven digital experiences."
-  />
-  <meta property="og:image" content="https://www.vgotyou.com/assets/chandru.png" />
+        {/* FIXED: Removed meta keywords — no SEO value */}
 
-  {/* ================= TWITTER ================= */}
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Chandru | Founder of VGot You" />
-  <meta
-    name="twitter:description"
-    content="Web design, branding, UI/UX, and SEO expert based in Karur, India."
-  />
-  <meta name="twitter:image" content="https://www.vgotyou.com/assets/chandru.png" />
+        <meta name="author" content="Chandru, VGot You" />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://www.vgotyou.com/chandru" />
 
-  {/* ================= PERSON (AUTHOR) SCHEMA ================= */}
-  <script type="application/ld+json">
-    {JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "@id": "https://www.vgotyou.com/chandru#person",
-      name: "Chandru",
-      url: "https://www.vgotyou.com/chandru",
-      image: "https://www.vgotyou.com/assets/chandru.png",
-      jobTitle: "Founder & Lead Web Designer",
-      worksFor: {
-        "@id": "https://www.vgotyou.com/#organization"
-      },
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: "Karur",
-        addressRegion: "Tamil Nadu",
-        addressCountry: "IN"
-      },
-      knowsAbout: [
-        "Web Design",
-        "UI UX Design",
-        "Branding",
-        "Logo Design",
-        "Search Engine Optimization",
-        "Frontend Development",
-        "Conversion Optimization"
-      ],
-      sameAs: [
-        "https://www.linkedin.com/in/vgotyou/",
-  "https://www.instagram.com/vgot_you/",
-  "https://vgotyou.medium.com/",
-  "https://vgotyou.sulekha.com",
-  "https://clutch.co/profile/vgot-you",
-  "https://www.justdial.com/Karur/VGot-You-Andankoil/9999P4324-4324-260118183447-U7H4_BZDET?via=scode"
-      ]
-    })}
-  </script>
+        {/* ================= HREFLANG ================= */}
+        <link rel="alternate" hrefLang="en-IN" href="https://www.vgotyou.com/chandru" />
+        <link rel="alternate" hrefLang="en-GB" href="https://www.vgotyou.com/chandru" />
+        <link rel="alternate" hrefLang="x-default" href="https://www.vgotyou.com/chandru" />
 
-  {/* ================= ORGANIZATION ENTITY ================= */}
-  <script type="application/ld+json">
-    {JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "@id": "https://www.vgotyou.com/#organization",
-      name: "VGot You",
-      url: "https://www.vgotyou.com/",
-      logo: "https://www.vgotyou.com/assets/vgotyou.png",
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: "Karur",
-        addressRegion: "Tamil Nadu",
-        addressCountry: "IN"
-      }
-    })}
-  </script>
+        {/* ================= OPEN GRAPH ================= */}
+        {/* FIXED: og:type = "profile" with required profile: tags */}
+        <meta property="og:type" content="profile" />
+        <meta property="og:site_name" content="VGot You" />
+        <meta property="profile:first_name" content="Chandru" />
+        <meta property="profile:last_name" content="" />
+        <meta property="profile:username" content="chandru" />
+        {/* FIXED: og:title matches <title> exactly */}
+        <meta property="og:title" content="Chandru | Founder & Lead Web Designer at VGot You | Karur, India" />
+        <meta
+          property="og:description"
+          content="Meet Chandru, Founder and Lead Web Designer at VGot You, Karur. Specialising in high-conversion websites, UI/UX design, branding, and SEO for businesses across India and the UK."
+        />
+        <meta property="og:url" content="https://www.vgotyou.com/chandru" />
+        {/* Chandru page uses his own photo — correct, personal page should use personal image */}
+        <meta property="og:image" content="https://www.vgotyou.com/assets/chandru.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        {/* FIXED: og:image:alt was missing */}
+        <meta property="og:image:alt" content="Chandru – Founder & Lead Web Designer at VGot You, Karur" />
+        {/* FIXED: og:locale was missing */}
+        <meta property="og:locale" content="en_IN" />
+        <meta property="og:locale:alternate" content="en_GB" />
 
-  {/* ================= WEBSITE ENTITY ================= */}
-  <script type="application/ld+json">
-    {JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "@id": "https://www.vgotyou.com/#website",
-      url: "https://www.vgotyou.com/",
-      name: "VGot You",
-      publisher: {
-        "@id": "https://www.vgotyou.com/#organization"
-      }
-    })}
-  </script>
-</Helmet>
+        {/* ================= TWITTER / X ================= */}
+        <meta name="twitter:card" content="summary_large_image" />
+        {/* FIXED: twitter:title matches <title> exactly */}
+        <meta name="twitter:title" content="Chandru | Founder & Lead Web Designer at VGot You | Karur, India" />
+        <meta
+          name="twitter:description"
+          content="Meet Chandru, Founder and Lead Web Designer at VGot You, Karur. Specialising in high-conversion websites, UI/UX design, branding, and SEO for businesses across India and the UK."
+        />
+        <meta name="twitter:image" content="https://www.vgotyou.com/assets/chandru.png" />
+        {/* FIXED: twitter:site and twitter:creator were missing */}
+        <meta name="twitter:site" content="@vgotyou" />
+        <meta name="twitter:creator" content="@vgotyou" />
+
+        {/* ================= SCHEMA: PERSON ================= */}
+
+        <script type="application/ld+json">{`
+          {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "@id": "https://www.vgotyou.com/chandru#person",
+            "name": "Chandru",
+            "url": "https://www.vgotyou.com/chandru",
+            "image": "https://www.vgotyou.com/assets/chandru.png",
+            "jobTitle": "Founder & Lead Web Designer",
+            "description": "Chandru is the Founder and Lead Web Designer at VGot You, based in Karur, Tamil Nadu. He specialises in high-conversion websites, UI/UX design, branding, and SEO for businesses across India and the UK.",
+            "worksFor": {
+              "@id": "https://www.vgotyou.com/#organization"
+            },
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Karur",
+              "addressRegion": "Tamil Nadu",
+              "addressCountry": "IN"
+            },
+            "knowsAbout": [
+              "Web Design",
+              "UI UX Design",
+              "Branding",
+              "Logo Design",
+              "Search Engine Optimization",
+              "Frontend Development",
+              "Conversion Optimization"
+            ],
+            "mainEntityOfPage": {
+              "@type": "ProfilePage",
+              "@id": "https://www.vgotyou.com/chandru#webpage"
+            },
+            "sameAs": [
+              "https://www.linkedin.com/in/chandru-m7339436153/",
+              "https://www.instagram.com/chandru_m_._/"
+            ]
+          }
+        `}</script>
+
+        {/* ================= SCHEMA: PROFILE PAGE ================= */}
+    
+        <script type="application/ld+json">{`
+          {
+            "@context": "https://schema.org",
+            "@type": "ProfilePage",
+            "@id": "https://www.vgotyou.com/chandru#webpage",
+            "url": "https://www.vgotyou.com/chandru",
+            "name": "Chandru | Founder & Lead Web Designer at VGot You | Karur, India",
+            "description": "Meet Chandru, Founder and Lead Web Designer at VGot You, Karur. Specialising in high-conversion websites, UI/UX design, branding, and SEO.",
+            "inLanguage": "en-IN",
+            "isPartOf": {
+              "@id": "https://www.vgotyou.com/#website"
+            },
+            "about": {
+              "@id": "https://www.vgotyou.com/chandru#person"
+            },
+            "publisher": {
+              "@id": "https://www.vgotyou.com/#organization"
+            }
+          }
+        `}</script>
+
+        {/* ================= SCHEMA: BREADCRUMB ================= */}
+      
+        <script type="application/ld+json">{`
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://www.vgotyou.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Chandru",
+                "item": "https://www.vgotyou.com/chandru"
+              }
+            ]
+          }
+        `}</script>
+      </Helmet>
+
 
             
             {/* Background Decor - Contained within the overflow-hidden parent */}
@@ -189,9 +229,9 @@ const AboutMe: React.FC = () => {
 </a>
                             <div className="flex gap-2">
                                 {[
-                                    { icon: LinkedInIcon, href: "https://www.linkedin.com/in/vgotyou/", label: "LinkedIn" },
+                                    { icon: LinkedInIcon, href: "https://www.linkedin.com/in/chandru-m7339436153/", label: "LinkedIn" },
                                     { icon: GitHubIcon, href: "https://github.com/chandru36james/", label: "GitHub" },
-                                    { icon: InstagramIcon, href: "https://www.instagram.com/vgot_you/", label: "Instagram" }
+                                    { icon: InstagramIcon, href: "https://www.instagram.com/chandru_m_._/", label: "Instagram" }
                                 ].map((social, idx) => (
                                     <a 
                                         key={idx}
