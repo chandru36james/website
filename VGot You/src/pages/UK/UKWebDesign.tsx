@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { 
     CheckCircleIcon, 
@@ -11,8 +11,8 @@ import {
     StarIcon,
     PlusIcon,
     MinusIcon
-} from '@/components/Icons';
-import { Helmet } from "react-helmet";
+} from '@/components/common/Icons';
+import { Helmet } from "react-helmet-async";
 
 const m = motion as any;
 

@@ -1,8 +1,8 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
-import { LinkedInIcon, GitHubIcon, CodeBracketIcon, SparklesIcon, InstagramIcon} from '../components/Icons';
-import { Helmet } from "react-helmet";   // ✅ SEO
+import { LinkedInIcon, GitHubIcon, CodeBracketIcon, SparklesIcon, InstagramIcon} from '../components/common/Icons';
+import { Helmet } from "react-helmet-async";   // ✅ SEO
 
 const m = motion as any;
 
@@ -247,7 +247,8 @@ const SaranrajProfile: React.FC = () => {
 
                         <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
                             <a href="https://wa.me/917871120415?text=Hi%20Saranraj,%20I%20found%20VGot%20You%20and%20I%E2%80%99m%20interested%20in%20discussing%20a%20project."
-                            target="_blank"rel="noopener noreferrer"
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="px-8 py-4 bg-zinc-900 text-white font-bold rounded-full hover:scale-105 transition-transform shadow-lg hover:bg-red-600">
                             Get In Touch
                             </a>

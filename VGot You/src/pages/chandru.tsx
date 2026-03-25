@@ -1,8 +1,9 @@
 
 import React from 'react';
-import { motion } from 'framer-motion';
-import { LinkedInIcon, GitHubIcon, InstagramIcon, CodeBracketIcon, PenToolIcon, BulbIcon } from '../components/Icons';
-import { Helmet } from "react-helmet";   // ✅ SEO
+import { motion } from 'motion/react';
+import { LinkedInIcon, GitHubIcon, InstagramIcon, CodeBracketIcon, PenToolIcon, BulbIcon } from '../components/common/Icons';
+import { Helmet } from "react-helmet-async";   // ✅ SEO
+const m = motion as any;
 
 const AboutMe: React.FC = () => {
     // Skills Data
@@ -201,7 +202,7 @@ const AboutMe: React.FC = () => {
                 <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24 mb-24 lg:mb-32">
                     
                     {/* Text Content */}
-                    <motion.div 
+                    <m.div 
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
@@ -237,6 +238,8 @@ const AboutMe: React.FC = () => {
                                         key={idx}
                                         href={social.href}
                                         aria-label={social.label}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
                                         className="p-3 rounded-full text-gray-500 hover:bg-gray-100 dark:hover:bg-zinc-800 hover:text-black dark:hover:text-white transition-all duration-300"
                                     >
                                         <social.icon className="w-6 h-6" />
@@ -244,10 +247,10 @@ const AboutMe: React.FC = () => {
                                 ))}
                             </div>
                         </div>
-                    </motion.div>
+                    </m.div>
 
                     {/* Image Content */}
-                    <motion.div 
+                    <m.div 
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.8, delay: 0.2 }}
@@ -274,12 +277,12 @@ const AboutMe: React.FC = () => {
                         </div>
                         {/* Decorative background element behind image */}
                         <div className="absolute -z-10 top-8 right-8 w-full h-full border-2 border-gray-200 dark:border-zinc-800 rounded-[2rem] hidden md:block"></div>
-                    </motion.div>
+                    </m.div>
                 </div>
 
                 {/* Skills Section */}
                 <div id="skills" className="mb-24 scroll-mt-32">
-                    <motion.div 
+                    <m.div 
                          initial={{ opacity: 0, y: 20 }}
                          whileInView={{ opacity: 1, y: 0 }}
                          viewport={{ once: true }}
@@ -287,11 +290,11 @@ const AboutMe: React.FC = () => {
                     >
                         <h2 className="text-3xl md:text-5xl font-serif font-bold text-black dark:text-white mb-6">Technical Arsenal</h2>
                         <div className="w-24 h-1 bg-gradient-to-r from-red-600 to-orange-500 mx-auto rounded-full"></div>
-                    </motion.div>
+                    </m.div>
 
                     <div className="grid md:grid-cols-3 gap-8">
                         {skillSets.map((set, idx) => (
-                            <motion.div 
+                            <m.div 
                                 key={idx}
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
@@ -312,13 +315,13 @@ const AboutMe: React.FC = () => {
                                         </span>
                                     ))}
                                 </div>
-                            </motion.div>
+                            </m.div>
                         ))}
                     </div>
                 </div>
 
                 {/* Philosophy Section - Full Width Card */}
-                <motion.div 
+                <m.div 
                     initial={{ opacity: 0, scale: 0.95 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
@@ -345,7 +348,7 @@ const AboutMe: React.FC = () => {
 
                         </p>
                     </div>
-                </motion.div>
+                </m.div>
 
             </div>
         </div>

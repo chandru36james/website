@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { 
     CheckCircleIcon, 
@@ -9,8 +9,8 @@ import {
     CodeBracketIcon,
     ChevronRightIcon,
     StarIcon
-} from '../../components/Icons';
-import { Helmet } from "react-helmet";
+} from '../../components/common/Icons';
+import { Helmet } from "react-helmet-async";
 
 const m = motion as any;
 
@@ -162,7 +162,7 @@ const UKSeoServices: React.FC = () => {
                             VGot You is a results-driven <strong className="text-white">UK SEO agency</strong>. We don't just rank keywords; we drive revenue for British businesses through strategic search engine dominance.
                         </p>
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-                            <Link to="/contact" className="px-10 py-5 bg-red-600 text-white font-bold rounded-sm uppercase tracking-[0.2em] hover:bg-red-700 transition-all shadow-[0_0_30px_rgba(220,38,38,0.2)]">
+                            <Link to="/contact?message=Hi VGot You, I'd like to request a Free SEO Audit for my UK-based website." className="px-10 py-5 bg-red-600 text-white font-bold rounded-sm uppercase tracking-[0.2em] hover:bg-red-700 transition-all shadow-[0_0_30px_rgba(220,38,38,0.2)]">
                                 Free SEO Audit
                             </Link>
                             <Link to="/portfolio" className="px-10 py-5 border border-zinc-800 text-white font-bold rounded-sm uppercase tracking-[0.2em] hover:bg-white hover:text-black transition-all">
@@ -216,7 +216,7 @@ const UKSeoServices: React.FC = () => {
                     <p className="text-zinc-500 mb-12 text-lg max-w-xl mx-auto">
                         Stop letting your competitors take your UK market share. Partner with VGot You and dominate search results today.
                     </p>
-                    <Link to="/contact" className="px-12 py-5 bg-red-600 text-white font-bold rounded-sm uppercase tracking-[0.3em] shadow-[0_0_50px_rgba(220,38,38,0.3)] hover:bg-red-700 transition-all inline-block">
+                    <Link to="/contact?message=Hi VGot You, I'm ready to rank #1 on Google UK. I'd like to claim my SEO audit!" className="px-12 py-5 bg-red-600 text-white font-bold rounded-sm uppercase tracking-[0.3em] shadow-[0_0_50px_rgba(220,38,38,0.3)] hover:bg-red-700 transition-all inline-block">
                         Claim Your Audit
                     </Link>
                 </div>

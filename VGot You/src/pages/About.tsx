@@ -1,8 +1,8 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
-import { LinkedInIcon, GitHubIcon, InstagramIcon, GoogleIcon, MediumIcon, CheckCircleIcon, RocketLaunchIcon, LightBulbIcon, UserGroupIcon } from '../components/Icons';
-import { Helmet } from "react-helmet";
+import { LinkedInIcon, GitHubIcon, InstagramIcon, GoogleIcon, MediumIcon, CheckCircleIcon, RocketLaunchIcon, LightBulbIcon, UserGroupIcon } from '../components/common/Icons';
+import { Helmet } from "react-helmet-async";
 
 const m = motion as any;
 
@@ -14,22 +14,26 @@ const About: React.FC = () => {
             name: "Chandru",
             title: "Founder & Lead Designer",
             description: "Expert in high-performance websites, UI/UX design, branding, and SEO with over 2 years of experience.",
-            image: "https://www.vgotyou.com/assets/chandru.png",
+            image: "/assets/chandru.png",
+            alt: "Chandru – Founder and Web Designer  of VGot You",
             link: "/chandru",
             socials: {
                 linkedin: "https://www.linkedin.com/in/chandru-m7339436153/",
-                github: "https://github.com/chandru36james/"
+                github: "https://github.com/chandru36james/",
+                instagram: ""
             }
         },
         {
             name: "Saranraj",
             title: "Co-Founder & Tech Lead",
             description: "Specializes in scalable web development, cloud infrastructure, and digital growth strategies.",
-            image: "https://www.vgotyou.com/assets/saran.png",
+            image: "/assets/saran.png",
+            alt: "Saranraj – Co-Founder and Tech Lead of VGot You",
             link: "/saran-raj", // Placeholder link
             socials: {
                 linkedin: "https://www.linkedin.com/in/saranraj-vasanthi-297ba625a/",
-                github: "https://github.com/Saran830"
+                github: "https://github.com/Saran830",
+                instagram: ""
             }
         }
     ];
@@ -202,15 +206,7 @@ const About: React.FC = () => {
           }
         `}</script>
 
-        {/* ================= SCHEMA: ABOUT PAGE ================= */}
-        {/*
-          FIXED:
-          - Added @id
-          - Added isPartOf linking to WebSite
-          - Added about reference linking to Organization
-          - Added inLanguage
-          - Added breadcrumb via isPartOf
-        */}
+      
         <script type="application/ld+json">{`
           {
             "@context": "https://schema.org",
@@ -233,7 +229,6 @@ const About: React.FC = () => {
         `}</script>
 
         {/* ================= SCHEMA: BREADCRUMB ================= */}
-        {/* ADDED: Was completely missing — improves search result appearance */}
         <script type="application/ld+json">{`
           {
             "@context": "https://schema.org",
@@ -274,7 +269,7 @@ const About: React.FC = () => {
                             className="mb-8 flex justify-center"
                         >
                             <img 
-                                src="https://www.vgotyou.com/assets/logo.png" 
+                                src="/assets/logo.png" 
                                 alt="VGot You Logo" 
                                 className="h-16 w-16 md:h-20 md:w-20 object-contain invert"
                                 referrerPolicy="no-referrer"
@@ -351,7 +346,7 @@ const About: React.FC = () => {
                             className="relative aspect-video rounded-3xl overflow-hidden shadow-2xl"
                         >
                             <img 
-                                src="https://picsum.photos/seed/vgotyoustory/800/600" 
+                                src="/assets/vgotyoustory.jpg" 
                                 alt="VGot You Team Working" 
                                 className="w-full h-full object-cover"
                                 referrerPolicy="no-referrer"
@@ -529,7 +524,7 @@ const About: React.FC = () => {
                             </p>
                             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
                                 <Link 
-                                    to="/contact" 
+                                    to="/contact?message=Hi VGot You, I'm interested in starting a project with you." 
                                     className="w-full sm:w-auto px-10 py-5 bg-red-600 text-white font-bold rounded-full hover:bg-red-700 transition-all shadow-lg shadow-red-600/20 active:scale-95"
                                 >
                                     Start Your Project

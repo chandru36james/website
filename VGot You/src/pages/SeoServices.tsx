@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'motion/react';
 import { Link } from 'react-router-dom';
-import { Helmet } from "react-helmet";   // ✅ SEO
+import { Helmet } from "react-helmet-async";   // ✅ SEO
 // FIX: Cast motion to any to resolve IntrinsicAttributes prop errors for motion components
 const m = motion as any;
 
@@ -276,7 +276,7 @@ const SeoServices: React.FC = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6 md:gap-8">
-              <Link to="/contact" className="w-full sm:w-auto px-10 md:px-12 py-4 md:py-5 bg-red-600 text-white font-bold rounded-sm text-[10px] md:text-xs uppercase tracking-[0.4em] shadow-[0_0_40px_rgba(220,38,38,0.2)] hover:bg-red-500 transition-all">
+              <Link to="/contact?message=Hi VGot You, I'm interested in your SEO services. Can you help me improve my website's search ranking?" className="w-full sm:w-auto px-10 md:px-12 py-4 md:py-5 bg-red-600 text-white font-bold rounded-sm text-[10px] md:text-xs uppercase tracking-[0.4em] shadow-[0_0_40px_rgba(220,38,38,0.2)] hover:bg-red-500 transition-all">
                 Audit With VGot You
               </Link>
               <div className="text-technical text-[9px] text-zinc-600 uppercase tracking-widest text-left hidden sm:block border-l border-zinc-800 pl-8 leading-loose">
@@ -462,7 +462,7 @@ const SeoServices: React.FC = () => {
             <span className="text-zinc-800">Search Presence.</span>
           </h2>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-8 md:gap-10">
-            <Link to="/contact" className="relative w-full sm:w-auto px-12 md:px-16 py-5 md:py-6 bg-red-600 text-white font-bold rounded-sm text-xs md:text-sm uppercase tracking-[0.3em] md:tracking-[0.4em] shadow-[0_0_50px_rgba(220,38,38,0.3)] hover:scale-105 transition-all">
+            <Link to="/contact?message=Hi VGot You, I'm ready to elevate my search presence. I'd like to request a professional SEO audit." className="relative w-full sm:w-auto px-12 md:px-16 py-5 md:py-6 bg-red-600 text-white font-bold rounded-sm text-xs md:text-sm uppercase tracking-[0.3em] md:tracking-[0.4em] shadow-[0_0_50px_rgba(220,38,38,0.3)] hover:scale-105 transition-all">
               Request VGot You Audit
             </Link>
             <p className="text-technical text-[8px] md:text-[9px] text-zinc-600 uppercase tracking-widest text-left hidden sm:block border-l border-zinc-800 pl-8 leading-loose">

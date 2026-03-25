@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import FadeInSection from '../components/FadeInSection';
+import FadeInSection from '../components/common/FadeInSection';
 import Swal from 'sweetalert2';
-import { EmailIcon, PhoneIcon } from '../components/Icons';
-import { Helmet } from "react-helmet";   // ✅ SEO
+import { EmailIcon, PhoneIcon } from '../components/common/Icons';
+import { Helmet } from "react-helmet-async";   // ✅ SEO
 
 const AccordionItem: React.FC<{ title: string; children: React.ReactNode; isOpen: boolean; onClick: () => void; }> = ({ title, children, isOpen, onClick }) => {
     return (

@@ -1,8 +1,8 @@
 import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'motion/react';
 import { Link } from 'react-router-dom';
-import ProjectCarousel from '../components/CarouselManual';
-import { Helmet } from "react-helmet";
+import ProjectCarousel from '../components/common/CarouselManual';
+import { Helmet } from "react-helmet-async";
 
 
 // FIX: Cast motion to any to resolve IntrinsicAttributes prop errors for motion components
@@ -596,7 +596,7 @@ const WebDesign: React.FC = () => {
             <m.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="relative group w-full sm:w-auto">
               <div className="absolute -inset-1 bg-gradient-to-r from-red-600 to-orange-600 rounded-sm blur opacity-25 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
               <Link
-                to="/contact"
+                to="/contact?message=Hi VGot You, I'm interested in your web design services. Can you help me build a high-performance website?"
                 className="relative w-full sm:w-auto px-10 sm:px-16 py-5 sm:py-6 bg-red-600 text-white font-bold rounded-sm text-base sm:text-lg uppercase tracking-[0.3em] shadow-[0_0_50px_rgba(220,38,38,0.3)] transition-all flex items-center justify-center"
               >
                 Start VGot You Project

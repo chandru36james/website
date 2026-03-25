@@ -1,9 +1,9 @@
 
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'motion/react';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { BulbIcon, PenToolIcon, RocketIcon, SparklesIcon, ChevronLeftIcon, ChevronRightIcon } from '../components/Icons';
-import { Helmet } from "react-helmet";
+import { BulbIcon, PenToolIcon, RocketIcon, SparklesIcon, ChevronLeftIcon, ChevronRightIcon } from '../components/common/Icons';
+import { Helmet } from "react-helmet-async";
 
 
 // FIX: Cast motion to any to resolve IntrinsicAttributes prop errors for motion components

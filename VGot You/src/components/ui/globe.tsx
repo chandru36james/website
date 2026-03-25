@@ -8,6 +8,7 @@ function cn(...classes: (string | undefined | null | boolean)[]) {
 }
 
 export const Globe = ({ className }: { className?: string }) => {
+  const dpr = Math.min(window.devicePixelRatio, 1.5);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const globeRef = useRef<any>(null);
   const pointerInteracting = useRef<number | null>(null);
@@ -17,6 +18,7 @@ export const Globe = ({ className }: { className?: string }) => {
 
   useEffect(() => {
     let phi = 0;
+    let lastTime = performance.now();
 
     const initGlobe = () => {
         if (!canvasRef.current) return;
@@ -36,35 +38,41 @@ export const Globe = ({ className }: { className?: string }) => {
 
         try {
             globeRef.current = createGlobe(canvasRef.current, {
-                devicePixelRatio: 2,
-                width: width * 2,
-                height: height * 2,
+                devicePixelRatio: dpr,
+                width: width * dpr,
+                height: height * dpr,
                 phi: 0,
                 theta: 0.35,
                 dark: 1,
                 diffuse: 1.2,
-                mapSamples: 16000,
-                mapBrightness: 6,
+                mapSamples: 12000,
+                mapBrightness: 3,
                 baseColor: baseColor,
                 markerColor: markerColor,
                 glowColor: glowColor,
                 opacity: 1,
                 markers: [
-                    { location: [37.7595, -122.4367], size: 0.05 },
-                    { location: [40.7128, -74.006], size: 0.05 },
-                    { location: [51.5074, -0.1278], size: 0.05 },
-                    { location: [35.6762, 139.6503], size: 0.05 },
+                    { location: [37.7595, -122.4367], size: 0.035 },
+                    { location: [40.7128, -74.006], size: 0.035 },
+                    { location: [51.5074, -0.1278], size: 0.035 },
+                    { location: [35.6762, 139.6503], size: 0.035 },
                 ],
                 onRender: (state) => {
-                    if (!pointerInteracting.current) {
-                        phi += 0.003;
-                    }
+                     const now = performance.now();
+                      const delta = now - lastTime;
+                      lastTime = now;
+
+                      if (!pointerInteracting.current) {
+                        phi += delta * 0.0006; // smooth + consistent
+                      }
+
                     state.phi = phi + pointerInteractionMovement.current;
                     state.theta = 0.35 + pointerInteractionMovementY.current;
                 },
             });
 
             if (canvasRef.current) {
+                canvasRef.current.style.transform = "translateZ(0)";
                 canvasRef.current.style.opacity = '1';
             }
 

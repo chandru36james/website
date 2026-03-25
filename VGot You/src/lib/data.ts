@@ -24,6 +24,15 @@ export interface BlogPost {
   externalUrl: string;
 }
 
+export interface Testimonial {
+  id: string;
+  name: string;
+  role: string;
+  quote: string;
+  rating: number;
+  date: string;
+}
+
 export const projects: Project[] = [
   {
     id: '1',
@@ -363,31 +372,8 @@ export const blogs: BlogPost[] = [
   }
 ].sort((a, b) => new Date(b.publishedDate).getTime() - new Date(a.publishedDate).getTime());
 
-export const dataStore = {
-    getBlogs: (): BlogPost[] => {
-        const stored = localStorage.getItem('vgotyou_blogs');
-        if (stored) {
-            try {
-                return JSON.parse(stored);
-            } catch (e) {
-                console.error('Failed to parse stored blogs', e);
-            }
-        }
-        return blogs;
-    },
-    saveBlog: (post: BlogPost) => {
-        const current = dataStore.getBlogs();
-        const index = current.findIndex(b => b.slug === post.slug);
-        if (index > -1) {
-            current[index] = post;
-        } else {
-            current.push(post);
-        }
-        localStorage.setItem('vgotyou_blogs', JSON.stringify(current));
-    },
-    deleteBlog: (slug: string) => {
-        const current = dataStore.getBlogs();
-        const updated = current.filter(b => b.slug !== slug);
-        localStorage.setItem('vgotyou_blogs', JSON.stringify(updated));
-    }
-};
+export const testimonials: Testimonial[] = [
+  { id: '1', name: "Suresh Kumar", role: "Business Owner", rating: 5, quote: "The best web design company reviews Karur led me to VGot You. High performance output.", date: "2024-01-15" },
+  { id: '2', name: "Priya Dharshini", role: "Marketing Director", rating: 5, quote: "Professional branding and constant communication. Highly recommended.", date: "2024-02-10" },
+  { id: '3', name: "Industrial Solutions", role: "Operations Manager", rating: 5, quote: "Excellent digital studio reviews Tamil Nadu. Our SEO helped us reach page 1.", date: "2024-02-28" }
+];

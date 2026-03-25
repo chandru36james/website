@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 // FIX: Using namespace import for react-router-dom to resolve "no exported member" errors
 import * as ReactRouterDOM from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { SEO } from '../components/SEO';
+import { motion } from 'motion/react';
+import { SEO } from '../components/common/SEO';
 import { blogs, BlogPost } from '../lib/data';
 
 const { useParams, Link, useNavigate } = ReactRouterDOM as any;

@@ -1,31 +1,28 @@
+import { useEffect, useRef } from 'react';
 
-import { useEffect, useRef, RefObject } from 'react';
-
-export const useFadeIn = (): RefObject<HTMLDivElement> => {
+export const useFadeIn = () => {
     const ref = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        const element = ref.current;
-        if (element) {
-            const observer = new IntersectionObserver(
-                (entries) => {
-                    entries.forEach((entry) => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('visible');
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                },
-                {
-                    threshold: 0.1,
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-10');
                 }
-            );
-            observer.observe(element);
+            },
+            { threshold: 0.1 }
+        );
 
-            return () => {
-                observer.unobserve(element);
-            };
+        if (ref.current) {
+            // Initial state
+            ref.current.classList.add('transition-all', 'duration-1000', 'ease-out', 'opacity-0', 'translate-y-10');
+            observer.observe(ref.current);
         }
+
+        return () => {
+            if (ref.current) observer.unobserve(ref.current);
+        };
     }, []);
 
     return ref;

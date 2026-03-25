@@ -1,7 +1,10 @@
-
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+// FIX: Using namespace import for react-router-dom to resolve "no exported member" errors
+import { HelmetProvider } from 'react-helmet-async';
+import ErrorBoundary from './components/common/ErrorBoundary';
 import App from './App';
+import { BrowserRouter } from 'react-router-dom';
 
 
 const rootElement = document.getElementById('root');
@@ -12,6 +15,12 @@ if (!rootElement) {
 const root = ReactDOM.createRoot(rootElement);
 root.render(
   <React.StrictMode>
-    <App />
+    <HelmetProvider>
+      <BrowserRouter>
+        <ErrorBoundary>
+          <App />
+        </ErrorBoundary>
+      </BrowserRouter>
+    </HelmetProvider>
   </React.StrictMode>
 );

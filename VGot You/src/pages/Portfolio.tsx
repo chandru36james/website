@@ -1,8 +1,8 @@
 
 import React, { useState, useMemo } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'motion/react';
 import * as ReactRouterDOM from 'react-router-dom';
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 const { Link } = ReactRouterDOM as any;
 const m = motion as any;
 
@@ -547,7 +547,7 @@ const Portfolio: React.FC = () => {
                         <span className="text-gray-500">Digital Legacy.</span>
                     </h2>
                     <Link
-                        to="/contact"
+                        to="/contact?message=Hi VGot You, I've seen your portfolio and I'm interested in starting a project."
                         className="bg-red-600 text-white px-14 py-5 font-bold text-sm uppercase tracking-[0.3em] hover:bg-zinc-900 transition-all inline-block rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 active:scale-95"
                     >
                         Start Your Project

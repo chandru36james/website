@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'motion/react';
 import { blogs } from '../lib/data';
-import { Helmet } from "react-helmet";   // ✅ SEO
+import { Helmet } from "react-helmet-async";   // ✅ SEO
 // FIX: Cast motion to any to resolve IntrinsicAttributes prop errors for motion components
 const m = motion as any;
 

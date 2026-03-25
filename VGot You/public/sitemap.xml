@@ -3,14 +3,22 @@
 
 <sitemap>
 <loc>https://www.vgotyou.com/sitemap-pages.xml</loc>
+<lastmod>2026-03-25</lastmod>
 </sitemap>
 
 <sitemap>
 <loc>https://www.vgotyou.com/sitemap-blog.xml</loc>
+<lastmod>2026-03-25</lastmod>
 </sitemap>
 
 <sitemap>
-  <loc>https://www.vgotyou.com/sitemap-uk.xml</loc>
+<loc>https://www.vgotyou.com/sitemap-india.xml</loc>
+<lastmod>2026-03-25</lastmod>
+</sitemap>
+
+<sitemap>
+<loc>https://www.vgotyou.com/sitemap-uk.xml</loc>
+<lastmod>2026-03-25</lastmod>
 </sitemap>
 
 </sitemapindex>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { 
     CheckCircleIcon, 
@@ -9,8 +9,8 @@ import {
     CodeBracketIcon,
     ChevronRightIcon,
     StarIcon
-} from '../../components/Icons';
-import { Helmet } from "react-helmet";
+} from '../../components/common/Icons';
+import { Helmet } from "react-helmet-async";
 
 const m = motion as any;
 
@@ -161,7 +161,7 @@ const UKDigitalMarketing: React.FC = () => {
                             Performance-driven <strong className="text-white">digital marketing UK</strong>. We combine data science with creative excellence to deliver measurable growth for British businesses.
                         </p>
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-                            <Link to="/contact" className="px-10 py-5 bg-red-600 text-white font-bold rounded-sm uppercase tracking-[0.2em] hover:bg-red-700 transition-all shadow-[0_0_30px_rgba(220,38,38,0.2)]">
+                            <Link to="/contact?message=Hi VGot You, I'd like to schedule a strategy call for my UK digital marketing campaign." className="px-10 py-5 bg-red-600 text-white font-bold rounded-sm uppercase tracking-[0.2em] hover:bg-red-700 transition-all shadow-[0_0_30px_rgba(220,38,38,0.2)]">
                                 Get Strategy Call
                             </Link>
                             <Link to="/portfolio" className="px-10 py-5 border border-zinc-800 text-white font-bold rounded-sm uppercase tracking-[0.2em] hover:bg-white hover:text-black transition-all">
@@ -215,7 +215,7 @@ const UKDigitalMarketing: React.FC = () => {
                     <p className="text-zinc-500 mb-12 text-lg max-w-xl mx-auto">
                         Don't leave your UK growth to chance. Partner with VGot You and build a predictable lead generation machine.
                     </p>
-                    <Link to="/contact" className="px-12 py-5 bg-red-600 text-white font-bold rounded-sm uppercase tracking-[0.3em] shadow-[0_0_50px_rgba(220,38,38,0.3)] hover:bg-red-700 transition-all inline-block">
+                    <Link to="/contact?message=Hi VGot You, I'm ready to accelerate my UK growth. Let's start a digital marketing campaign together!" className="px-12 py-5 bg-red-600 text-white font-bold rounded-sm uppercase tracking-[0.3em] shadow-[0_0_50px_rgba(220,38,38,0.3)] hover:bg-red-700 transition-all inline-block">
                         Start Your Campaign
                     </Link>
                 </div>

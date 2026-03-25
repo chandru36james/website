@@ -1,9 +1,10 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
+import { Helmet } from 'react-helmet-async';
 // FIX: Using namespace import for react-router-dom to resolve "no exported member" errors
 import * as ReactRouterDOM from 'react-router-dom';
 
-import { StarIcon, ChevronRightIcon, QuoteIcon, SparklesIcon, GoogleIcon } from '../components/Icons';
+import { StarIcon, ChevronRightIcon, QuoteIcon, SparklesIcon, GoogleIcon } from '../components/common/Icons';
 
 const { Link } = ReactRouterDOM as any;
 const m = motion as any;
@@ -179,6 +180,120 @@ const TestimonialsPage: React.FC = () => {
 
     return (
         <div className="min-h-screen bg-[#020202] text-white selection:bg-red-600/30 overflow-x-hidden pt-24">
+            <Helmet>
+                {/* ================= BASIC SEO ================= */}
+                <html lang="en-IN" />
+                <title>Client Testimonials & Reviews | VGot You – Web Design Karur</title>
+                <meta
+                    name="description"
+                    content="Read genuine reviews and testimonials from our clients in Karur and across Tamil Nadu. See how VGot You helps businesses grow with high-performance web design and SEO."
+                />
+                <meta name="author" content="VGot You" />
+                <meta name="robots" content="index, follow" />
+                <link rel="canonical" href="https://www.vgotyou.com/testimonials" />
+
+                {/* ================= HREFLANG ================= */}
+                <link rel="alternate" hrefLang="en-IN" href="https://www.vgotyou.com/testimonials" />
+                <link rel="alternate" hrefLang="en-GB" href="https://www.vgotyou.com/testimonials" />
+                <link rel="alternate" hrefLang="x-default" href="https://www.vgotyou.com/testimonials" />
+
+                {/* ================= OPEN GRAPH ================= */}
+                <meta property="og:type" content="website" />
+                <meta property="og:site_name" content="VGot You" />
+                <meta property="og:title" content="Client Testimonials & Reviews | VGot You – Web Design Karur" />
+                <meta
+                    property="og:description"
+                    content="Read genuine reviews and testimonials from our clients in Karur and across Tamil Nadu. See how VGot You helps businesses grow with high-performance web design and SEO."
+                />
+                <meta property="og:url" content="https://www.vgotyou.com/testimonials" />
+                <meta property="og:image" content="https://www.vgotyou.com/assets/og-home.png" />
+                <meta property="og:image:width" content="1200" />
+                <meta property="og:image:height" content="630" />
+                <meta property="og:image:alt" content="VGot You Client Testimonials – Web Design & SEO Reviews" />
+                <meta property="og:locale" content="en_IN" />
+                <meta property="og:locale:alternate" content="en_GB" />
+
+                {/* ================= TWITTER / X ================= */}
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content="Client Testimonials & Reviews | VGot You – Web Design Karur" />
+                <meta
+                    name="twitter:description"
+                    content="Read genuine reviews and testimonials from our clients in Karur and across Tamil Nadu."
+                />
+                <meta name="twitter:image" content="https://www.vgotyou.com/assets/og-home.png" />
+                <meta name="twitter:site" content="@vgotyou" />
+                <meta name="twitter:creator" content="@vgotyou" />
+
+                {/* ================= SCHEMA: WEBPAGE ================= */}
+                <script type="application/ld+json">{`
+                    {
+                        "@context": "https://schema.org",
+                        "@type": "WebPage",
+                        "@id": "https://www.vgotyou.com/testimonials#webpage",
+                        "url": "https://www.vgotyou.com/testimonials",
+                        "name": "Client Testimonials & Reviews | VGot You",
+                        "description": "Read genuine reviews and testimonials from our clients in Karur and across Tamil Nadu.",
+                        "inLanguage": "en-IN",
+                        "isPartOf": {
+                            "@id": "https://www.vgotyou.com/#website"
+                        },
+                        "publisher": {
+                            "@id": "https://www.vgotyou.com/#organization"
+                        }
+                    }
+                `}</script>
+
+                {/* ================= SCHEMA: FAQ ================= */}
+                <script type="application/ld+json">{`
+                    {
+                        "@context": "https://schema.org",
+                        "@type": "FAQPage",
+                        "mainEntity": [
+                            {
+                                "@type": "Question",
+                                "name": "What do clients say about VGot You's web design services?",
+                                "acceptedAnswer": {
+                                    "@type": "Answer",
+                                    "text": "Clients consistently praise VGot You for delivering high-performance, professional websites tailored for B2B exports and local businesses in Karur and Tamil Nadu."
+                                }
+                            },
+                            {
+                                "@type": "Question",
+                                "name": "Is VGot You a reliable web design company in Karur?",
+                                "acceptedAnswer": {
+                                    "@type": "Answer",
+                                    "text": "Yes, VGot You has a 5.0 aggregate rating on Google and a 98.4% client retention rate, reflecting our commitment to quality and client success."
+                                }
+                            }
+                        ]
+                    }
+                `}</script>
+
+                {/* ================= SCHEMA: BREADCRUMBLIST ================= */}
+                <script type="application/ld+json">{`
+                    {
+                        "@context": "https://schema.org",
+                        "@type": "BreadcrumbList",
+                        "itemListElement": [
+                            {
+                                "@type": "ListItem",
+                                "position": 1,
+                                "name": "Home",
+                                "item": "https://www.vgotyou.com/"
+                            },
+                            {
+                                "@type": "ListItem",
+                                "position": 2,
+                                "name": "Testimonials",
+                                "item": "https://www.vgotyou.com/testimonials"
+                            }
+                        ]
+                    }
+                `}</script>
+            </Helmet>
+
+            {/* Hidden H2 for SEO Keyword Support */}
+            <h2 className="sr-only">Best Web Design Company Reviews Karur & Tamil Nadu</h2>
             {/* Noise Texture Overlay */}
             <div className="fixed inset-0 pointer-events-none opacity-[0.03] z-50 bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
 
@@ -518,7 +633,7 @@ const TestimonialsPage: React.FC = () => {
                             <div className="absolute inset-0 bg-red-600 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
                         </a>
                         <Link
-                            to="/contact"
+                            to="/contact?message=Hi VGot You, I've read your client reviews and I'm ready to start a project."
                             className="group border border-zinc-800 text-white px-16 py-6 font-black text-xs uppercase tracking-[0.4em] hover:border-red-600 transition-all duration-500 inline-block rounded-sm active:scale-95"
                         >
                             Start A Project

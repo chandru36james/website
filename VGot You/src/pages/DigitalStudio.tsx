@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'motion/react';
 import * as ReactRouterDOM from 'react-router-dom';
 import { 
   RocketIcon as Rocket, 
@@ -16,8 +16,8 @@ import {
   ArrowUpRightIcon as ArrowUpRight,
   PlusIcon as Plus,
   MinusIcon as Minus
-} from '../components/Icons';
-import { Helmet } from "react-helmet";
+} from '../components/common/Icons';
+import { Helmet } from "react-helmet-async";
 
 const { Link } = ReactRouterDOM as any;
 const m = motion as any;
@@ -791,7 +791,7 @@ const DigitalStudio: React.FC = () => {
             <span className="text-zinc-900 outline-text">Presence.</span>
           </h2>
           <Link
-            to="/contact"
+            to="/contact?message=Hi VGot You, I'm interested in the services of your Digital Studio."
             className="group relative inline-flex items-center justify-center px-16 py-8 bg-red-600 text-white font-black uppercase tracking-[0.3em] text-sm overflow-hidden transition-all hover:bg-red-700 shadow-[0_0_50px_rgba(220,38,38,0.3)]"
           >
             <span className="relative z-10">Contact Studio</span>
