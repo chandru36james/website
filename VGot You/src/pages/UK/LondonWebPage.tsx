@@ -5,8 +5,8 @@
 
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { Helmet } from "react-helmet";
+import { motion } from 'motion/react';
+import { Helmet } from "react-helmet-async";
 
 const m = motion as any;
 
@@ -49,9 +49,9 @@ const LondonWebPage: React.FC = () => {
   <meta name="author" content="VGot You" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://www.vgotyou.com/web-design-london" />
-  <link rel="alternate" hreflang="en-GB" href="https://www.vgotyou.com/web-design-london" />
-  <link rel="alternate" hreflang="en-IN" href="https://www.vgotyou.com/" />
-  <link rel="alternate" hreflang="x-default" href="https://www.vgotyou.com/" />
+  <link rel="alternate" hrefLang="en-GB" href="https://www.vgotyou.com/web-design-london" />
+  <link rel="alternate" hrefLang="en-IN" href="https://www.vgotyou.com/" />
+  <link rel="alternate" hrefLang="x-default" href="https://www.vgotyou.com/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="VGot You" />
   <meta property="og:title" content="Web Design Company in London | Affordable SEO-Ready Websites | VGot You" />
@@ -103,7 +103,7 @@ const LondonWebPage: React.FC = () => {
               London's most competitive market demands digital excellence. We build high-performance, SEO-optimised websites for London startups, SMEs and enterprises — designed to convert and built to rank on Google UK.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-              <Link to="/contact" className="px-10 py-5 bg-red-600 text-white font-bold rounded-sm uppercase tracking-[0.2em] hover:bg-red-700 transition-all shadow-[0_0_30px_rgba(220,38,38,0.2)]">Request Quote</Link>
+              <Link to="/contact?message=Hi VGot You, I'm interested in a web design quote for my London-based business." className="px-10 py-5 bg-red-600 text-white font-bold rounded-sm uppercase tracking-[0.2em] hover:bg-red-700 transition-all shadow-[0_0_30px_rgba(220,38,38,0.2)]">Request Quote</Link>
               <Link to="/portfolio" className="px-10 py-5 border border-zinc-800 text-white font-bold rounded-sm uppercase tracking-[0.2em] hover:bg-white hover:text-black transition-all">Our Work</Link>
             </div>
           </m.div>
@@ -121,7 +121,7 @@ const LondonWebPage: React.FC = () => {
                 <div><div className="text-3xl font-black text-white mb-1">£1,499</div><div className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">Starting Price</div></div>
                 <div><div className="text-3xl font-black text-white mb-1">4-8 Wks</div><div className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">Delivery Time</div></div>
               </div>
-              <Link to="/contact" className="inline-flex items-center gap-3 text-[10px] font-bold text-red-600 uppercase tracking-widest hover:gap-5 transition-all">Start Your London Project →</Link>
+              <Link to="/contact?message=Hi VGot You, I'd like to start a new web design project in London. Let's talk!" className="inline-flex items-center gap-3 text-[10px] font-bold text-red-600 uppercase tracking-widest hover:gap-5 transition-all">Start Your London Project →</Link>
             </div>
             <div className="space-y-4">
               {industries.map((ind, i) => (
@@ -195,7 +195,7 @@ const LondonWebPage: React.FC = () => {
         <div className="max-w-4xl mx-auto relative z-10">
           <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-8">Start Your London <br/><span className="text-red-600">Web Design Project.</span></h2>
           <p className="text-zinc-500 mb-12 text-lg max-w-2xl mx-auto">Join London businesses already growing their digital presence with VGot You. Get a free quote today — no commitment required.</p>
-          <Link to="/contact" className="px-12 py-5 bg-red-600 text-white font-bold rounded-sm uppercase tracking-[0.3em] shadow-[0_0_50px_rgba(220,38,38,0.3)] hover:bg-red-700 transition-all inline-block">Get Free Quote</Link>
+          <Link to="/contact?message=Hi VGot You, I'm looking for a free quote for my London web design project." className="px-12 py-5 bg-red-600 text-white font-bold rounded-sm uppercase tracking-[0.3em] shadow-[0_0_50px_rgba(220,38,38,0.3)] hover:bg-red-700 transition-all inline-block">Get Free Quote</Link>
         </div>
       </section>
     </div>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'motion/react';
 import { Link } from 'react-router-dom';
-import { Helmet } from "react-helmet";   // ✅ SEO
+import { Helmet } from "react-helmet-async";   // ✅ SEO
 
 const m = motion as any;
 
@@ -81,89 +81,212 @@ const DigitalMarketing: React.FC = () => {
   return (
     <div className="bg-[#020202] text-white selection:bg-red-600/30 overflow-x-hidden pt-16 md:pt-20">
       <Helmet>
+
   {/* ================= BASIC SEO ================= */}
-  <title>Digital Marketing Company | Online Marketing Services – VGot You</title>
+  <html lang="en-IN" />
+
+  {/* Generic title — no location, targets both India & UK */}
+  <title>Digital Marketing Services | SEO, Google Ads & Social Media – VGot You</title>
 
   <meta
     name="description"
-    content="VGot You is a professional digital marketing company offering SEO, Google Ads, social media marketing, and lead generation services to help businesses grow online and generate consistent enquiries."
+    content="VGot You offers performance-driven digital marketing services including SEO, Google Ads, Meta Ads, and social media marketing. Helping businesses across India and the UK grow online and generate consistent leads."
   />
 
-  <meta
-    name="keywords"
-    content="digital marketing company, online marketing services, internet marketing agency, social media marketing, google ads services, lead generation, performance marketing, content marketing"
-  />
+  {/* FIXED: Removed meta keywords */}
 
-  <link rel="canonical" href="https://www.vgotyou.com/digital-marketing" />
+  <meta name="author" content="VGot You" />
   <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.vgotyou.com/digital-marketing" />
+
+  {/* ================= HREFLANG ================= */}
+  {/* ADDED: Was completely missing */}
+  <link rel="alternate" hrefLang="en-IN" href="https://www.vgotyou.com/digital-marketing" />
+  <link rel="alternate" hrefLang="en-GB" href="https://www.vgotyou.com/digital-marketing-uk" />
+  <link rel="alternate" hrefLang="x-default" href="https://www.vgotyou.com/digital-marketing" />
 
   {/* ================= OPEN GRAPH ================= */}
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="VGot You" />
-  <meta property="og:title" content="Digital Marketing Company | Online Marketing Services – VGot You" />
+  {/* FIXED: og:title now matches <title> exactly */}
+  <meta property="og:title" content="Digital Marketing Services | SEO, Google Ads & Social Media – VGot You" />
   <meta
     property="og:description"
-    content="Grow your business online with SEO, Google Ads, and social media marketing by VGot You, a results-driven digital marketing agency."
+    content="Performance-driven digital marketing services including SEO, Google Ads, Meta Ads, and social media marketing by VGot You. Helping businesses across India and the UK grow online."
   />
-  <meta property="og:image" content="https://www.vgotyou.com/assets/vgotyou.png" />
   <meta property="og:url" content="https://www.vgotyou.com/digital-marketing" />
+  {/* FIXED: vgotyou.png → og-home.png */}
+  <meta property="og:image" content="https://www.vgotyou.com/assets/og-home.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  {/* FIXED: og:image:alt was missing */}
+  <meta property="og:image:alt" content="Digital Marketing Services – SEO, Google Ads & Social Media by VGot You" />
   <meta property="og:locale" content="en_IN" />
+  {/* FIXED: og:locale:alternate was missing */}
+  <meta property="og:locale:alternate" content="en_GB" />
 
-  {/* ================= TWITTER ================= */}
+  {/* ================= TWITTER / X ================= */}
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Digital Marketing Company | Online Marketing Services – VGot You" />
+  {/* FIXED: twitter:title now matches <title> exactly */}
+  <meta name="twitter:title" content="Digital Marketing Services | SEO, Google Ads & Social Media – VGot You" />
   <meta
     name="twitter:description"
-    content="Performance-driven digital marketing services including SEO, PPC, and social media marketing by VGot You."
+    content="Performance-driven digital marketing services including SEO, Google Ads, Meta Ads and social media marketing by VGot You — India & UK."
   />
-  <meta name="twitter:image" content="https://www.vgotyou.com/assets/vgotyou.png" />
+  {/* FIXED: vgotyou.png → og-home.png */}
+  <meta name="twitter:image" content="https://www.vgotyou.com/assets/og-home.png" />
+  {/* FIXED: twitter:site and twitter:creator were missing */}
+  <meta name="twitter:site" content="@vgotyou" />
+  <meta name="twitter:creator" content="@vgotyou" />
 
-  {/* ================= SERVICE SCHEMA ================= */}
-  <script type="application/ld+json">
-    {JSON.stringify({
+  {/* ================= SCHEMA: WEB PAGE ================= */}
+  {/* ADDED: Was completely missing — links page into schema graph */}
+  <script type="application/ld+json">{`
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "@id": "https://www.vgotyou.com/digital-marketing#webpage",
+      "url": "https://www.vgotyou.com/digital-marketing",
+      "name": "Digital Marketing Services | SEO, Google Ads & Social Media – VGot You",
+      "description": "Performance-driven digital marketing services including SEO, Google Ads, Meta Ads, and social media marketing by VGot You for businesses across India and the UK.",
+      "inLanguage": "en-IN",
+      "isPartOf": {
+        "@id": "https://www.vgotyou.com/#website"
+      },
+      "publisher": {
+        "@id": "https://www.vgotyou.com/#organization"
+      },
+      "about": {
+        "@id": "https://www.vgotyou.com/digital-marketing#service"
+      }
+    }
+  `}</script>
+
+  {/* ================= SCHEMA: SERVICE ================= */}
+  
+  <script type="application/ld+json">{`
+    {
       "@context": "https://schema.org",
       "@type": "Service",
       "@id": "https://www.vgotyou.com/digital-marketing#service",
-      name: "Digital Marketing Services",
-      serviceType: "Online Marketing & Growth Strategy",
-      url: "https://www.vgotyou.com/digital-marketing",
-      description:
-        "Professional digital marketing services including SEO, PPC, social media marketing, and lead generation for businesses.",
-      provider: {
-        "@type": "Organization",
-        "@id": "https://www.vgotyou.com/#organization",
-        name: "VGot You",
-        url: "https://www.vgotyou.com/",
-        logo: "https://www.vgotyou.com/assets/vgotyou.png"
+      "name": "Digital Marketing Services",
+      "url": "https://www.vgotyou.com/digital-marketing",
+      "description": "Performance-driven digital marketing services including SEO, Google Ads PPC, Meta Ads, social media marketing, content marketing and lead generation for businesses across India and the UK.",
+      "serviceType": [
+        "Digital Marketing",
+        "Search Engine Optimization",
+        "Google Ads PPC Management",
+        "Meta Ads Management",
+        "Social Media Marketing",
+        "Content Marketing",
+        "Lead Generation",
+        "Performance Marketing",
+        "Remarketing",
+        "YouTube Advertising"
+      ],
+      "provider": {
+        "@id": "https://www.vgotyou.com/#localbusiness"
       },
-      areaServed: {
-        "@type": "AdministrativeArea",
-         name: "India"
+      "areaServed": [
+        { "@type": "Country", "name": "India" },
+        { "@type": "Country", "name": "United Kingdom" },
+        { "@type": "State", "name": "Tamil Nadu" }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Digital Marketing Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", "name": "Google Ads PPC Management" }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", "name": "Meta Ads Facebook Instagram Marketing" }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", "name": "SEO and Content Marketing" }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", "name": "Social Media Marketing" }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", "name": "Lead Generation Campaigns" }
+          }
+        ]
       }
-    })}
-  </script>
+    }
+  `}</script>
 
-  {/* ================= BREADCRUMB SCHEMA ================= */}
-  <script type="application/ld+json">
-    {JSON.stringify({
+  {/* ================= SCHEMA: FAQ PAGE ================= */}
+  
+  <script type="application/ld+json">{`
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the minimum ad spend required?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "At VGot You, we recommend a minimum daily ad spend of ₹1,000 for local campaigns and ₹3,000+ for national or international campaigns to ensure we have enough data to optimise effectively. Our management fee is separate from the ad spend."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long until we see positive ROI?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For Google Ads managed by VGot You, results are often visible within 7-14 days. Meta Ads typically require a 2-4 week learning phase for the algorithm to properly identify your target audience. Scaling usually happens after the first 30 days of data collection."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you handle creative (images and videos) for the ads?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. VGot You provides creative direction and design services for all ad sets. High-converting creative is 70% of the success in modern digital marketing, so we take this phase very seriously."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do you report the performance?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "VGot You provides real-time dashboard access plus detailed monthly reports covering ROAS (Return on Ad Spend), CPA (Cost Per Acquisition), and Lead Quality metrics."
+          }
+        }
+      ]
+    }
+  `}</script>
+
+  {/* ================= SCHEMA: BREADCRUMB ================= */}
+  
+  <script type="application/ld+json">{`
+    {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
-      itemListElement: [
+      "itemListElement": [
         {
           "@type": "ListItem",
-          position: 1,
-          name: "Home",
-          item: "https://www.vgotyou.com/"
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.vgotyou.com/"
         },
         {
           "@type": "ListItem",
-          position: 2,
-          name: "Digital Marketing",
-          item: "https://www.vgotyou.com/digital-marketing"
+          "position": 2,
+          "name": "Digital Marketing",
+          "item": "https://www.vgotyou.com/digital-marketing"
         }
       ]
-    })}
-  </script>
+    }
+  `}</script>
+
 </Helmet>
       <style>{`
         .text-technical { font-family: 'JetBrains Mono', 'Fira Code', monospace; }
@@ -206,12 +329,15 @@ const DigitalMarketing: React.FC = () => {
               <span className="text-zinc-800">VGot You:</span> <br/>
               Growth Engineered.
             </h1>
+            <h2 className="sr-only">
+            //   Digital Marketing Services – SEO, Google Ads & Social Media Marketing | VGot You
+            // </h2>
             <p className="text-base md:text-2xl text-zinc-500 font-light leading-relaxed mb-10 md:mb-16 max-w-4xl mx-auto px-4 md:px-0">
               <strong className="text-white font-bold">VGot You</strong> deploys data-driven <strong className="text-zinc-300">Digital Marketing</strong> strategies across <Link to="/web-design-india" className="text-zinc-400 hover:text-red-600 transition-colors underline decoration-zinc-800 underline-offset-4">India</Link>, <Link to="/web-design-tamil-nadu" className="text-zinc-400 hover:text-red-600 transition-colors underline decoration-zinc-800 underline-offset-4">Tamil Nadu</Link>, and <Link to="/web-design-karur" className="text-zinc-400 hover:text-red-600 transition-colors underline decoration-zinc-800 underline-offset-4">Karur</Link> that bridge the gap between high-intent traffic and consistent revenue.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6 md:gap-12">
-              <Link to="/contact" className="w-full sm:w-auto px-10 md:px-16 py-4 md:px-16 md:py-6 bg-red-600 text-white font-bold rounded-sm text-[10px] md:text-xs uppercase tracking-[0.4em] md:tracking-[0.5em] shadow-[0_0_50px_rgba(220,38,38,0.3)] hover:bg-red-500 transition-all hover:scale-105 active:scale-95">
+              <Link to="/contact?message=Hi VGot You, I'm interested in scaling my business with your digital marketing expertise. Let's discuss a strategy!" className="w-full sm:w-auto px-10 md:px-16 py-4 md:px-16 md:py-6 bg-red-600 text-white font-bold rounded-sm text-[10px] md:text-xs uppercase tracking-[0.4em] md:tracking-[0.5em] shadow-[0_0_50px_rgba(220,38,38,0.3)] hover:bg-red-500 transition-all hover:scale-105 active:scale-95">
                 Scale With VGot You
               </Link>
               <div className="text-technical text-[8px] md:text-[10px] text-zinc-600 uppercase tracking-widest text-left hidden sm:block border-l border-zinc-800 pl-10 leading-loose">
@@ -276,7 +402,7 @@ const DigitalMarketing: React.FC = () => {
             <div className="order-2 lg:order-1">
               <div className="relative aspect-video border border-zinc-900 bg-zinc-950 p-3 md:p-4 rounded-sm group overflow-hidden shadow-[0_0_40px_rgba(0,0,0,0.5)]">
                 <div className="absolute inset-0 bg-gradient-to-br from-red-600/10 to-transparent z-10"></div>
-                <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=2070&auto=format&fit=crop" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 opacity-40 group-hover:opacity-90" alt="Engineered Growth Strategy" />
+                <img src="https://www.vgotyou.com/assets/digital-marketing.jpg" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 opacity-40 group-hover:opacity-90" alt="Digital marketing strategy and performance analytics – VGot You" />
                 <div className="absolute bottom-4 left-4 right-4 md:bottom-10 md:left-10 md:right-10 bg-black/90 backdrop-blur-lg border border-zinc-800 p-4 md:p-6 z-20">
                    <div className="flex justify-between items-center mb-3 md:mb-4">
                      <span className="text-technical text-[6px] md:text-[8px] text-zinc-500 uppercase tracking-widest">VGot_You_Architecture_Status</span>
@@ -404,10 +530,10 @@ const DigitalMarketing: React.FC = () => {
           <div className="text-technical text-[8px] md:text-[10px] text-red-600 font-bold uppercase tracking-[0.4em] md:tracking-[0.5em] mb-10 md:mb-12">Action_Matrix: VGot_You_Scale_Request</div>
           <h2 className="text-[12vw] sm:text-[10vw] md:text-[8.5vw] font-black uppercase leading-[0.8] mb-12 md:mb-16 tracking-tighter">
             Ready to <br/>
-            <span className="text-zinc-800">Dominat_e.</span>
+            <span className="text-zinc-800">Dominate.</span>
           </h2>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-8 md:gap-10">
-            <Link to="/contact" className="relative w-full sm:w-auto px-10 md:px-16 py-5 md:py-6 bg-red-600 text-white font-bold rounded-sm text-xs md:text-sm uppercase tracking-[0.3em] md:tracking-[0.4em] shadow-[0_0_60px_rgba(220,38,38,0.4)] hover:scale-105 transition-all">
+            <Link to="/contact?message=Hi VGot You, I'm ready to dominate my market. I'd like to initialize a custom digital marketing strategy for my brand." className="relative w-full sm:w-auto px-10 md:px-16 py-5 md:py-6 bg-red-600 text-white font-bold rounded-sm text-xs md:text-sm uppercase tracking-[0.3em] md:tracking-[0.4em] shadow-[0_0_60px_rgba(220,38,38,0.4)] hover:scale-105 transition-all">
               Initialize VGot You Strategy
             </Link>
             <p className="text-technical text-[8px] md:text-[9px] text-zinc-600 uppercase tracking-widest text-left hidden sm:block border-l border-zinc-800 pl-10 leading-loose">
