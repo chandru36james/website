@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, lazy, Suspense, memo, useMemo } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { LinkedInIcon, GitHubIcon, InstagramIcon, GoogleIcon, MediumIcon } from '../components/common/Icons';
@@ -165,46 +165,56 @@ const STAT_ITEMS = [
   { val: 10, label: "Clients" },
 ];
 
-const HeroSection: React.FC = () => (
-  <section className="min-h-screen w-full relative flex flex-col overflow-hidden bg-black">
-    <Helmet>
-      <title>VGot You – Web Design, Branding & SEO Company in Karur, Tamil Nadu</title>
-      <meta name="description" content="Award-winning web design, branding & SEO company in Karur, Tamil Nadu. We build fast, SEO-ready websites for businesses across India & the UK. Get a free quote today." />
-      <meta name="author" content="VGot You" />
-      <meta name="robots" content="index, follow" />
-      <link rel="canonical" href="https://www.vgotyou.com/" />
-      <link rel="alternate" hrefLang="en-IN" href="https://www.vgotyou.com/" />
-      <link rel="alternate" hrefLang="en-GB" href="https://www.vgotyou.com/web-design-uk" />
-      <link rel="alternate" hrefLang="x-default" href="https://www.vgotyou.com/" />
-      <meta property="og:type" content="website" />
-      <meta property="og:site_name" content="VGot You" />
-      <meta property="og:title" content="VGot You – Web Design, Branding & SEO Company in Karur, Tamil Nadu" />
-      <meta property="og:description" content="Award-winning web design, branding & SEO company in Karur, Tamil Nadu. We build fast, SEO-ready websites for businesses across India & the UK. Get a free quote today." />
-      <meta property="og:url" content="https://www.vgotyou.com/" />
-      <meta property="og:image" content="https://www.vgotyou.com/assets/og-home.png" />
-      <meta property="og:image:width" content="1200" />
-      <meta property="og:image:height" content="630" />
-      <meta property="og:image:alt" content="VGot You – Web Design & SEO Company in Karur, Tamil Nadu" />
-      <meta property="og:locale" content="en_IN" />
-      <meta property="og:locale:alternate" content="en_GB" />
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content="VGot You – Web Design, Branding & SEO Company in Karur, Tamil Nadu" />
-      <meta name="twitter:description" content="Award-winning web design, branding & SEO company in Karur, Tamil Nadu. Fast, SEO-ready websites for businesses across India & the UK." />
-      <meta name="twitter:image" content="https://www.vgotyou.com/assets/og-home.png" />
-      <meta name="twitter:site" content="@vgotyou" />
-      <meta name="twitter:creator" content="@vgotyou" />
-      <script type="application/ld+json">{SCHEMA_ORGANIZATION}</script>
-      <script type="application/ld+json">{SCHEMA_LOCAL_BUSINESS}</script>
-      <script type="application/ld+json">{SCHEMA_WEBSITE}</script>
-      <script type="application/ld+json">{SCHEMA_SERVICES}</script>
-      <script type="application/ld+json">{SCHEMA_BREADCRUMB}</script>
-      <script type="application/ld+json">{SCHEMA_FAQ}</script>
-    </Helmet>
+//─── video ─────────────────────────────────────────────────────────────
+const HeroSection: React.FC = () => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.playbackRate = 0.7; // 1 = normal, 0.7 = slower
+    }
+  }, []);
+
+  return (
+    <section className="min-h-screen w-full relative flex flex-col overflow-hidden bg-black">
+      <Helmet>
+        <title>VGot You – Web Design, Branding & SEO Company in Karur, Tamil Nadu</title>
+        <meta name="description" content="Award-winning web design, branding & SEO company in Karur, Tamil Nadu. We build fast, SEO-ready websites for businesses across India & the UK. Get a free quote today." />
+        <meta name="author" content="VGot You" />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://www.vgotyou.com/" />
+        <link rel="alternate" hrefLang="en-IN" href="https://www.vgotyou.com/" />
+        <link rel="alternate" hrefLang="en-GB" href="https://www.vgotyou.com/web-design-uk" />
+        <link rel="alternate" hrefLang="x-default" href="https://www.vgotyou.com/" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="VGot You" />
+        <meta property="og:title" content="VGot You – Web Design, Branding & SEO Company in Karur, Tamil Nadu" />
+        <meta property="og:description" content="Award-winning web design, branding & SEO company in Karur, Tamil Nadu. We build fast, SEO-ready websites for businesses across India & the UK. Get a free quote today." />
+        <meta property="og:url" content="https://www.vgotyou.com/" />
+        <meta property="og:image" content="https://www.vgotyou.com/assets/og-home.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="VGot You – Web Design & SEO Company in Karur, Tamil Nadu" />
+        <meta property="og:locale" content="en_IN" />
+        <meta property="og:locale:alternate" content="en_GB" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="VGot You – Web Design, Branding & SEO Company in Karur, Tamil Nadu" />
+        <meta name="twitter:description" content="Award-winning web design, branding & SEO company in Karur, Tamil Nadu. Fast, SEO-ready websites for businesses across India & the UK." />
+        <meta name="twitter:image" content="https://www.vgotyou.com/assets/og-home.png" />
+        <meta name="twitter:site" content="@vgotyou" />
+        <meta name="twitter:creator" content="@vgotyou" />
+        <script type="application/ld+json">{SCHEMA_ORGANIZATION}</script>
+        <script type="application/ld+json">{SCHEMA_LOCAL_BUSINESS}</script>
+        <script type="application/ld+json">{SCHEMA_WEBSITE}</script>
+        <script type="application/ld+json">{SCHEMA_SERVICES}</script>
+        <script type="application/ld+json">{SCHEMA_BREADCRUMB}</script>
+        <script type="application/ld+json">{SCHEMA_FAQ}</script>
+      </Helmet>
 
     
 
 {/* Video Background */}
 <video
+  ref={videoRef}
   autoPlay
   loop
   muted
@@ -221,38 +231,28 @@ const HeroSection: React.FC = () => (
 
     {/* Main content */}
     <div className="relative z-20 container mx-auto px-6 md:px-12 flex flex-col items-center justify-start min-h-screen pt-40 md:pt-52 pb-20 md:pb-32 text-center">
-      <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="mb-8"
-      >
-        <span className="inline-block px-5 py-2 rounded-full bg-white/10 border border-white/10 backdrop-blur-md text-[10px] md:text-xs font-bold tracking-[0.35em] text-red-400 uppercase">
-          Web Design & SEO Company
-        </span>
-      </motion.div>
-      <motion.h1
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, delay: 0.1 }}
-        className="text-[clamp(3rem,14vw,6rem)] leading-[0.85] font-black tracking-tighter text-white mb-6"
-      >
-        VGot You
-      </motion.h1>
+      
 
-      <motion.p
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, delay: 0.2 }}
-        className="max-w-300 mx-auto text-zinc-400 text-sm md:text-base leading-relaxed mb-10"
-      >
-        Crafting <span className="text-white font-semibold">Professional Websites</span>,{' '}
-        <span className="text-white font-semibold">Branding</span> &{' '}
-        <span className="text-white font-semibold">SEO</span> for businesses in{' '}
-        <span className="text-red-500 font-bold">India</span> &amp; Worldwide.
-       
-      </motion.p>
+<div className="flex flex-col items-center text-center">
 
+  <motion.p className="mb-6">
+    <span className="inline-block px-3 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm text-[9px] md:text-[10px] font-semibold tracking-[0.25em] text-red-400/80 uppercase">
+      Web Design & SEO Company in India
+    </span>
+  </motion.p>
+
+  <motion.h1 className="text-[clamp(3.5rem,15vw,7rem)] leading-[0.85] font-black tracking-tight text-white mb-4">
+    VGot You
+  </motion.h1>
+
+  <motion.p className="max-w-300 mx-auto text-zinc-400 text-sm md:text-base leading-relaxed mb-10">
+    We build <span className="text-white font-semibold">high-converting websites</span>,{' '}
+    <span className="text-white font-semibold">powerful branding</span> &{' '}
+    <span className="text-white font-semibold">result-driven SEO</span> for businesses across{' '}
+    <span className="text-red-500 font-bold">India</span> and beyond.
+  </motion.p>
+
+</div>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -263,16 +263,16 @@ const HeroSection: React.FC = () => (
           href={WHATSAPP_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="group inline-flex items-center gap-3 bg-red-600 hover:bg-red-600 text-white font-bold px-8 py-4 rounded-full shadow-xl shadow-red-500/20 transition-all duration-300 hover:scale-105 active:scale-95 text-sm uppercase tracking-wider"
+          className="group inline-flex items-center gap-3 bg-red-600 hover:bg-red-600 text-white font-bold px-5 py-2.5 sm:px-8 sm:py-4 rounded-full shadow-xl shadow-red-500/20 transition-all duration-300 hover:scale-105 active:scale-95 text-[11px] sm:text-sm uppercase tracking-wider"
         >
-          <WhatsAppIcon className="w-5 h-5" />
+          <WhatsAppIcon className="w-3.5 h-3.5 sm:w-5 sm:h-5" />
           Get a Free Quote
         </a>
         <Link to="/portfolio"
-          className="group inline-flex items-center gap-3 border border-white/20 hover:border-white/60 text-white font-bold px-8 py-4 rounded-full transition-all duration-300 hover:bg-white/5 text-sm uppercase tracking-wider"
+          className="group inline-flex items-center gap-3 border border-white/20 hover:border-white/60 text-white font-bold px-4 py-2 sm:px-8 sm:py-4 rounded-full transition-all duration-300 hover:bg-white/5 text-[9px] sm:text-sm uppercase tracking-wider"
         >
           View Our Work
-          <ArrowRightIcon className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+          <ArrowRightIcon className="w-2.5 h-2.5 sm:w-4 sm:h-4 transition-transform group-hover:translate-x-1" />
         </Link>
       </motion.div>
 
@@ -339,7 +339,8 @@ const HeroSection: React.FC = () => (
       </div>
     </div>
   </section>
-);
+  );
+};
 
 // ─── SERVICES BENTO ───────────────────────────────────────────────────────────
 const ServicesBento: React.FC = () => (

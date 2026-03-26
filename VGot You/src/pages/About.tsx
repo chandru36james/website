@@ -20,7 +20,7 @@ const About: React.FC = () => {
             socials: {
                 linkedin: "https://www.linkedin.com/in/chandru-m7339436153/",
                 github: "https://github.com/chandru36james/",
-                instagram: ""
+                instagram: "https://www.instagram.com/chandru_m_._/"
             }
         },
         {
@@ -29,11 +29,11 @@ const About: React.FC = () => {
             description: "Specializes in scalable web development, cloud infrastructure, and digital growth strategies.",
             image: "/assets/saran.png",
             alt: "Saranraj – Co-Founder and Tech Lead of VGot You",
-            link: "/saran-raj", // Placeholder link
+            link: "/saran-raj",
             socials: {
                 linkedin: "https://www.linkedin.com/in/saranraj-vasanthi-297ba625a/",
                 github: "https://github.com/Saran830",
-                instagram: ""
+                instagram: "https://www.instagram.com/saranraj_vasanthi/"
             }
         }
     ];

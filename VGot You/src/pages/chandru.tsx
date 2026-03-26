@@ -10,7 +10,7 @@ const AboutMe: React.FC = () => {
     const skillSets = [
         {
             category: "Development",
-            icon: <img src="https://www.vgotyou.com/assets/development.png" alt="Development" className="w-8 h-8 object-contain " />,
+            icon: <img src="/assets/development.png" alt="Development" className="w-8 h-8 object-contain " />,
             description: "Building fast, SEO-optimized, scalable web applications."
 ,
             skills: ["React", "TypeScript", "Next.js", "Node.js", "Tailwind", "SQL"]
@@ -24,7 +24,7 @@ const AboutMe: React.FC = () => {
         },
         {
              category: "Strategy",
-            icon: <img src="https://www.vgotyou.com/assets/strategy.png" alt="Strategy" className="w-8 h-8 object-contain dark:invert" />,
+            icon: <img src="/assets/strategy.png" alt="Strategy" className="w-8 h-8 object-contain dark:invert" />,
             description: "Driving business growth through SEO, branding, and digital strategy."
 ,
             skills: ["SEO", "Branding", "Analytics", "Content Strategy"]
@@ -221,13 +221,13 @@ const AboutMe: React.FC = () => {
 
                         <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
                         <a 
-  href="https://wa.me/917871120415?text=Hi%20chandru,%20I%20found%20VGot%20You%20and%20I%E2%80%99m%20interested%20in%20discussing%20a%20project."
-  target="_blank"
-  rel="noopener noreferrer"
-  className="px-8 py-4 bg-black dark:bg-white text-white dark:text-black font-bold rounded-full hover:bg-red-600 hover:text-white hover:scale-105 transition-all duration-300 shadow-lg"
->
-  Work With Me
-</a>
+                            href="https://wa.me/917871120415?text=Hi%20chandru,%20I%20found%20VGot%20You%20and%20I%E2%80%99m%20interested%20in%20discussing%20a%20project."
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-8 py-4 bg-black dark:bg-white text-white dark:text-black font-bold rounded-full hover:bg-red-600 hover:text-white hover:scale-105 transition-all duration-300 shadow-lg"
+                            >
+                            Work With Me
+                        </a>
                             <div className="flex gap-2">
                                 {[
                                     { icon: LinkedInIcon, href: "https://www.linkedin.com/in/chandru-m7339436153/", label: "LinkedIn" },
@@ -258,7 +258,7 @@ const AboutMe: React.FC = () => {
                     >
                         <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl border border-gray-100 dark:border-zinc-800">
                              <img 
-                                src="https://www.vgotyou.com/assets/chandru.png" 
+                                src="/assets/chandru.png" 
                                 alt="Chandru – Founder and Lead Web Designer of VGot You in Karur, Tamil Nadu"
                                 className="w-full h-full object-cover"
                                 fetchPriority="high"
@@ -341,7 +341,7 @@ const AboutMe: React.FC = () => {
                     </div>
                     
                     <div className="relative z-10 max-w-4xl mx-auto">
-                        <img src="https://vgotyou.com/assets/bulb.png" alt="Philosophy" className="w-16 h-16 mx-auto mb-8 animate-pulse object-contain" />
+                        <img src="/assets/bulb.png" alt="Philosophy" className="w-16 h-16 mx-auto mb-8 animate-pulse object-contain" />
                         <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif font-bold mb-8 leading-tight">"Simplicity is the ultimate sophistication."</h2>
                         <p className="text-gray-400 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto">
                             I believe great design is invisible. When UI, UX, branding, and performance work in harmony, users instantly build trust and take action without friction.

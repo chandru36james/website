@@ -11,22 +11,34 @@
     <link rel="manifest" href="/assets/site.webmanifest" />
     <meta name="theme-color" content="#ffffff" />
     
-    <!-- Consent Mode Defaults -->
+    <!-- Google Analytics + Consent Mode (Correct Setup) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XRBQTY2DLC"></script>
+
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      
+
+      // Check saved consent
       var savedConsent = localStorage.getItem('vgotyou-cookie-consent');
-      
+
+      // Default consent (before user choice)
       gtag('consent', 'default', {
         'ad_storage': savedConsent === 'accepted' ? 'granted' : 'denied',
         'analytics_storage': savedConsent === 'accepted' ? 'granted' : 'denied',
         'personalization_storage': savedConsent === 'accepted' ? 'granted' : 'denied',
         'functionality_storage': 'granted',
-        'security_storage': 'granted',
-        'wait_for_update': 500
+        'security_storage': 'granted'
       });
+
+      // Init GA
+      gtag('js', new Date());
+
+      // Only track if already accepted
+      if (savedConsent === 'accepted') {
+        gtag('config', 'G-XRBQTY2DLC');
+      }
     </script>
+
 
     <script>
       window.process = window.process || { env: { API_KEY: "" } };

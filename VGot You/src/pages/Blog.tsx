@@ -76,15 +76,7 @@ const Blog: React.FC = () => {
   <meta name="twitter:creator" content="@vgotyou" />
 
   {/* ================= SCHEMA: BLOG ================= */}
-  {/*
-    FIXED:
-    - publisher now references @id instead of repeating full Organization inline
-    - about removed — was creating duplicate conflicting LocalBusiness + Service
-      entities that contradict your homepage schema graph
-    - Added inLanguage
-    - Added isPartOf linking to WebSite
-    - logo now uses consistent vgotyou.png via @id reference
-  */}
+  
   <script type="application/ld+json">{`
     {
       "@context": "https://schema.org",

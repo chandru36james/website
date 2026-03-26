@@ -376,7 +376,7 @@ const WebDesignTN: React.FC = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-[#020202] via-transparent to-transparent"></div>
         
         <div className="absolute right-0 top-0 w-full h-full opacity-20 pointer-events-none">
-          <img src="https://www.vgotyou.com/assets/tamil-nadu-hero.jpg" alt="Digital web design services for Tamil Nadu businesses – VGot You" className="w-full h-full object-cover grayscale" />
+          <img src="/assets/tamil-nadu-hero.jpg" alt="Digital web design services for Tamil Nadu businesses – VGot You" className="w-full h-full object-cover grayscale" />
         </div>
 
         <div className="relative z-10 container mx-auto px-6 max-w-7xl">

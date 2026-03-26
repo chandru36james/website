@@ -20,7 +20,7 @@ const portfolioProjects: LocalProject[] = [
         id: '1',
         title: 'Rudhraa Exim',
         category: 'B2B Exports',
-        imageUrl: 'https://www.vgotyou.com/assets/portfolio/9.jpg',
+        imageUrl: '/assets/portfolio/9.jpg',
         liveUrl: 'https://rudhraaexportsandimports.com/',
         alt: 'Rudhraa Exim B2B export and import company website'
     },
@@ -28,7 +28,7 @@ const portfolioProjects: LocalProject[] = [
         id: '2',
         title: 'Oskar',
         category: 'Freelancer',
-        imageUrl: 'https://www.vgotyou.com/assets/portfolio/1.jpg',
+        imageUrl: '/assets/portfolio/1.jpg',
         liveUrl: 'https://oskardesigner.netlify.app/',
         alt: 'freelance services website designer portfolio'
     },
@@ -36,7 +36,7 @@ const portfolioProjects: LocalProject[] = [
         id: '3',
         title: 'Bloomgreen Developers',
         category: 'Construction & Interior',
-        imageUrl: 'https://www.vgotyou.com/assets/portfolio/4.jpg',
+        imageUrl: '/assets/portfolio/4.jpg',
         liveUrl: 'https://bloomgreendevs.netlify.app/',
         alt: 'Bloomgreen Developers construction and interior design website'
     },
@@ -44,7 +44,7 @@ const portfolioProjects: LocalProject[] = [
         id: '4',
         title: 'Akshaya Travels',
         category: 'Travels Services',
-        imageUrl: 'https://www.vgotyou.com/assets/portfolio/8.jpg',
+        imageUrl: '/assets/portfolio/8.jpg',
         liveUrl: 'https://akshayatoursandtravels.com/',
         alt: 'Akshaya Tours and Travels booking and services website'
     },
@@ -52,7 +52,7 @@ const portfolioProjects: LocalProject[] = [
         id: '5',
         title: 'eNno',
         category: 'Service Provider',
-        imageUrl: 'https://www.vgotyou.com/assets/portfolio/2.jpg',
+        imageUrl: '/assets/portfolio/2.jpg',
         liveUrl: 'https://ennodesign.netlify.app/',
         alt: 'web design and digital marketing service provider website'
     },
@@ -60,7 +60,7 @@ const portfolioProjects: LocalProject[] = [
         id: '6',
         title: 'VesaHomes',
         category: 'E-commerce',
-        imageUrl: 'https://www.vgotyou.com/assets/portfolio/7.jpg',
+        imageUrl: '/assets/portfolio/7.jpg',
         liveUrl: 'https://vesahomes.com/',
         alt: 'VesaHomes home textile website'
     },
@@ -68,7 +68,7 @@ const portfolioProjects: LocalProject[] = [
         id: '7',
         title: 'Destech Industry',
         category: 'B2B Services',
-        imageUrl: 'https://www.vgotyou.com/assets/portfolio/3.jpg',
+        imageUrl: '/assets/portfolio/3.jpg',
         liveUrl: 'https://destechindustry.netlify.app/',
         alt: 'Destech Industry B2B industrial services website'
     },
@@ -76,7 +76,7 @@ const portfolioProjects: LocalProject[] = [
         id: '8',
         title: 'Arctic Textiles',
         category: 'B2B Manufacturing',
-        imageUrl: 'https://www.vgotyou.com/assets/portfolio/10.jpg',
+        imageUrl: '/assets/portfolio/10.jpg',
         liveUrl: 'https://arctictextiles.com/',
         alt: 'Arctic Textiles B2B textile manufacturing company website'
     },
@@ -84,7 +84,7 @@ const portfolioProjects: LocalProject[] = [
         id: '9',
         title: 'INDICO',
         category: 'Construction & Real Estate',
-        imageUrl: 'https://www.vgotyou.com/assets/portfolio/5.jpg',
+        imageUrl: '/assets/portfolio/5.jpg',
         liveUrl: 'https://indicobuilds.netlify.app/',
         alt: 'INDICO construction and real estate company website'
     },
@@ -92,9 +92,17 @@ const portfolioProjects: LocalProject[] = [
         id: '10',
         title: 'Violet Store',
         category: 'E-commerce',
-        imageUrl: 'https://www.vgotyou.com/assets/portfolio/6.jpg',
+        imageUrl: '/assets/portfolio/6.jpg',
         liveUrl: 'https://violet-scorpion-690121.hostingersite.com/',
         alt: 'Violet Store ecommerce fashion and retail website'
+    },
+    {
+        id: '11',
+        title: 'Advocate Ranjith',
+        category: 'Legal Services',
+        imageUrl: '/assets/portfolio/11.jpg',
+        liveUrl: 'https://advocateranjith.netlify.app/',
+        alt: 'Advocate Ranjith legal services website'
     }
 ];
 
@@ -217,11 +225,7 @@ const Portfolio: React.FC = () => {
   <meta name="twitter:creator" content="@vgotyou" />
 
   {/* ================= SCHEMA: COLLECTION PAGE ================= */}
-  {/*
-    FIXED:
-    - Added @id, url, inLanguage, publisher
-    - Linked properly into website schema graph via isPartOf
-  */}
+ 
   <script type="application/ld+json">{`
     {
       "@context": "https://schema.org",
@@ -241,12 +245,7 @@ const Portfolio: React.FC = () => {
   `}</script>
 
   {/* ================= SCHEMA: ITEM LIST ================= */}
-  {/*
-    ADDED: ItemList with all 10 portfolio projects as CreativeWork entries.
-    This is a major SEO opportunity — Google can surface individual
-    projects in search results and image search directly.
-    Each project links to its live URL as the primary reference.
-  */}
+ 
   <script type="application/ld+json">{`
     {
       "@context": "https://schema.org",
@@ -385,6 +384,18 @@ const Portfolio: React.FC = () => {
             "image": "https://www.vgotyou.com/assets/portfolio/6.jpg",
             "creator": { "@id": "https://www.vgotyou.com/#organization" },
             "genre": "E-commerce"
+          },
+          {
+          "@type": "ListItem",
+          "position": 11,
+          "item": {
+            "@type": "CreativeWork",
+            "name": "Ranjith Advocate",
+            "description": "Legal services website for Advocate Ranjith.",
+            "url": "https://advocateranjith.netlify.app/",
+            "image": "https://www.vgotyou.com/assets/portfolio/11.jpg",
+            "creator": { "@id": "https://www.vgotyou.com/#organization" },
+            "genre": "Legal Services"
           }
         }
       ]

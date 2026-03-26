@@ -107,9 +107,9 @@ const Contact: React.FC = () => {
     ];
 
     const clientImages = [
-        "https://www.vgotyou.com/assets/venkat.png",
-        "https://www.vgotyou.com/assets/santhosh.png",
-        "https://www.vgotyou.com/assets/aravind.png"
+        "/assets/venkat.png",
+        "/assets/santhosh.png",
+        "/assets/aravind.png"
     ];
 
     return (
@@ -173,13 +173,7 @@ const Contact: React.FC = () => {
   <meta name="twitter:creator" content="@vgotyou" />
 
   {/* ================= SCHEMA: CONTACT PAGE ================= */}
-  {/*
-    FIXED:
-    - about now references @id only — no inline LocalBusiness object
-    - Added isPartOf linking into website schema graph
-    - Added inLanguage
-    - Added publisher reference
-  */}
+  
   <script type="application/ld+json">{`
     {
       "@context": "https://schema.org",
@@ -202,15 +196,7 @@ const Contact: React.FC = () => {
   `}</script>
 
   {/* ================= SCHEMA: CONTACT POINTS ================= */}
-  {/*
-    FIXED:
-    - Separated from ContactPage — cleaner, avoids inline object conflicts
-    - FIXED: contactType "Sales & Support" → valid Schema.org values
-    - ADDED: UK phone number was completely missing
-    - Both India and UK contact points now present
-    - email added to both contact points
-    - areaServed added per contact point
-  */}
+  
   <script type="application/ld+json">{`
     {
       "@context": "https://schema.org",
@@ -272,9 +258,9 @@ const Contact: React.FC = () => {
             <section className="h-[35vh] md:h-[50vh] w-full relative flex items-center justify-center text-center overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <img 
-                        src="https://vgotyou.com/assets/contact-banner.png" 
+                        src="/assets/contact-banner.png" 
                         alt="Contact Banner" 
-                        className="w-full h-full object-cover opacity-30 grayscale"
+                        className="w-full h-full object-cover opacity-60 grayscale"
                     />
                     <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-black"></div>
                 </div>

@@ -280,8 +280,8 @@ const Header: React.FC = () => {
                                 </m.div>
 
                                 <m.div variants={linkVariants}>
-                                    <NavLink to="/portfolio" onClick={() => setIsMenuOpen(false)} className={({isActive}) => `block transition-colors ${isActive ? 'text-red-600' : 'text-zinc-500 hover:text-white'}`}>
-                                        <span className="text-xs font-mono mr-4 text-zinc-800">04</span>PORTFOLIO
+                                    <NavLink to="/blog" onClick={() => setIsMenuOpen(false)} className={({isActive}) => `block transition-colors ${isActive ? 'text-red-600' : 'text-zinc-500 hover:text-white'}`}>
+                                        <span className="text-xs font-mono mr-4 text-zinc-800">04</span>BLOG
                                     </NavLink>
                                 </m.div>
 

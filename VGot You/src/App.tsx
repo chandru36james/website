@@ -50,7 +50,8 @@ import UKDigitalMarketing from './pages/UK/UKDigitalMarketing';
 
 import BlogPostPage from './pages/BlogPostPage';
 
-declare global {
+
+declare global {  
   interface Window {
     gtag?: (...args: any[]) => void;
   }
@@ -94,9 +95,10 @@ export default function App() {
       {!isLoading && (
         <>
           <Header />
-
+          
           <main className="grow pt-0">
             <Routes>
+            
               <Route path="/" element={<Home />} />
               <Route path="/web-design" element={<WebDesign />} />
               <Route path="/logo-showcase" element={<LogoShowcase />} />
@@ -145,6 +147,7 @@ export default function App() {
           </main>
 
           <Footer />
+          
           <CookieConsent />
           <FloatingWidgets />
         </>

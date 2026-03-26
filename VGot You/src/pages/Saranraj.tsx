@@ -16,7 +16,7 @@ const SaranrajProfile: React.FC = () => {
         },
         {
             category: "Data & Analytics",
-            icon: <img src="https://www.vgotyou.com/assets/strategy.png" alt="Data" className="w-8 h-8 object-contain" />,
+            icon: <img src="/assets/strategy.png" alt="Data" className="w-8 h-8 object-contain" />,
             description: "Extracting insights and visualizing complex data patterns.",
             skills: ["Data Analysis", "Tableau", "Prediction Models", "Feature Engineering"]
         },
@@ -218,7 +218,7 @@ const SaranrajProfile: React.FC = () => {
                     >
                         <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl border border-zinc-100 bg-white">
                              <img 
-                                src="https://www.vgotyou.com/assets/saran.png" 
+                                src="/assets/saran.png" 
                                 alt="Saranraj Vasanthi – Co-Founder of VGot You"
                                 className="w-full h-full object-cover"
                                 referrerPolicy="no-referrer"
@@ -246,7 +246,7 @@ const SaranrajProfile: React.FC = () => {
                         </p>
 
                         <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-                            <a href="https://wa.me/917871120415?text=Hi%20Saranraj,%20I%20found%20VGot%20You%20and%20I%E2%80%99m%20interested%20in%20discussing%20a%20project."
+                            <a href="https://wa.me/+447351736645?text=Hi%20Saranraj,%20I%20found%20VGot%20You%20and%20I%E2%80%99m%20interested%20in%20discussing%20a%20project."
                             target="_blank"
                             rel="noopener noreferrer"
                             className="px-8 py-4 bg-zinc-900 text-white font-bold rounded-full hover:scale-105 transition-transform shadow-lg hover:bg-red-600">
