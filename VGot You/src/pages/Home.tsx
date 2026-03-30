@@ -59,7 +59,7 @@ const SCHEMA_LOCAL_BUSINESS = JSON.stringify({
   "name": "VGot You",
   "url": "https://www.vgotyou.com/",
   "logo": "https://www.vgotyou.com/assets/vgotyou.png",
-  "image": "https://www.vgotyou.com/assets/og-home.png",
+  "image": "https://www.vgotyou.com/assets/vgotyou.png",
   "description": "Web design, branding, and SEO company in Karur, Tamil Nadu, India, serving clients across India and the UK.",
   "telephone": "+917871120415",
   "priceRange": "₹₹",
@@ -178,7 +178,7 @@ const HeroSection: React.FC = () => {
     <section className="min-h-screen w-full relative flex flex-col overflow-hidden bg-black">
       <Helmet>
         <title>VGot You – Web Design, Branding & SEO Company in Karur, Tamil Nadu</title>
-        <meta name="description" content="Award-winning web design, branding & SEO company in Karur, Tamil Nadu. We build fast, SEO-ready websites for businesses across India & the UK. Get a free quote today." />
+        <meta name="description" content="Professional website design and development for businesses in India, UK and worldwide. VGot You builds modern, fast and high-converting websites at affordable pricing." />
         <meta name="author" content="VGot You" />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://www.vgotyou.com/" />
@@ -190,7 +190,7 @@ const HeroSection: React.FC = () => {
         <meta property="og:title" content="VGot You – Web Design, Branding & SEO Company in Karur, Tamil Nadu" />
         <meta property="og:description" content="Award-winning web design, branding & SEO company in Karur, Tamil Nadu. We build fast, SEO-ready websites for businesses across India & the UK. Get a free quote today." />
         <meta property="og:url" content="https://www.vgotyou.com/" />
-        <meta property="og:image" content="https://www.vgotyou.com/assets/og-home.png" />
+        <meta property="og:image" content="https://www.vgotyou.com/assets/vgotyou.png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="VGot You – Web Design & SEO Company in Karur, Tamil Nadu" />
@@ -199,7 +199,7 @@ const HeroSection: React.FC = () => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="VGot You – Web Design, Branding & SEO Company in Karur, Tamil Nadu" />
         <meta name="twitter:description" content="Award-winning web design, branding & SEO company in Karur, Tamil Nadu. Fast, SEO-ready websites for businesses across India & the UK." />
-        <meta name="twitter:image" content="https://www.vgotyou.com/assets/og-home.png" />
+        <meta name="twitter:image" content="https://www.vgotyou.com/assets/vgotyou.png" />
         <meta name="twitter:site" content="@vgotyou" />
         <meta name="twitter:creator" content="@vgotyou" />
         <script type="application/ld+json">{SCHEMA_ORGANIZATION}</script>

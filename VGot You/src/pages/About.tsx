@@ -10,33 +10,35 @@ const About: React.FC = () => {
     const googleBusinessUrl = "https://www.google.com/search?q=VGot+You+%E2%80%93+Web+Design+Company+in+karur&stick=H4sIAAAAAAAA_-NgU1I1qEhMMzVLMzNJtjS3NDY2MTK3MqhISjQ1TU6zMLGwME4xTjNKXsSqEeaeX6IQmV-q8KhhskJ4apKCS2pxZnqegnN-bkFiXqVCZp5CdmJRaREAmWh1LVQAAAA&hl=en&mat=CTYW_efeDqo4ElcBTVDHnjSrL1i_VTCa8_kuXYpK1iyu8maHPcIxMv-VA5S0wxGQN2FTkjTuTCQOIc3qOOv2BGOZtzpI4JPgrHCDZf5fjf6TpSzgZ-TLIOOTRC7snP24iCY&authuser=0";
 
     const founders = [
-        {
-            name: "Chandru",
-            title: "Founder & Lead Designer",
-            description: "Expert in high-performance websites, UI/UX design, branding, and SEO with over 2 years of experience.",
-            image: "/assets/chandru.png",
-            alt: "Chandru – Founder and Web Designer  of VGot You",
-            link: "/chandru",
-            socials: {
-                linkedin: "https://www.linkedin.com/in/chandru-m7339436153/",
-                github: "https://github.com/chandru36james/",
-                instagram: "https://www.instagram.com/chandru_m_._/"
-            }
-        },
-        {
-            name: "Saranraj",
-            title: "Co-Founder & Tech Lead",
-            description: "Specializes in scalable web development, cloud infrastructure, and digital growth strategies.",
-            image: "/assets/saran.png",
-            alt: "Saranraj – Co-Founder and Tech Lead of VGot You",
-            link: "/saran-raj",
-            socials: {
-                linkedin: "https://www.linkedin.com/in/saranraj-vasanthi-297ba625a/",
-                github: "https://github.com/Saran830",
-                instagram: "https://www.instagram.com/saranraj_vasanthi/"
-            }
+    {
+        name: "Chandru",
+        title: "Founder & Lead Designer",
+        description: "Expert in high-performance websites, UI/UX design, branding, and SEO with over 2 years of experience.",
+        image: "/assets/chandru.png",
+        alt: "Chandru – Founder and Web Designer of VGot You",
+        link: "/chandru",
+        flag: "https://flagcdn.com/in.svg", // 🇮🇳 India
+        socials: {
+            linkedin: "https://www.linkedin.com/in/chandru-m7339436153/",
+            github: "https://github.com/chandru36james/",
+            instagram: "https://www.instagram.com/chandru_m_._/"
         }
-    ];
+    },
+    {
+        name: "Saranraj",
+        title: "Co-Founder & Tech Lead",
+        description: "Specializes in scalable web development, cloud infrastructure, and digital growth strategies.",
+        image: "/assets/saran.png",
+        alt: "Saranraj – Co-Founder and Tech Lead of VGot You",
+        link: "/saran-raj",
+        flag: "https://flagcdn.com/gb.svg", // 🇬🇧 UK
+        socials: {
+            linkedin: "https://www.linkedin.com/in/saranraj-vasanthi-297ba625a/",
+            github: "https://github.com/Saran830",
+            instagram: "https://www.instagram.com/saranraj_vasanthi/"
+        }
+    }
+];
 
     const services = [
         "Website Design",
@@ -107,8 +109,8 @@ const About: React.FC = () => {
           content="Meet the team behind VGot You — a web design & digital solutions company founded in Karur, Tamil Nadu by Chandru and Saranraj Vasanthi. We build high-performance websites, branding & SEO solutions for businesses across India and the UK."
         />
         <meta property="og:url" content="https://www.vgotyou.com/about" />
-        {/* FIXED: Consistent og-home.png across all pages */}
-        <meta property="og:image" content="https://www.vgotyou.com/assets/og-home.png" />
+        {/* FIXED: Consistent vgotyou.png across all pages */}
+        <meta property="og:image" content="https://www.vgotyou.com/assets/vgotyou.png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         {/* FIXED: og:image:alt was missing */}
@@ -125,21 +127,13 @@ const About: React.FC = () => {
           name="twitter:description"
           content="Meet the team behind VGot You — founded in Karur, Tamil Nadu by Chandru and Saranraj Vasanthi. High-performance websites, branding & SEO for businesses across India and the UK."
         />
-        <meta name="twitter:image" content="https://www.vgotyou.com/assets/og-home.png" />
+        <meta name="twitter:image" content="https://www.vgotyou.com/assets/vgotyou.png" />
         {/* FIXED: twitter:site and twitter:creator were missing */}
         <meta name="twitter:site" content="@vgotyou" />
         <meta name="twitter:creator" content="@vgotyou" />
 
         {/* ================= SCHEMA: ORGANIZATION ================= */}
-        {/*
-          FIXED:
-          - foundingDate corrected to "2024" (was "2022" on homepage — now consistent)
-          - "founders" → "founder" (correct Schema.org property name)
-          - Added GoodFirms to sameAs (was missing here, present on homepage)
-          - Added PeoplePerHour to homepage sameAs too (keep in sync)
-          - Consistent logo ImageObject with dimensions
-          - Added contactPoint for both India + UK phones
-        */}
+       
         <script type="application/ld+json">{`
           {
             "@context": "https://schema.org",
@@ -374,14 +368,25 @@ const About: React.FC = () => {
                                 transition={{ duration: 0.5, delay: idx * 0.1 }}
                                 className="bg-white p-8 rounded-[2rem] shadow-sm border border-zinc-100 hover:shadow-xl transition-all duration-300 group"
                             >
-                                <div className="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-zinc-50 group-hover:border-red-600/20 transition-colors">
-                                    <img 
-                                        src={founder.image} 
-                                        alt={founder.name} 
-                                        className="w-full h-full object-cover"
-                                        referrerPolicy="no-referrer"
-                                    />
-                                </div>
+                                <div className="relative w-32 h-32 mx-auto mb-6">
+    
+                                            {/* Profile Image */}
+                                            <div className="w-full h-full rounded-full overflow-hidden border-4 border-zinc-50 group-hover:border-red-600/20 transition-colors">
+                                                <img 
+                                                    src={founder.image} 
+                                                    alt={founder.name} 
+                                                    className="w-full h-full object-cover"
+                                                    referrerPolicy="no-referrer"
+                                                />
+                                            </div>
+
+                                            {/* Flag */}
+                                            <img
+                                                src={founder.flag}
+                                                alt={`${founder.name} country`}
+                                                className="w-8 h-auto rounded-sm absolute bottom-1 right-1 border shadow-md"
+                                            />
+                                        </div>
                                 <div className="text-center">
                                     <h3 className="text-2xl font-bold text-zinc-900 mb-1">{founder.name}</h3>
                                     <p className="text-red-600 font-mono text-xs uppercase tracking-widest mb-4">{founder.title}</p>
