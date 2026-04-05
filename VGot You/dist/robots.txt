@@ -1,9 +1,0 @@
-User-agent: *
-Allow: /
-
-# Block unnecessary files if any
-Disallow: /admin
-Disallow: /private
-
-# Sitemap locations
-Sitemap: https://www.vgotyou.com/sitemap.xml
