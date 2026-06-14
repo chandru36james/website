@@ -1,0 +1,18 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # 🔥 Redirect www → non-www
+  RewriteCond %{HTTP_HOST} ^www\.vgotyou\.com [NC]
+  RewriteRule ^(.*)$ https://vgotyou.com/$1 [L,R=301]
+
+  # 🔥 Force HTTPS (optional but recommended)
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://vgotyou.com/$1 [L,R=301]
+
+  # React SPA routing
+  RewriteBase /
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /index.html [L]
+</IfModule>

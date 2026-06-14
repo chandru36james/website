@@ -1,0 +1,10 @@
+{
+  "name": "VGot Digital Service",
+  "description": "A high-performance digital studio and marketing agency platform for web design, SEO, and branding.",
+  "requestFramePermissions": [
+    "geolocation"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE"
+  ]
+}
