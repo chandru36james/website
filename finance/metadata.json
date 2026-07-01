@@ -1,0 +1,6 @@
+{
+  "name": "VGot You Finance Management System",
+  "description": "A secure, Role-Based Access Control (RBAC) Loan & Finance Management System centering on Customer profiles, Loan generation, EMI calculators, Ledger systems, Cash book accounting, and detailed operational reporting.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
