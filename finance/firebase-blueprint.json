@@ -1,0 +1,281 @@
+{
+  "entities": {
+    "User": {
+      "title": "User Profile",
+      "description": "User account information with Role-Based Access Control (RBAC) details",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "Firebase Authentication User ID" },
+        "displayName": { "type": "string", "description": "The user's full name" },
+        "email": { "type": "string", "description": "The user's primary email address" },
+        "role": { "type": "string", "enum": ["Super Admin", "Manager", "Loan Officer", "Accountant", "Auditor"], "description": "The user's role in the organization" },
+        "branchId": { "type": "string", "description": "Associated branch ID" },
+        "companyId": { "type": "string", "description": "Associated company ID" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "email", "role"]
+    },
+    "Customer": {
+      "title": "Customer",
+      "description": "Customer profile containing personal, professional, and risk information",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "phone": { "type": "string" },
+        "address": { "type": "string" },
+        "occupation": { "type": "string" },
+        "income": { "type": "number" },
+        "aadhaar": { "type": "string" },
+        "pan": { "type": "string" },
+        "riskCategory": { "type": "string", "enum": ["Low", "Medium", "High"] },
+        "status": { "type": "string", "enum": ["Active", "Inactive", "Blacklisted"] },
+        "companyId": { "type": "string" },
+        "branchId": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "name", "phone", "riskCategory", "status", "companyId", "branchId"]
+    },
+    "Loan": {
+      "title": "Loan",
+      "description": "Loan application and contract details with tracking information",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "customerId": { "type": "string" },
+        "customerName": { "type": "string" },
+        "loanNumber": { "type": "string" },
+        "loanType": { "type": "string" },
+        "principal": { "type": "number" },
+        "processingFee": { "type": "number" },
+        "disbursedAmount": { "type": "number" },
+        "interestType": { "type": "string", "enum": ["Flat", "Reducing", "Simple", "Compound"] },
+        "interestRate": { "type": "number" },
+        "interestFrequency": { "type": "string", "enum": ["Daily", "Weekly", "Monthly"] },
+        "duration": { "type": "number", "description": "Duration in frequency units" },
+        "collectionFrequency": { "type": "string", "enum": ["Daily", "Weekly", "Monthly"] },
+        "startDate": { "type": "string" },
+        "endDate": { "type": "string" },
+        "status": { "type": "string", "enum": ["Draft", "Pending Approval", "Approved", "Disbursed", "Active", "Overdue", "Closed", "Rejected", "Written Off"] },
+        "formulaVersion": { "type": "string" },
+        "remarks": { "type": "string" },
+        "companyId": { "type": "string" },
+        "branchId": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "customerId", "loanNumber", "principal", "interestType", "interestRate", "status", "companyId", "branchId"]
+    },
+    "LoanSchedule": {
+      "title": "Loan Schedule",
+      "description": "A single EMI schedule installment detail",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "loanId": { "type": "string" },
+        "installmentNumber": { "type": "number" },
+        "dueDate": { "type": "string" },
+        "principalDue": { "type": "number" },
+        "interestDue": { "type": "number" },
+        "penaltyDue": { "type": "number" },
+        "status": { "type": "string", "enum": ["Pending", "Paid", "Partial", "Overdue", "Waived"] },
+        "paidDate": { "type": "string" },
+        "receiptNumber": { "type": "string" },
+        "outstanding": { "type": "number" },
+        "companyId": { "type": "string" },
+        "branchId": { "type": "string" }
+      },
+      "required": ["id", "loanId", "installmentNumber", "dueDate", "principalDue", "interestDue", "status", "companyId", "branchId"]
+    },
+    "Payment": {
+      "title": "Payment",
+      "description": "Payment transactions towards a loan",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "loanId": { "type": "string" },
+        "loanNumber": { "type": "string" },
+        "customerName": { "type": "string" },
+        "amount": { "type": "number" },
+        "paymentMethod": { "type": "string", "enum": ["Cash", "UPI", "Cheque", "Bank Transfer", "Card"] },
+        "principalPaid": { "type": "number" },
+        "interestPaid": { "type": "number" },
+        "penaltyPaid": { "type": "number" },
+        "receiptNumber": { "type": "string" },
+        "collectorId": { "type": "string" },
+        "collectorName": { "type": "string" },
+        "paymentDate": { "type": "string" },
+        "companyId": { "type": "string" },
+        "branchId": { "type": "string" }
+      },
+      "required": ["id", "loanId", "amount", "paymentMethod", "receiptNumber", "paymentDate", "companyId", "branchId"]
+    },
+    "Ledger": {
+      "title": "Ledger Entry",
+      "description": "Double-entry ledger immutable entries recording all financial movements",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "loanId": { "type": "string" },
+        "paymentId": { "type": "string" },
+        "type": { "type": "string", "enum": ["Disbursement", "Collection", "Interest Accrual", "Penalty", "Processing Fee", "Waiver", "Refund", "Write-off"] },
+        "amount": { "type": "number" },
+        "description": { "type": "string" },
+        "companyId": { "type": "string" },
+        "branchId": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "type", "amount", "companyId", "branchId", "createdAt"]
+    },
+    "Collateral": {
+      "title": "Collateral",
+      "description": "Details of asset held as collateral against a loan",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "loanId": { "type": "string" },
+        "type": { "type": "string" },
+        "description": { "type": "string" },
+        "estimatedValue": { "type": "number" },
+        "ltv": { "type": "number" },
+        "storageLocation": { "type": "string" },
+        "status": { "type": "string", "enum": ["Deposited", "Returned", "Liquidated"] },
+        "companyId": { "type": "string" },
+        "branchId": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "loanId", "type", "estimatedValue", "status", "companyId", "branchId"]
+    },
+    "CashBook": {
+      "title": "Cash Book",
+      "description": "Daily recording of cash book status for daily closing and handover operations",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "date": { "type": "string" },
+        "openingCash": { "type": "number" },
+        "collections": { "type": "number" },
+        "expenses": { "type": "number" },
+        "cashReceived": { "type": "number" },
+        "cashHandover": { "type": "number" },
+        "bankDeposit": { "type": "number" },
+        "closingCash": { "type": "number" },
+        "variance": { "type": "number" },
+        "status": { "type": "string", "enum": ["Open", "Pending Verification", "Closed"] },
+        "managerId": { "type": "string" },
+        "managerName": { "type": "string" },
+        "companyId": { "type": "string" },
+        "branchId": { "type": "string" }
+      },
+      "required": ["id", "date", "openingCash", "collections", "closingCash", "status", "companyId", "branchId"]
+    },
+    "AuditLog": {
+      "title": "Audit Log",
+      "description": "System-wide trace of user activity and data changes for security auditing",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "userName": { "type": "string" },
+        "userRole": { "type": "string" },
+        "action": { "type": "string" },
+        "module": { "type": "string" },
+        "oldValue": { "type": "string" },
+        "newValue": { "type": "string" },
+        "reason": { "type": "string" },
+        "companyId": { "type": "string" },
+        "branchId": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "userName", "action", "module", "createdAt", "companyId", "branchId"]
+    },
+    "FinanceRule": {
+      "title": "Finance Rule",
+      "description": "Customizable metrics and limits governing interest rates, processing fees, allocation priority, and penalties",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "version": { "type": "string" },
+        "interestRateMin": { "type": "number" },
+        "interestRateMax": { "type": "number" },
+        "gracePeriodDays": { "type": "number" },
+        "penaltyValue": { "type": "number" },
+        "penaltyType": { "type": "string", "enum": ["Flat Amount", "Daily Percentage", "Monthly Percentage"] },
+        "processingFeeFixed": { "type": "number" },
+        "processingFeePercent": { "type": "number" },
+        "allocationPriority": { "type": "string" },
+        "companyId": { "type": "string" },
+        "branchId": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "version", "interestRateMin", "interestRateMax", "gracePeriodDays", "penaltyValue", "penaltyType", "companyId", "branchId"]
+    },
+    "Guarantor": {
+      "title": "Guarantor",
+      "description": "Details of guarantors co-signing loans",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "nationalId": { "type": "string" },
+        "address": { "type": "string" },
+        "mobile": { "type": "string" },
+        "relationship": { "type": "string" },
+        "signature": { "type": "string", "description": "Base64 signature canvas data or name string representation" },
+        "loanIds": { "type": "array", "items": { "type": "string" }, "description": "Array of linked loan IDs" },
+        "companyId": { "type": "string" },
+        "branchId": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "name", "nationalId", "mobile", "relationship", "loanIds", "companyId", "branchId"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "The user accounts register"
+    },
+    "/customers/{customerId}": {
+      "schema": "Customer",
+      "description": "Registry of customers across companies/branches"
+    },
+    "/loans/{loanId}": {
+      "schema": "Loan",
+      "description": "Active and past loan contracts"
+    },
+    "/loans/{loanId}/schedules/{scheduleId}": {
+      "schema": "LoanSchedule",
+      "description": "Monthly or weekly EMI schedule for individual loans"
+    },
+    "/loans/{loanId}/payments/{paymentId}": {
+      "schema": "Payment",
+      "description": "Subcollection of payment receipts for a given loan"
+    },
+    "/ledgers/{ledgerId}": {
+      "schema": "Ledger",
+      "description": "Double entry ledger logs of all payments, disbursements, and fees"
+    },
+    "/collaterals/{collateralId}": {
+      "schema": "Collateral",
+      "description": "Collaterals pledged against loans"
+    },
+    "/cashBooks/{cashBookId}": {
+      "schema": "CashBook",
+      "description": "Daily branch cash balance tracking"
+    },
+    "/auditLogs/{auditLogId}": {
+      "schema": "AuditLog",
+      "description": "System operational audit trail"
+    },
+    "/financeRules/{ruleId}": {
+      "schema": "FinanceRule",
+      "description": "Configuration criteria for calculations and restrictions"
+    },
+    "/guarantors/{guarantorId}": {
+      "schema": "Guarantor",
+      "description": "Guarantors co-signing loans"
+    }
+  }
+}
