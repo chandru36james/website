@@ -1,0 +1,6 @@
+{
+  "name": "Zeus File Vault",
+  "description": "Zeus is a highly secure, role-based access control (RBAC) full-stack enterprise file vault, featuring lightning-fast folder navigation, multi-user permissions, audit logging, and secure previews.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
